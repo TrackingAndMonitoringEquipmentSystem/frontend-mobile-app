@@ -29,30 +29,36 @@ class RegisterWelcomePage extends StatelessWidget {
                   )
                 ],
               ),
+              const SizedBox(
+                height: 54,
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Expanded(
-                    child: Image.asset(
-                      'assets/images/authentication_feature/toollo_logo.png',
-                      height: 200,
-                    ),
+                  Image.asset(
+                    'assets/images/authentication_feature/toollo_logo.png',
+                    width: 130,
+                    height: 104,
+                    fit: BoxFit.fill,
                   ),
                 ],
+              ),
+              const SizedBox(
+                height: 30,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
                     'Welcome to ',
-                    style: Theme.of(context).primaryTextTheme.headline1,
+                    style: Theme.of(context).primaryTextTheme.headline2,
                   ),
                   Text(
                     'Toollo',
-                    style: TextStyle(
-                      color: Theme.of(context).primaryColor,
-                      fontSize: 25,
-                    ),
+                    style: Theme.of(context)
+                        .primaryTextTheme
+                        .headline2!
+                        .copyWith(color: Theme.of(context).colorScheme.primary),
                   ),
                 ],
               ),
@@ -69,7 +75,7 @@ class RegisterWelcomePage extends StatelessWidget {
                 ],
               ),
               const SizedBox(
-                height: 50,
+                height: 77,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -84,17 +90,14 @@ class RegisterWelcomePage extends StatelessWidget {
                 ],
               ),
               const SizedBox(
-                height: 100,
+                height: 112,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    'เป็นสมาชิกแล้วใช่หรือไม่',
+                    'เป็นสมาชิกแล้วใช่หรือไม่ ',
                     style: Theme.of(context).primaryTextTheme.caption,
-                  ),
-                  const SizedBox(
-                    width: 5,
                   ),
                   TextButton(
                     onPressed: () {

@@ -18,3 +18,19 @@ Either<ValueFailure<String>, String> validatePassword(String input) {
     return left(ValueFailure.shortPassword(failedValue: input));
   }
 }
+
+Either<ValueFailure<String>, String> validateTelNo(String input) {
+  if (input.length == 10 && input.startsWith('0')) {
+    return right(input);
+  } else {
+    return left(ValueFailure.invalidPhoneNo(failedValue: input));
+  }
+}
+
+Either<ValueFailure<String>, String> validateOnlyAlphabet(String input) {
+  if (RegExp('^[ก-๛A-Za-z]').hasMatch(input)) {
+    return right(input);
+  } else {
+    return left(ValueFailure.hadNotAlphabet(failedValue: input));
+  }
+}

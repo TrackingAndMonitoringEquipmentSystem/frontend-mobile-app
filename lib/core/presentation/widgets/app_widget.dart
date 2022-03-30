@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:frontend/core/presentation/routes/router.gr.dart';
 import 'package:frontend/features/authentication/presentation/bloc/authen_bloc.dart';
+import 'package:frontend/features/authentication/presentation/bloc/register_enter_name_bloc.dart';
 import 'package:frontend/injection.dart';
 
 class AppWidget extends StatelessWidget {
@@ -17,7 +18,7 @@ class AppWidget extends StatelessWidget {
         BlocProvider(
           create: (context) =>
               getIt<AuthenBloc>()..add(const AuthenEvent.authCheckRequested()),
-        ),
+        )
       ],
       child: MaterialApp.router(
         title: 'toollo',
@@ -33,39 +34,34 @@ class AppWidget extends StatelessWidget {
             onBackground: Colors.grey.shade400,
             background: const Color.fromRGBO(60, 60, 67, 0.6),
           ),
-          primaryTextTheme: const TextTheme(
+          primaryTextTheme: TextTheme(
             headline1: TextStyle(
-              color: Colors.black,
-              fontSize: 18,
+              color: Colors.grey.shade800,
+              fontSize: 20,
               fontWeight: FontWeight.bold,
               fontFamily: 'IBM Plex Sans Thai',
             ),
             headline2: TextStyle(
-              color: Colors.black,
-              fontSize: 17,
+              color: Colors.grey.shade800,
+              fontSize: 18,
               fontFamily: 'IBM Plex Sans Thai',
-            ),
-            headline3: TextStyle(
-              color: Colors.black,
-              fontSize: 16,
-              fontFamily: 'IBM Plex Sans Thai',
+              fontWeight: FontWeight.bold,
             ),
             subtitle1: TextStyle(
-              color: Colors.black,
-              fontSize: 15,
-              fontFamily: 'IBM Plex Sans Thai',
-            ),
-            bodyText1: TextStyle(
-              color: Color.fromRGBO(51, 51, 51, 1),
+              color: Colors.grey.shade800,
               fontSize: 14,
               fontFamily: 'IBM Plex Sans Thai',
               fontWeight: FontWeight.bold,
             ),
-            caption: TextStyle(
+            bodyText1: TextStyle(
+              color: Colors.grey.shade800,
+              fontSize: 14,
+              fontFamily: 'IBM Plex Sans Thai',
+            ),
+            caption: const TextStyle(
               color: Color.fromRGBO(60, 60, 67, 0.6),
               fontSize: 13,
               fontFamily: 'IBM Plex Sans Thai',
-              fontWeight: FontWeight.bold,
             ),
           ),
         ),

@@ -19,11 +19,11 @@ class _$UserTypeTearOff {
   const _$UserTypeTearOff();
 
   _User call(
-      {required UniqueId id,
+      {required String uid,
       required EmailAddress emailAddress,
-      required String providerId}) {
+      required String? providerId}) {
     return _User(
-      id: id,
+      uid: uid,
       emailAddress: emailAddress,
       providerId: providerId,
     );
@@ -35,9 +35,9 @@ const $UserType = _$UserTypeTearOff();
 
 /// @nodoc
 mixin _$UserType {
-  UniqueId get id => throw _privateConstructorUsedError;
+  String get uid => throw _privateConstructorUsedError;
   EmailAddress get emailAddress => throw _privateConstructorUsedError;
-  String get providerId => throw _privateConstructorUsedError;
+  String? get providerId => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $UserTypeCopyWith<UserType> get copyWith =>
@@ -48,7 +48,7 @@ mixin _$UserType {
 abstract class $UserTypeCopyWith<$Res> {
   factory $UserTypeCopyWith(UserType value, $Res Function(UserType) then) =
       _$UserTypeCopyWithImpl<$Res>;
-  $Res call({UniqueId id, EmailAddress emailAddress, String providerId});
+  $Res call({String uid, EmailAddress emailAddress, String? providerId});
 }
 
 /// @nodoc
@@ -61,15 +61,15 @@ class _$UserTypeCopyWithImpl<$Res> implements $UserTypeCopyWith<$Res> {
 
   @override
   $Res call({
-    Object? id = freezed,
+    Object? uid = freezed,
     Object? emailAddress = freezed,
     Object? providerId = freezed,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as UniqueId,
+      uid: uid == freezed
+          ? _value.uid
+          : uid // ignore: cast_nullable_to_non_nullable
+              as String,
       emailAddress: emailAddress == freezed
           ? _value.emailAddress
           : emailAddress // ignore: cast_nullable_to_non_nullable
@@ -77,7 +77,7 @@ class _$UserTypeCopyWithImpl<$Res> implements $UserTypeCopyWith<$Res> {
       providerId: providerId == freezed
           ? _value.providerId
           : providerId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -87,7 +87,7 @@ abstract class _$UserCopyWith<$Res> implements $UserTypeCopyWith<$Res> {
   factory _$UserCopyWith(_User value, $Res Function(_User) then) =
       __$UserCopyWithImpl<$Res>;
   @override
-  $Res call({UniqueId id, EmailAddress emailAddress, String providerId});
+  $Res call({String uid, EmailAddress emailAddress, String? providerId});
 }
 
 /// @nodoc
@@ -101,15 +101,15 @@ class __$UserCopyWithImpl<$Res> extends _$UserTypeCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? id = freezed,
+    Object? uid = freezed,
     Object? emailAddress = freezed,
     Object? providerId = freezed,
   }) {
     return _then(_User(
-      id: id == freezed
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as UniqueId,
+      uid: uid == freezed
+          ? _value.uid
+          : uid // ignore: cast_nullable_to_non_nullable
+              as String,
       emailAddress: emailAddress == freezed
           ? _value.emailAddress
           : emailAddress // ignore: cast_nullable_to_non_nullable
@@ -117,7 +117,7 @@ class __$UserCopyWithImpl<$Res> extends _$UserTypeCopyWithImpl<$Res>
       providerId: providerId == freezed
           ? _value.providerId
           : providerId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -126,18 +126,20 @@ class __$UserCopyWithImpl<$Res> extends _$UserTypeCopyWithImpl<$Res>
 
 class _$_User implements _User {
   const _$_User(
-      {required this.id, required this.emailAddress, required this.providerId});
+      {required this.uid,
+      required this.emailAddress,
+      required this.providerId});
 
   @override
-  final UniqueId id;
+  final String uid;
   @override
   final EmailAddress emailAddress;
   @override
-  final String providerId;
+  final String? providerId;
 
   @override
   String toString() {
-    return 'UserType(id: $id, emailAddress: $emailAddress, providerId: $providerId)';
+    return 'UserType(uid: $uid, emailAddress: $emailAddress, providerId: $providerId)';
   }
 
   @override
@@ -145,7 +147,7 @@ class _$_User implements _User {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _User &&
-            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality().equals(other.uid, uid) &&
             const DeepCollectionEquality()
                 .equals(other.emailAddress, emailAddress) &&
             const DeepCollectionEquality()
@@ -155,7 +157,7 @@ class _$_User implements _User {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(uid),
       const DeepCollectionEquality().hash(emailAddress),
       const DeepCollectionEquality().hash(providerId));
 
@@ -167,16 +169,16 @@ class _$_User implements _User {
 
 abstract class _User implements UserType {
   const factory _User(
-      {required UniqueId id,
+      {required String uid,
       required EmailAddress emailAddress,
-      required String providerId}) = _$_User;
+      required String? providerId}) = _$_User;
 
   @override
-  UniqueId get id;
+  String get uid;
   @override
   EmailAddress get emailAddress;
   @override
-  String get providerId;
+  String? get providerId;
   @override
   @JsonKey(ignore: true)
   _$UserCopyWith<_User> get copyWith => throw _privateConstructorUsedError;

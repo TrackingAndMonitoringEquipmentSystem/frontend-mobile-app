@@ -1,7 +1,4 @@
 import 'package:dartz/dartz.dart';
-import 'package:equatable/equatable.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:frontend/core/value_objects/failures.dart';
 import 'package:frontend/core/value_objects/value_objects.dart';
 import 'package:frontend/core/value_objects/value_validators.dart';
@@ -24,4 +21,34 @@ class Password extends ValueObject<String> {
   }
 
   const Password._({required this.value});
+}
+
+class TelNo extends ValueObject<String> {
+  final Either<ValueFailure<String>, String> value;
+
+  factory TelNo(String input) {
+    return TelNo._(value: validateTelNo(input));
+  }
+
+  const TelNo._({required this.value});
+}
+
+class FirstName extends ValueObject<String> {
+  final Either<ValueFailure<String>, String> value;
+
+  factory FirstName(String input) {
+    return FirstName._(value: validateOnlyAlphabet(input));
+  }
+
+  const FirstName._({required this.value});
+}
+
+class LastName extends ValueObject<String> {
+  final Either<ValueFailure<String>, String> value;
+
+  factory LastName(String input) {
+    return LastName._(value: validateOnlyAlphabet(input));
+  }
+
+  const LastName._({required this.value});
 }

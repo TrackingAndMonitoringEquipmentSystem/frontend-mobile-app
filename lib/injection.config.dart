@@ -9,23 +9,26 @@ import 'package:flutter_facebook_auth/flutter_facebook_auth.dart' as _i3;
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:google_sign_in/google_sign_in.dart' as _i7;
 import 'package:injectable/injectable.dart' as _i2;
-import 'package:twitter_login/twitter_login.dart' as _i9;
+import 'package:twitter_login/twitter_login.dart' as _i10;
 
-import 'core/injection/firebase_injectable_module.dart' as _i15;
+import 'core/injection/firebase_injectable_module.dart' as _i17;
 import 'features/authentication/data/datasources/facebook_sign_in_auth.dart'
     as _i4;
 import 'features/authentication/data/datasources/firebase_sign_in.dart' as _i6;
 import 'features/authentication/data/datasources/google_sign_in_auth.dart'
     as _i8;
 import 'features/authentication/data/datasources/twitter_sign_in_auth.dart'
-    as _i10;
-import 'features/authentication/data/repositories/authentication_repository_impl.dart'
-    as _i12;
-import 'features/authentication/domain/repositories/authentication_repository.dart'
     as _i11;
-import 'features/authentication/presentation/bloc/authen_bloc.dart' as _i14;
+import 'features/authentication/data/repositories/authentication_repository_impl.dart'
+    as _i13;
+import 'features/authentication/domain/entities/pre_register_user.dart' as _i9;
+import 'features/authentication/domain/repositories/authentication_repository.dart'
+    as _i12;
+import 'features/authentication/presentation/bloc/authen_bloc.dart' as _i16;
+import 'features/authentication/presentation/bloc/register_enter_name_bloc.dart'
+    as _i14;
 import 'features/authentication/presentation/bloc/sign_in_form_bloc.dart'
-    as _i13; // ignore_for_file: unnecessary_lambdas
+    as _i15; // ignore_for_file: unnecessary_lambdas
 
 // ignore_for_file: lines_longer_than_80_chars
 /// initializes the registration of provided dependencies inside of [GetIt]
@@ -45,21 +48,26 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
       () => firebaseInjectableModule.googleSignIn);
   gh.factory<_i8.GoogleSignInAuth>(
       () => _i8.GoogleSignInAuth(get<_i7.GoogleSignIn>()));
-  gh.lazySingleton<_i9.TwitterLogin>(
+  gh.lazySingleton<_i9.PreRegisterUser>(
+      () => firebaseInjectableModule.preRegisterUser);
+  gh.lazySingleton<_i10.TwitterLogin>(
       () => firebaseInjectableModule.twitterSignIn);
-  gh.factory<_i10.TwitterSignInAuth>(
-      () => _i10.TwitterSignInAuth(get<_i9.TwitterLogin>()));
-  gh.lazySingleton<_i11.AuthenticationRepository>(() =>
-      _i12.AuthenticationRepositoryImpl(
+  gh.factory<_i11.TwitterSignInAuth>(
+      () => _i11.TwitterSignInAuth(get<_i10.TwitterLogin>()));
+  gh.lazySingleton<_i12.AuthenticationRepository>(() =>
+      _i13.AuthenticationRepositoryImpl(
           get<_i6.FirebaseSignInAuth>(),
           get<_i8.GoogleSignInAuth>(),
           get<_i4.FacebookSignInAuth>(),
-          get<_i10.TwitterSignInAuth>()));
-  gh.factory<_i13.SignInFormBloc>(
-      () => _i13.SignInFormBloc(get<_i11.AuthenticationRepository>()));
-  gh.factory<_i14.AuthenBloc>(
-      () => _i14.AuthenBloc(get<_i11.AuthenticationRepository>()));
+          get<_i11.TwitterSignInAuth>(),
+          get<_i9.PreRegisterUser>()));
+  gh.factory<_i14.RegisterEnterNameBloc>(
+      () => _i14.RegisterEnterNameBloc(get<_i12.AuthenticationRepository>()));
+  gh.factory<_i15.SignInFormBloc>(
+      () => _i15.SignInFormBloc(get<_i12.AuthenticationRepository>()));
+  gh.factory<_i16.AuthenBloc>(
+      () => _i16.AuthenBloc(get<_i12.AuthenticationRepository>()));
   return get;
 }
 
-class _$FirebaseInjectableModule extends _i15.FirebaseInjectableModule {}
+class _$FirebaseInjectableModule extends _i17.FirebaseInjectableModule {}

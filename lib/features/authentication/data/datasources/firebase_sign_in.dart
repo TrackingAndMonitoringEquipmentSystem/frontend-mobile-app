@@ -63,7 +63,7 @@ class FirebaseSignInAuth {
     if (user != null) {
       final userInfo = user.providerData[0];
       return UserType(
-        id: UniqueId.fromUniqueString(user.uid),
+        uid: user.uid,
         emailAddress: EmailAddress(userInfo.email ?? ''),
         providerId: userInfo.providerId,
       );

@@ -55,34 +55,25 @@ class SignInForm extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     InputText(
-                      label: 'Email',
-                      placeHolder: 'Email',
-                      onChanged: (value) => context.read<SignInFormBloc>().add(
-                            EmailChanged(value),
+                        label: 'Email',
+                        placeHolder: 'Email',
+                        onChanged: (value) =>
+                            context.read<SignInFormBloc>().add(
+                                  EmailChanged(value),
+                                ),
+                        errorMessage: state.emailAddress.value.fold(
+                          (f) => f.maybeMap(
+                            invalidEmail: (_) => 'Email ไม่ถูกต้อง',
+                            orElse: () => '',
                           ),
-                      errorMessage: context
-                          .read<SignInFormBloc>()
-                          .state
-                          .emailAddress
-                          .value
-                          .fold(
-                            (f) => f.maybeMap(
-                              invalidEmail: (_) => 'Email ไม่ถูกต้อง',
-                              orElse: () => '',
-                            ),
-                            (_) => '',
-                          ),
-                      isError: context
-                              .read<SignInFormBloc>()
-                              .state
-                              .isShowErrorMessage &&
-                          context
-                              .read<SignInFormBloc>()
-                              .state
-                              .emailAddress
-                              .value
-                              .isLeft(),
-                    ),
+                          (_) => '',
+                        ),
+                        isError: state.isShowErrorMessage &&
+                            !context
+                                .read<SignInFormBloc>()
+                                .state
+                                .emailAddress
+                                .isValid()),
                   ],
                 ),
                 const SizedBox(
@@ -98,21 +89,12 @@ class SignInForm extends StatelessWidget {
                             PasswordChanged(value),
                           ),
                       errorMessage: 'Password ไม่ถูกต้อง',
-                      isError: context
-                              .read<SignInFormBloc>()
-                              .state
-                              .isShowErrorMessage &&
-                          context
-                              .read<SignInFormBloc>()
-                              .state
-                              .password
-                              .value
-                              .isLeft(),
-                      isObscureText:
-                          !context.read<SignInFormBloc>().state.isShowPassword,
+                      isError:
+                          state.isShowErrorMessage && !state.password.isValid(),
+                      isObscureText: !state.isShowPassword,
                       suffixIcon: IconButton(
                         icon: Icon(
-                          context.read<SignInFormBloc>().state.isShowPassword
+                          state.isShowPassword
                               ? Icons.visibility
                               : Icons.visibility_off,
                         ),

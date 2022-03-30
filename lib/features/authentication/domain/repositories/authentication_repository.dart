@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:frontend/features/authentication/domain/entities/pre_register_user.dart';
 import 'package:frontend/features/authentication/domain/entities/user.dart';
 import 'package:frontend/features/authentication/domain/repositories/authentication_failure.dart';
 import 'package:frontend/features/authentication/domain/value_objects/value_objects.dart';
@@ -17,4 +18,8 @@ abstract class AuthenticationRepository {
   Future<Either<AuthenticationFailure, Unit>> signInWithFacebook();
   Future<Either<AuthenticationFailure, Unit>> signInWithTwitter();
   Future<void> signOut();
+
+  set preRegisterUser(PreRegisterUser preRegisterUser);
+
+  PreRegisterUser get preRegisterUser;
 }

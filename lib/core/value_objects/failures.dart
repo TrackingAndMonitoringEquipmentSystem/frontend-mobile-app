@@ -10,4 +10,12 @@ class ValueFailure<T> with _$ValueFailure<T> {
   const factory ValueFailure.shortPassword({
     required String failedValue,
   }) = ShortPassword<T>;
+
+  const factory ValueFailure.invalidPhoneNo({
+    required String failedValue,
+  }) = InvalidPhoneNo<T>;
+
+  const factory ValueFailure.hadNotAlphabet({
+    required String failedValue,
+  }) = HadNotAlphabet<T>;
 }

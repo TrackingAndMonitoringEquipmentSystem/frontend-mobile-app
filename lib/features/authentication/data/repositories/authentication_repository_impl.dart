@@ -7,6 +7,7 @@ import 'package:frontend/features/authentication/data/datasources/facebook_sign_
 import 'package:frontend/features/authentication/data/datasources/firebase_sign_in.dart';
 import 'package:frontend/features/authentication/data/datasources/google_sign_in_auth.dart';
 import 'package:frontend/features/authentication/data/datasources/twitter_sign_in_auth.dart';
+import 'package:frontend/features/authentication/domain/entities/pre_register_user.dart';
 import 'package:frontend/features/authentication/domain/entities/user.dart';
 import 'package:frontend/features/authentication/domain/repositories/authentication_failure.dart';
 import 'package:frontend/features/authentication/domain/repositories/authentication_repository.dart';
@@ -25,6 +26,7 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
     this._googleSignInAuth,
     this._facebookSignInInAuth,
     this._twitterSignInAuth,
+    this.preRegisterUser,
   );
   @override
   Future<Either<AuthenticationFailure, Unit>> registerWithEmailAndPassword(
@@ -125,4 +127,7 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
         _googleSignInAuth.signOut(),
         _facebookSignInInAuth.signOut(),
       ]);
+
+  @override
+  PreRegisterUser preRegisterUser;
 }

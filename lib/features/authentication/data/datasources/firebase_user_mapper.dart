@@ -6,7 +6,7 @@ import 'package:frontend/features/authentication/domain/value_objects/value_obje
 extension FirebaseUserDomain on User {
   UserType toDomain() {
     return UserType(
-      id: UniqueId.fromUniqueString(uid),
+      uid: uid,
       emailAddress: EmailAddress(''),
       providerId: '',
     );

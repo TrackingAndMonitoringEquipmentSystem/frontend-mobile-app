@@ -1,5 +1,4 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:frontend/core/value_objects/value_objects.dart';
 import 'package:frontend/features/authentication/domain/value_objects/value_objects.dart';
 
 part 'user.freezed.dart';
@@ -7,8 +6,8 @@ part 'user.freezed.dart';
 @freezed
 class UserType with _$UserType {
   const factory UserType({
-    required UniqueId id,
+    required String uid,
     required EmailAddress emailAddress,
-    required String providerId,
+    required String? providerId,
   }) = _User;
 }

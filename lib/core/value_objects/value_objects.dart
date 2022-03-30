@@ -25,19 +25,3 @@ abstract class ValueObject<T> extends Equatable {
   @override
   String toString() => 'Value($value)';
 }
-
-class UniqueId extends ValueObject<String> {
-  final Either<ValueFailure<String>, String> value;
-
-  factory UniqueId() {
-    return UniqueId._(right(const Uuid().v1()));
-  }
-
-  factory UniqueId.fromUniqueString(String uniqueId) {
-    return UniqueId._(
-      right(uniqueId),
-    );
-  }
-
-  const UniqueId._(this.value);
-}
