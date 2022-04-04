@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:frontend/features/authentication/domain/entities/pre_register_user.dart';
 import 'package:frontend/features/authentication/domain/entities/user.dart';
 import 'package:frontend/features/authentication/domain/repositories/authentication_failure.dart';
@@ -22,4 +23,12 @@ abstract class AuthenticationRepository {
   set preRegisterUser(PreRegisterUser preRegisterUser);
 
   PreRegisterUser get preRegisterUser;
+
+  Future<void> verifyOtpCode({
+    required TelNo telNo,
+    required Function(PhoneAuthCredential) onVerificationCompleted,
+    required void Function(FirebaseAuthException) onVerificationFailed,
+    required void Function(String, int?) onCodeSent,
+    required void Function(String) onCodeAutoRetrievalTimeout,
+  });
 }

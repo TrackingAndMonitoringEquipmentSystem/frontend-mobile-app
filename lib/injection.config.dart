@@ -11,7 +11,7 @@ import 'package:google_sign_in/google_sign_in.dart' as _i7;
 import 'package:injectable/injectable.dart' as _i2;
 import 'package:twitter_login/twitter_login.dart' as _i10;
 
-import 'core/injection/firebase_injectable_module.dart' as _i17;
+import 'core/injection/injectable_module.dart' as _i19;
 import 'features/authentication/data/datasources/facebook_sign_in_auth.dart'
     as _i4;
 import 'features/authentication/data/datasources/firebase_sign_in.dart' as _i6;
@@ -24,11 +24,16 @@ import 'features/authentication/data/repositories/authentication_repository_impl
 import 'features/authentication/domain/entities/pre_register_user.dart' as _i9;
 import 'features/authentication/domain/repositories/authentication_repository.dart'
     as _i12;
-import 'features/authentication/presentation/bloc/authen_bloc.dart' as _i16;
-import 'features/authentication/presentation/bloc/register_enter_name_bloc.dart'
+import 'features/authentication/presentation/bloc/authen/authen_bloc.dart'
+    as _i18;
+import 'features/authentication/presentation/bloc/register_enter_name/register_enter_name_bloc.dart'
     as _i14;
-import 'features/authentication/presentation/bloc/sign_in_form_bloc.dart'
-    as _i15; // ignore_for_file: unnecessary_lambdas
+import 'features/authentication/presentation/bloc/register_enter_otp/register_enter_otp_bloc.dart'
+    as _i15;
+import 'features/authentication/presentation/bloc/register_enter_phone_number/register_enter_phone_number_bloc.dart'
+    as _i16;
+import 'features/authentication/presentation/bloc/sign_in_form/sign_in_form_bloc.dart'
+    as _i17; // ignore_for_file: unnecessary_lambdas
 
 // ignore_for_file: lines_longer_than_80_chars
 /// initializes the registration of provided dependencies inside of [GetIt]
@@ -63,11 +68,15 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
           get<_i9.PreRegisterUser>()));
   gh.factory<_i14.RegisterEnterNameBloc>(
       () => _i14.RegisterEnterNameBloc(get<_i12.AuthenticationRepository>()));
-  gh.factory<_i15.SignInFormBloc>(
-      () => _i15.SignInFormBloc(get<_i12.AuthenticationRepository>()));
-  gh.factory<_i16.AuthenBloc>(
-      () => _i16.AuthenBloc(get<_i12.AuthenticationRepository>()));
+  gh.factory<_i15.RegisterEnterOtpBloc>(
+      () => _i15.RegisterEnterOtpBloc(get<_i12.AuthenticationRepository>()));
+  gh.factory<_i16.RegisterEnterPhoneNumberBloc>(() =>
+      _i16.RegisterEnterPhoneNumberBloc(get<_i12.AuthenticationRepository>()));
+  gh.factory<_i17.SignInFormBloc>(
+      () => _i17.SignInFormBloc(get<_i12.AuthenticationRepository>()));
+  gh.factory<_i18.AuthenBloc>(
+      () => _i18.AuthenBloc(get<_i12.AuthenticationRepository>()));
   return get;
 }
 
-class _$FirebaseInjectableModule extends _i17.FirebaseInjectableModule {}
+class _$FirebaseInjectableModule extends _i19.FirebaseInjectableModule {}

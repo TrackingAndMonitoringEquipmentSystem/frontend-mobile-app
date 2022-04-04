@@ -1,9 +1,12 @@
 import 'package:dartz/dartz.dart';
+import 'package:frontend/core/utils/value_object_constant.dart'
+    as value_object_constant;
 import 'package:frontend/core/value_objects/failures.dart';
 import 'package:frontend/core/value_objects/value_objects.dart';
 import 'package:frontend/core/value_objects/value_validators.dart';
 
 class EmailAddress extends ValueObject<String> {
+  @override
   final Either<ValueFailure<String>, String> value;
 
   factory EmailAddress(String input) {
@@ -14,6 +17,7 @@ class EmailAddress extends ValueObject<String> {
 }
 
 class Password extends ValueObject<String> {
+  @override
   final Either<ValueFailure<String>, String> value;
 
   factory Password(String input) {
@@ -24,30 +28,68 @@ class Password extends ValueObject<String> {
 }
 
 class TelNo extends ValueObject<String> {
+  @override
   final Either<ValueFailure<String>, String> value;
-
   factory TelNo(String input) {
-    return TelNo._(value: validateTelNo(input));
+    return TelNo._(
+      value: validateStringNotEmpty(input: input).flatMap(
+        (prevValue) => validateTelNo(prevValue).flatMap(
+          (prevValue) => validateFixedLength(input: prevValue, fixedLength: 10),
+        ),
+      ),
+    );
   }
 
   const TelNo._({required this.value});
+
+  String toInternationalTelNo() {
+    final str = super.getOrCrash();
+    return '${value_object_constant.localTelNoCode} ${str.substring(0, 4)} ${str.substring(4, 7)} ${str.substring(7, 10)}';
+  }
+
+  String toLocalTelNo() {
+    final str = super.getOrCrash();
+    return '${str.substring(0, 3)}-${str.substring(3, 6)}-${str.substring(6, 10)}';
+  }
 }
 
 class FirstName extends ValueObject<String> {
+  @override
   final Either<ValueFailure<String>, String> value;
 
   factory FirstName(String input) {
-    return FirstName._(value: validateOnlyAlphabet(input));
+    return FirstName._(
+      value: validateStringNotEmpty(input: input).flatMap(
+        (prevValue) =>
+            validateMinStringLength(input: prevValue, minLength: 2).flatMap(
+          (prevValue) => validateMaxStringLength(
+            input: prevValue,
+            maxLength: 30,
+          ).flatMap((prevValue) => validateOnlyAlphabet(input: prevValue)),
+        ),
+      ),
+    );
   }
 
   const FirstName._({required this.value});
 }
 
 class LastName extends ValueObject<String> {
+  @override
   final Either<ValueFailure<String>, String> value;
 
   factory LastName(String input) {
-    return LastName._(value: validateOnlyAlphabet(input));
+    return LastName._(
+      value: validateStringNotEmpty(input: input).flatMap(
+        (prevValue) =>
+            validateMinStringLength(input: prevValue, minLength: 2).flatMap(
+          (prevValue) => validateMaxStringLength(
+            input: prevValue,
+            maxLength: 30,
+          ).flatMap((prevValue) => validateOnlyAlphabet(input: prevValue)),
+        ),
+      ),
+    );
   }
 
   const LastName._({required this.value});

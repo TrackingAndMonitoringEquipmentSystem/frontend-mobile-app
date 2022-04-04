@@ -75,4 +75,20 @@ class FirebaseSignInAuth {
   Future<void> signOut() async {
     _firebaseAuth.signOut();
   }
+
+  Future<void> verifyOtpCode({
+    required TelNo telNo,
+    required Function(PhoneAuthCredential) onVerificationCompleted,
+    required void Function(FirebaseAuthException) onVerificationFailed,
+    required void Function(String, int?) onCodeSent,
+    required void Function(String) onCodeAutoRetrievalTimeout,
+  }) {
+    return _firebaseAuth.verifyPhoneNumber(
+      phoneNumber: telNo.toInternationalTelNo(),
+      verificationCompleted: onVerificationCompleted,
+      verificationFailed: onVerificationFailed,
+      codeSent: onCodeSent,
+      codeAutoRetrievalTimeout: onCodeAutoRetrievalTimeout,
+    );
+  }
 }

@@ -33,6 +33,12 @@ class _$RegisterEnterNameEventTearOff {
   Save save() {
     return const Save();
   }
+
+  SetNavigateNextPage setNavigateNextPage({required bool isNavigateNextPage}) {
+    return SetNavigateNextPage(
+      isNavigateNextPage: isNavigateNextPage,
+    );
+  }
 }
 
 /// @nodoc
@@ -45,6 +51,7 @@ mixin _$RegisterEnterNameEvent {
     required TResult Function(String firstName) firstNameChanged,
     required TResult Function(String lastName) lastNameChanged,
     required TResult Function() save,
+    required TResult Function(bool isNavigateNextPage) setNavigateNextPage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -52,6 +59,7 @@ mixin _$RegisterEnterNameEvent {
     TResult Function(String firstName)? firstNameChanged,
     TResult Function(String lastName)? lastNameChanged,
     TResult Function()? save,
+    TResult Function(bool isNavigateNextPage)? setNavigateNextPage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -59,6 +67,7 @@ mixin _$RegisterEnterNameEvent {
     TResult Function(String firstName)? firstNameChanged,
     TResult Function(String lastName)? lastNameChanged,
     TResult Function()? save,
+    TResult Function(bool isNavigateNextPage)? setNavigateNextPage,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -67,6 +76,7 @@ mixin _$RegisterEnterNameEvent {
     required TResult Function(FirstNameChanged value) firstNameChanged,
     required TResult Function(LastNameChanged value) lastNameChanged,
     required TResult Function(Save value) save,
+    required TResult Function(SetNavigateNextPage value) setNavigateNextPage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -74,6 +84,7 @@ mixin _$RegisterEnterNameEvent {
     TResult Function(FirstNameChanged value)? firstNameChanged,
     TResult Function(LastNameChanged value)? lastNameChanged,
     TResult Function(Save value)? save,
+    TResult Function(SetNavigateNextPage value)? setNavigateNextPage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -81,6 +92,7 @@ mixin _$RegisterEnterNameEvent {
     TResult Function(FirstNameChanged value)? firstNameChanged,
     TResult Function(LastNameChanged value)? lastNameChanged,
     TResult Function(Save value)? save,
+    TResult Function(SetNavigateNextPage value)? setNavigateNextPage,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -171,6 +183,7 @@ class _$FirstNameChanged implements FirstNameChanged {
     required TResult Function(String firstName) firstNameChanged,
     required TResult Function(String lastName) lastNameChanged,
     required TResult Function() save,
+    required TResult Function(bool isNavigateNextPage) setNavigateNextPage,
   }) {
     return firstNameChanged(firstName);
   }
@@ -181,6 +194,7 @@ class _$FirstNameChanged implements FirstNameChanged {
     TResult Function(String firstName)? firstNameChanged,
     TResult Function(String lastName)? lastNameChanged,
     TResult Function()? save,
+    TResult Function(bool isNavigateNextPage)? setNavigateNextPage,
   }) {
     return firstNameChanged?.call(firstName);
   }
@@ -191,6 +205,7 @@ class _$FirstNameChanged implements FirstNameChanged {
     TResult Function(String firstName)? firstNameChanged,
     TResult Function(String lastName)? lastNameChanged,
     TResult Function()? save,
+    TResult Function(bool isNavigateNextPage)? setNavigateNextPage,
     required TResult orElse(),
   }) {
     if (firstNameChanged != null) {
@@ -205,6 +220,7 @@ class _$FirstNameChanged implements FirstNameChanged {
     required TResult Function(FirstNameChanged value) firstNameChanged,
     required TResult Function(LastNameChanged value) lastNameChanged,
     required TResult Function(Save value) save,
+    required TResult Function(SetNavigateNextPage value) setNavigateNextPage,
   }) {
     return firstNameChanged(this);
   }
@@ -215,6 +231,7 @@ class _$FirstNameChanged implements FirstNameChanged {
     TResult Function(FirstNameChanged value)? firstNameChanged,
     TResult Function(LastNameChanged value)? lastNameChanged,
     TResult Function(Save value)? save,
+    TResult Function(SetNavigateNextPage value)? setNavigateNextPage,
   }) {
     return firstNameChanged?.call(this);
   }
@@ -225,6 +242,7 @@ class _$FirstNameChanged implements FirstNameChanged {
     TResult Function(FirstNameChanged value)? firstNameChanged,
     TResult Function(LastNameChanged value)? lastNameChanged,
     TResult Function(Save value)? save,
+    TResult Function(SetNavigateNextPage value)? setNavigateNextPage,
     required TResult orElse(),
   }) {
     if (firstNameChanged != null) {
@@ -311,6 +329,7 @@ class _$LastNameChanged implements LastNameChanged {
     required TResult Function(String firstName) firstNameChanged,
     required TResult Function(String lastName) lastNameChanged,
     required TResult Function() save,
+    required TResult Function(bool isNavigateNextPage) setNavigateNextPage,
   }) {
     return lastNameChanged(lastName);
   }
@@ -321,6 +340,7 @@ class _$LastNameChanged implements LastNameChanged {
     TResult Function(String firstName)? firstNameChanged,
     TResult Function(String lastName)? lastNameChanged,
     TResult Function()? save,
+    TResult Function(bool isNavigateNextPage)? setNavigateNextPage,
   }) {
     return lastNameChanged?.call(lastName);
   }
@@ -331,6 +351,7 @@ class _$LastNameChanged implements LastNameChanged {
     TResult Function(String firstName)? firstNameChanged,
     TResult Function(String lastName)? lastNameChanged,
     TResult Function()? save,
+    TResult Function(bool isNavigateNextPage)? setNavigateNextPage,
     required TResult orElse(),
   }) {
     if (lastNameChanged != null) {
@@ -345,6 +366,7 @@ class _$LastNameChanged implements LastNameChanged {
     required TResult Function(FirstNameChanged value) firstNameChanged,
     required TResult Function(LastNameChanged value) lastNameChanged,
     required TResult Function(Save value) save,
+    required TResult Function(SetNavigateNextPage value) setNavigateNextPage,
   }) {
     return lastNameChanged(this);
   }
@@ -355,6 +377,7 @@ class _$LastNameChanged implements LastNameChanged {
     TResult Function(FirstNameChanged value)? firstNameChanged,
     TResult Function(LastNameChanged value)? lastNameChanged,
     TResult Function(Save value)? save,
+    TResult Function(SetNavigateNextPage value)? setNavigateNextPage,
   }) {
     return lastNameChanged?.call(this);
   }
@@ -365,6 +388,7 @@ class _$LastNameChanged implements LastNameChanged {
     TResult Function(FirstNameChanged value)? firstNameChanged,
     TResult Function(LastNameChanged value)? lastNameChanged,
     TResult Function(Save value)? save,
+    TResult Function(SetNavigateNextPage value)? setNavigateNextPage,
     required TResult orElse(),
   }) {
     if (lastNameChanged != null) {
@@ -425,6 +449,7 @@ class _$Save implements Save {
     required TResult Function(String firstName) firstNameChanged,
     required TResult Function(String lastName) lastNameChanged,
     required TResult Function() save,
+    required TResult Function(bool isNavigateNextPage) setNavigateNextPage,
   }) {
     return save();
   }
@@ -435,6 +460,7 @@ class _$Save implements Save {
     TResult Function(String firstName)? firstNameChanged,
     TResult Function(String lastName)? lastNameChanged,
     TResult Function()? save,
+    TResult Function(bool isNavigateNextPage)? setNavigateNextPage,
   }) {
     return save?.call();
   }
@@ -445,6 +471,7 @@ class _$Save implements Save {
     TResult Function(String firstName)? firstNameChanged,
     TResult Function(String lastName)? lastNameChanged,
     TResult Function()? save,
+    TResult Function(bool isNavigateNextPage)? setNavigateNextPage,
     required TResult orElse(),
   }) {
     if (save != null) {
@@ -459,6 +486,7 @@ class _$Save implements Save {
     required TResult Function(FirstNameChanged value) firstNameChanged,
     required TResult Function(LastNameChanged value) lastNameChanged,
     required TResult Function(Save value) save,
+    required TResult Function(SetNavigateNextPage value) setNavigateNextPage,
   }) {
     return save(this);
   }
@@ -469,6 +497,7 @@ class _$Save implements Save {
     TResult Function(FirstNameChanged value)? firstNameChanged,
     TResult Function(LastNameChanged value)? lastNameChanged,
     TResult Function(Save value)? save,
+    TResult Function(SetNavigateNextPage value)? setNavigateNextPage,
   }) {
     return save?.call(this);
   }
@@ -479,6 +508,7 @@ class _$Save implements Save {
     TResult Function(FirstNameChanged value)? firstNameChanged,
     TResult Function(LastNameChanged value)? lastNameChanged,
     TResult Function(Save value)? save,
+    TResult Function(SetNavigateNextPage value)? setNavigateNextPage,
     required TResult orElse(),
   }) {
     if (save != null) {
@@ -490,6 +520,154 @@ class _$Save implements Save {
 
 abstract class Save implements RegisterEnterNameEvent {
   const factory Save() = _$Save;
+}
+
+/// @nodoc
+abstract class $SetNavigateNextPageCopyWith<$Res> {
+  factory $SetNavigateNextPageCopyWith(
+          SetNavigateNextPage value, $Res Function(SetNavigateNextPage) then) =
+      _$SetNavigateNextPageCopyWithImpl<$Res>;
+  $Res call({bool isNavigateNextPage});
+}
+
+/// @nodoc
+class _$SetNavigateNextPageCopyWithImpl<$Res>
+    extends _$RegisterEnterNameEventCopyWithImpl<$Res>
+    implements $SetNavigateNextPageCopyWith<$Res> {
+  _$SetNavigateNextPageCopyWithImpl(
+      SetNavigateNextPage _value, $Res Function(SetNavigateNextPage) _then)
+      : super(_value, (v) => _then(v as SetNavigateNextPage));
+
+  @override
+  SetNavigateNextPage get _value => super._value as SetNavigateNextPage;
+
+  @override
+  $Res call({
+    Object? isNavigateNextPage = freezed,
+  }) {
+    return _then(SetNavigateNextPage(
+      isNavigateNextPage: isNavigateNextPage == freezed
+          ? _value.isNavigateNextPage
+          : isNavigateNextPage // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SetNavigateNextPage implements SetNavigateNextPage {
+  const _$SetNavigateNextPage({required this.isNavigateNextPage});
+
+  @override
+  final bool isNavigateNextPage;
+
+  @override
+  String toString() {
+    return 'RegisterEnterNameEvent.setNavigateNextPage(isNavigateNextPage: $isNavigateNextPage)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is SetNavigateNextPage &&
+            const DeepCollectionEquality()
+                .equals(other.isNavigateNextPage, isNavigateNextPage));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(isNavigateNextPage));
+
+  @JsonKey(ignore: true)
+  @override
+  $SetNavigateNextPageCopyWith<SetNavigateNextPage> get copyWith =>
+      _$SetNavigateNextPageCopyWithImpl<SetNavigateNextPage>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String firstName) firstNameChanged,
+    required TResult Function(String lastName) lastNameChanged,
+    required TResult Function() save,
+    required TResult Function(bool isNavigateNextPage) setNavigateNextPage,
+  }) {
+    return setNavigateNextPage(isNavigateNextPage);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String firstName)? firstNameChanged,
+    TResult Function(String lastName)? lastNameChanged,
+    TResult Function()? save,
+    TResult Function(bool isNavigateNextPage)? setNavigateNextPage,
+  }) {
+    return setNavigateNextPage?.call(isNavigateNextPage);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String firstName)? firstNameChanged,
+    TResult Function(String lastName)? lastNameChanged,
+    TResult Function()? save,
+    TResult Function(bool isNavigateNextPage)? setNavigateNextPage,
+    required TResult orElse(),
+  }) {
+    if (setNavigateNextPage != null) {
+      return setNavigateNextPage(isNavigateNextPage);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(FirstNameChanged value) firstNameChanged,
+    required TResult Function(LastNameChanged value) lastNameChanged,
+    required TResult Function(Save value) save,
+    required TResult Function(SetNavigateNextPage value) setNavigateNextPage,
+  }) {
+    return setNavigateNextPage(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(FirstNameChanged value)? firstNameChanged,
+    TResult Function(LastNameChanged value)? lastNameChanged,
+    TResult Function(Save value)? save,
+    TResult Function(SetNavigateNextPage value)? setNavigateNextPage,
+  }) {
+    return setNavigateNextPage?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(FirstNameChanged value)? firstNameChanged,
+    TResult Function(LastNameChanged value)? lastNameChanged,
+    TResult Function(Save value)? save,
+    TResult Function(SetNavigateNextPage value)? setNavigateNextPage,
+    required TResult orElse(),
+  }) {
+    if (setNavigateNextPage != null) {
+      return setNavigateNextPage(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SetNavigateNextPage implements RegisterEnterNameEvent {
+  const factory SetNavigateNextPage({required bool isNavigateNextPage}) =
+      _$SetNavigateNextPage;
+
+  bool get isNavigateNextPage;
+  @JsonKey(ignore: true)
+  $SetNavigateNextPageCopyWith<SetNavigateNextPage> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc

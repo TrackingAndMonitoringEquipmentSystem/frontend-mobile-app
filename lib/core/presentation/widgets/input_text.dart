@@ -11,6 +11,7 @@ class InputText extends HookWidget {
   final bool isObscureText;
   final TextInputType? keyboardType;
   final String? initialValue;
+  final bool isRequired;
   const InputText({
     required this.onChanged,
     this.isError = false,
@@ -21,6 +22,7 @@ class InputText extends HookWidget {
     this.isObscureText = false,
     this.keyboardType,
     this.initialValue,
+    this.isRequired = false,
   });
   @override
   Widget build(BuildContext context) {
@@ -28,12 +30,24 @@ class InputText extends HookWidget {
       child: TextFormField(
         initialValue: initialValue,
         decoration: InputDecoration(
-          label: Text(
-            label,
-            style: const TextStyle(
-              fontFamily: 'IBM Plex Sans Thai',
-              fontSize: 14,
-            ),
+          label: Row(
+            children: [
+              Text(
+                label,
+                style: const TextStyle(
+                  fontFamily: 'IBM Plex Sans Thai',
+                  fontSize: 14,
+                ),
+              ),
+              if (isRequired)
+                Text(
+                  '*',
+                  style: TextStyle(
+                      fontFamily: 'IBM Plex Sans Thai',
+                      fontSize: 14,
+                      color: Theme.of(context).colorScheme.error),
+                )
+            ],
           ),
           hintText: placeHolder,
           suffixIcon: suffixIcon,

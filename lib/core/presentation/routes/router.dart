@@ -1,4 +1,3 @@
-import 'package:auto_route/annotations.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:frontend/core/presentation/page/add_account.dart';
 import 'package:frontend/core/presentation/page/home.dart';

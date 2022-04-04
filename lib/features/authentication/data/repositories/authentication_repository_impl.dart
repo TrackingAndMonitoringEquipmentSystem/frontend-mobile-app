@@ -130,4 +130,21 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
 
   @override
   PreRegisterUser preRegisterUser;
+
+  @override
+  Future<void> verifyOtpCode({
+    required TelNo telNo,
+    required Function(PhoneAuthCredential) onVerificationCompleted,
+    required void Function(FirebaseAuthException) onVerificationFailed,
+    required void Function(String, int?) onCodeSent,
+    required void Function(String) onCodeAutoRetrievalTimeout,
+  }) {
+    return _firebaseSigInAuth.verifyOtpCode(
+      telNo: telNo,
+      onVerificationCompleted: onVerificationCompleted,
+      onVerificationFailed: onVerificationFailed,
+      onCodeSent: onCodeSent,
+      onCodeAutoRetrievalTimeout: onCodeAutoRetrievalTimeout,
+    );
+  }
 }

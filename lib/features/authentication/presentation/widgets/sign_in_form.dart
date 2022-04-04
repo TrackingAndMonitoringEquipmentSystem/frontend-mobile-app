@@ -1,12 +1,11 @@
 import 'package:another_flushbar/flushbar_helper.dart';
 import 'package:auto_route/auto_route.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:frontend/core/presentation/routes/router.gr.dart';
 import 'package:frontend/core/presentation/widgets/button.dart';
 import 'package:frontend/core/presentation/widgets/input_text.dart';
-import 'package:frontend/features/authentication/presentation/bloc/sign_in_form_bloc.dart';
+import 'package:frontend/features/authentication/presentation/bloc/sign_in_form/sign_in_form_bloc.dart';
 
 class SignInForm extends StatelessWidget {
   @override

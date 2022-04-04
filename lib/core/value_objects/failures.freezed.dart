@@ -18,27 +18,66 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$ValueFailureTearOff {
   const _$ValueFailureTearOff();
 
-  InvalidEmail<T> invalidEmail<T>({required String failedValue}) {
+  InvalidEmail<T> invalidEmail<T>(
+      {required String failedValue, required String message}) {
     return InvalidEmail<T>(
       failedValue: failedValue,
+      message: message,
     );
   }
 
-  ShortPassword<T> shortPassword<T>({required String failedValue}) {
+  ShortPassword<T> shortPassword<T>(
+      {required String failedValue, required String message}) {
     return ShortPassword<T>(
       failedValue: failedValue,
+      message: message,
     );
   }
 
-  InvalidPhoneNo<T> invalidPhoneNo<T>({required String failedValue}) {
+  InvalidPhoneNo<T> invalidPhoneNo<T>(
+      {required String failedValue, required String message}) {
     return InvalidPhoneNo<T>(
       failedValue: failedValue,
+      message: message,
     );
   }
 
-  HadNotAlphabet<T> hadNotAlphabet<T>({required String failedValue}) {
+  HadNotAlphabet<T> hadNotAlphabet<T>(
+      {required String failedValue, required String message}) {
     return HadNotAlphabet<T>(
       failedValue: failedValue,
+      message: message,
+    );
+  }
+
+  ExeedingLength<T> exceedingLength<T>(
+      {required String failedValue, required String message}) {
+    return ExeedingLength<T>(
+      failedValue: failedValue,
+      message: message,
+    );
+  }
+
+  ShortLength<T> shortLength<T>(
+      {required String failedValue, required String message}) {
+    return ShortLength<T>(
+      failedValue: failedValue,
+      message: message,
+    );
+  }
+
+  Empty<T> empty<T>({required String failedValue, required String message}) {
+    return Empty<T>(
+      failedValue: failedValue,
+      message: message,
+    );
+  }
+
+  MissMatchLength<T> missMatchLength<T>(
+      {required String failedValue, required String message}) {
+    return MissMatchLength<T>(
+      failedValue: failedValue,
+      message: message,
     );
   }
 }
@@ -49,29 +88,46 @@ const $ValueFailure = _$ValueFailureTearOff();
 /// @nodoc
 mixin _$ValueFailure<T> {
   String get failedValue => throw _privateConstructorUsedError;
+  String get message => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String failedValue) invalidEmail,
-    required TResult Function(String failedValue) shortPassword,
-    required TResult Function(String failedValue) invalidPhoneNo,
-    required TResult Function(String failedValue) hadNotAlphabet,
+    required TResult Function(String failedValue, String message) invalidEmail,
+    required TResult Function(String failedValue, String message) shortPassword,
+    required TResult Function(String failedValue, String message)
+        invalidPhoneNo,
+    required TResult Function(String failedValue, String message)
+        hadNotAlphabet,
+    required TResult Function(String failedValue, String message)
+        exceedingLength,
+    required TResult Function(String failedValue, String message) shortLength,
+    required TResult Function(String failedValue, String message) empty,
+    required TResult Function(String failedValue, String message)
+        missMatchLength,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String failedValue)? invalidEmail,
-    TResult Function(String failedValue)? shortPassword,
-    TResult Function(String failedValue)? invalidPhoneNo,
-    TResult Function(String failedValue)? hadNotAlphabet,
+    TResult Function(String failedValue, String message)? invalidEmail,
+    TResult Function(String failedValue, String message)? shortPassword,
+    TResult Function(String failedValue, String message)? invalidPhoneNo,
+    TResult Function(String failedValue, String message)? hadNotAlphabet,
+    TResult Function(String failedValue, String message)? exceedingLength,
+    TResult Function(String failedValue, String message)? shortLength,
+    TResult Function(String failedValue, String message)? empty,
+    TResult Function(String failedValue, String message)? missMatchLength,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String failedValue)? invalidEmail,
-    TResult Function(String failedValue)? shortPassword,
-    TResult Function(String failedValue)? invalidPhoneNo,
-    TResult Function(String failedValue)? hadNotAlphabet,
+    TResult Function(String failedValue, String message)? invalidEmail,
+    TResult Function(String failedValue, String message)? shortPassword,
+    TResult Function(String failedValue, String message)? invalidPhoneNo,
+    TResult Function(String failedValue, String message)? hadNotAlphabet,
+    TResult Function(String failedValue, String message)? exceedingLength,
+    TResult Function(String failedValue, String message)? shortLength,
+    TResult Function(String failedValue, String message)? empty,
+    TResult Function(String failedValue, String message)? missMatchLength,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -81,6 +137,10 @@ mixin _$ValueFailure<T> {
     required TResult Function(ShortPassword<T> value) shortPassword,
     required TResult Function(InvalidPhoneNo<T> value) invalidPhoneNo,
     required TResult Function(HadNotAlphabet<T> value) hadNotAlphabet,
+    required TResult Function(ExeedingLength<T> value) exceedingLength,
+    required TResult Function(ShortLength<T> value) shortLength,
+    required TResult Function(Empty<T> value) empty,
+    required TResult Function(MissMatchLength<T> value) missMatchLength,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -89,6 +149,10 @@ mixin _$ValueFailure<T> {
     TResult Function(ShortPassword<T> value)? shortPassword,
     TResult Function(InvalidPhoneNo<T> value)? invalidPhoneNo,
     TResult Function(HadNotAlphabet<T> value)? hadNotAlphabet,
+    TResult Function(ExeedingLength<T> value)? exceedingLength,
+    TResult Function(ShortLength<T> value)? shortLength,
+    TResult Function(Empty<T> value)? empty,
+    TResult Function(MissMatchLength<T> value)? missMatchLength,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -97,6 +161,10 @@ mixin _$ValueFailure<T> {
     TResult Function(ShortPassword<T> value)? shortPassword,
     TResult Function(InvalidPhoneNo<T> value)? invalidPhoneNo,
     TResult Function(HadNotAlphabet<T> value)? hadNotAlphabet,
+    TResult Function(ExeedingLength<T> value)? exceedingLength,
+    TResult Function(ShortLength<T> value)? shortLength,
+    TResult Function(Empty<T> value)? empty,
+    TResult Function(MissMatchLength<T> value)? missMatchLength,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -111,7 +179,7 @@ abstract class $ValueFailureCopyWith<T, $Res> {
   factory $ValueFailureCopyWith(
           ValueFailure<T> value, $Res Function(ValueFailure<T>) then) =
       _$ValueFailureCopyWithImpl<T, $Res>;
-  $Res call({String failedValue});
+  $Res call({String failedValue, String message});
 }
 
 /// @nodoc
@@ -126,11 +194,16 @@ class _$ValueFailureCopyWithImpl<T, $Res>
   @override
   $Res call({
     Object? failedValue = freezed,
+    Object? message = freezed,
   }) {
     return _then(_value.copyWith(
       failedValue: failedValue == freezed
           ? _value.failedValue
           : failedValue // ignore: cast_nullable_to_non_nullable
+              as String,
+      message: message == freezed
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -143,7 +216,7 @@ abstract class $InvalidEmailCopyWith<T, $Res>
           InvalidEmail<T> value, $Res Function(InvalidEmail<T>) then) =
       _$InvalidEmailCopyWithImpl<T, $Res>;
   @override
-  $Res call({String failedValue});
+  $Res call({String failedValue, String message});
 }
 
 /// @nodoc
@@ -160,11 +233,16 @@ class _$InvalidEmailCopyWithImpl<T, $Res>
   @override
   $Res call({
     Object? failedValue = freezed,
+    Object? message = freezed,
   }) {
     return _then(InvalidEmail<T>(
       failedValue: failedValue == freezed
           ? _value.failedValue
           : failedValue // ignore: cast_nullable_to_non_nullable
+              as String,
+      message: message == freezed
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -173,14 +251,16 @@ class _$InvalidEmailCopyWithImpl<T, $Res>
 /// @nodoc
 
 class _$InvalidEmail<T> implements InvalidEmail<T> {
-  const _$InvalidEmail({required this.failedValue});
+  const _$InvalidEmail({required this.failedValue, required this.message});
 
   @override
   final String failedValue;
+  @override
+  final String message;
 
   @override
   String toString() {
-    return 'ValueFailure<$T>.invalidEmail(failedValue: $failedValue)';
+    return 'ValueFailure<$T>.invalidEmail(failedValue: $failedValue, message: $message)';
   }
 
   @override
@@ -189,12 +269,15 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
         (other.runtimeType == runtimeType &&
             other is InvalidEmail<T> &&
             const DeepCollectionEquality()
-                .equals(other.failedValue, failedValue));
+                .equals(other.failedValue, failedValue) &&
+            const DeepCollectionEquality().equals(other.message, message));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(failedValue));
+      runtimeType,
+      const DeepCollectionEquality().hash(failedValue),
+      const DeepCollectionEquality().hash(message));
 
   @JsonKey(ignore: true)
   @override
@@ -204,36 +287,52 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String failedValue) invalidEmail,
-    required TResult Function(String failedValue) shortPassword,
-    required TResult Function(String failedValue) invalidPhoneNo,
-    required TResult Function(String failedValue) hadNotAlphabet,
+    required TResult Function(String failedValue, String message) invalidEmail,
+    required TResult Function(String failedValue, String message) shortPassword,
+    required TResult Function(String failedValue, String message)
+        invalidPhoneNo,
+    required TResult Function(String failedValue, String message)
+        hadNotAlphabet,
+    required TResult Function(String failedValue, String message)
+        exceedingLength,
+    required TResult Function(String failedValue, String message) shortLength,
+    required TResult Function(String failedValue, String message) empty,
+    required TResult Function(String failedValue, String message)
+        missMatchLength,
   }) {
-    return invalidEmail(failedValue);
+    return invalidEmail(failedValue, message);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String failedValue)? invalidEmail,
-    TResult Function(String failedValue)? shortPassword,
-    TResult Function(String failedValue)? invalidPhoneNo,
-    TResult Function(String failedValue)? hadNotAlphabet,
+    TResult Function(String failedValue, String message)? invalidEmail,
+    TResult Function(String failedValue, String message)? shortPassword,
+    TResult Function(String failedValue, String message)? invalidPhoneNo,
+    TResult Function(String failedValue, String message)? hadNotAlphabet,
+    TResult Function(String failedValue, String message)? exceedingLength,
+    TResult Function(String failedValue, String message)? shortLength,
+    TResult Function(String failedValue, String message)? empty,
+    TResult Function(String failedValue, String message)? missMatchLength,
   }) {
-    return invalidEmail?.call(failedValue);
+    return invalidEmail?.call(failedValue, message);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String failedValue)? invalidEmail,
-    TResult Function(String failedValue)? shortPassword,
-    TResult Function(String failedValue)? invalidPhoneNo,
-    TResult Function(String failedValue)? hadNotAlphabet,
+    TResult Function(String failedValue, String message)? invalidEmail,
+    TResult Function(String failedValue, String message)? shortPassword,
+    TResult Function(String failedValue, String message)? invalidPhoneNo,
+    TResult Function(String failedValue, String message)? hadNotAlphabet,
+    TResult Function(String failedValue, String message)? exceedingLength,
+    TResult Function(String failedValue, String message)? shortLength,
+    TResult Function(String failedValue, String message)? empty,
+    TResult Function(String failedValue, String message)? missMatchLength,
     required TResult orElse(),
   }) {
     if (invalidEmail != null) {
-      return invalidEmail(failedValue);
+      return invalidEmail(failedValue, message);
     }
     return orElse();
   }
@@ -245,6 +344,10 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
     required TResult Function(ShortPassword<T> value) shortPassword,
     required TResult Function(InvalidPhoneNo<T> value) invalidPhoneNo,
     required TResult Function(HadNotAlphabet<T> value) hadNotAlphabet,
+    required TResult Function(ExeedingLength<T> value) exceedingLength,
+    required TResult Function(ShortLength<T> value) shortLength,
+    required TResult Function(Empty<T> value) empty,
+    required TResult Function(MissMatchLength<T> value) missMatchLength,
   }) {
     return invalidEmail(this);
   }
@@ -256,6 +359,10 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
     TResult Function(ShortPassword<T> value)? shortPassword,
     TResult Function(InvalidPhoneNo<T> value)? invalidPhoneNo,
     TResult Function(HadNotAlphabet<T> value)? hadNotAlphabet,
+    TResult Function(ExeedingLength<T> value)? exceedingLength,
+    TResult Function(ShortLength<T> value)? shortLength,
+    TResult Function(Empty<T> value)? empty,
+    TResult Function(MissMatchLength<T> value)? missMatchLength,
   }) {
     return invalidEmail?.call(this);
   }
@@ -267,6 +374,10 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
     TResult Function(ShortPassword<T> value)? shortPassword,
     TResult Function(InvalidPhoneNo<T> value)? invalidPhoneNo,
     TResult Function(HadNotAlphabet<T> value)? hadNotAlphabet,
+    TResult Function(ExeedingLength<T> value)? exceedingLength,
+    TResult Function(ShortLength<T> value)? shortLength,
+    TResult Function(Empty<T> value)? empty,
+    TResult Function(MissMatchLength<T> value)? missMatchLength,
     required TResult orElse(),
   }) {
     if (invalidEmail != null) {
@@ -277,10 +388,14 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
 }
 
 abstract class InvalidEmail<T> implements ValueFailure<T> {
-  const factory InvalidEmail({required String failedValue}) = _$InvalidEmail<T>;
+  const factory InvalidEmail(
+      {required String failedValue,
+      required String message}) = _$InvalidEmail<T>;
 
   @override
   String get failedValue;
+  @override
+  String get message;
   @override
   @JsonKey(ignore: true)
   $InvalidEmailCopyWith<T, InvalidEmail<T>> get copyWith =>
@@ -294,7 +409,7 @@ abstract class $ShortPasswordCopyWith<T, $Res>
           ShortPassword<T> value, $Res Function(ShortPassword<T>) then) =
       _$ShortPasswordCopyWithImpl<T, $Res>;
   @override
-  $Res call({String failedValue});
+  $Res call({String failedValue, String message});
 }
 
 /// @nodoc
@@ -311,11 +426,16 @@ class _$ShortPasswordCopyWithImpl<T, $Res>
   @override
   $Res call({
     Object? failedValue = freezed,
+    Object? message = freezed,
   }) {
     return _then(ShortPassword<T>(
       failedValue: failedValue == freezed
           ? _value.failedValue
           : failedValue // ignore: cast_nullable_to_non_nullable
+              as String,
+      message: message == freezed
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -324,14 +444,16 @@ class _$ShortPasswordCopyWithImpl<T, $Res>
 /// @nodoc
 
 class _$ShortPassword<T> implements ShortPassword<T> {
-  const _$ShortPassword({required this.failedValue});
+  const _$ShortPassword({required this.failedValue, required this.message});
 
   @override
   final String failedValue;
+  @override
+  final String message;
 
   @override
   String toString() {
-    return 'ValueFailure<$T>.shortPassword(failedValue: $failedValue)';
+    return 'ValueFailure<$T>.shortPassword(failedValue: $failedValue, message: $message)';
   }
 
   @override
@@ -340,12 +462,15 @@ class _$ShortPassword<T> implements ShortPassword<T> {
         (other.runtimeType == runtimeType &&
             other is ShortPassword<T> &&
             const DeepCollectionEquality()
-                .equals(other.failedValue, failedValue));
+                .equals(other.failedValue, failedValue) &&
+            const DeepCollectionEquality().equals(other.message, message));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(failedValue));
+      runtimeType,
+      const DeepCollectionEquality().hash(failedValue),
+      const DeepCollectionEquality().hash(message));
 
   @JsonKey(ignore: true)
   @override
@@ -355,36 +480,52 @@ class _$ShortPassword<T> implements ShortPassword<T> {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String failedValue) invalidEmail,
-    required TResult Function(String failedValue) shortPassword,
-    required TResult Function(String failedValue) invalidPhoneNo,
-    required TResult Function(String failedValue) hadNotAlphabet,
+    required TResult Function(String failedValue, String message) invalidEmail,
+    required TResult Function(String failedValue, String message) shortPassword,
+    required TResult Function(String failedValue, String message)
+        invalidPhoneNo,
+    required TResult Function(String failedValue, String message)
+        hadNotAlphabet,
+    required TResult Function(String failedValue, String message)
+        exceedingLength,
+    required TResult Function(String failedValue, String message) shortLength,
+    required TResult Function(String failedValue, String message) empty,
+    required TResult Function(String failedValue, String message)
+        missMatchLength,
   }) {
-    return shortPassword(failedValue);
+    return shortPassword(failedValue, message);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String failedValue)? invalidEmail,
-    TResult Function(String failedValue)? shortPassword,
-    TResult Function(String failedValue)? invalidPhoneNo,
-    TResult Function(String failedValue)? hadNotAlphabet,
+    TResult Function(String failedValue, String message)? invalidEmail,
+    TResult Function(String failedValue, String message)? shortPassword,
+    TResult Function(String failedValue, String message)? invalidPhoneNo,
+    TResult Function(String failedValue, String message)? hadNotAlphabet,
+    TResult Function(String failedValue, String message)? exceedingLength,
+    TResult Function(String failedValue, String message)? shortLength,
+    TResult Function(String failedValue, String message)? empty,
+    TResult Function(String failedValue, String message)? missMatchLength,
   }) {
-    return shortPassword?.call(failedValue);
+    return shortPassword?.call(failedValue, message);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String failedValue)? invalidEmail,
-    TResult Function(String failedValue)? shortPassword,
-    TResult Function(String failedValue)? invalidPhoneNo,
-    TResult Function(String failedValue)? hadNotAlphabet,
+    TResult Function(String failedValue, String message)? invalidEmail,
+    TResult Function(String failedValue, String message)? shortPassword,
+    TResult Function(String failedValue, String message)? invalidPhoneNo,
+    TResult Function(String failedValue, String message)? hadNotAlphabet,
+    TResult Function(String failedValue, String message)? exceedingLength,
+    TResult Function(String failedValue, String message)? shortLength,
+    TResult Function(String failedValue, String message)? empty,
+    TResult Function(String failedValue, String message)? missMatchLength,
     required TResult orElse(),
   }) {
     if (shortPassword != null) {
-      return shortPassword(failedValue);
+      return shortPassword(failedValue, message);
     }
     return orElse();
   }
@@ -396,6 +537,10 @@ class _$ShortPassword<T> implements ShortPassword<T> {
     required TResult Function(ShortPassword<T> value) shortPassword,
     required TResult Function(InvalidPhoneNo<T> value) invalidPhoneNo,
     required TResult Function(HadNotAlphabet<T> value) hadNotAlphabet,
+    required TResult Function(ExeedingLength<T> value) exceedingLength,
+    required TResult Function(ShortLength<T> value) shortLength,
+    required TResult Function(Empty<T> value) empty,
+    required TResult Function(MissMatchLength<T> value) missMatchLength,
   }) {
     return shortPassword(this);
   }
@@ -407,6 +552,10 @@ class _$ShortPassword<T> implements ShortPassword<T> {
     TResult Function(ShortPassword<T> value)? shortPassword,
     TResult Function(InvalidPhoneNo<T> value)? invalidPhoneNo,
     TResult Function(HadNotAlphabet<T> value)? hadNotAlphabet,
+    TResult Function(ExeedingLength<T> value)? exceedingLength,
+    TResult Function(ShortLength<T> value)? shortLength,
+    TResult Function(Empty<T> value)? empty,
+    TResult Function(MissMatchLength<T> value)? missMatchLength,
   }) {
     return shortPassword?.call(this);
   }
@@ -418,6 +567,10 @@ class _$ShortPassword<T> implements ShortPassword<T> {
     TResult Function(ShortPassword<T> value)? shortPassword,
     TResult Function(InvalidPhoneNo<T> value)? invalidPhoneNo,
     TResult Function(HadNotAlphabet<T> value)? hadNotAlphabet,
+    TResult Function(ExeedingLength<T> value)? exceedingLength,
+    TResult Function(ShortLength<T> value)? shortLength,
+    TResult Function(Empty<T> value)? empty,
+    TResult Function(MissMatchLength<T> value)? missMatchLength,
     required TResult orElse(),
   }) {
     if (shortPassword != null) {
@@ -428,11 +581,14 @@ class _$ShortPassword<T> implements ShortPassword<T> {
 }
 
 abstract class ShortPassword<T> implements ValueFailure<T> {
-  const factory ShortPassword({required String failedValue}) =
-      _$ShortPassword<T>;
+  const factory ShortPassword(
+      {required String failedValue,
+      required String message}) = _$ShortPassword<T>;
 
   @override
   String get failedValue;
+  @override
+  String get message;
   @override
   @JsonKey(ignore: true)
   $ShortPasswordCopyWith<T, ShortPassword<T>> get copyWith =>
@@ -446,7 +602,7 @@ abstract class $InvalidPhoneNoCopyWith<T, $Res>
           InvalidPhoneNo<T> value, $Res Function(InvalidPhoneNo<T>) then) =
       _$InvalidPhoneNoCopyWithImpl<T, $Res>;
   @override
-  $Res call({String failedValue});
+  $Res call({String failedValue, String message});
 }
 
 /// @nodoc
@@ -463,11 +619,16 @@ class _$InvalidPhoneNoCopyWithImpl<T, $Res>
   @override
   $Res call({
     Object? failedValue = freezed,
+    Object? message = freezed,
   }) {
     return _then(InvalidPhoneNo<T>(
       failedValue: failedValue == freezed
           ? _value.failedValue
           : failedValue // ignore: cast_nullable_to_non_nullable
+              as String,
+      message: message == freezed
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -476,14 +637,16 @@ class _$InvalidPhoneNoCopyWithImpl<T, $Res>
 /// @nodoc
 
 class _$InvalidPhoneNo<T> implements InvalidPhoneNo<T> {
-  const _$InvalidPhoneNo({required this.failedValue});
+  const _$InvalidPhoneNo({required this.failedValue, required this.message});
 
   @override
   final String failedValue;
+  @override
+  final String message;
 
   @override
   String toString() {
-    return 'ValueFailure<$T>.invalidPhoneNo(failedValue: $failedValue)';
+    return 'ValueFailure<$T>.invalidPhoneNo(failedValue: $failedValue, message: $message)';
   }
 
   @override
@@ -492,12 +655,15 @@ class _$InvalidPhoneNo<T> implements InvalidPhoneNo<T> {
         (other.runtimeType == runtimeType &&
             other is InvalidPhoneNo<T> &&
             const DeepCollectionEquality()
-                .equals(other.failedValue, failedValue));
+                .equals(other.failedValue, failedValue) &&
+            const DeepCollectionEquality().equals(other.message, message));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(failedValue));
+      runtimeType,
+      const DeepCollectionEquality().hash(failedValue),
+      const DeepCollectionEquality().hash(message));
 
   @JsonKey(ignore: true)
   @override
@@ -507,36 +673,52 @@ class _$InvalidPhoneNo<T> implements InvalidPhoneNo<T> {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String failedValue) invalidEmail,
-    required TResult Function(String failedValue) shortPassword,
-    required TResult Function(String failedValue) invalidPhoneNo,
-    required TResult Function(String failedValue) hadNotAlphabet,
+    required TResult Function(String failedValue, String message) invalidEmail,
+    required TResult Function(String failedValue, String message) shortPassword,
+    required TResult Function(String failedValue, String message)
+        invalidPhoneNo,
+    required TResult Function(String failedValue, String message)
+        hadNotAlphabet,
+    required TResult Function(String failedValue, String message)
+        exceedingLength,
+    required TResult Function(String failedValue, String message) shortLength,
+    required TResult Function(String failedValue, String message) empty,
+    required TResult Function(String failedValue, String message)
+        missMatchLength,
   }) {
-    return invalidPhoneNo(failedValue);
+    return invalidPhoneNo(failedValue, message);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String failedValue)? invalidEmail,
-    TResult Function(String failedValue)? shortPassword,
-    TResult Function(String failedValue)? invalidPhoneNo,
-    TResult Function(String failedValue)? hadNotAlphabet,
+    TResult Function(String failedValue, String message)? invalidEmail,
+    TResult Function(String failedValue, String message)? shortPassword,
+    TResult Function(String failedValue, String message)? invalidPhoneNo,
+    TResult Function(String failedValue, String message)? hadNotAlphabet,
+    TResult Function(String failedValue, String message)? exceedingLength,
+    TResult Function(String failedValue, String message)? shortLength,
+    TResult Function(String failedValue, String message)? empty,
+    TResult Function(String failedValue, String message)? missMatchLength,
   }) {
-    return invalidPhoneNo?.call(failedValue);
+    return invalidPhoneNo?.call(failedValue, message);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String failedValue)? invalidEmail,
-    TResult Function(String failedValue)? shortPassword,
-    TResult Function(String failedValue)? invalidPhoneNo,
-    TResult Function(String failedValue)? hadNotAlphabet,
+    TResult Function(String failedValue, String message)? invalidEmail,
+    TResult Function(String failedValue, String message)? shortPassword,
+    TResult Function(String failedValue, String message)? invalidPhoneNo,
+    TResult Function(String failedValue, String message)? hadNotAlphabet,
+    TResult Function(String failedValue, String message)? exceedingLength,
+    TResult Function(String failedValue, String message)? shortLength,
+    TResult Function(String failedValue, String message)? empty,
+    TResult Function(String failedValue, String message)? missMatchLength,
     required TResult orElse(),
   }) {
     if (invalidPhoneNo != null) {
-      return invalidPhoneNo(failedValue);
+      return invalidPhoneNo(failedValue, message);
     }
     return orElse();
   }
@@ -548,6 +730,10 @@ class _$InvalidPhoneNo<T> implements InvalidPhoneNo<T> {
     required TResult Function(ShortPassword<T> value) shortPassword,
     required TResult Function(InvalidPhoneNo<T> value) invalidPhoneNo,
     required TResult Function(HadNotAlphabet<T> value) hadNotAlphabet,
+    required TResult Function(ExeedingLength<T> value) exceedingLength,
+    required TResult Function(ShortLength<T> value) shortLength,
+    required TResult Function(Empty<T> value) empty,
+    required TResult Function(MissMatchLength<T> value) missMatchLength,
   }) {
     return invalidPhoneNo(this);
   }
@@ -559,6 +745,10 @@ class _$InvalidPhoneNo<T> implements InvalidPhoneNo<T> {
     TResult Function(ShortPassword<T> value)? shortPassword,
     TResult Function(InvalidPhoneNo<T> value)? invalidPhoneNo,
     TResult Function(HadNotAlphabet<T> value)? hadNotAlphabet,
+    TResult Function(ExeedingLength<T> value)? exceedingLength,
+    TResult Function(ShortLength<T> value)? shortLength,
+    TResult Function(Empty<T> value)? empty,
+    TResult Function(MissMatchLength<T> value)? missMatchLength,
   }) {
     return invalidPhoneNo?.call(this);
   }
@@ -570,6 +760,10 @@ class _$InvalidPhoneNo<T> implements InvalidPhoneNo<T> {
     TResult Function(ShortPassword<T> value)? shortPassword,
     TResult Function(InvalidPhoneNo<T> value)? invalidPhoneNo,
     TResult Function(HadNotAlphabet<T> value)? hadNotAlphabet,
+    TResult Function(ExeedingLength<T> value)? exceedingLength,
+    TResult Function(ShortLength<T> value)? shortLength,
+    TResult Function(Empty<T> value)? empty,
+    TResult Function(MissMatchLength<T> value)? missMatchLength,
     required TResult orElse(),
   }) {
     if (invalidPhoneNo != null) {
@@ -580,11 +774,14 @@ class _$InvalidPhoneNo<T> implements InvalidPhoneNo<T> {
 }
 
 abstract class InvalidPhoneNo<T> implements ValueFailure<T> {
-  const factory InvalidPhoneNo({required String failedValue}) =
-      _$InvalidPhoneNo<T>;
+  const factory InvalidPhoneNo(
+      {required String failedValue,
+      required String message}) = _$InvalidPhoneNo<T>;
 
   @override
   String get failedValue;
+  @override
+  String get message;
   @override
   @JsonKey(ignore: true)
   $InvalidPhoneNoCopyWith<T, InvalidPhoneNo<T>> get copyWith =>
@@ -598,7 +795,7 @@ abstract class $HadNotAlphabetCopyWith<T, $Res>
           HadNotAlphabet<T> value, $Res Function(HadNotAlphabet<T>) then) =
       _$HadNotAlphabetCopyWithImpl<T, $Res>;
   @override
-  $Res call({String failedValue});
+  $Res call({String failedValue, String message});
 }
 
 /// @nodoc
@@ -615,11 +812,16 @@ class _$HadNotAlphabetCopyWithImpl<T, $Res>
   @override
   $Res call({
     Object? failedValue = freezed,
+    Object? message = freezed,
   }) {
     return _then(HadNotAlphabet<T>(
       failedValue: failedValue == freezed
           ? _value.failedValue
           : failedValue // ignore: cast_nullable_to_non_nullable
+              as String,
+      message: message == freezed
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -628,14 +830,16 @@ class _$HadNotAlphabetCopyWithImpl<T, $Res>
 /// @nodoc
 
 class _$HadNotAlphabet<T> implements HadNotAlphabet<T> {
-  const _$HadNotAlphabet({required this.failedValue});
+  const _$HadNotAlphabet({required this.failedValue, required this.message});
 
   @override
   final String failedValue;
+  @override
+  final String message;
 
   @override
   String toString() {
-    return 'ValueFailure<$T>.hadNotAlphabet(failedValue: $failedValue)';
+    return 'ValueFailure<$T>.hadNotAlphabet(failedValue: $failedValue, message: $message)';
   }
 
   @override
@@ -644,12 +848,15 @@ class _$HadNotAlphabet<T> implements HadNotAlphabet<T> {
         (other.runtimeType == runtimeType &&
             other is HadNotAlphabet<T> &&
             const DeepCollectionEquality()
-                .equals(other.failedValue, failedValue));
+                .equals(other.failedValue, failedValue) &&
+            const DeepCollectionEquality().equals(other.message, message));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(failedValue));
+      runtimeType,
+      const DeepCollectionEquality().hash(failedValue),
+      const DeepCollectionEquality().hash(message));
 
   @JsonKey(ignore: true)
   @override
@@ -659,36 +866,52 @@ class _$HadNotAlphabet<T> implements HadNotAlphabet<T> {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String failedValue) invalidEmail,
-    required TResult Function(String failedValue) shortPassword,
-    required TResult Function(String failedValue) invalidPhoneNo,
-    required TResult Function(String failedValue) hadNotAlphabet,
+    required TResult Function(String failedValue, String message) invalidEmail,
+    required TResult Function(String failedValue, String message) shortPassword,
+    required TResult Function(String failedValue, String message)
+        invalidPhoneNo,
+    required TResult Function(String failedValue, String message)
+        hadNotAlphabet,
+    required TResult Function(String failedValue, String message)
+        exceedingLength,
+    required TResult Function(String failedValue, String message) shortLength,
+    required TResult Function(String failedValue, String message) empty,
+    required TResult Function(String failedValue, String message)
+        missMatchLength,
   }) {
-    return hadNotAlphabet(failedValue);
+    return hadNotAlphabet(failedValue, message);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String failedValue)? invalidEmail,
-    TResult Function(String failedValue)? shortPassword,
-    TResult Function(String failedValue)? invalidPhoneNo,
-    TResult Function(String failedValue)? hadNotAlphabet,
+    TResult Function(String failedValue, String message)? invalidEmail,
+    TResult Function(String failedValue, String message)? shortPassword,
+    TResult Function(String failedValue, String message)? invalidPhoneNo,
+    TResult Function(String failedValue, String message)? hadNotAlphabet,
+    TResult Function(String failedValue, String message)? exceedingLength,
+    TResult Function(String failedValue, String message)? shortLength,
+    TResult Function(String failedValue, String message)? empty,
+    TResult Function(String failedValue, String message)? missMatchLength,
   }) {
-    return hadNotAlphabet?.call(failedValue);
+    return hadNotAlphabet?.call(failedValue, message);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String failedValue)? invalidEmail,
-    TResult Function(String failedValue)? shortPassword,
-    TResult Function(String failedValue)? invalidPhoneNo,
-    TResult Function(String failedValue)? hadNotAlphabet,
+    TResult Function(String failedValue, String message)? invalidEmail,
+    TResult Function(String failedValue, String message)? shortPassword,
+    TResult Function(String failedValue, String message)? invalidPhoneNo,
+    TResult Function(String failedValue, String message)? hadNotAlphabet,
+    TResult Function(String failedValue, String message)? exceedingLength,
+    TResult Function(String failedValue, String message)? shortLength,
+    TResult Function(String failedValue, String message)? empty,
+    TResult Function(String failedValue, String message)? missMatchLength,
     required TResult orElse(),
   }) {
     if (hadNotAlphabet != null) {
-      return hadNotAlphabet(failedValue);
+      return hadNotAlphabet(failedValue, message);
     }
     return orElse();
   }
@@ -700,6 +923,10 @@ class _$HadNotAlphabet<T> implements HadNotAlphabet<T> {
     required TResult Function(ShortPassword<T> value) shortPassword,
     required TResult Function(InvalidPhoneNo<T> value) invalidPhoneNo,
     required TResult Function(HadNotAlphabet<T> value) hadNotAlphabet,
+    required TResult Function(ExeedingLength<T> value) exceedingLength,
+    required TResult Function(ShortLength<T> value) shortLength,
+    required TResult Function(Empty<T> value) empty,
+    required TResult Function(MissMatchLength<T> value) missMatchLength,
   }) {
     return hadNotAlphabet(this);
   }
@@ -711,6 +938,10 @@ class _$HadNotAlphabet<T> implements HadNotAlphabet<T> {
     TResult Function(ShortPassword<T> value)? shortPassword,
     TResult Function(InvalidPhoneNo<T> value)? invalidPhoneNo,
     TResult Function(HadNotAlphabet<T> value)? hadNotAlphabet,
+    TResult Function(ExeedingLength<T> value)? exceedingLength,
+    TResult Function(ShortLength<T> value)? shortLength,
+    TResult Function(Empty<T> value)? empty,
+    TResult Function(MissMatchLength<T> value)? missMatchLength,
   }) {
     return hadNotAlphabet?.call(this);
   }
@@ -722,6 +953,10 @@ class _$HadNotAlphabet<T> implements HadNotAlphabet<T> {
     TResult Function(ShortPassword<T> value)? shortPassword,
     TResult Function(InvalidPhoneNo<T> value)? invalidPhoneNo,
     TResult Function(HadNotAlphabet<T> value)? hadNotAlphabet,
+    TResult Function(ExeedingLength<T> value)? exceedingLength,
+    TResult Function(ShortLength<T> value)? shortLength,
+    TResult Function(Empty<T> value)? empty,
+    TResult Function(MissMatchLength<T> value)? missMatchLength,
     required TResult orElse(),
   }) {
     if (hadNotAlphabet != null) {
@@ -732,13 +967,784 @@ class _$HadNotAlphabet<T> implements HadNotAlphabet<T> {
 }
 
 abstract class HadNotAlphabet<T> implements ValueFailure<T> {
-  const factory HadNotAlphabet({required String failedValue}) =
-      _$HadNotAlphabet<T>;
+  const factory HadNotAlphabet(
+      {required String failedValue,
+      required String message}) = _$HadNotAlphabet<T>;
 
   @override
   String get failedValue;
   @override
+  String get message;
+  @override
   @JsonKey(ignore: true)
   $HadNotAlphabetCopyWith<T, HadNotAlphabet<T>> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ExeedingLengthCopyWith<T, $Res>
+    implements $ValueFailureCopyWith<T, $Res> {
+  factory $ExeedingLengthCopyWith(
+          ExeedingLength<T> value, $Res Function(ExeedingLength<T>) then) =
+      _$ExeedingLengthCopyWithImpl<T, $Res>;
+  @override
+  $Res call({String failedValue, String message});
+}
+
+/// @nodoc
+class _$ExeedingLengthCopyWithImpl<T, $Res>
+    extends _$ValueFailureCopyWithImpl<T, $Res>
+    implements $ExeedingLengthCopyWith<T, $Res> {
+  _$ExeedingLengthCopyWithImpl(
+      ExeedingLength<T> _value, $Res Function(ExeedingLength<T>) _then)
+      : super(_value, (v) => _then(v as ExeedingLength<T>));
+
+  @override
+  ExeedingLength<T> get _value => super._value as ExeedingLength<T>;
+
+  @override
+  $Res call({
+    Object? failedValue = freezed,
+    Object? message = freezed,
+  }) {
+    return _then(ExeedingLength<T>(
+      failedValue: failedValue == freezed
+          ? _value.failedValue
+          : failedValue // ignore: cast_nullable_to_non_nullable
+              as String,
+      message: message == freezed
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ExeedingLength<T> implements ExeedingLength<T> {
+  const _$ExeedingLength({required this.failedValue, required this.message});
+
+  @override
+  final String failedValue;
+  @override
+  final String message;
+
+  @override
+  String toString() {
+    return 'ValueFailure<$T>.exceedingLength(failedValue: $failedValue, message: $message)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is ExeedingLength<T> &&
+            const DeepCollectionEquality()
+                .equals(other.failedValue, failedValue) &&
+            const DeepCollectionEquality().equals(other.message, message));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(failedValue),
+      const DeepCollectionEquality().hash(message));
+
+  @JsonKey(ignore: true)
+  @override
+  $ExeedingLengthCopyWith<T, ExeedingLength<T>> get copyWith =>
+      _$ExeedingLengthCopyWithImpl<T, ExeedingLength<T>>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String failedValue, String message) invalidEmail,
+    required TResult Function(String failedValue, String message) shortPassword,
+    required TResult Function(String failedValue, String message)
+        invalidPhoneNo,
+    required TResult Function(String failedValue, String message)
+        hadNotAlphabet,
+    required TResult Function(String failedValue, String message)
+        exceedingLength,
+    required TResult Function(String failedValue, String message) shortLength,
+    required TResult Function(String failedValue, String message) empty,
+    required TResult Function(String failedValue, String message)
+        missMatchLength,
+  }) {
+    return exceedingLength(failedValue, message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String failedValue, String message)? invalidEmail,
+    TResult Function(String failedValue, String message)? shortPassword,
+    TResult Function(String failedValue, String message)? invalidPhoneNo,
+    TResult Function(String failedValue, String message)? hadNotAlphabet,
+    TResult Function(String failedValue, String message)? exceedingLength,
+    TResult Function(String failedValue, String message)? shortLength,
+    TResult Function(String failedValue, String message)? empty,
+    TResult Function(String failedValue, String message)? missMatchLength,
+  }) {
+    return exceedingLength?.call(failedValue, message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String failedValue, String message)? invalidEmail,
+    TResult Function(String failedValue, String message)? shortPassword,
+    TResult Function(String failedValue, String message)? invalidPhoneNo,
+    TResult Function(String failedValue, String message)? hadNotAlphabet,
+    TResult Function(String failedValue, String message)? exceedingLength,
+    TResult Function(String failedValue, String message)? shortLength,
+    TResult Function(String failedValue, String message)? empty,
+    TResult Function(String failedValue, String message)? missMatchLength,
+    required TResult orElse(),
+  }) {
+    if (exceedingLength != null) {
+      return exceedingLength(failedValue, message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InvalidEmail<T> value) invalidEmail,
+    required TResult Function(ShortPassword<T> value) shortPassword,
+    required TResult Function(InvalidPhoneNo<T> value) invalidPhoneNo,
+    required TResult Function(HadNotAlphabet<T> value) hadNotAlphabet,
+    required TResult Function(ExeedingLength<T> value) exceedingLength,
+    required TResult Function(ShortLength<T> value) shortLength,
+    required TResult Function(Empty<T> value) empty,
+    required TResult Function(MissMatchLength<T> value) missMatchLength,
+  }) {
+    return exceedingLength(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(ShortPassword<T> value)? shortPassword,
+    TResult Function(InvalidPhoneNo<T> value)? invalidPhoneNo,
+    TResult Function(HadNotAlphabet<T> value)? hadNotAlphabet,
+    TResult Function(ExeedingLength<T> value)? exceedingLength,
+    TResult Function(ShortLength<T> value)? shortLength,
+    TResult Function(Empty<T> value)? empty,
+    TResult Function(MissMatchLength<T> value)? missMatchLength,
+  }) {
+    return exceedingLength?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(ShortPassword<T> value)? shortPassword,
+    TResult Function(InvalidPhoneNo<T> value)? invalidPhoneNo,
+    TResult Function(HadNotAlphabet<T> value)? hadNotAlphabet,
+    TResult Function(ExeedingLength<T> value)? exceedingLength,
+    TResult Function(ShortLength<T> value)? shortLength,
+    TResult Function(Empty<T> value)? empty,
+    TResult Function(MissMatchLength<T> value)? missMatchLength,
+    required TResult orElse(),
+  }) {
+    if (exceedingLength != null) {
+      return exceedingLength(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ExeedingLength<T> implements ValueFailure<T> {
+  const factory ExeedingLength(
+      {required String failedValue,
+      required String message}) = _$ExeedingLength<T>;
+
+  @override
+  String get failedValue;
+  @override
+  String get message;
+  @override
+  @JsonKey(ignore: true)
+  $ExeedingLengthCopyWith<T, ExeedingLength<T>> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ShortLengthCopyWith<T, $Res>
+    implements $ValueFailureCopyWith<T, $Res> {
+  factory $ShortLengthCopyWith(
+          ShortLength<T> value, $Res Function(ShortLength<T>) then) =
+      _$ShortLengthCopyWithImpl<T, $Res>;
+  @override
+  $Res call({String failedValue, String message});
+}
+
+/// @nodoc
+class _$ShortLengthCopyWithImpl<T, $Res>
+    extends _$ValueFailureCopyWithImpl<T, $Res>
+    implements $ShortLengthCopyWith<T, $Res> {
+  _$ShortLengthCopyWithImpl(
+      ShortLength<T> _value, $Res Function(ShortLength<T>) _then)
+      : super(_value, (v) => _then(v as ShortLength<T>));
+
+  @override
+  ShortLength<T> get _value => super._value as ShortLength<T>;
+
+  @override
+  $Res call({
+    Object? failedValue = freezed,
+    Object? message = freezed,
+  }) {
+    return _then(ShortLength<T>(
+      failedValue: failedValue == freezed
+          ? _value.failedValue
+          : failedValue // ignore: cast_nullable_to_non_nullable
+              as String,
+      message: message == freezed
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ShortLength<T> implements ShortLength<T> {
+  const _$ShortLength({required this.failedValue, required this.message});
+
+  @override
+  final String failedValue;
+  @override
+  final String message;
+
+  @override
+  String toString() {
+    return 'ValueFailure<$T>.shortLength(failedValue: $failedValue, message: $message)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is ShortLength<T> &&
+            const DeepCollectionEquality()
+                .equals(other.failedValue, failedValue) &&
+            const DeepCollectionEquality().equals(other.message, message));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(failedValue),
+      const DeepCollectionEquality().hash(message));
+
+  @JsonKey(ignore: true)
+  @override
+  $ShortLengthCopyWith<T, ShortLength<T>> get copyWith =>
+      _$ShortLengthCopyWithImpl<T, ShortLength<T>>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String failedValue, String message) invalidEmail,
+    required TResult Function(String failedValue, String message) shortPassword,
+    required TResult Function(String failedValue, String message)
+        invalidPhoneNo,
+    required TResult Function(String failedValue, String message)
+        hadNotAlphabet,
+    required TResult Function(String failedValue, String message)
+        exceedingLength,
+    required TResult Function(String failedValue, String message) shortLength,
+    required TResult Function(String failedValue, String message) empty,
+    required TResult Function(String failedValue, String message)
+        missMatchLength,
+  }) {
+    return shortLength(failedValue, message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String failedValue, String message)? invalidEmail,
+    TResult Function(String failedValue, String message)? shortPassword,
+    TResult Function(String failedValue, String message)? invalidPhoneNo,
+    TResult Function(String failedValue, String message)? hadNotAlphabet,
+    TResult Function(String failedValue, String message)? exceedingLength,
+    TResult Function(String failedValue, String message)? shortLength,
+    TResult Function(String failedValue, String message)? empty,
+    TResult Function(String failedValue, String message)? missMatchLength,
+  }) {
+    return shortLength?.call(failedValue, message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String failedValue, String message)? invalidEmail,
+    TResult Function(String failedValue, String message)? shortPassword,
+    TResult Function(String failedValue, String message)? invalidPhoneNo,
+    TResult Function(String failedValue, String message)? hadNotAlphabet,
+    TResult Function(String failedValue, String message)? exceedingLength,
+    TResult Function(String failedValue, String message)? shortLength,
+    TResult Function(String failedValue, String message)? empty,
+    TResult Function(String failedValue, String message)? missMatchLength,
+    required TResult orElse(),
+  }) {
+    if (shortLength != null) {
+      return shortLength(failedValue, message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InvalidEmail<T> value) invalidEmail,
+    required TResult Function(ShortPassword<T> value) shortPassword,
+    required TResult Function(InvalidPhoneNo<T> value) invalidPhoneNo,
+    required TResult Function(HadNotAlphabet<T> value) hadNotAlphabet,
+    required TResult Function(ExeedingLength<T> value) exceedingLength,
+    required TResult Function(ShortLength<T> value) shortLength,
+    required TResult Function(Empty<T> value) empty,
+    required TResult Function(MissMatchLength<T> value) missMatchLength,
+  }) {
+    return shortLength(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(ShortPassword<T> value)? shortPassword,
+    TResult Function(InvalidPhoneNo<T> value)? invalidPhoneNo,
+    TResult Function(HadNotAlphabet<T> value)? hadNotAlphabet,
+    TResult Function(ExeedingLength<T> value)? exceedingLength,
+    TResult Function(ShortLength<T> value)? shortLength,
+    TResult Function(Empty<T> value)? empty,
+    TResult Function(MissMatchLength<T> value)? missMatchLength,
+  }) {
+    return shortLength?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(ShortPassword<T> value)? shortPassword,
+    TResult Function(InvalidPhoneNo<T> value)? invalidPhoneNo,
+    TResult Function(HadNotAlphabet<T> value)? hadNotAlphabet,
+    TResult Function(ExeedingLength<T> value)? exceedingLength,
+    TResult Function(ShortLength<T> value)? shortLength,
+    TResult Function(Empty<T> value)? empty,
+    TResult Function(MissMatchLength<T> value)? missMatchLength,
+    required TResult orElse(),
+  }) {
+    if (shortLength != null) {
+      return shortLength(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ShortLength<T> implements ValueFailure<T> {
+  const factory ShortLength(
+      {required String failedValue,
+      required String message}) = _$ShortLength<T>;
+
+  @override
+  String get failedValue;
+  @override
+  String get message;
+  @override
+  @JsonKey(ignore: true)
+  $ShortLengthCopyWith<T, ShortLength<T>> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $EmptyCopyWith<T, $Res>
+    implements $ValueFailureCopyWith<T, $Res> {
+  factory $EmptyCopyWith(Empty<T> value, $Res Function(Empty<T>) then) =
+      _$EmptyCopyWithImpl<T, $Res>;
+  @override
+  $Res call({String failedValue, String message});
+}
+
+/// @nodoc
+class _$EmptyCopyWithImpl<T, $Res> extends _$ValueFailureCopyWithImpl<T, $Res>
+    implements $EmptyCopyWith<T, $Res> {
+  _$EmptyCopyWithImpl(Empty<T> _value, $Res Function(Empty<T>) _then)
+      : super(_value, (v) => _then(v as Empty<T>));
+
+  @override
+  Empty<T> get _value => super._value as Empty<T>;
+
+  @override
+  $Res call({
+    Object? failedValue = freezed,
+    Object? message = freezed,
+  }) {
+    return _then(Empty<T>(
+      failedValue: failedValue == freezed
+          ? _value.failedValue
+          : failedValue // ignore: cast_nullable_to_non_nullable
+              as String,
+      message: message == freezed
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$Empty<T> implements Empty<T> {
+  const _$Empty({required this.failedValue, required this.message});
+
+  @override
+  final String failedValue;
+  @override
+  final String message;
+
+  @override
+  String toString() {
+    return 'ValueFailure<$T>.empty(failedValue: $failedValue, message: $message)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is Empty<T> &&
+            const DeepCollectionEquality()
+                .equals(other.failedValue, failedValue) &&
+            const DeepCollectionEquality().equals(other.message, message));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(failedValue),
+      const DeepCollectionEquality().hash(message));
+
+  @JsonKey(ignore: true)
+  @override
+  $EmptyCopyWith<T, Empty<T>> get copyWith =>
+      _$EmptyCopyWithImpl<T, Empty<T>>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String failedValue, String message) invalidEmail,
+    required TResult Function(String failedValue, String message) shortPassword,
+    required TResult Function(String failedValue, String message)
+        invalidPhoneNo,
+    required TResult Function(String failedValue, String message)
+        hadNotAlphabet,
+    required TResult Function(String failedValue, String message)
+        exceedingLength,
+    required TResult Function(String failedValue, String message) shortLength,
+    required TResult Function(String failedValue, String message) empty,
+    required TResult Function(String failedValue, String message)
+        missMatchLength,
+  }) {
+    return empty(failedValue, message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String failedValue, String message)? invalidEmail,
+    TResult Function(String failedValue, String message)? shortPassword,
+    TResult Function(String failedValue, String message)? invalidPhoneNo,
+    TResult Function(String failedValue, String message)? hadNotAlphabet,
+    TResult Function(String failedValue, String message)? exceedingLength,
+    TResult Function(String failedValue, String message)? shortLength,
+    TResult Function(String failedValue, String message)? empty,
+    TResult Function(String failedValue, String message)? missMatchLength,
+  }) {
+    return empty?.call(failedValue, message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String failedValue, String message)? invalidEmail,
+    TResult Function(String failedValue, String message)? shortPassword,
+    TResult Function(String failedValue, String message)? invalidPhoneNo,
+    TResult Function(String failedValue, String message)? hadNotAlphabet,
+    TResult Function(String failedValue, String message)? exceedingLength,
+    TResult Function(String failedValue, String message)? shortLength,
+    TResult Function(String failedValue, String message)? empty,
+    TResult Function(String failedValue, String message)? missMatchLength,
+    required TResult orElse(),
+  }) {
+    if (empty != null) {
+      return empty(failedValue, message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InvalidEmail<T> value) invalidEmail,
+    required TResult Function(ShortPassword<T> value) shortPassword,
+    required TResult Function(InvalidPhoneNo<T> value) invalidPhoneNo,
+    required TResult Function(HadNotAlphabet<T> value) hadNotAlphabet,
+    required TResult Function(ExeedingLength<T> value) exceedingLength,
+    required TResult Function(ShortLength<T> value) shortLength,
+    required TResult Function(Empty<T> value) empty,
+    required TResult Function(MissMatchLength<T> value) missMatchLength,
+  }) {
+    return empty(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(ShortPassword<T> value)? shortPassword,
+    TResult Function(InvalidPhoneNo<T> value)? invalidPhoneNo,
+    TResult Function(HadNotAlphabet<T> value)? hadNotAlphabet,
+    TResult Function(ExeedingLength<T> value)? exceedingLength,
+    TResult Function(ShortLength<T> value)? shortLength,
+    TResult Function(Empty<T> value)? empty,
+    TResult Function(MissMatchLength<T> value)? missMatchLength,
+  }) {
+    return empty?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(ShortPassword<T> value)? shortPassword,
+    TResult Function(InvalidPhoneNo<T> value)? invalidPhoneNo,
+    TResult Function(HadNotAlphabet<T> value)? hadNotAlphabet,
+    TResult Function(ExeedingLength<T> value)? exceedingLength,
+    TResult Function(ShortLength<T> value)? shortLength,
+    TResult Function(Empty<T> value)? empty,
+    TResult Function(MissMatchLength<T> value)? missMatchLength,
+    required TResult orElse(),
+  }) {
+    if (empty != null) {
+      return empty(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Empty<T> implements ValueFailure<T> {
+  const factory Empty({required String failedValue, required String message}) =
+      _$Empty<T>;
+
+  @override
+  String get failedValue;
+  @override
+  String get message;
+  @override
+  @JsonKey(ignore: true)
+  $EmptyCopyWith<T, Empty<T>> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $MissMatchLengthCopyWith<T, $Res>
+    implements $ValueFailureCopyWith<T, $Res> {
+  factory $MissMatchLengthCopyWith(
+          MissMatchLength<T> value, $Res Function(MissMatchLength<T>) then) =
+      _$MissMatchLengthCopyWithImpl<T, $Res>;
+  @override
+  $Res call({String failedValue, String message});
+}
+
+/// @nodoc
+class _$MissMatchLengthCopyWithImpl<T, $Res>
+    extends _$ValueFailureCopyWithImpl<T, $Res>
+    implements $MissMatchLengthCopyWith<T, $Res> {
+  _$MissMatchLengthCopyWithImpl(
+      MissMatchLength<T> _value, $Res Function(MissMatchLength<T>) _then)
+      : super(_value, (v) => _then(v as MissMatchLength<T>));
+
+  @override
+  MissMatchLength<T> get _value => super._value as MissMatchLength<T>;
+
+  @override
+  $Res call({
+    Object? failedValue = freezed,
+    Object? message = freezed,
+  }) {
+    return _then(MissMatchLength<T>(
+      failedValue: failedValue == freezed
+          ? _value.failedValue
+          : failedValue // ignore: cast_nullable_to_non_nullable
+              as String,
+      message: message == freezed
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$MissMatchLength<T> implements MissMatchLength<T> {
+  const _$MissMatchLength({required this.failedValue, required this.message});
+
+  @override
+  final String failedValue;
+  @override
+  final String message;
+
+  @override
+  String toString() {
+    return 'ValueFailure<$T>.missMatchLength(failedValue: $failedValue, message: $message)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is MissMatchLength<T> &&
+            const DeepCollectionEquality()
+                .equals(other.failedValue, failedValue) &&
+            const DeepCollectionEquality().equals(other.message, message));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(failedValue),
+      const DeepCollectionEquality().hash(message));
+
+  @JsonKey(ignore: true)
+  @override
+  $MissMatchLengthCopyWith<T, MissMatchLength<T>> get copyWith =>
+      _$MissMatchLengthCopyWithImpl<T, MissMatchLength<T>>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String failedValue, String message) invalidEmail,
+    required TResult Function(String failedValue, String message) shortPassword,
+    required TResult Function(String failedValue, String message)
+        invalidPhoneNo,
+    required TResult Function(String failedValue, String message)
+        hadNotAlphabet,
+    required TResult Function(String failedValue, String message)
+        exceedingLength,
+    required TResult Function(String failedValue, String message) shortLength,
+    required TResult Function(String failedValue, String message) empty,
+    required TResult Function(String failedValue, String message)
+        missMatchLength,
+  }) {
+    return missMatchLength(failedValue, message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String failedValue, String message)? invalidEmail,
+    TResult Function(String failedValue, String message)? shortPassword,
+    TResult Function(String failedValue, String message)? invalidPhoneNo,
+    TResult Function(String failedValue, String message)? hadNotAlphabet,
+    TResult Function(String failedValue, String message)? exceedingLength,
+    TResult Function(String failedValue, String message)? shortLength,
+    TResult Function(String failedValue, String message)? empty,
+    TResult Function(String failedValue, String message)? missMatchLength,
+  }) {
+    return missMatchLength?.call(failedValue, message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String failedValue, String message)? invalidEmail,
+    TResult Function(String failedValue, String message)? shortPassword,
+    TResult Function(String failedValue, String message)? invalidPhoneNo,
+    TResult Function(String failedValue, String message)? hadNotAlphabet,
+    TResult Function(String failedValue, String message)? exceedingLength,
+    TResult Function(String failedValue, String message)? shortLength,
+    TResult Function(String failedValue, String message)? empty,
+    TResult Function(String failedValue, String message)? missMatchLength,
+    required TResult orElse(),
+  }) {
+    if (missMatchLength != null) {
+      return missMatchLength(failedValue, message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InvalidEmail<T> value) invalidEmail,
+    required TResult Function(ShortPassword<T> value) shortPassword,
+    required TResult Function(InvalidPhoneNo<T> value) invalidPhoneNo,
+    required TResult Function(HadNotAlphabet<T> value) hadNotAlphabet,
+    required TResult Function(ExeedingLength<T> value) exceedingLength,
+    required TResult Function(ShortLength<T> value) shortLength,
+    required TResult Function(Empty<T> value) empty,
+    required TResult Function(MissMatchLength<T> value) missMatchLength,
+  }) {
+    return missMatchLength(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(ShortPassword<T> value)? shortPassword,
+    TResult Function(InvalidPhoneNo<T> value)? invalidPhoneNo,
+    TResult Function(HadNotAlphabet<T> value)? hadNotAlphabet,
+    TResult Function(ExeedingLength<T> value)? exceedingLength,
+    TResult Function(ShortLength<T> value)? shortLength,
+    TResult Function(Empty<T> value)? empty,
+    TResult Function(MissMatchLength<T> value)? missMatchLength,
+  }) {
+    return missMatchLength?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(ShortPassword<T> value)? shortPassword,
+    TResult Function(InvalidPhoneNo<T> value)? invalidPhoneNo,
+    TResult Function(HadNotAlphabet<T> value)? hadNotAlphabet,
+    TResult Function(ExeedingLength<T> value)? exceedingLength,
+    TResult Function(ShortLength<T> value)? shortLength,
+    TResult Function(Empty<T> value)? empty,
+    TResult Function(MissMatchLength<T> value)? missMatchLength,
+    required TResult orElse(),
+  }) {
+    if (missMatchLength != null) {
+      return missMatchLength(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class MissMatchLength<T> implements ValueFailure<T> {
+  const factory MissMatchLength(
+      {required String failedValue,
+      required String message}) = _$MissMatchLength<T>;
+
+  @override
+  String get failedValue;
+  @override
+  String get message;
+  @override
+  @JsonKey(ignore: true)
+  $MissMatchLengthCopyWith<T, MissMatchLength<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }

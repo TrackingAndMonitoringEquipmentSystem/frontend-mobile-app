@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:frontend/core/presentation/routes/router.gr.dart';
 import 'package:frontend/core/presentation/widgets/button.dart';
 import 'package:frontend/core/presentation/widgets/input_text.dart';
-import 'package:frontend/features/authentication/presentation/bloc/register_enter_name_bloc.dart';
+import 'package:frontend/features/authentication/presentation/bloc/register_enter_name/register_enter_name_bloc.dart';
 import 'package:frontend/injection.dart';
 
 class RegisterEnterNamePage extends StatelessWidget {
@@ -25,11 +25,15 @@ class RegisterEnterNamePage extends StatelessWidget {
           iconTheme: const IconThemeData(color: Colors.black),
           elevation: 0,
         ),
+        resizeToAvoidBottomInset: false,
         body: BlocConsumer<RegisterEnterNameBloc, RegisterEnterNameState>(
           listener: (context, state) {
             if (state.isNavigateNextPage) {
               AutoRouter.of(context)
                   .push(const RegisterEnterPhoneNumberRoute());
+              context
+                  .read<RegisterEnterNameBloc>()
+                  .add(const SetNavigateNextPage(isNavigateNextPage: false));
             }
           },
           builder: (context, state) {
@@ -87,6 +91,7 @@ class RegisterEnterNamePage extends StatelessWidget {
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       InputText(
                         label: 'ชื่อจริง',
@@ -97,7 +102,9 @@ class RegisterEnterNamePage extends StatelessWidget {
                                 ),
                         isError: state.isShowErrorMessage &&
                             !state.firstName.isValid(),
-                        errorMessage: 'ชื่อจริง ห้ามมีอักขระพิเศษ',
+                        errorMessage: state.firstName.value
+                            .fold((l) => l.message, (r) => ''),
+                        isRequired: true,
                       ),
                       const SizedBox(
                         width: 20,
@@ -111,7 +118,9 @@ class RegisterEnterNamePage extends StatelessWidget {
                                 ),
                         isError: state.isShowErrorMessage &&
                             !state.lastName.isValid(),
-                        errorMessage: 'นามสกุล ห้ามมีอักขระพิเศษ',
+                        errorMessage: state.lastName.value
+                            .fold((l) => l.message, (r) => ''),
+                        isRequired: true,
                       ),
                     ],
                   ),
@@ -124,6 +133,7 @@ class RegisterEnterNamePage extends StatelessWidget {
                       Button(
                         'ถัดไป',
                         onPressed: () {
+                          debugPrint('-> line 132');
                           context.read<RegisterEnterNameBloc>().add(
                                 const Save(),
                               );

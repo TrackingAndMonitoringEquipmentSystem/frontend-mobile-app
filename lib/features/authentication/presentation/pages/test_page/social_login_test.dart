@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:frontend/features/authentication/domain/entities/user.dart';
 import 'package:frontend/features/authentication/domain/repositories/authentication_repository.dart';
-import 'package:frontend/features/authentication/presentation/bloc/authen_bloc.dart';
+import 'package:frontend/features/authentication/presentation/bloc/authen/authen_bloc.dart';
 import 'package:frontend/injection.dart';
 
 class SocialLoginTestPage extends HookWidget {
