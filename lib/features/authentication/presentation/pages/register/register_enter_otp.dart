@@ -97,7 +97,7 @@ class RegisterEnterOTPPage extends StatelessWidget {
                             state.telNo.toLocalTelNo(),
                             style: Theme.of(context)
                                 .primaryTextTheme
-                                .headline1!
+                                .headline2!
                                 .copyWith(
                                   color: Theme.of(context).primaryColor,
                                 ),

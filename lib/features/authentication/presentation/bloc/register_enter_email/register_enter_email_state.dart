@@ -6,8 +6,6 @@ class RegisterEnterEmailState with _$RegisterEnterEmailState {
     required EmailAddress email,
     required bool isShowErrorMessage,
     required bool isNavigateNextPage,
-    required bool isLoading,
-    required bool isError,
   }) = _RegisterEnterEmailState;
 
   factory RegisterEnterEmailState.initial(EmailAddress? email) =>
@@ -15,7 +13,5 @@ class RegisterEnterEmailState with _$RegisterEnterEmailState {
         email: email ?? EmailAddress(''),
         isShowErrorMessage: false,
         isNavigateNextPage: false,
-        isLoading: false,
-        isError: false,
       );
 }

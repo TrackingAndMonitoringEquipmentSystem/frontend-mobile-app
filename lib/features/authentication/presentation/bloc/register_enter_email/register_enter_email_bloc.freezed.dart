@@ -18,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$RegisterEnterEmailEventTearOff {
   const _$RegisterEnterEmailEventTearOff();
 
-  EmailChanged otpChanged(String email) {
+  EmailChanged emailChanged(String email) {
     return EmailChanged(
       email,
     );
@@ -29,6 +29,10 @@ class _$RegisterEnterEmailEventTearOff {
       state,
     );
   }
+
+  Save save() {
+    return const Save();
+  }
 }
 
 /// @nodoc
@@ -38,39 +42,45 @@ const $RegisterEnterEmailEvent = _$RegisterEnterEmailEventTearOff();
 mixin _$RegisterEnterEmailEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String email) otpChanged,
+    required TResult Function(String email) emailChanged,
     required TResult Function(RegisterEnterEmailState state) setState,
+    required TResult Function() save,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String email)? otpChanged,
+    TResult Function(String email)? emailChanged,
     TResult Function(RegisterEnterEmailState state)? setState,
+    TResult Function()? save,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String email)? otpChanged,
+    TResult Function(String email)? emailChanged,
     TResult Function(RegisterEnterEmailState state)? setState,
+    TResult Function()? save,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(EmailChanged value) otpChanged,
+    required TResult Function(EmailChanged value) emailChanged,
     required TResult Function(SetState value) setState,
+    required TResult Function(Save value) save,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(EmailChanged value)? otpChanged,
+    TResult Function(EmailChanged value)? emailChanged,
     TResult Function(SetState value)? setState,
+    TResult Function(Save value)? save,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(EmailChanged value)? otpChanged,
+    TResult Function(EmailChanged value)? emailChanged,
     TResult Function(SetState value)? setState,
+    TResult Function(Save value)? save,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -135,7 +145,7 @@ class _$EmailChanged implements EmailChanged {
 
   @override
   String toString() {
-    return 'RegisterEnterEmailEvent.otpChanged(email: $email)';
+    return 'RegisterEnterEmailEvent.emailChanged(email: $email)';
   }
 
   @override
@@ -158,30 +168,33 @@ class _$EmailChanged implements EmailChanged {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String email) otpChanged,
+    required TResult Function(String email) emailChanged,
     required TResult Function(RegisterEnterEmailState state) setState,
+    required TResult Function() save,
   }) {
-    return otpChanged(email);
+    return emailChanged(email);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String email)? otpChanged,
+    TResult Function(String email)? emailChanged,
     TResult Function(RegisterEnterEmailState state)? setState,
+    TResult Function()? save,
   }) {
-    return otpChanged?.call(email);
+    return emailChanged?.call(email);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String email)? otpChanged,
+    TResult Function(String email)? emailChanged,
     TResult Function(RegisterEnterEmailState state)? setState,
+    TResult Function()? save,
     required TResult orElse(),
   }) {
-    if (otpChanged != null) {
-      return otpChanged(email);
+    if (emailChanged != null) {
+      return emailChanged(email);
     }
     return orElse();
   }
@@ -189,30 +202,33 @@ class _$EmailChanged implements EmailChanged {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(EmailChanged value) otpChanged,
+    required TResult Function(EmailChanged value) emailChanged,
     required TResult Function(SetState value) setState,
+    required TResult Function(Save value) save,
   }) {
-    return otpChanged(this);
+    return emailChanged(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(EmailChanged value)? otpChanged,
+    TResult Function(EmailChanged value)? emailChanged,
     TResult Function(SetState value)? setState,
+    TResult Function(Save value)? save,
   }) {
-    return otpChanged?.call(this);
+    return emailChanged?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(EmailChanged value)? otpChanged,
+    TResult Function(EmailChanged value)? emailChanged,
     TResult Function(SetState value)? setState,
+    TResult Function(Save value)? save,
     required TResult orElse(),
   }) {
-    if (otpChanged != null) {
-      return otpChanged(this);
+    if (emailChanged != null) {
+      return emailChanged(this);
     }
     return orElse();
   }
@@ -299,8 +315,9 @@ class _$SetState implements SetState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String email) otpChanged,
+    required TResult Function(String email) emailChanged,
     required TResult Function(RegisterEnterEmailState state) setState,
+    required TResult Function() save,
   }) {
     return setState(state);
   }
@@ -308,8 +325,9 @@ class _$SetState implements SetState {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String email)? otpChanged,
+    TResult Function(String email)? emailChanged,
     TResult Function(RegisterEnterEmailState state)? setState,
+    TResult Function()? save,
   }) {
     return setState?.call(state);
   }
@@ -317,8 +335,9 @@ class _$SetState implements SetState {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String email)? otpChanged,
+    TResult Function(String email)? emailChanged,
     TResult Function(RegisterEnterEmailState state)? setState,
+    TResult Function()? save,
     required TResult orElse(),
   }) {
     if (setState != null) {
@@ -330,8 +349,9 @@ class _$SetState implements SetState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(EmailChanged value) otpChanged,
+    required TResult Function(EmailChanged value) emailChanged,
     required TResult Function(SetState value) setState,
+    required TResult Function(Save value) save,
   }) {
     return setState(this);
   }
@@ -339,8 +359,9 @@ class _$SetState implements SetState {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(EmailChanged value)? otpChanged,
+    TResult Function(EmailChanged value)? emailChanged,
     TResult Function(SetState value)? setState,
+    TResult Function(Save value)? save,
   }) {
     return setState?.call(this);
   }
@@ -348,8 +369,9 @@ class _$SetState implements SetState {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(EmailChanged value)? otpChanged,
+    TResult Function(EmailChanged value)? emailChanged,
     TResult Function(SetState value)? setState,
+    TResult Function(Save value)? save,
     required TResult orElse(),
   }) {
     if (setState != null) {
@@ -369,21 +391,126 @@ abstract class SetState implements RegisterEnterEmailEvent {
 }
 
 /// @nodoc
+abstract class $SaveCopyWith<$Res> {
+  factory $SaveCopyWith(Save value, $Res Function(Save) then) =
+      _$SaveCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$SaveCopyWithImpl<$Res>
+    extends _$RegisterEnterEmailEventCopyWithImpl<$Res>
+    implements $SaveCopyWith<$Res> {
+  _$SaveCopyWithImpl(Save _value, $Res Function(Save) _then)
+      : super(_value, (v) => _then(v as Save));
+
+  @override
+  Save get _value => super._value as Save;
+}
+
+/// @nodoc
+
+class _$Save implements Save {
+  const _$Save();
+
+  @override
+  String toString() {
+    return 'RegisterEnterEmailEvent.save()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is Save);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String email) emailChanged,
+    required TResult Function(RegisterEnterEmailState state) setState,
+    required TResult Function() save,
+  }) {
+    return save();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String email)? emailChanged,
+    TResult Function(RegisterEnterEmailState state)? setState,
+    TResult Function()? save,
+  }) {
+    return save?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String email)? emailChanged,
+    TResult Function(RegisterEnterEmailState state)? setState,
+    TResult Function()? save,
+    required TResult orElse(),
+  }) {
+    if (save != null) {
+      return save();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(EmailChanged value) emailChanged,
+    required TResult Function(SetState value) setState,
+    required TResult Function(Save value) save,
+  }) {
+    return save(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(EmailChanged value)? emailChanged,
+    TResult Function(SetState value)? setState,
+    TResult Function(Save value)? save,
+  }) {
+    return save?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(EmailChanged value)? emailChanged,
+    TResult Function(SetState value)? setState,
+    TResult Function(Save value)? save,
+    required TResult orElse(),
+  }) {
+    if (save != null) {
+      return save(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Save implements RegisterEnterEmailEvent {
+  const factory Save() = _$Save;
+}
+
+/// @nodoc
 class _$RegisterEnterEmailStateTearOff {
   const _$RegisterEnterEmailStateTearOff();
 
   _RegisterEnterEmailState call(
       {required EmailAddress email,
       required bool isShowErrorMessage,
-      required bool isNavigateNextPage,
-      required bool isLoading,
-      required bool isError}) {
+      required bool isNavigateNextPage}) {
     return _RegisterEnterEmailState(
       email: email,
       isShowErrorMessage: isShowErrorMessage,
       isNavigateNextPage: isNavigateNextPage,
-      isLoading: isLoading,
-      isError: isError,
     );
   }
 }
@@ -396,8 +523,6 @@ mixin _$RegisterEnterEmailState {
   EmailAddress get email => throw _privateConstructorUsedError;
   bool get isShowErrorMessage => throw _privateConstructorUsedError;
   bool get isNavigateNextPage => throw _privateConstructorUsedError;
-  bool get isLoading => throw _privateConstructorUsedError;
-  bool get isError => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $RegisterEnterEmailStateCopyWith<RegisterEnterEmailState> get copyWith =>
@@ -410,11 +535,7 @@ abstract class $RegisterEnterEmailStateCopyWith<$Res> {
           $Res Function(RegisterEnterEmailState) then) =
       _$RegisterEnterEmailStateCopyWithImpl<$Res>;
   $Res call(
-      {EmailAddress email,
-      bool isShowErrorMessage,
-      bool isNavigateNextPage,
-      bool isLoading,
-      bool isError});
+      {EmailAddress email, bool isShowErrorMessage, bool isNavigateNextPage});
 }
 
 /// @nodoc
@@ -431,8 +552,6 @@ class _$RegisterEnterEmailStateCopyWithImpl<$Res>
     Object? email = freezed,
     Object? isShowErrorMessage = freezed,
     Object? isNavigateNextPage = freezed,
-    Object? isLoading = freezed,
-    Object? isError = freezed,
   }) {
     return _then(_value.copyWith(
       email: email == freezed
@@ -447,14 +566,6 @@ class _$RegisterEnterEmailStateCopyWithImpl<$Res>
           ? _value.isNavigateNextPage
           : isNavigateNextPage // ignore: cast_nullable_to_non_nullable
               as bool,
-      isLoading: isLoading == freezed
-          ? _value.isLoading
-          : isLoading // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isError: isError == freezed
-          ? _value.isError
-          : isError // ignore: cast_nullable_to_non_nullable
-              as bool,
     ));
   }
 }
@@ -467,11 +578,7 @@ abstract class _$RegisterEnterEmailStateCopyWith<$Res>
       __$RegisterEnterEmailStateCopyWithImpl<$Res>;
   @override
   $Res call(
-      {EmailAddress email,
-      bool isShowErrorMessage,
-      bool isNavigateNextPage,
-      bool isLoading,
-      bool isError});
+      {EmailAddress email, bool isShowErrorMessage, bool isNavigateNextPage});
 }
 
 /// @nodoc
@@ -491,8 +598,6 @@ class __$RegisterEnterEmailStateCopyWithImpl<$Res>
     Object? email = freezed,
     Object? isShowErrorMessage = freezed,
     Object? isNavigateNextPage = freezed,
-    Object? isLoading = freezed,
-    Object? isError = freezed,
   }) {
     return _then(_RegisterEnterEmailState(
       email: email == freezed
@@ -507,14 +612,6 @@ class __$RegisterEnterEmailStateCopyWithImpl<$Res>
           ? _value.isNavigateNextPage
           : isNavigateNextPage // ignore: cast_nullable_to_non_nullable
               as bool,
-      isLoading: isLoading == freezed
-          ? _value.isLoading
-          : isLoading // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isError: isError == freezed
-          ? _value.isError
-          : isError // ignore: cast_nullable_to_non_nullable
-              as bool,
     ));
   }
 }
@@ -525,9 +622,7 @@ class _$_RegisterEnterEmailState implements _RegisterEnterEmailState {
   const _$_RegisterEnterEmailState(
       {required this.email,
       required this.isShowErrorMessage,
-      required this.isNavigateNextPage,
-      required this.isLoading,
-      required this.isError});
+      required this.isNavigateNextPage});
 
   @override
   final EmailAddress email;
@@ -535,14 +630,10 @@ class _$_RegisterEnterEmailState implements _RegisterEnterEmailState {
   final bool isShowErrorMessage;
   @override
   final bool isNavigateNextPage;
-  @override
-  final bool isLoading;
-  @override
-  final bool isError;
 
   @override
   String toString() {
-    return 'RegisterEnterEmailState(email: $email, isShowErrorMessage: $isShowErrorMessage, isNavigateNextPage: $isNavigateNextPage, isLoading: $isLoading, isError: $isError)';
+    return 'RegisterEnterEmailState(email: $email, isShowErrorMessage: $isShowErrorMessage, isNavigateNextPage: $isNavigateNextPage)';
   }
 
   @override
@@ -554,9 +645,7 @@ class _$_RegisterEnterEmailState implements _RegisterEnterEmailState {
             const DeepCollectionEquality()
                 .equals(other.isShowErrorMessage, isShowErrorMessage) &&
             const DeepCollectionEquality()
-                .equals(other.isNavigateNextPage, isNavigateNextPage) &&
-            const DeepCollectionEquality().equals(other.isLoading, isLoading) &&
-            const DeepCollectionEquality().equals(other.isError, isError));
+                .equals(other.isNavigateNextPage, isNavigateNextPage));
   }
 
   @override
@@ -564,9 +653,7 @@ class _$_RegisterEnterEmailState implements _RegisterEnterEmailState {
       runtimeType,
       const DeepCollectionEquality().hash(email),
       const DeepCollectionEquality().hash(isShowErrorMessage),
-      const DeepCollectionEquality().hash(isNavigateNextPage),
-      const DeepCollectionEquality().hash(isLoading),
-      const DeepCollectionEquality().hash(isError));
+      const DeepCollectionEquality().hash(isNavigateNextPage));
 
   @JsonKey(ignore: true)
   @override
@@ -579,9 +666,7 @@ abstract class _RegisterEnterEmailState implements RegisterEnterEmailState {
   const factory _RegisterEnterEmailState(
       {required EmailAddress email,
       required bool isShowErrorMessage,
-      required bool isNavigateNextPage,
-      required bool isLoading,
-      required bool isError}) = _$_RegisterEnterEmailState;
+      required bool isNavigateNextPage}) = _$_RegisterEnterEmailState;
 
   @override
   EmailAddress get email;
@@ -589,10 +674,6 @@ abstract class _RegisterEnterEmailState implements RegisterEnterEmailState {
   bool get isShowErrorMessage;
   @override
   bool get isNavigateNextPage;
-  @override
-  bool get isLoading;
-  @override
-  bool get isError;
   @override
   @JsonKey(ignore: true)
   _$RegisterEnterEmailStateCopyWith<_RegisterEnterEmailState> get copyWith =>

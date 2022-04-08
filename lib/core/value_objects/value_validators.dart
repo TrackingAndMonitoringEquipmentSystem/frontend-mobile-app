@@ -12,13 +12,13 @@ Either<ValueFailure<String>, String> validateEmailAddress(String input) {
 }
 
 Either<ValueFailure<String>, String> validatePassword(String input) {
-  if (input.length >= 6) {
+  if (input.length >= 8) {
     return right(input);
   } else {
     return left(
       ValueFailure.shortPassword(
         failedValue: input,
-        message: 'รหัสผ่านต้องมีความยาว 6 ตัวขึ้นไป',
+        message: 'รหัสผ่านต้องมีความยาว 8 ตัวขึ้นไป',
       ),
     );
   }

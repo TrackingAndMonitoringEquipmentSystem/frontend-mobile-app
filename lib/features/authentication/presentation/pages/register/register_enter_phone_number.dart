@@ -60,14 +60,16 @@ class RegisterEnterPhoneNumberPage extends StatelessWidget {
                   children: [
                     Text(
                       'Enter your ',
-                      style: Theme.of(context).primaryTextTheme.headline1,
+                      style: Theme.of(context).primaryTextTheme.headline2,
                     ),
                     Text(
                       'phone number',
-                      style: TextStyle(
-                        color: Theme.of(context).primaryColor,
-                        fontSize: 25,
-                      ),
+                      style: Theme.of(context)
+                          .primaryTextTheme
+                          .headline2!
+                          .copyWith(
+                            color: Theme.of(context).colorScheme.primary,
+                          ),
                     ),
                   ],
                 ),

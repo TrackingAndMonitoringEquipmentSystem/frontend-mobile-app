@@ -70,7 +70,8 @@ class RegisterEnterNamePage extends StatelessWidget {
                             .primaryTextTheme
                             .headline2!
                             .copyWith(
-                                color: Theme.of(context).colorScheme.primary),
+                              color: Theme.of(context).colorScheme.primary,
+                            ),
                       ),
                     ],
                   ),

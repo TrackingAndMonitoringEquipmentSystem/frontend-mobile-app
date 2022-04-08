@@ -21,7 +21,11 @@ class Password extends ValueObject<String> {
   final Either<ValueFailure<String>, String> value;
 
   factory Password(String input) {
-    return Password._(value: validatePassword(input));
+    return Password._(
+      value: validateStringNotEmpty(input: input).flatMap(
+        (prevValue) => validatePassword(prevValue),
+      ),
+    );
   }
 
   const Password._({required this.value});
