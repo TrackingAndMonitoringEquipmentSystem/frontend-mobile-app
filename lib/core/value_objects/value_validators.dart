@@ -119,3 +119,19 @@ Either<ValueFailure<String>, String> validateFixedLength({
     );
   }
 }
+
+Either<ValueFailure<String>, String> validateNumberOnly({
+  required String input,
+  String? errorMessage,
+}) {
+  if (RegExp('^[0-9]+\$').hasMatch(input)) {
+    return right(input);
+  } else {
+    return left(
+      ValueFailure.hadNotNumeric(
+        failedValue: input,
+        message: errorMessage ?? 'ตัวเลขเท่านั้น',
+      ),
+    );
+  }
+}

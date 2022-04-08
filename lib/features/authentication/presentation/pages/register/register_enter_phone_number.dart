@@ -101,6 +101,8 @@ class RegisterEnterPhoneNumberPage extends StatelessWidget {
                           state.isShowErrorMessage && !state.telNo.isValid(),
                       errorMessage:
                           state.telNo.value.fold((l) => l.message, (r) => ''),
+                      initialValue:
+                          state.telNo.isValid() ? state.telNo.getOrCrash() : '',
                     ),
                   ],
                 ),

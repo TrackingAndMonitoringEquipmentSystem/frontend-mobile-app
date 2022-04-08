@@ -105,6 +105,9 @@ class RegisterEnterNamePage extends StatelessWidget {
                         errorMessage: state.firstName.value
                             .fold((l) => l.message, (r) => ''),
                         isRequired: true,
+                        initialValue: state.firstName.isValid()
+                            ? state.firstName.getOrCrash()
+                            : '',
                       ),
                       const SizedBox(
                         width: 20,
@@ -121,6 +124,9 @@ class RegisterEnterNamePage extends StatelessWidget {
                         errorMessage: state.lastName.value
                             .fold((l) => l.message, (r) => ''),
                         isRequired: true,
+                        initialValue: state.lastName.isValid()
+                            ? state.lastName.getOrCrash()
+                            : '',
                       ),
                     ],
                   ),
@@ -133,7 +139,6 @@ class RegisterEnterNamePage extends StatelessWidget {
                       Button(
                         'ถัดไป',
                         onPressed: () {
-                          debugPrint('-> line 132');
                           context.read<RegisterEnterNameBloc>().add(
                                 const Save(),
                               );

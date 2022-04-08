@@ -28,7 +28,8 @@ abstract class AuthenticationRepository {
     required TelNo telNo,
     required Function(PhoneAuthCredential) onVerificationCompleted,
     required void Function(FirebaseAuthException) onVerificationFailed,
-    required void Function(String, int?) onCodeSent,
+    required void Function(String verificationId, int? forceResendingToken)
+        onCodeSent,
     required void Function(String) onCodeAutoRetrievalTimeout,
   });
 }

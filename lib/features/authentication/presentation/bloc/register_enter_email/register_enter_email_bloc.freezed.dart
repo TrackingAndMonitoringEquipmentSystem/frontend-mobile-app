@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'register_enter_otp_bloc.dart';
+part of 'register_enter_email_bloc.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,17 +15,16 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-class _$RegisterEnterOtpEventTearOff {
-  const _$RegisterEnterOtpEventTearOff();
+class _$RegisterEnterEmailEventTearOff {
+  const _$RegisterEnterEmailEventTearOff();
 
-  OtpChanged otpChanged(String otp, dynamic controller) {
-    return OtpChanged(
-      otp,
-      controller,
+  EmailChanged otpChanged(String email) {
+    return EmailChanged(
+      email,
     );
   }
 
-  SetState setState(RegisterEnterOtpState state) {
+  SetState setState(RegisterEnterEmailState state) {
     return SetState(
       state,
     );
@@ -33,44 +32,44 @@ class _$RegisterEnterOtpEventTearOff {
 }
 
 /// @nodoc
-const $RegisterEnterOtpEvent = _$RegisterEnterOtpEventTearOff();
+const $RegisterEnterEmailEvent = _$RegisterEnterEmailEventTearOff();
 
 /// @nodoc
-mixin _$RegisterEnterOtpEvent {
+mixin _$RegisterEnterEmailEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String otp, dynamic controller) otpChanged,
-    required TResult Function(RegisterEnterOtpState state) setState,
+    required TResult Function(String email) otpChanged,
+    required TResult Function(RegisterEnterEmailState state) setState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String otp, dynamic controller)? otpChanged,
-    TResult Function(RegisterEnterOtpState state)? setState,
+    TResult Function(String email)? otpChanged,
+    TResult Function(RegisterEnterEmailState state)? setState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String otp, dynamic controller)? otpChanged,
-    TResult Function(RegisterEnterOtpState state)? setState,
+    TResult Function(String email)? otpChanged,
+    TResult Function(RegisterEnterEmailState state)? setState,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(OtpChanged value) otpChanged,
+    required TResult Function(EmailChanged value) otpChanged,
     required TResult Function(SetState value) setState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(OtpChanged value)? otpChanged,
+    TResult Function(EmailChanged value)? otpChanged,
     TResult Function(SetState value)? setState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(OtpChanged value)? otpChanged,
+    TResult Function(EmailChanged value)? otpChanged,
     TResult Function(SetState value)? setState,
     required TResult orElse(),
   }) =>
@@ -78,121 +77,111 @@ mixin _$RegisterEnterOtpEvent {
 }
 
 /// @nodoc
-abstract class $RegisterEnterOtpEventCopyWith<$Res> {
-  factory $RegisterEnterOtpEventCopyWith(RegisterEnterOtpEvent value,
-          $Res Function(RegisterEnterOtpEvent) then) =
-      _$RegisterEnterOtpEventCopyWithImpl<$Res>;
+abstract class $RegisterEnterEmailEventCopyWith<$Res> {
+  factory $RegisterEnterEmailEventCopyWith(RegisterEnterEmailEvent value,
+          $Res Function(RegisterEnterEmailEvent) then) =
+      _$RegisterEnterEmailEventCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$RegisterEnterOtpEventCopyWithImpl<$Res>
-    implements $RegisterEnterOtpEventCopyWith<$Res> {
-  _$RegisterEnterOtpEventCopyWithImpl(this._value, this._then);
+class _$RegisterEnterEmailEventCopyWithImpl<$Res>
+    implements $RegisterEnterEmailEventCopyWith<$Res> {
+  _$RegisterEnterEmailEventCopyWithImpl(this._value, this._then);
 
-  final RegisterEnterOtpEvent _value;
+  final RegisterEnterEmailEvent _value;
   // ignore: unused_field
-  final $Res Function(RegisterEnterOtpEvent) _then;
+  final $Res Function(RegisterEnterEmailEvent) _then;
 }
 
 /// @nodoc
-abstract class $OtpChangedCopyWith<$Res> {
-  factory $OtpChangedCopyWith(
-          OtpChanged value, $Res Function(OtpChanged) then) =
-      _$OtpChangedCopyWithImpl<$Res>;
-  $Res call({String otp, dynamic controller});
+abstract class $EmailChangedCopyWith<$Res> {
+  factory $EmailChangedCopyWith(
+          EmailChanged value, $Res Function(EmailChanged) then) =
+      _$EmailChangedCopyWithImpl<$Res>;
+  $Res call({String email});
 }
 
 /// @nodoc
-class _$OtpChangedCopyWithImpl<$Res>
-    extends _$RegisterEnterOtpEventCopyWithImpl<$Res>
-    implements $OtpChangedCopyWith<$Res> {
-  _$OtpChangedCopyWithImpl(OtpChanged _value, $Res Function(OtpChanged) _then)
-      : super(_value, (v) => _then(v as OtpChanged));
+class _$EmailChangedCopyWithImpl<$Res>
+    extends _$RegisterEnterEmailEventCopyWithImpl<$Res>
+    implements $EmailChangedCopyWith<$Res> {
+  _$EmailChangedCopyWithImpl(
+      EmailChanged _value, $Res Function(EmailChanged) _then)
+      : super(_value, (v) => _then(v as EmailChanged));
 
   @override
-  OtpChanged get _value => super._value as OtpChanged;
+  EmailChanged get _value => super._value as EmailChanged;
 
   @override
   $Res call({
-    Object? otp = freezed,
-    Object? controller = freezed,
+    Object? email = freezed,
   }) {
-    return _then(OtpChanged(
-      otp == freezed
-          ? _value.otp
-          : otp // ignore: cast_nullable_to_non_nullable
+    return _then(EmailChanged(
+      email == freezed
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
               as String,
-      controller == freezed
-          ? _value.controller
-          : controller // ignore: cast_nullable_to_non_nullable
-              as dynamic,
     ));
   }
 }
 
 /// @nodoc
 
-class _$OtpChanged implements OtpChanged {
-  const _$OtpChanged(this.otp, this.controller);
+class _$EmailChanged implements EmailChanged {
+  const _$EmailChanged(this.email);
 
   @override
-  final String otp;
-  @override
-  final dynamic controller;
+  final String email;
 
   @override
   String toString() {
-    return 'RegisterEnterOtpEvent.otpChanged(otp: $otp, controller: $controller)';
+    return 'RegisterEnterEmailEvent.otpChanged(email: $email)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is OtpChanged &&
-            const DeepCollectionEquality().equals(other.otp, otp) &&
-            const DeepCollectionEquality()
-                .equals(other.controller, controller));
+            other is EmailChanged &&
+            const DeepCollectionEquality().equals(other.email, email));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(otp),
-      const DeepCollectionEquality().hash(controller));
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(email));
 
   @JsonKey(ignore: true)
   @override
-  $OtpChangedCopyWith<OtpChanged> get copyWith =>
-      _$OtpChangedCopyWithImpl<OtpChanged>(this, _$identity);
+  $EmailChangedCopyWith<EmailChanged> get copyWith =>
+      _$EmailChangedCopyWithImpl<EmailChanged>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String otp, dynamic controller) otpChanged,
-    required TResult Function(RegisterEnterOtpState state) setState,
+    required TResult Function(String email) otpChanged,
+    required TResult Function(RegisterEnterEmailState state) setState,
   }) {
-    return otpChanged(otp, controller);
+    return otpChanged(email);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String otp, dynamic controller)? otpChanged,
-    TResult Function(RegisterEnterOtpState state)? setState,
+    TResult Function(String email)? otpChanged,
+    TResult Function(RegisterEnterEmailState state)? setState,
   }) {
-    return otpChanged?.call(otp, controller);
+    return otpChanged?.call(email);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String otp, dynamic controller)? otpChanged,
-    TResult Function(RegisterEnterOtpState state)? setState,
+    TResult Function(String email)? otpChanged,
+    TResult Function(RegisterEnterEmailState state)? setState,
     required TResult orElse(),
   }) {
     if (otpChanged != null) {
-      return otpChanged(otp, controller);
+      return otpChanged(email);
     }
     return orElse();
   }
@@ -200,7 +189,7 @@ class _$OtpChanged implements OtpChanged {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(OtpChanged value) otpChanged,
+    required TResult Function(EmailChanged value) otpChanged,
     required TResult Function(SetState value) setState,
   }) {
     return otpChanged(this);
@@ -209,7 +198,7 @@ class _$OtpChanged implements OtpChanged {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(OtpChanged value)? otpChanged,
+    TResult Function(EmailChanged value)? otpChanged,
     TResult Function(SetState value)? setState,
   }) {
     return otpChanged?.call(this);
@@ -218,7 +207,7 @@ class _$OtpChanged implements OtpChanged {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(OtpChanged value)? otpChanged,
+    TResult Function(EmailChanged value)? otpChanged,
     TResult Function(SetState value)? setState,
     required TResult orElse(),
   }) {
@@ -229,13 +218,12 @@ class _$OtpChanged implements OtpChanged {
   }
 }
 
-abstract class OtpChanged implements RegisterEnterOtpEvent {
-  const factory OtpChanged(String otp, dynamic controller) = _$OtpChanged;
+abstract class EmailChanged implements RegisterEnterEmailEvent {
+  const factory EmailChanged(String email) = _$EmailChanged;
 
-  String get otp;
-  dynamic get controller;
+  String get email;
   @JsonKey(ignore: true)
-  $OtpChangedCopyWith<OtpChanged> get copyWith =>
+  $EmailChangedCopyWith<EmailChanged> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -243,14 +231,14 @@ abstract class OtpChanged implements RegisterEnterOtpEvent {
 abstract class $SetStateCopyWith<$Res> {
   factory $SetStateCopyWith(SetState value, $Res Function(SetState) then) =
       _$SetStateCopyWithImpl<$Res>;
-  $Res call({RegisterEnterOtpState state});
+  $Res call({RegisterEnterEmailState state});
 
-  $RegisterEnterOtpStateCopyWith<$Res> get state;
+  $RegisterEnterEmailStateCopyWith<$Res> get state;
 }
 
 /// @nodoc
 class _$SetStateCopyWithImpl<$Res>
-    extends _$RegisterEnterOtpEventCopyWithImpl<$Res>
+    extends _$RegisterEnterEmailEventCopyWithImpl<$Res>
     implements $SetStateCopyWith<$Res> {
   _$SetStateCopyWithImpl(SetState _value, $Res Function(SetState) _then)
       : super(_value, (v) => _then(v as SetState));
@@ -266,13 +254,13 @@ class _$SetStateCopyWithImpl<$Res>
       state == freezed
           ? _value.state
           : state // ignore: cast_nullable_to_non_nullable
-              as RegisterEnterOtpState,
+              as RegisterEnterEmailState,
     ));
   }
 
   @override
-  $RegisterEnterOtpStateCopyWith<$Res> get state {
-    return $RegisterEnterOtpStateCopyWith<$Res>(_value.state, (value) {
+  $RegisterEnterEmailStateCopyWith<$Res> get state {
+    return $RegisterEnterEmailStateCopyWith<$Res>(_value.state, (value) {
       return _then(_value.copyWith(state: value));
     });
   }
@@ -284,11 +272,11 @@ class _$SetState implements SetState {
   const _$SetState(this.state);
 
   @override
-  final RegisterEnterOtpState state;
+  final RegisterEnterEmailState state;
 
   @override
   String toString() {
-    return 'RegisterEnterOtpEvent.setState(state: $state)';
+    return 'RegisterEnterEmailEvent.setState(state: $state)';
   }
 
   @override
@@ -311,8 +299,8 @@ class _$SetState implements SetState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String otp, dynamic controller) otpChanged,
-    required TResult Function(RegisterEnterOtpState state) setState,
+    required TResult Function(String email) otpChanged,
+    required TResult Function(RegisterEnterEmailState state) setState,
   }) {
     return setState(state);
   }
@@ -320,8 +308,8 @@ class _$SetState implements SetState {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(String otp, dynamic controller)? otpChanged,
-    TResult Function(RegisterEnterOtpState state)? setState,
+    TResult Function(String email)? otpChanged,
+    TResult Function(RegisterEnterEmailState state)? setState,
   }) {
     return setState?.call(state);
   }
@@ -329,8 +317,8 @@ class _$SetState implements SetState {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String otp, dynamic controller)? otpChanged,
-    TResult Function(RegisterEnterOtpState state)? setState,
+    TResult Function(String email)? otpChanged,
+    TResult Function(RegisterEnterEmailState state)? setState,
     required TResult orElse(),
   }) {
     if (setState != null) {
@@ -342,7 +330,7 @@ class _$SetState implements SetState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(OtpChanged value) otpChanged,
+    required TResult Function(EmailChanged value) otpChanged,
     required TResult Function(SetState value) setState,
   }) {
     return setState(this);
@@ -351,7 +339,7 @@ class _$SetState implements SetState {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(OtpChanged value)? otpChanged,
+    TResult Function(EmailChanged value)? otpChanged,
     TResult Function(SetState value)? setState,
   }) {
     return setState?.call(this);
@@ -360,7 +348,7 @@ class _$SetState implements SetState {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(OtpChanged value)? otpChanged,
+    TResult Function(EmailChanged value)? otpChanged,
     TResult Function(SetState value)? setState,
     required TResult orElse(),
   }) {
@@ -371,96 +359,86 @@ class _$SetState implements SetState {
   }
 }
 
-abstract class SetState implements RegisterEnterOtpEvent {
-  const factory SetState(RegisterEnterOtpState state) = _$SetState;
+abstract class SetState implements RegisterEnterEmailEvent {
+  const factory SetState(RegisterEnterEmailState state) = _$SetState;
 
-  RegisterEnterOtpState get state;
+  RegisterEnterEmailState get state;
   @JsonKey(ignore: true)
   $SetStateCopyWith<SetState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-class _$RegisterEnterOtpStateTearOff {
-  const _$RegisterEnterOtpStateTearOff();
+class _$RegisterEnterEmailStateTearOff {
+  const _$RegisterEnterEmailStateTearOff();
 
-  _RegisterEnterOtpState call(
-      {required TelNo telNo,
+  _RegisterEnterEmailState call(
+      {required EmailAddress email,
       required bool isShowErrorMessage,
       required bool isNavigateNextPage,
-      required Otp otp,
       required bool isLoading,
-      required bool isError,
-      required TextEditingController controller}) {
-    return _RegisterEnterOtpState(
-      telNo: telNo,
+      required bool isError}) {
+    return _RegisterEnterEmailState(
+      email: email,
       isShowErrorMessage: isShowErrorMessage,
       isNavigateNextPage: isNavigateNextPage,
-      otp: otp,
       isLoading: isLoading,
       isError: isError,
-      controller: controller,
     );
   }
 }
 
 /// @nodoc
-const $RegisterEnterOtpState = _$RegisterEnterOtpStateTearOff();
+const $RegisterEnterEmailState = _$RegisterEnterEmailStateTearOff();
 
 /// @nodoc
-mixin _$RegisterEnterOtpState {
-  TelNo get telNo => throw _privateConstructorUsedError;
+mixin _$RegisterEnterEmailState {
+  EmailAddress get email => throw _privateConstructorUsedError;
   bool get isShowErrorMessage => throw _privateConstructorUsedError;
   bool get isNavigateNextPage => throw _privateConstructorUsedError;
-  Otp get otp => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
   bool get isError => throw _privateConstructorUsedError;
-  TextEditingController get controller => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $RegisterEnterOtpStateCopyWith<RegisterEnterOtpState> get copyWith =>
+  $RegisterEnterEmailStateCopyWith<RegisterEnterEmailState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $RegisterEnterOtpStateCopyWith<$Res> {
-  factory $RegisterEnterOtpStateCopyWith(RegisterEnterOtpState value,
-          $Res Function(RegisterEnterOtpState) then) =
-      _$RegisterEnterOtpStateCopyWithImpl<$Res>;
+abstract class $RegisterEnterEmailStateCopyWith<$Res> {
+  factory $RegisterEnterEmailStateCopyWith(RegisterEnterEmailState value,
+          $Res Function(RegisterEnterEmailState) then) =
+      _$RegisterEnterEmailStateCopyWithImpl<$Res>;
   $Res call(
-      {TelNo telNo,
+      {EmailAddress email,
       bool isShowErrorMessage,
       bool isNavigateNextPage,
-      Otp otp,
       bool isLoading,
-      bool isError,
-      TextEditingController controller});
+      bool isError});
 }
 
 /// @nodoc
-class _$RegisterEnterOtpStateCopyWithImpl<$Res>
-    implements $RegisterEnterOtpStateCopyWith<$Res> {
-  _$RegisterEnterOtpStateCopyWithImpl(this._value, this._then);
+class _$RegisterEnterEmailStateCopyWithImpl<$Res>
+    implements $RegisterEnterEmailStateCopyWith<$Res> {
+  _$RegisterEnterEmailStateCopyWithImpl(this._value, this._then);
 
-  final RegisterEnterOtpState _value;
+  final RegisterEnterEmailState _value;
   // ignore: unused_field
-  final $Res Function(RegisterEnterOtpState) _then;
+  final $Res Function(RegisterEnterEmailState) _then;
 
   @override
   $Res call({
-    Object? telNo = freezed,
+    Object? email = freezed,
     Object? isShowErrorMessage = freezed,
     Object? isNavigateNextPage = freezed,
-    Object? otp = freezed,
     Object? isLoading = freezed,
     Object? isError = freezed,
-    Object? controller = freezed,
   }) {
     return _then(_value.copyWith(
-      telNo: telNo == freezed
-          ? _value.telNo
-          : telNo // ignore: cast_nullable_to_non_nullable
-              as TelNo,
+      email: email == freezed
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as EmailAddress,
       isShowErrorMessage: isShowErrorMessage == freezed
           ? _value.isShowErrorMessage
           : isShowErrorMessage // ignore: cast_nullable_to_non_nullable
@@ -469,10 +447,6 @@ class _$RegisterEnterOtpStateCopyWithImpl<$Res>
           ? _value.isNavigateNextPage
           : isNavigateNextPage // ignore: cast_nullable_to_non_nullable
               as bool,
-      otp: otp == freezed
-          ? _value.otp
-          : otp // ignore: cast_nullable_to_non_nullable
-              as Otp,
       isLoading: isLoading == freezed
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -481,57 +455,50 @@ class _$RegisterEnterOtpStateCopyWithImpl<$Res>
           ? _value.isError
           : isError // ignore: cast_nullable_to_non_nullable
               as bool,
-      controller: controller == freezed
-          ? _value.controller
-          : controller // ignore: cast_nullable_to_non_nullable
-              as TextEditingController,
     ));
   }
 }
 
 /// @nodoc
-abstract class _$RegisterEnterOtpStateCopyWith<$Res>
-    implements $RegisterEnterOtpStateCopyWith<$Res> {
-  factory _$RegisterEnterOtpStateCopyWith(_RegisterEnterOtpState value,
-          $Res Function(_RegisterEnterOtpState) then) =
-      __$RegisterEnterOtpStateCopyWithImpl<$Res>;
+abstract class _$RegisterEnterEmailStateCopyWith<$Res>
+    implements $RegisterEnterEmailStateCopyWith<$Res> {
+  factory _$RegisterEnterEmailStateCopyWith(_RegisterEnterEmailState value,
+          $Res Function(_RegisterEnterEmailState) then) =
+      __$RegisterEnterEmailStateCopyWithImpl<$Res>;
   @override
   $Res call(
-      {TelNo telNo,
+      {EmailAddress email,
       bool isShowErrorMessage,
       bool isNavigateNextPage,
-      Otp otp,
       bool isLoading,
-      bool isError,
-      TextEditingController controller});
+      bool isError});
 }
 
 /// @nodoc
-class __$RegisterEnterOtpStateCopyWithImpl<$Res>
-    extends _$RegisterEnterOtpStateCopyWithImpl<$Res>
-    implements _$RegisterEnterOtpStateCopyWith<$Res> {
-  __$RegisterEnterOtpStateCopyWithImpl(_RegisterEnterOtpState _value,
-      $Res Function(_RegisterEnterOtpState) _then)
-      : super(_value, (v) => _then(v as _RegisterEnterOtpState));
+class __$RegisterEnterEmailStateCopyWithImpl<$Res>
+    extends _$RegisterEnterEmailStateCopyWithImpl<$Res>
+    implements _$RegisterEnterEmailStateCopyWith<$Res> {
+  __$RegisterEnterEmailStateCopyWithImpl(_RegisterEnterEmailState _value,
+      $Res Function(_RegisterEnterEmailState) _then)
+      : super(_value, (v) => _then(v as _RegisterEnterEmailState));
 
   @override
-  _RegisterEnterOtpState get _value => super._value as _RegisterEnterOtpState;
+  _RegisterEnterEmailState get _value =>
+      super._value as _RegisterEnterEmailState;
 
   @override
   $Res call({
-    Object? telNo = freezed,
+    Object? email = freezed,
     Object? isShowErrorMessage = freezed,
     Object? isNavigateNextPage = freezed,
-    Object? otp = freezed,
     Object? isLoading = freezed,
     Object? isError = freezed,
-    Object? controller = freezed,
   }) {
-    return _then(_RegisterEnterOtpState(
-      telNo: telNo == freezed
-          ? _value.telNo
-          : telNo // ignore: cast_nullable_to_non_nullable
-              as TelNo,
+    return _then(_RegisterEnterEmailState(
+      email: email == freezed
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as EmailAddress,
       isShowErrorMessage: isShowErrorMessage == freezed
           ? _value.isShowErrorMessage
           : isShowErrorMessage // ignore: cast_nullable_to_non_nullable
@@ -540,10 +507,6 @@ class __$RegisterEnterOtpStateCopyWithImpl<$Res>
           ? _value.isNavigateNextPage
           : isNavigateNextPage // ignore: cast_nullable_to_non_nullable
               as bool,
-      otp: otp == freezed
-          ? _value.otp
-          : otp // ignore: cast_nullable_to_non_nullable
-              as Otp,
       isLoading: isLoading == freezed
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -552,107 +515,86 @@ class __$RegisterEnterOtpStateCopyWithImpl<$Res>
           ? _value.isError
           : isError // ignore: cast_nullable_to_non_nullable
               as bool,
-      controller: controller == freezed
-          ? _value.controller
-          : controller // ignore: cast_nullable_to_non_nullable
-              as TextEditingController,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_RegisterEnterOtpState implements _RegisterEnterOtpState {
-  const _$_RegisterEnterOtpState(
-      {required this.telNo,
+class _$_RegisterEnterEmailState implements _RegisterEnterEmailState {
+  const _$_RegisterEnterEmailState(
+      {required this.email,
       required this.isShowErrorMessage,
       required this.isNavigateNextPage,
-      required this.otp,
       required this.isLoading,
-      required this.isError,
-      required this.controller});
+      required this.isError});
 
   @override
-  final TelNo telNo;
+  final EmailAddress email;
   @override
   final bool isShowErrorMessage;
   @override
   final bool isNavigateNextPage;
   @override
-  final Otp otp;
-  @override
   final bool isLoading;
   @override
   final bool isError;
-  @override
-  final TextEditingController controller;
 
   @override
   String toString() {
-    return 'RegisterEnterOtpState(telNo: $telNo, isShowErrorMessage: $isShowErrorMessage, isNavigateNextPage: $isNavigateNextPage, otp: $otp, isLoading: $isLoading, isError: $isError, controller: $controller)';
+    return 'RegisterEnterEmailState(email: $email, isShowErrorMessage: $isShowErrorMessage, isNavigateNextPage: $isNavigateNextPage, isLoading: $isLoading, isError: $isError)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _RegisterEnterOtpState &&
-            const DeepCollectionEquality().equals(other.telNo, telNo) &&
+            other is _RegisterEnterEmailState &&
+            const DeepCollectionEquality().equals(other.email, email) &&
             const DeepCollectionEquality()
                 .equals(other.isShowErrorMessage, isShowErrorMessage) &&
             const DeepCollectionEquality()
                 .equals(other.isNavigateNextPage, isNavigateNextPage) &&
-            const DeepCollectionEquality().equals(other.otp, otp) &&
             const DeepCollectionEquality().equals(other.isLoading, isLoading) &&
-            const DeepCollectionEquality().equals(other.isError, isError) &&
-            const DeepCollectionEquality()
-                .equals(other.controller, controller));
+            const DeepCollectionEquality().equals(other.isError, isError));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(telNo),
+      const DeepCollectionEquality().hash(email),
       const DeepCollectionEquality().hash(isShowErrorMessage),
       const DeepCollectionEquality().hash(isNavigateNextPage),
-      const DeepCollectionEquality().hash(otp),
       const DeepCollectionEquality().hash(isLoading),
-      const DeepCollectionEquality().hash(isError),
-      const DeepCollectionEquality().hash(controller));
+      const DeepCollectionEquality().hash(isError));
 
   @JsonKey(ignore: true)
   @override
-  _$RegisterEnterOtpStateCopyWith<_RegisterEnterOtpState> get copyWith =>
-      __$RegisterEnterOtpStateCopyWithImpl<_RegisterEnterOtpState>(
+  _$RegisterEnterEmailStateCopyWith<_RegisterEnterEmailState> get copyWith =>
+      __$RegisterEnterEmailStateCopyWithImpl<_RegisterEnterEmailState>(
           this, _$identity);
 }
 
-abstract class _RegisterEnterOtpState implements RegisterEnterOtpState {
-  const factory _RegisterEnterOtpState(
-      {required TelNo telNo,
+abstract class _RegisterEnterEmailState implements RegisterEnterEmailState {
+  const factory _RegisterEnterEmailState(
+      {required EmailAddress email,
       required bool isShowErrorMessage,
       required bool isNavigateNextPage,
-      required Otp otp,
       required bool isLoading,
-      required bool isError,
-      required TextEditingController controller}) = _$_RegisterEnterOtpState;
+      required bool isError}) = _$_RegisterEnterEmailState;
 
   @override
-  TelNo get telNo;
+  EmailAddress get email;
   @override
   bool get isShowErrorMessage;
   @override
   bool get isNavigateNextPage;
   @override
-  Otp get otp;
-  @override
   bool get isLoading;
   @override
   bool get isError;
   @override
-  TextEditingController get controller;
-  @override
   @JsonKey(ignore: true)
-  _$RegisterEnterOtpStateCopyWith<_RegisterEnterOtpState> get copyWith =>
+  _$RegisterEnterEmailStateCopyWith<_RegisterEnterEmailState> get copyWith =>
       throw _privateConstructorUsedError;
 }

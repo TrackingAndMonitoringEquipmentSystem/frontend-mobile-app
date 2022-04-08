@@ -34,7 +34,10 @@ class TelNo extends ValueObject<String> {
     return TelNo._(
       value: validateStringNotEmpty(input: input).flatMap(
         (prevValue) => validateTelNo(prevValue).flatMap(
-          (prevValue) => validateFixedLength(input: prevValue, fixedLength: 10),
+          (prevValue) => validateNumberOnly(input: prevValue).flatMap(
+            (prevValue) =>
+                validateFixedLength(input: prevValue, fixedLength: 10),
+          ),
         ),
       ),
     );
@@ -93,4 +96,23 @@ class LastName extends ValueObject<String> {
   }
 
   const LastName._({required this.value});
+}
+
+class Otp extends ValueObject<String> {
+  @override
+  final Either<ValueFailure<String>, String> value;
+  factory Otp(String input) {
+    return Otp._(
+      value: validateStringNotEmpty(input: input).flatMap(
+        (prevValue) => validateNumberOnly(
+          input: prevValue,
+        ).flatMap(
+          (prevValue) =>
+              validateMaxStringLength(input: prevValue, maxLength: 6),
+        ),
+      ),
+    );
+  }
+
+  const Otp._({required this.value});
 }

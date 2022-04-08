@@ -9,9 +9,13 @@ class RegisterEnterNameState with _$RegisterEnterNameState {
     required bool isNavigateNextPage,
   }) = _RegisterEnterNameState;
 
-  factory RegisterEnterNameState.initial() => RegisterEnterNameState(
-        firstName: FirstName(''),
-        lastName: LastName(''),
+  factory RegisterEnterNameState.initial(
+          AuthenticationRepository _authenticationRepository) =>
+      RegisterEnterNameState(
+        firstName: _authenticationRepository.preRegisterUser.firstName ??
+            FirstName(''),
+        lastName:
+            _authenticationRepository.preRegisterUser.lastName ?? LastName(''),
         isShowErrorMessage: false,
         isNavigateNextPage: false,
       );

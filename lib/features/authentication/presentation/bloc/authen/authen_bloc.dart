@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:frontend/features/authentication/domain/repositories/authentication_repository.dart';
@@ -13,8 +15,8 @@ class AuthenBloc extends Bloc<AuthenEvent, AuthenState> {
 
   AuthenBloc(this._authenticationRepository)
       : super(const AuthenState.initial()) {
-    on<AuthenEvent>((event, emit) {
-      event.map(
+    on<AuthenEvent>((event, emit) async {
+      await event.map<FutureOr<void>>(
         authCheckRequested: (e) async {
           final user = await _authenticationRepository.getSignedInUser();
           user == null

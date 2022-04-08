@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:frontend/features/authentication/domain/repositories/authentication_repository.dart';
@@ -15,7 +14,7 @@ class RegisterEnterNameBloc
   final AuthenticationRepository _authenticationRepository;
 
   RegisterEnterNameBloc(this._authenticationRepository)
-      : super(RegisterEnterNameState.initial()) {
+      : super(RegisterEnterNameState.initial(_authenticationRepository)) {
     on<RegisterEnterNameEvent>((event, emit) {
       event.map(
         firstNameChanged: (e) {
@@ -28,7 +27,6 @@ class RegisterEnterNameBloc
           emit(state.copyWith(isShowErrorMessage: true));
           final isFirstNameValid = state.firstName.isValid();
           final isLastNameValid = state.lastName.isValid();
-          debugPrint('$isLastNameValid, $isLastNameValid');
           if (isFirstNameValid && isLastNameValid) {
             _authenticationRepository.preRegisterUser =
                 _authenticationRepository.preRegisterUser.copyWith(

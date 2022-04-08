@@ -12,6 +12,7 @@ class InputText extends HookWidget {
   final TextInputType? keyboardType;
   final String? initialValue;
   final bool isRequired;
+  final TextEditingController? controller;
   const InputText({
     required this.onChanged,
     this.isError = false,
@@ -23,11 +24,13 @@ class InputText extends HookWidget {
     this.keyboardType,
     this.initialValue,
     this.isRequired = false,
+    this.controller,
   });
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: TextFormField(
+        controller: controller,
         initialValue: initialValue,
         decoration: InputDecoration(
           label: Row(

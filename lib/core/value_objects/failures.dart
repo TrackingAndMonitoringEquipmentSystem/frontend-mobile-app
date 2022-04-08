@@ -42,4 +42,9 @@ class ValueFailure<T> with _$ValueFailure<T> {
     required String failedValue,
     required String message,
   }) = MissMatchLength<T>;
+
+  const factory ValueFailure.hadNotNumeric({
+    required String failedValue,
+    required String message,
+  }) = HadNotNumeric<T>;
 }

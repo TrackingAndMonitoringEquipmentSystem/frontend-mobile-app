@@ -6,13 +6,19 @@ class RegisterEnterOtpState with _$RegisterEnterOtpState {
     required TelNo telNo,
     required bool isShowErrorMessage,
     required bool isNavigateNextPage,
+    required Otp otp,
     required bool isLoading,
+    required bool isError,
+    required TextEditingController controller,
   }) = _RegisterEnterOtpState;
 
   factory RegisterEnterOtpState.initial(TelNo telNo) => RegisterEnterOtpState(
         telNo: telNo,
         isShowErrorMessage: false,
         isNavigateNextPage: false,
-        isLoading: true,
+        otp: Otp(''),
+        isLoading: false,
+        isError: false,
+        controller: TextEditingController(),
       );
 }

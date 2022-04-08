@@ -8,10 +8,14 @@ class RegisterEnterPhoneNumberState with _$RegisterEnterPhoneNumberState {
     required bool isNavigateNextPage,
   }) = _RegisterEnterPhoneNumberState;
 
-  factory RegisterEnterPhoneNumberState.initial() =>
-      RegisterEnterPhoneNumberState(
-        telNo: TelNo(''),
-        isShowErrorMessage: false,
-        isNavigateNextPage: false,
-      );
+  factory RegisterEnterPhoneNumberState.initial(
+    AuthenticationRepository _authenticationRepository,
+  ) {
+    print(_authenticationRepository.preRegisterUser);
+    return RegisterEnterPhoneNumberState(
+      telNo: _authenticationRepository.preRegisterUser.telNo ?? TelNo(''),
+      isShowErrorMessage: false,
+      isNavigateNextPage: false,
+    );
+  }
 }

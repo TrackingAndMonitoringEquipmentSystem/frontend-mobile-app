@@ -80,6 +80,14 @@ class _$ValueFailureTearOff {
       message: message,
     );
   }
+
+  HadNotNumeric<T> hadNotNumeric<T>(
+      {required String failedValue, required String message}) {
+    return HadNotNumeric<T>(
+      failedValue: failedValue,
+      message: message,
+    );
+  }
 }
 
 /// @nodoc
@@ -104,6 +112,7 @@ mixin _$ValueFailure<T> {
     required TResult Function(String failedValue, String message) empty,
     required TResult Function(String failedValue, String message)
         missMatchLength,
+    required TResult Function(String failedValue, String message) hadNotNumeric,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -116,6 +125,7 @@ mixin _$ValueFailure<T> {
     TResult Function(String failedValue, String message)? shortLength,
     TResult Function(String failedValue, String message)? empty,
     TResult Function(String failedValue, String message)? missMatchLength,
+    TResult Function(String failedValue, String message)? hadNotNumeric,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -128,6 +138,7 @@ mixin _$ValueFailure<T> {
     TResult Function(String failedValue, String message)? shortLength,
     TResult Function(String failedValue, String message)? empty,
     TResult Function(String failedValue, String message)? missMatchLength,
+    TResult Function(String failedValue, String message)? hadNotNumeric,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -141,6 +152,7 @@ mixin _$ValueFailure<T> {
     required TResult Function(ShortLength<T> value) shortLength,
     required TResult Function(Empty<T> value) empty,
     required TResult Function(MissMatchLength<T> value) missMatchLength,
+    required TResult Function(HadNotNumeric<T> value) hadNotNumeric,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -153,6 +165,7 @@ mixin _$ValueFailure<T> {
     TResult Function(ShortLength<T> value)? shortLength,
     TResult Function(Empty<T> value)? empty,
     TResult Function(MissMatchLength<T> value)? missMatchLength,
+    TResult Function(HadNotNumeric<T> value)? hadNotNumeric,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -165,6 +178,7 @@ mixin _$ValueFailure<T> {
     TResult Function(ShortLength<T> value)? shortLength,
     TResult Function(Empty<T> value)? empty,
     TResult Function(MissMatchLength<T> value)? missMatchLength,
+    TResult Function(HadNotNumeric<T> value)? hadNotNumeric,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -299,6 +313,7 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
     required TResult Function(String failedValue, String message) empty,
     required TResult Function(String failedValue, String message)
         missMatchLength,
+    required TResult Function(String failedValue, String message) hadNotNumeric,
   }) {
     return invalidEmail(failedValue, message);
   }
@@ -314,6 +329,7 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
     TResult Function(String failedValue, String message)? shortLength,
     TResult Function(String failedValue, String message)? empty,
     TResult Function(String failedValue, String message)? missMatchLength,
+    TResult Function(String failedValue, String message)? hadNotNumeric,
   }) {
     return invalidEmail?.call(failedValue, message);
   }
@@ -329,6 +345,7 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
     TResult Function(String failedValue, String message)? shortLength,
     TResult Function(String failedValue, String message)? empty,
     TResult Function(String failedValue, String message)? missMatchLength,
+    TResult Function(String failedValue, String message)? hadNotNumeric,
     required TResult orElse(),
   }) {
     if (invalidEmail != null) {
@@ -348,6 +365,7 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
     required TResult Function(ShortLength<T> value) shortLength,
     required TResult Function(Empty<T> value) empty,
     required TResult Function(MissMatchLength<T> value) missMatchLength,
+    required TResult Function(HadNotNumeric<T> value) hadNotNumeric,
   }) {
     return invalidEmail(this);
   }
@@ -363,6 +381,7 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
     TResult Function(ShortLength<T> value)? shortLength,
     TResult Function(Empty<T> value)? empty,
     TResult Function(MissMatchLength<T> value)? missMatchLength,
+    TResult Function(HadNotNumeric<T> value)? hadNotNumeric,
   }) {
     return invalidEmail?.call(this);
   }
@@ -378,6 +397,7 @@ class _$InvalidEmail<T> implements InvalidEmail<T> {
     TResult Function(ShortLength<T> value)? shortLength,
     TResult Function(Empty<T> value)? empty,
     TResult Function(MissMatchLength<T> value)? missMatchLength,
+    TResult Function(HadNotNumeric<T> value)? hadNotNumeric,
     required TResult orElse(),
   }) {
     if (invalidEmail != null) {
@@ -492,6 +512,7 @@ class _$ShortPassword<T> implements ShortPassword<T> {
     required TResult Function(String failedValue, String message) empty,
     required TResult Function(String failedValue, String message)
         missMatchLength,
+    required TResult Function(String failedValue, String message) hadNotNumeric,
   }) {
     return shortPassword(failedValue, message);
   }
@@ -507,6 +528,7 @@ class _$ShortPassword<T> implements ShortPassword<T> {
     TResult Function(String failedValue, String message)? shortLength,
     TResult Function(String failedValue, String message)? empty,
     TResult Function(String failedValue, String message)? missMatchLength,
+    TResult Function(String failedValue, String message)? hadNotNumeric,
   }) {
     return shortPassword?.call(failedValue, message);
   }
@@ -522,6 +544,7 @@ class _$ShortPassword<T> implements ShortPassword<T> {
     TResult Function(String failedValue, String message)? shortLength,
     TResult Function(String failedValue, String message)? empty,
     TResult Function(String failedValue, String message)? missMatchLength,
+    TResult Function(String failedValue, String message)? hadNotNumeric,
     required TResult orElse(),
   }) {
     if (shortPassword != null) {
@@ -541,6 +564,7 @@ class _$ShortPassword<T> implements ShortPassword<T> {
     required TResult Function(ShortLength<T> value) shortLength,
     required TResult Function(Empty<T> value) empty,
     required TResult Function(MissMatchLength<T> value) missMatchLength,
+    required TResult Function(HadNotNumeric<T> value) hadNotNumeric,
   }) {
     return shortPassword(this);
   }
@@ -556,6 +580,7 @@ class _$ShortPassword<T> implements ShortPassword<T> {
     TResult Function(ShortLength<T> value)? shortLength,
     TResult Function(Empty<T> value)? empty,
     TResult Function(MissMatchLength<T> value)? missMatchLength,
+    TResult Function(HadNotNumeric<T> value)? hadNotNumeric,
   }) {
     return shortPassword?.call(this);
   }
@@ -571,6 +596,7 @@ class _$ShortPassword<T> implements ShortPassword<T> {
     TResult Function(ShortLength<T> value)? shortLength,
     TResult Function(Empty<T> value)? empty,
     TResult Function(MissMatchLength<T> value)? missMatchLength,
+    TResult Function(HadNotNumeric<T> value)? hadNotNumeric,
     required TResult orElse(),
   }) {
     if (shortPassword != null) {
@@ -685,6 +711,7 @@ class _$InvalidPhoneNo<T> implements InvalidPhoneNo<T> {
     required TResult Function(String failedValue, String message) empty,
     required TResult Function(String failedValue, String message)
         missMatchLength,
+    required TResult Function(String failedValue, String message) hadNotNumeric,
   }) {
     return invalidPhoneNo(failedValue, message);
   }
@@ -700,6 +727,7 @@ class _$InvalidPhoneNo<T> implements InvalidPhoneNo<T> {
     TResult Function(String failedValue, String message)? shortLength,
     TResult Function(String failedValue, String message)? empty,
     TResult Function(String failedValue, String message)? missMatchLength,
+    TResult Function(String failedValue, String message)? hadNotNumeric,
   }) {
     return invalidPhoneNo?.call(failedValue, message);
   }
@@ -715,6 +743,7 @@ class _$InvalidPhoneNo<T> implements InvalidPhoneNo<T> {
     TResult Function(String failedValue, String message)? shortLength,
     TResult Function(String failedValue, String message)? empty,
     TResult Function(String failedValue, String message)? missMatchLength,
+    TResult Function(String failedValue, String message)? hadNotNumeric,
     required TResult orElse(),
   }) {
     if (invalidPhoneNo != null) {
@@ -734,6 +763,7 @@ class _$InvalidPhoneNo<T> implements InvalidPhoneNo<T> {
     required TResult Function(ShortLength<T> value) shortLength,
     required TResult Function(Empty<T> value) empty,
     required TResult Function(MissMatchLength<T> value) missMatchLength,
+    required TResult Function(HadNotNumeric<T> value) hadNotNumeric,
   }) {
     return invalidPhoneNo(this);
   }
@@ -749,6 +779,7 @@ class _$InvalidPhoneNo<T> implements InvalidPhoneNo<T> {
     TResult Function(ShortLength<T> value)? shortLength,
     TResult Function(Empty<T> value)? empty,
     TResult Function(MissMatchLength<T> value)? missMatchLength,
+    TResult Function(HadNotNumeric<T> value)? hadNotNumeric,
   }) {
     return invalidPhoneNo?.call(this);
   }
@@ -764,6 +795,7 @@ class _$InvalidPhoneNo<T> implements InvalidPhoneNo<T> {
     TResult Function(ShortLength<T> value)? shortLength,
     TResult Function(Empty<T> value)? empty,
     TResult Function(MissMatchLength<T> value)? missMatchLength,
+    TResult Function(HadNotNumeric<T> value)? hadNotNumeric,
     required TResult orElse(),
   }) {
     if (invalidPhoneNo != null) {
@@ -878,6 +910,7 @@ class _$HadNotAlphabet<T> implements HadNotAlphabet<T> {
     required TResult Function(String failedValue, String message) empty,
     required TResult Function(String failedValue, String message)
         missMatchLength,
+    required TResult Function(String failedValue, String message) hadNotNumeric,
   }) {
     return hadNotAlphabet(failedValue, message);
   }
@@ -893,6 +926,7 @@ class _$HadNotAlphabet<T> implements HadNotAlphabet<T> {
     TResult Function(String failedValue, String message)? shortLength,
     TResult Function(String failedValue, String message)? empty,
     TResult Function(String failedValue, String message)? missMatchLength,
+    TResult Function(String failedValue, String message)? hadNotNumeric,
   }) {
     return hadNotAlphabet?.call(failedValue, message);
   }
@@ -908,6 +942,7 @@ class _$HadNotAlphabet<T> implements HadNotAlphabet<T> {
     TResult Function(String failedValue, String message)? shortLength,
     TResult Function(String failedValue, String message)? empty,
     TResult Function(String failedValue, String message)? missMatchLength,
+    TResult Function(String failedValue, String message)? hadNotNumeric,
     required TResult orElse(),
   }) {
     if (hadNotAlphabet != null) {
@@ -927,6 +962,7 @@ class _$HadNotAlphabet<T> implements HadNotAlphabet<T> {
     required TResult Function(ShortLength<T> value) shortLength,
     required TResult Function(Empty<T> value) empty,
     required TResult Function(MissMatchLength<T> value) missMatchLength,
+    required TResult Function(HadNotNumeric<T> value) hadNotNumeric,
   }) {
     return hadNotAlphabet(this);
   }
@@ -942,6 +978,7 @@ class _$HadNotAlphabet<T> implements HadNotAlphabet<T> {
     TResult Function(ShortLength<T> value)? shortLength,
     TResult Function(Empty<T> value)? empty,
     TResult Function(MissMatchLength<T> value)? missMatchLength,
+    TResult Function(HadNotNumeric<T> value)? hadNotNumeric,
   }) {
     return hadNotAlphabet?.call(this);
   }
@@ -957,6 +994,7 @@ class _$HadNotAlphabet<T> implements HadNotAlphabet<T> {
     TResult Function(ShortLength<T> value)? shortLength,
     TResult Function(Empty<T> value)? empty,
     TResult Function(MissMatchLength<T> value)? missMatchLength,
+    TResult Function(HadNotNumeric<T> value)? hadNotNumeric,
     required TResult orElse(),
   }) {
     if (hadNotAlphabet != null) {
@@ -1071,6 +1109,7 @@ class _$ExeedingLength<T> implements ExeedingLength<T> {
     required TResult Function(String failedValue, String message) empty,
     required TResult Function(String failedValue, String message)
         missMatchLength,
+    required TResult Function(String failedValue, String message) hadNotNumeric,
   }) {
     return exceedingLength(failedValue, message);
   }
@@ -1086,6 +1125,7 @@ class _$ExeedingLength<T> implements ExeedingLength<T> {
     TResult Function(String failedValue, String message)? shortLength,
     TResult Function(String failedValue, String message)? empty,
     TResult Function(String failedValue, String message)? missMatchLength,
+    TResult Function(String failedValue, String message)? hadNotNumeric,
   }) {
     return exceedingLength?.call(failedValue, message);
   }
@@ -1101,6 +1141,7 @@ class _$ExeedingLength<T> implements ExeedingLength<T> {
     TResult Function(String failedValue, String message)? shortLength,
     TResult Function(String failedValue, String message)? empty,
     TResult Function(String failedValue, String message)? missMatchLength,
+    TResult Function(String failedValue, String message)? hadNotNumeric,
     required TResult orElse(),
   }) {
     if (exceedingLength != null) {
@@ -1120,6 +1161,7 @@ class _$ExeedingLength<T> implements ExeedingLength<T> {
     required TResult Function(ShortLength<T> value) shortLength,
     required TResult Function(Empty<T> value) empty,
     required TResult Function(MissMatchLength<T> value) missMatchLength,
+    required TResult Function(HadNotNumeric<T> value) hadNotNumeric,
   }) {
     return exceedingLength(this);
   }
@@ -1135,6 +1177,7 @@ class _$ExeedingLength<T> implements ExeedingLength<T> {
     TResult Function(ShortLength<T> value)? shortLength,
     TResult Function(Empty<T> value)? empty,
     TResult Function(MissMatchLength<T> value)? missMatchLength,
+    TResult Function(HadNotNumeric<T> value)? hadNotNumeric,
   }) {
     return exceedingLength?.call(this);
   }
@@ -1150,6 +1193,7 @@ class _$ExeedingLength<T> implements ExeedingLength<T> {
     TResult Function(ShortLength<T> value)? shortLength,
     TResult Function(Empty<T> value)? empty,
     TResult Function(MissMatchLength<T> value)? missMatchLength,
+    TResult Function(HadNotNumeric<T> value)? hadNotNumeric,
     required TResult orElse(),
   }) {
     if (exceedingLength != null) {
@@ -1264,6 +1308,7 @@ class _$ShortLength<T> implements ShortLength<T> {
     required TResult Function(String failedValue, String message) empty,
     required TResult Function(String failedValue, String message)
         missMatchLength,
+    required TResult Function(String failedValue, String message) hadNotNumeric,
   }) {
     return shortLength(failedValue, message);
   }
@@ -1279,6 +1324,7 @@ class _$ShortLength<T> implements ShortLength<T> {
     TResult Function(String failedValue, String message)? shortLength,
     TResult Function(String failedValue, String message)? empty,
     TResult Function(String failedValue, String message)? missMatchLength,
+    TResult Function(String failedValue, String message)? hadNotNumeric,
   }) {
     return shortLength?.call(failedValue, message);
   }
@@ -1294,6 +1340,7 @@ class _$ShortLength<T> implements ShortLength<T> {
     TResult Function(String failedValue, String message)? shortLength,
     TResult Function(String failedValue, String message)? empty,
     TResult Function(String failedValue, String message)? missMatchLength,
+    TResult Function(String failedValue, String message)? hadNotNumeric,
     required TResult orElse(),
   }) {
     if (shortLength != null) {
@@ -1313,6 +1360,7 @@ class _$ShortLength<T> implements ShortLength<T> {
     required TResult Function(ShortLength<T> value) shortLength,
     required TResult Function(Empty<T> value) empty,
     required TResult Function(MissMatchLength<T> value) missMatchLength,
+    required TResult Function(HadNotNumeric<T> value) hadNotNumeric,
   }) {
     return shortLength(this);
   }
@@ -1328,6 +1376,7 @@ class _$ShortLength<T> implements ShortLength<T> {
     TResult Function(ShortLength<T> value)? shortLength,
     TResult Function(Empty<T> value)? empty,
     TResult Function(MissMatchLength<T> value)? missMatchLength,
+    TResult Function(HadNotNumeric<T> value)? hadNotNumeric,
   }) {
     return shortLength?.call(this);
   }
@@ -1343,6 +1392,7 @@ class _$ShortLength<T> implements ShortLength<T> {
     TResult Function(ShortLength<T> value)? shortLength,
     TResult Function(Empty<T> value)? empty,
     TResult Function(MissMatchLength<T> value)? missMatchLength,
+    TResult Function(HadNotNumeric<T> value)? hadNotNumeric,
     required TResult orElse(),
   }) {
     if (shortLength != null) {
@@ -1454,6 +1504,7 @@ class _$Empty<T> implements Empty<T> {
     required TResult Function(String failedValue, String message) empty,
     required TResult Function(String failedValue, String message)
         missMatchLength,
+    required TResult Function(String failedValue, String message) hadNotNumeric,
   }) {
     return empty(failedValue, message);
   }
@@ -1469,6 +1520,7 @@ class _$Empty<T> implements Empty<T> {
     TResult Function(String failedValue, String message)? shortLength,
     TResult Function(String failedValue, String message)? empty,
     TResult Function(String failedValue, String message)? missMatchLength,
+    TResult Function(String failedValue, String message)? hadNotNumeric,
   }) {
     return empty?.call(failedValue, message);
   }
@@ -1484,6 +1536,7 @@ class _$Empty<T> implements Empty<T> {
     TResult Function(String failedValue, String message)? shortLength,
     TResult Function(String failedValue, String message)? empty,
     TResult Function(String failedValue, String message)? missMatchLength,
+    TResult Function(String failedValue, String message)? hadNotNumeric,
     required TResult orElse(),
   }) {
     if (empty != null) {
@@ -1503,6 +1556,7 @@ class _$Empty<T> implements Empty<T> {
     required TResult Function(ShortLength<T> value) shortLength,
     required TResult Function(Empty<T> value) empty,
     required TResult Function(MissMatchLength<T> value) missMatchLength,
+    required TResult Function(HadNotNumeric<T> value) hadNotNumeric,
   }) {
     return empty(this);
   }
@@ -1518,6 +1572,7 @@ class _$Empty<T> implements Empty<T> {
     TResult Function(ShortLength<T> value)? shortLength,
     TResult Function(Empty<T> value)? empty,
     TResult Function(MissMatchLength<T> value)? missMatchLength,
+    TResult Function(HadNotNumeric<T> value)? hadNotNumeric,
   }) {
     return empty?.call(this);
   }
@@ -1533,6 +1588,7 @@ class _$Empty<T> implements Empty<T> {
     TResult Function(ShortLength<T> value)? shortLength,
     TResult Function(Empty<T> value)? empty,
     TResult Function(MissMatchLength<T> value)? missMatchLength,
+    TResult Function(HadNotNumeric<T> value)? hadNotNumeric,
     required TResult orElse(),
   }) {
     if (empty != null) {
@@ -1646,6 +1702,7 @@ class _$MissMatchLength<T> implements MissMatchLength<T> {
     required TResult Function(String failedValue, String message) empty,
     required TResult Function(String failedValue, String message)
         missMatchLength,
+    required TResult Function(String failedValue, String message) hadNotNumeric,
   }) {
     return missMatchLength(failedValue, message);
   }
@@ -1661,6 +1718,7 @@ class _$MissMatchLength<T> implements MissMatchLength<T> {
     TResult Function(String failedValue, String message)? shortLength,
     TResult Function(String failedValue, String message)? empty,
     TResult Function(String failedValue, String message)? missMatchLength,
+    TResult Function(String failedValue, String message)? hadNotNumeric,
   }) {
     return missMatchLength?.call(failedValue, message);
   }
@@ -1676,6 +1734,7 @@ class _$MissMatchLength<T> implements MissMatchLength<T> {
     TResult Function(String failedValue, String message)? shortLength,
     TResult Function(String failedValue, String message)? empty,
     TResult Function(String failedValue, String message)? missMatchLength,
+    TResult Function(String failedValue, String message)? hadNotNumeric,
     required TResult orElse(),
   }) {
     if (missMatchLength != null) {
@@ -1695,6 +1754,7 @@ class _$MissMatchLength<T> implements MissMatchLength<T> {
     required TResult Function(ShortLength<T> value) shortLength,
     required TResult Function(Empty<T> value) empty,
     required TResult Function(MissMatchLength<T> value) missMatchLength,
+    required TResult Function(HadNotNumeric<T> value) hadNotNumeric,
   }) {
     return missMatchLength(this);
   }
@@ -1710,6 +1770,7 @@ class _$MissMatchLength<T> implements MissMatchLength<T> {
     TResult Function(ShortLength<T> value)? shortLength,
     TResult Function(Empty<T> value)? empty,
     TResult Function(MissMatchLength<T> value)? missMatchLength,
+    TResult Function(HadNotNumeric<T> value)? hadNotNumeric,
   }) {
     return missMatchLength?.call(this);
   }
@@ -1725,6 +1786,7 @@ class _$MissMatchLength<T> implements MissMatchLength<T> {
     TResult Function(ShortLength<T> value)? shortLength,
     TResult Function(Empty<T> value)? empty,
     TResult Function(MissMatchLength<T> value)? missMatchLength,
+    TResult Function(HadNotNumeric<T> value)? hadNotNumeric,
     required TResult orElse(),
   }) {
     if (missMatchLength != null) {
@@ -1746,5 +1808,204 @@ abstract class MissMatchLength<T> implements ValueFailure<T> {
   @override
   @JsonKey(ignore: true)
   $MissMatchLengthCopyWith<T, MissMatchLength<T>> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $HadNotNumericCopyWith<T, $Res>
+    implements $ValueFailureCopyWith<T, $Res> {
+  factory $HadNotNumericCopyWith(
+          HadNotNumeric<T> value, $Res Function(HadNotNumeric<T>) then) =
+      _$HadNotNumericCopyWithImpl<T, $Res>;
+  @override
+  $Res call({String failedValue, String message});
+}
+
+/// @nodoc
+class _$HadNotNumericCopyWithImpl<T, $Res>
+    extends _$ValueFailureCopyWithImpl<T, $Res>
+    implements $HadNotNumericCopyWith<T, $Res> {
+  _$HadNotNumericCopyWithImpl(
+      HadNotNumeric<T> _value, $Res Function(HadNotNumeric<T>) _then)
+      : super(_value, (v) => _then(v as HadNotNumeric<T>));
+
+  @override
+  HadNotNumeric<T> get _value => super._value as HadNotNumeric<T>;
+
+  @override
+  $Res call({
+    Object? failedValue = freezed,
+    Object? message = freezed,
+  }) {
+    return _then(HadNotNumeric<T>(
+      failedValue: failedValue == freezed
+          ? _value.failedValue
+          : failedValue // ignore: cast_nullable_to_non_nullable
+              as String,
+      message: message == freezed
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$HadNotNumeric<T> implements HadNotNumeric<T> {
+  const _$HadNotNumeric({required this.failedValue, required this.message});
+
+  @override
+  final String failedValue;
+  @override
+  final String message;
+
+  @override
+  String toString() {
+    return 'ValueFailure<$T>.hadNotNumeric(failedValue: $failedValue, message: $message)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is HadNotNumeric<T> &&
+            const DeepCollectionEquality()
+                .equals(other.failedValue, failedValue) &&
+            const DeepCollectionEquality().equals(other.message, message));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(failedValue),
+      const DeepCollectionEquality().hash(message));
+
+  @JsonKey(ignore: true)
+  @override
+  $HadNotNumericCopyWith<T, HadNotNumeric<T>> get copyWith =>
+      _$HadNotNumericCopyWithImpl<T, HadNotNumeric<T>>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String failedValue, String message) invalidEmail,
+    required TResult Function(String failedValue, String message) shortPassword,
+    required TResult Function(String failedValue, String message)
+        invalidPhoneNo,
+    required TResult Function(String failedValue, String message)
+        hadNotAlphabet,
+    required TResult Function(String failedValue, String message)
+        exceedingLength,
+    required TResult Function(String failedValue, String message) shortLength,
+    required TResult Function(String failedValue, String message) empty,
+    required TResult Function(String failedValue, String message)
+        missMatchLength,
+    required TResult Function(String failedValue, String message) hadNotNumeric,
+  }) {
+    return hadNotNumeric(failedValue, message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String failedValue, String message)? invalidEmail,
+    TResult Function(String failedValue, String message)? shortPassword,
+    TResult Function(String failedValue, String message)? invalidPhoneNo,
+    TResult Function(String failedValue, String message)? hadNotAlphabet,
+    TResult Function(String failedValue, String message)? exceedingLength,
+    TResult Function(String failedValue, String message)? shortLength,
+    TResult Function(String failedValue, String message)? empty,
+    TResult Function(String failedValue, String message)? missMatchLength,
+    TResult Function(String failedValue, String message)? hadNotNumeric,
+  }) {
+    return hadNotNumeric?.call(failedValue, message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String failedValue, String message)? invalidEmail,
+    TResult Function(String failedValue, String message)? shortPassword,
+    TResult Function(String failedValue, String message)? invalidPhoneNo,
+    TResult Function(String failedValue, String message)? hadNotAlphabet,
+    TResult Function(String failedValue, String message)? exceedingLength,
+    TResult Function(String failedValue, String message)? shortLength,
+    TResult Function(String failedValue, String message)? empty,
+    TResult Function(String failedValue, String message)? missMatchLength,
+    TResult Function(String failedValue, String message)? hadNotNumeric,
+    required TResult orElse(),
+  }) {
+    if (hadNotNumeric != null) {
+      return hadNotNumeric(failedValue, message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InvalidEmail<T> value) invalidEmail,
+    required TResult Function(ShortPassword<T> value) shortPassword,
+    required TResult Function(InvalidPhoneNo<T> value) invalidPhoneNo,
+    required TResult Function(HadNotAlphabet<T> value) hadNotAlphabet,
+    required TResult Function(ExeedingLength<T> value) exceedingLength,
+    required TResult Function(ShortLength<T> value) shortLength,
+    required TResult Function(Empty<T> value) empty,
+    required TResult Function(MissMatchLength<T> value) missMatchLength,
+    required TResult Function(HadNotNumeric<T> value) hadNotNumeric,
+  }) {
+    return hadNotNumeric(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(ShortPassword<T> value)? shortPassword,
+    TResult Function(InvalidPhoneNo<T> value)? invalidPhoneNo,
+    TResult Function(HadNotAlphabet<T> value)? hadNotAlphabet,
+    TResult Function(ExeedingLength<T> value)? exceedingLength,
+    TResult Function(ShortLength<T> value)? shortLength,
+    TResult Function(Empty<T> value)? empty,
+    TResult Function(MissMatchLength<T> value)? missMatchLength,
+    TResult Function(HadNotNumeric<T> value)? hadNotNumeric,
+  }) {
+    return hadNotNumeric?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InvalidEmail<T> value)? invalidEmail,
+    TResult Function(ShortPassword<T> value)? shortPassword,
+    TResult Function(InvalidPhoneNo<T> value)? invalidPhoneNo,
+    TResult Function(HadNotAlphabet<T> value)? hadNotAlphabet,
+    TResult Function(ExeedingLength<T> value)? exceedingLength,
+    TResult Function(ShortLength<T> value)? shortLength,
+    TResult Function(Empty<T> value)? empty,
+    TResult Function(MissMatchLength<T> value)? missMatchLength,
+    TResult Function(HadNotNumeric<T> value)? hadNotNumeric,
+    required TResult orElse(),
+  }) {
+    if (hadNotNumeric != null) {
+      return hadNotNumeric(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class HadNotNumeric<T> implements ValueFailure<T> {
+  const factory HadNotNumeric(
+      {required String failedValue,
+      required String message}) = _$HadNotNumeric<T>;
+
+  @override
+  String get failedValue;
+  @override
+  String get message;
+  @override
+  @JsonKey(ignore: true)
+  $HadNotNumericCopyWith<T, HadNotNumeric<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }

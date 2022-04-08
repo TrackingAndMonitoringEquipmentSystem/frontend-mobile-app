@@ -15,7 +15,9 @@ class RegisterEnterPhoneNumberBloc
 
   RegisterEnterPhoneNumberBloc(this._authenticationRepository)
       : super(
-          RegisterEnterPhoneNumberState.initial(),
+          RegisterEnterPhoneNumberState.initial(
+            _authenticationRepository,
+          ),
         ) {
     on<RegisterEnterPhoneNumberEvent>((event, emit) {
       event.map(
@@ -32,7 +34,9 @@ class RegisterEnterPhoneNumberBloc
             emit(state.copyWith(isNavigateNextPage: true));
           }
         },
-        setNavigateNextPage: (e) {},
+        setNavigateNextPage: (e) {
+          emit(state.copyWith(isNavigateNextPage: e.isNavigateNextPage));
+        },
       );
     });
   }

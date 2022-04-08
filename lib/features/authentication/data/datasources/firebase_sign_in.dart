@@ -1,7 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
-import 'package:frontend/core/value_objects/value_objects.dart';
 import 'package:frontend/features/authentication/domain/entities/user.dart';
 import 'package:frontend/features/authentication/domain/repositories/authentication_failure.dart';
 import 'package:frontend/features/authentication/domain/value_objects/value_objects.dart';
