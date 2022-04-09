@@ -13,11 +13,18 @@ class PublicRepositoryImpl implements PublicRepository {
   @override
   Future<Either<PublicFailure, List<Department>>> getDepartments() async {
     final departments = <Department>[];
+    PublicFailure? publicFailure;
     final response = await _restApi.getDepartments();
-    response.fold(
-      (l) => print(l),
-      (r) => print(r),
-    );
-    return Right(departments);
+    response.fold((l) => publicFailure = l, (r) {
+      final departmentsJson = r['data'];
+      for (final Map<String, dynamic> data in departmentsJson) {
+        departments.add(Department.fromJson(data));
+      }
+    });
+    if (response.isRight()) {
+      return Right(departments);
+    } else {
+      return Left(publicFailure!);
+    }
   }
 }

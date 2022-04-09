@@ -14,21 +14,17 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-Department _$DepartmentFromJson(Map<String, dynamic> json) {
-  return _Department.fromJson(json);
-}
-
 /// @nodoc
 class _$DepartmentTearOff {
   const _$DepartmentTearOff();
 
   _Department call(
       {required int id,
-      @JsonKey(name: 'dept_name') required String name,
-      @JsonKey(name: 'created_at') required DateTime createdAt,
-      @JsonKey(name: 'updated_at') required DateTime updatedAt,
-      @JsonKey(name: 'created_by') required UserType createdBy,
-      @JsonKey(name: 'updated_by') required UserType updatedBy}) {
+      required String name,
+      required DateTime createdAt,
+      required DateTime updatedAt,
+      required UserType createdBy,
+      required UserType updatedBy}) {
     return _Department(
       id: id,
       name: name,
@@ -38,10 +34,6 @@ class _$DepartmentTearOff {
       updatedBy: updatedBy,
     );
   }
-
-  Department fromJson(Map<String, Object?> json) {
-    return Department.fromJson(json);
-  }
 }
 
 /// @nodoc
@@ -50,18 +42,12 @@ const $Department = _$DepartmentTearOff();
 /// @nodoc
 mixin _$Department {
   int get id => throw _privateConstructorUsedError;
-  @JsonKey(name: 'dept_name')
   String get name => throw _privateConstructorUsedError;
-  @JsonKey(name: 'created_at')
   DateTime get createdAt => throw _privateConstructorUsedError;
-  @JsonKey(name: 'updated_at')
   DateTime get updatedAt => throw _privateConstructorUsedError;
-  @JsonKey(name: 'created_by')
   UserType get createdBy => throw _privateConstructorUsedError;
-  @JsonKey(name: 'updated_by')
   UserType get updatedBy => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $DepartmentCopyWith<Department> get copyWith =>
       throw _privateConstructorUsedError;
@@ -74,11 +60,11 @@ abstract class $DepartmentCopyWith<$Res> {
       _$DepartmentCopyWithImpl<$Res>;
   $Res call(
       {int id,
-      @JsonKey(name: 'dept_name') String name,
-      @JsonKey(name: 'created_at') DateTime createdAt,
-      @JsonKey(name: 'updated_at') DateTime updatedAt,
-      @JsonKey(name: 'created_by') UserType createdBy,
-      @JsonKey(name: 'updated_by') UserType updatedBy});
+      String name,
+      DateTime createdAt,
+      DateTime updatedAt,
+      UserType createdBy,
+      UserType updatedBy});
 
   $UserTypeCopyWith<$Res> get createdBy;
   $UserTypeCopyWith<$Res> get updatedBy;
@@ -152,11 +138,11 @@ abstract class _$DepartmentCopyWith<$Res> implements $DepartmentCopyWith<$Res> {
   @override
   $Res call(
       {int id,
-      @JsonKey(name: 'dept_name') String name,
-      @JsonKey(name: 'created_at') DateTime createdAt,
-      @JsonKey(name: 'updated_at') DateTime updatedAt,
-      @JsonKey(name: 'created_by') UserType createdBy,
-      @JsonKey(name: 'updated_by') UserType updatedBy});
+      String name,
+      DateTime createdAt,
+      DateTime updatedAt,
+      UserType createdBy,
+      UserType updatedBy});
 
   @override
   $UserTypeCopyWith<$Res> get createdBy;
@@ -214,35 +200,26 @@ class __$DepartmentCopyWithImpl<$Res> extends _$DepartmentCopyWithImpl<$Res>
 
 /// @nodoc
 
-@JsonSerializable(explicitToJson: true)
 class _$_Department implements _Department {
   const _$_Department(
       {required this.id,
-      @JsonKey(name: 'dept_name') required this.name,
-      @JsonKey(name: 'created_at') required this.createdAt,
-      @JsonKey(name: 'updated_at') required this.updatedAt,
-      @JsonKey(name: 'created_by') required this.createdBy,
-      @JsonKey(name: 'updated_by') required this.updatedBy});
-
-  factory _$_Department.fromJson(Map<String, dynamic> json) =>
-      _$$_DepartmentFromJson(json);
+      required this.name,
+      required this.createdAt,
+      required this.updatedAt,
+      required this.createdBy,
+      required this.updatedBy});
 
   @override
   final int id;
   @override
-  @JsonKey(name: 'dept_name')
   final String name;
   @override
-  @JsonKey(name: 'created_at')
   final DateTime createdAt;
   @override
-  @JsonKey(name: 'updated_at')
   final DateTime updatedAt;
   @override
-  @JsonKey(name: 'created_by')
   final UserType createdBy;
   @override
-  @JsonKey(name: 'updated_by')
   final UserType updatedBy;
 
   @override
@@ -277,42 +254,28 @@ class _$_Department implements _Department {
   @override
   _$DepartmentCopyWith<_Department> get copyWith =>
       __$DepartmentCopyWithImpl<_Department>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$_DepartmentToJson(this);
-  }
 }
 
 abstract class _Department implements Department {
   const factory _Department(
-          {required int id,
-          @JsonKey(name: 'dept_name') required String name,
-          @JsonKey(name: 'created_at') required DateTime createdAt,
-          @JsonKey(name: 'updated_at') required DateTime updatedAt,
-          @JsonKey(name: 'created_by') required UserType createdBy,
-          @JsonKey(name: 'updated_by') required UserType updatedBy}) =
-      _$_Department;
-
-  factory _Department.fromJson(Map<String, dynamic> json) =
-      _$_Department.fromJson;
+      {required int id,
+      required String name,
+      required DateTime createdAt,
+      required DateTime updatedAt,
+      required UserType createdBy,
+      required UserType updatedBy}) = _$_Department;
 
   @override
   int get id;
   @override
-  @JsonKey(name: 'dept_name')
   String get name;
   @override
-  @JsonKey(name: 'created_at')
   DateTime get createdAt;
   @override
-  @JsonKey(name: 'updated_at')
   DateTime get updatedAt;
   @override
-  @JsonKey(name: 'created_by')
   UserType get createdBy;
   @override
-  @JsonKey(name: 'updated_by')
   UserType get updatedBy;
   @override
   @JsonKey(ignore: true)

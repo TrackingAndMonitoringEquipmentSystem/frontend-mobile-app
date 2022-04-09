@@ -5,15 +5,24 @@ part 'department.freezed.dart';
 
 @freezed
 class Department with _$Department {
-  @JsonSerializable(explicitToJson: true)
   const factory Department({
     required int id,
-    @JsonKey(name: 'dept_name') required String name,
-    @JsonKey(name: 'created_at') required DateTime createdAt,
-    @JsonKey(name: 'updated_at') required DateTime updatedAt,
-    @JsonKey(name: 'created_by') required UserType createdBy,
-    @JsonKey(name: 'updated_by') required UserType updatedBy,
+    required String name,
+    required DateTime createdAt,
+    required DateTime updatedAt,
+    required UserType createdBy,
+    required UserType updatedBy,
   }) = _Department;
+
   @override
-  factory Department.fromJson(Map<String, dynamic> json) => _$Department(json);
+  factory Department.fromJson(Map<String, dynamic> json) {
+    return Department(
+      id: json['id'] as int,
+      name: json['dept_name'] as String,
+      createdAt: DateTime.parse(json['created_at'] as String),
+      updatedAt: DateTime.parse(json['updated_at'] as String),
+      createdBy: UserType.fromJson(json['created_by'] as Map<String, dynamic>),
+      updatedBy: UserType.fromJson(json['updated_by'] as Map<String, dynamic>),
+    );
+  }
 }

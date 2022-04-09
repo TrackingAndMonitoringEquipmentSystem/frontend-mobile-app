@@ -7,16 +7,16 @@ extension FirebaseUserDomain on User {
   UserType toDomain() {
     return UserType(
       uid: uid,
-      email: EmailAddress(''),
+      email: '',
       providerId: '',
       createdAt: DateTime.now(),
       faceIdUrl: '',
-      firstName: FirstName(''),
+      firstName: '',
       gender: Gender.female,
       id: 0,
-      lastName: LastName(''),
+      lastName: '',
       profilePicUrl: '',
-      telNo: TelNo(''),
+      tel: '',
       updatedAt: DateTime.now(),
     );
   }

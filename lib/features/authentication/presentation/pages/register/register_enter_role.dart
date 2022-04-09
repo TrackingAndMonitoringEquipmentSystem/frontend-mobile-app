@@ -95,16 +95,16 @@ class RegisterEnterRolePage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       BottomSheetSingleSelect(
-                        label: 'Role',
-                        placeHolder: 'Role',
+                        label: 'ตำแหน่ง',
+                        placeHolder: 'ตำแหน่ง',
                         onChanged: (_) {},
                         listChoice: const [
-                          {'displayText': 'Super admin', 'value': 1},
                           {'displayText': 'Admin', 'value': 2},
                           {'displayText': 'Master maintainer', 'value': 3},
                           {'displayText': 'Maintainer', 'value': 4},
                           {'displayText': 'User', 'value': 5},
                         ],
+                        isRequired: true,
                       ),
                       const SizedBox(
                         width: 5,
@@ -113,16 +113,10 @@ class RegisterEnterRolePage extends StatelessWidget {
                         label: 'แผนก',
                         placeHolder: 'แผนก',
                         onChanged: (_) {},
-                        listChoice: const [
-                          {'displayText': 'แผนกบริหาร', 'value': 1},
-                          {'displayText': 'แผนกบุคคล', 'value': 2},
-                          {'displayText': 'แผนกจัดซื้อ', 'value': 3},
-                          {'displayText': 'แผนกบัญชี', 'value': 4},
-                          {'displayText': 'แผนกบัญชี', 'value': 5},
-                          {'displayText': 'แผนกขาย', 'value': 6},
-                          {'displayText': 'แผนกการตลาด', 'value': 7},
-                          {'displayText': 'แผนกประชาสัมพันธ์    ', 'value': 8},
-                        ],
+                        listChoice: state.departmentChoices
+                            .map((e) => {'displayText': e.name, 'value': e.id})
+                            .toList(),
+                        isRequired: true,
                       ),
                     ],
                   ),

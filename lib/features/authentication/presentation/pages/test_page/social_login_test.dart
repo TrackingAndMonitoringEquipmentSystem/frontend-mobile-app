@@ -32,7 +32,7 @@ class SocialLoginTestPage extends HookWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    'email: ${user.hasData ? user.data?.email.getOrCrash() : ''}',
+                    'email: ${user.hasData ? user.data?.email : ''}',
                     style: Theme.of(context).primaryTextTheme.headline1,
                   ),
                 ],

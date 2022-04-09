@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:frontend/core/utils/value_object_constant.dart'
     as value_object_constant;
 import 'package:frontend/core/value_objects/failures.dart';
@@ -16,6 +17,9 @@ class EmailAddress extends ValueObject<String> {
   const EmailAddress._({required this.value});
   factory EmailAddress.fromJson(Map<String, dynamic> json) {
     return EmailAddress(json['email'] as String);
+  }
+  Map<String, dynamic> toJson() {
+    return {'email': value.fold((l) => '', (r) => r)};
   }
 }
 
@@ -61,6 +65,13 @@ class TelNo extends ValueObject<String> {
     final str = super.getOrCrash();
     return '${str.substring(0, 3)}-${str.substring(3, 6)}-${str.substring(6, 10)}';
   }
+
+  factory TelNo.fromJson(Map<String, dynamic> json) {
+    return TelNo(json['tel'] as String);
+  }
+  Map<String, dynamic> toJson() {
+    return {'tel': value.fold((l) => '', (r) => r)};
+  }
 }
 
 class FirstName extends ValueObject<String> {
@@ -81,10 +92,14 @@ class FirstName extends ValueObject<String> {
     );
   }
 
-  const FirstName._({required this.value});
+  const FirstName._({@JsonKey(name: 'firstName') required this.value});
 
   factory FirstName.fromJson(Map<String, dynamic> json) {
     return FirstName(json['firstName'] as String);
+  }
+
+  Map<String, dynamic> toJson() {
+    return {'firstName': value.fold((l) => '', (r) => r)};
   }
 }
 
@@ -109,6 +124,9 @@ class LastName extends ValueObject<String> {
   const LastName._({required this.value});
   factory LastName.fromJson(Map<String, dynamic> json) {
     return LastName(json['lastName'] as String);
+  }
+  Map<String, dynamic> toJson() {
+    return {'fastName': value.fold((l) => '', (r) => r)};
   }
 }
 

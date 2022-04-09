@@ -227,7 +227,7 @@ class SignInForm extends StatelessWidget {
                     TextButton(
                       onPressed: () {
                         AutoRouter.of(context)
-                            .navigate(const RegisterWelcomeRoute());
+                            .navigate(const RegisterEnterRoleRoute());
                       },
                       child: Text(
                         'สมัครสมาชิก',

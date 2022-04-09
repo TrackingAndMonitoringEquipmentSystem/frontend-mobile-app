@@ -1,1 +1,14 @@
+import 'package:frontend/core/utils/enum.dart';
 
+Gender genderFromString(String value) {
+  switch (value) {
+    case 'male':
+      return Gender.male;
+    case 'female':
+      return Gender.female;
+    case 'other':
+      return Gender.other;
+    default:
+      return Gender.unknown;
+  }
+}
