@@ -8,4 +8,7 @@ class RegisterEnterRoleEvent with _$RegisterEnterRoleEvent {
 
   const factory RegisterEnterRoleEvent.save() = Save;
   const factory RegisterEnterRoleEvent.initState() = InitState;
+  const factory RegisterEnterRoleEvent.changedRole(Role role) = ChangedRole;
+  const factory RegisterEnterRoleEvent.changedDepartment(
+      Department department) = ChangedDepartment;
 }

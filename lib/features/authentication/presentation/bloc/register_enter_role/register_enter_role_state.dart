@@ -5,20 +5,24 @@ class RegisterEnterRoleState with _$RegisterEnterRoleState {
   const factory RegisterEnterRoleState({
     required bool isShowErrorMessage,
     required bool isNavigateNextPage,
-    required Role role,
+    required Role? role,
     required Department? department,
     required bool isLoading,
     required List<Department> departmentChoices,
     required bool isError,
   }) = _RegisterEnterRoleState;
 
-  factory RegisterEnterRoleState.initial() => const RegisterEnterRoleState(
-        isShowErrorMessage: false,
-        isNavigateNextPage: false,
-        role: Role.user,
-        department: null,
-        isLoading: false,
-        departmentChoices: [],
-        isError: false,
-      );
+  factory RegisterEnterRoleState.initial(PreRegisterUser preRegisterUser) {
+    print('preRegisterUser.role: ${preRegisterUser.role}');
+    print('preRegisterUser.department: ${preRegisterUser.department?.name}');
+    return RegisterEnterRoleState(
+      isShowErrorMessage: false,
+      isNavigateNextPage: false,
+      role: preRegisterUser.role,
+      department: preRegisterUser.department,
+      isLoading: false,
+      departmentChoices: [],
+      isError: false,
+    );
+  }
 }

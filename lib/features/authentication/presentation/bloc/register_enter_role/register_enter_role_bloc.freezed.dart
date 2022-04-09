@@ -31,6 +31,18 @@ class _$RegisterEnterRoleEventTearOff {
   InitState initState() {
     return const InitState();
   }
+
+  ChangedRole changedRole(Role role) {
+    return ChangedRole(
+      role,
+    );
+  }
+
+  ChangedDepartment changedDepartment(Department department) {
+    return ChangedDepartment(
+      department,
+    );
+  }
 }
 
 /// @nodoc
@@ -43,6 +55,8 @@ mixin _$RegisterEnterRoleEvent {
     required TResult Function(RegisterEnterRoleState state) setState,
     required TResult Function() save,
     required TResult Function() initState,
+    required TResult Function(Role role) changedRole,
+    required TResult Function(Department department) changedDepartment,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,6 +64,8 @@ mixin _$RegisterEnterRoleEvent {
     TResult Function(RegisterEnterRoleState state)? setState,
     TResult Function()? save,
     TResult Function()? initState,
+    TResult Function(Role role)? changedRole,
+    TResult Function(Department department)? changedDepartment,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,6 +73,8 @@ mixin _$RegisterEnterRoleEvent {
     TResult Function(RegisterEnterRoleState state)? setState,
     TResult Function()? save,
     TResult Function()? initState,
+    TResult Function(Role role)? changedRole,
+    TResult Function(Department department)? changedDepartment,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -65,6 +83,8 @@ mixin _$RegisterEnterRoleEvent {
     required TResult Function(SetState value) setState,
     required TResult Function(Save value) save,
     required TResult Function(InitState value) initState,
+    required TResult Function(ChangedRole value) changedRole,
+    required TResult Function(ChangedDepartment value) changedDepartment,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -72,6 +92,8 @@ mixin _$RegisterEnterRoleEvent {
     TResult Function(SetState value)? setState,
     TResult Function(Save value)? save,
     TResult Function(InitState value)? initState,
+    TResult Function(ChangedRole value)? changedRole,
+    TResult Function(ChangedDepartment value)? changedDepartment,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -79,6 +101,8 @@ mixin _$RegisterEnterRoleEvent {
     TResult Function(SetState value)? setState,
     TResult Function(Save value)? save,
     TResult Function(InitState value)? initState,
+    TResult Function(ChangedRole value)? changedRole,
+    TResult Function(ChangedDepartment value)? changedDepartment,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -176,6 +200,8 @@ class _$SetState implements SetState {
     required TResult Function(RegisterEnterRoleState state) setState,
     required TResult Function() save,
     required TResult Function() initState,
+    required TResult Function(Role role) changedRole,
+    required TResult Function(Department department) changedDepartment,
   }) {
     return setState(state);
   }
@@ -186,6 +212,8 @@ class _$SetState implements SetState {
     TResult Function(RegisterEnterRoleState state)? setState,
     TResult Function()? save,
     TResult Function()? initState,
+    TResult Function(Role role)? changedRole,
+    TResult Function(Department department)? changedDepartment,
   }) {
     return setState?.call(state);
   }
@@ -196,6 +224,8 @@ class _$SetState implements SetState {
     TResult Function(RegisterEnterRoleState state)? setState,
     TResult Function()? save,
     TResult Function()? initState,
+    TResult Function(Role role)? changedRole,
+    TResult Function(Department department)? changedDepartment,
     required TResult orElse(),
   }) {
     if (setState != null) {
@@ -210,6 +240,8 @@ class _$SetState implements SetState {
     required TResult Function(SetState value) setState,
     required TResult Function(Save value) save,
     required TResult Function(InitState value) initState,
+    required TResult Function(ChangedRole value) changedRole,
+    required TResult Function(ChangedDepartment value) changedDepartment,
   }) {
     return setState(this);
   }
@@ -220,6 +252,8 @@ class _$SetState implements SetState {
     TResult Function(SetState value)? setState,
     TResult Function(Save value)? save,
     TResult Function(InitState value)? initState,
+    TResult Function(ChangedRole value)? changedRole,
+    TResult Function(ChangedDepartment value)? changedDepartment,
   }) {
     return setState?.call(this);
   }
@@ -230,6 +264,8 @@ class _$SetState implements SetState {
     TResult Function(SetState value)? setState,
     TResult Function(Save value)? save,
     TResult Function(InitState value)? initState,
+    TResult Function(ChangedRole value)? changedRole,
+    TResult Function(ChangedDepartment value)? changedDepartment,
     required TResult orElse(),
   }) {
     if (setState != null) {
@@ -290,6 +326,8 @@ class _$Save implements Save {
     required TResult Function(RegisterEnterRoleState state) setState,
     required TResult Function() save,
     required TResult Function() initState,
+    required TResult Function(Role role) changedRole,
+    required TResult Function(Department department) changedDepartment,
   }) {
     return save();
   }
@@ -300,6 +338,8 @@ class _$Save implements Save {
     TResult Function(RegisterEnterRoleState state)? setState,
     TResult Function()? save,
     TResult Function()? initState,
+    TResult Function(Role role)? changedRole,
+    TResult Function(Department department)? changedDepartment,
   }) {
     return save?.call();
   }
@@ -310,6 +350,8 @@ class _$Save implements Save {
     TResult Function(RegisterEnterRoleState state)? setState,
     TResult Function()? save,
     TResult Function()? initState,
+    TResult Function(Role role)? changedRole,
+    TResult Function(Department department)? changedDepartment,
     required TResult orElse(),
   }) {
     if (save != null) {
@@ -324,6 +366,8 @@ class _$Save implements Save {
     required TResult Function(SetState value) setState,
     required TResult Function(Save value) save,
     required TResult Function(InitState value) initState,
+    required TResult Function(ChangedRole value) changedRole,
+    required TResult Function(ChangedDepartment value) changedDepartment,
   }) {
     return save(this);
   }
@@ -334,6 +378,8 @@ class _$Save implements Save {
     TResult Function(SetState value)? setState,
     TResult Function(Save value)? save,
     TResult Function(InitState value)? initState,
+    TResult Function(ChangedRole value)? changedRole,
+    TResult Function(ChangedDepartment value)? changedDepartment,
   }) {
     return save?.call(this);
   }
@@ -344,6 +390,8 @@ class _$Save implements Save {
     TResult Function(SetState value)? setState,
     TResult Function(Save value)? save,
     TResult Function(InitState value)? initState,
+    TResult Function(ChangedRole value)? changedRole,
+    TResult Function(ChangedDepartment value)? changedDepartment,
     required TResult orElse(),
   }) {
     if (save != null) {
@@ -399,6 +447,8 @@ class _$InitState implements InitState {
     required TResult Function(RegisterEnterRoleState state) setState,
     required TResult Function() save,
     required TResult Function() initState,
+    required TResult Function(Role role) changedRole,
+    required TResult Function(Department department) changedDepartment,
   }) {
     return initState();
   }
@@ -409,6 +459,8 @@ class _$InitState implements InitState {
     TResult Function(RegisterEnterRoleState state)? setState,
     TResult Function()? save,
     TResult Function()? initState,
+    TResult Function(Role role)? changedRole,
+    TResult Function(Department department)? changedDepartment,
   }) {
     return initState?.call();
   }
@@ -419,6 +471,8 @@ class _$InitState implements InitState {
     TResult Function(RegisterEnterRoleState state)? setState,
     TResult Function()? save,
     TResult Function()? initState,
+    TResult Function(Role role)? changedRole,
+    TResult Function(Department department)? changedDepartment,
     required TResult orElse(),
   }) {
     if (initState != null) {
@@ -433,6 +487,8 @@ class _$InitState implements InitState {
     required TResult Function(SetState value) setState,
     required TResult Function(Save value) save,
     required TResult Function(InitState value) initState,
+    required TResult Function(ChangedRole value) changedRole,
+    required TResult Function(ChangedDepartment value) changedDepartment,
   }) {
     return initState(this);
   }
@@ -443,6 +499,8 @@ class _$InitState implements InitState {
     TResult Function(SetState value)? setState,
     TResult Function(Save value)? save,
     TResult Function(InitState value)? initState,
+    TResult Function(ChangedRole value)? changedRole,
+    TResult Function(ChangedDepartment value)? changedDepartment,
   }) {
     return initState?.call(this);
   }
@@ -453,6 +511,8 @@ class _$InitState implements InitState {
     TResult Function(SetState value)? setState,
     TResult Function(Save value)? save,
     TResult Function(InitState value)? initState,
+    TResult Function(ChangedRole value)? changedRole,
+    TResult Function(ChangedDepartment value)? changedDepartment,
     required TResult orElse(),
   }) {
     if (initState != null) {
@@ -467,13 +527,327 @@ abstract class InitState implements RegisterEnterRoleEvent {
 }
 
 /// @nodoc
+abstract class $ChangedRoleCopyWith<$Res> {
+  factory $ChangedRoleCopyWith(
+          ChangedRole value, $Res Function(ChangedRole) then) =
+      _$ChangedRoleCopyWithImpl<$Res>;
+  $Res call({Role role});
+}
+
+/// @nodoc
+class _$ChangedRoleCopyWithImpl<$Res>
+    extends _$RegisterEnterRoleEventCopyWithImpl<$Res>
+    implements $ChangedRoleCopyWith<$Res> {
+  _$ChangedRoleCopyWithImpl(
+      ChangedRole _value, $Res Function(ChangedRole) _then)
+      : super(_value, (v) => _then(v as ChangedRole));
+
+  @override
+  ChangedRole get _value => super._value as ChangedRole;
+
+  @override
+  $Res call({
+    Object? role = freezed,
+  }) {
+    return _then(ChangedRole(
+      role == freezed
+          ? _value.role
+          : role // ignore: cast_nullable_to_non_nullable
+              as Role,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ChangedRole implements ChangedRole {
+  const _$ChangedRole(this.role);
+
+  @override
+  final Role role;
+
+  @override
+  String toString() {
+    return 'RegisterEnterRoleEvent.changedRole(role: $role)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is ChangedRole &&
+            const DeepCollectionEquality().equals(other.role, role));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(role));
+
+  @JsonKey(ignore: true)
+  @override
+  $ChangedRoleCopyWith<ChangedRole> get copyWith =>
+      _$ChangedRoleCopyWithImpl<ChangedRole>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(RegisterEnterRoleState state) setState,
+    required TResult Function() save,
+    required TResult Function() initState,
+    required TResult Function(Role role) changedRole,
+    required TResult Function(Department department) changedDepartment,
+  }) {
+    return changedRole(role);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(RegisterEnterRoleState state)? setState,
+    TResult Function()? save,
+    TResult Function()? initState,
+    TResult Function(Role role)? changedRole,
+    TResult Function(Department department)? changedDepartment,
+  }) {
+    return changedRole?.call(role);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(RegisterEnterRoleState state)? setState,
+    TResult Function()? save,
+    TResult Function()? initState,
+    TResult Function(Role role)? changedRole,
+    TResult Function(Department department)? changedDepartment,
+    required TResult orElse(),
+  }) {
+    if (changedRole != null) {
+      return changedRole(role);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(SetState value) setState,
+    required TResult Function(Save value) save,
+    required TResult Function(InitState value) initState,
+    required TResult Function(ChangedRole value) changedRole,
+    required TResult Function(ChangedDepartment value) changedDepartment,
+  }) {
+    return changedRole(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(SetState value)? setState,
+    TResult Function(Save value)? save,
+    TResult Function(InitState value)? initState,
+    TResult Function(ChangedRole value)? changedRole,
+    TResult Function(ChangedDepartment value)? changedDepartment,
+  }) {
+    return changedRole?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(SetState value)? setState,
+    TResult Function(Save value)? save,
+    TResult Function(InitState value)? initState,
+    TResult Function(ChangedRole value)? changedRole,
+    TResult Function(ChangedDepartment value)? changedDepartment,
+    required TResult orElse(),
+  }) {
+    if (changedRole != null) {
+      return changedRole(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ChangedRole implements RegisterEnterRoleEvent {
+  const factory ChangedRole(Role role) = _$ChangedRole;
+
+  Role get role;
+  @JsonKey(ignore: true)
+  $ChangedRoleCopyWith<ChangedRole> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ChangedDepartmentCopyWith<$Res> {
+  factory $ChangedDepartmentCopyWith(
+          ChangedDepartment value, $Res Function(ChangedDepartment) then) =
+      _$ChangedDepartmentCopyWithImpl<$Res>;
+  $Res call({Department department});
+
+  $DepartmentCopyWith<$Res> get department;
+}
+
+/// @nodoc
+class _$ChangedDepartmentCopyWithImpl<$Res>
+    extends _$RegisterEnterRoleEventCopyWithImpl<$Res>
+    implements $ChangedDepartmentCopyWith<$Res> {
+  _$ChangedDepartmentCopyWithImpl(
+      ChangedDepartment _value, $Res Function(ChangedDepartment) _then)
+      : super(_value, (v) => _then(v as ChangedDepartment));
+
+  @override
+  ChangedDepartment get _value => super._value as ChangedDepartment;
+
+  @override
+  $Res call({
+    Object? department = freezed,
+  }) {
+    return _then(ChangedDepartment(
+      department == freezed
+          ? _value.department
+          : department // ignore: cast_nullable_to_non_nullable
+              as Department,
+    ));
+  }
+
+  @override
+  $DepartmentCopyWith<$Res> get department {
+    return $DepartmentCopyWith<$Res>(_value.department, (value) {
+      return _then(_value.copyWith(department: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$ChangedDepartment implements ChangedDepartment {
+  const _$ChangedDepartment(this.department);
+
+  @override
+  final Department department;
+
+  @override
+  String toString() {
+    return 'RegisterEnterRoleEvent.changedDepartment(department: $department)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is ChangedDepartment &&
+            const DeepCollectionEquality()
+                .equals(other.department, department));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(department));
+
+  @JsonKey(ignore: true)
+  @override
+  $ChangedDepartmentCopyWith<ChangedDepartment> get copyWith =>
+      _$ChangedDepartmentCopyWithImpl<ChangedDepartment>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(RegisterEnterRoleState state) setState,
+    required TResult Function() save,
+    required TResult Function() initState,
+    required TResult Function(Role role) changedRole,
+    required TResult Function(Department department) changedDepartment,
+  }) {
+    return changedDepartment(department);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(RegisterEnterRoleState state)? setState,
+    TResult Function()? save,
+    TResult Function()? initState,
+    TResult Function(Role role)? changedRole,
+    TResult Function(Department department)? changedDepartment,
+  }) {
+    return changedDepartment?.call(department);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(RegisterEnterRoleState state)? setState,
+    TResult Function()? save,
+    TResult Function()? initState,
+    TResult Function(Role role)? changedRole,
+    TResult Function(Department department)? changedDepartment,
+    required TResult orElse(),
+  }) {
+    if (changedDepartment != null) {
+      return changedDepartment(department);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(SetState value) setState,
+    required TResult Function(Save value) save,
+    required TResult Function(InitState value) initState,
+    required TResult Function(ChangedRole value) changedRole,
+    required TResult Function(ChangedDepartment value) changedDepartment,
+  }) {
+    return changedDepartment(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(SetState value)? setState,
+    TResult Function(Save value)? save,
+    TResult Function(InitState value)? initState,
+    TResult Function(ChangedRole value)? changedRole,
+    TResult Function(ChangedDepartment value)? changedDepartment,
+  }) {
+    return changedDepartment?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(SetState value)? setState,
+    TResult Function(Save value)? save,
+    TResult Function(InitState value)? initState,
+    TResult Function(ChangedRole value)? changedRole,
+    TResult Function(ChangedDepartment value)? changedDepartment,
+    required TResult orElse(),
+  }) {
+    if (changedDepartment != null) {
+      return changedDepartment(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ChangedDepartment implements RegisterEnterRoleEvent {
+  const factory ChangedDepartment(Department department) = _$ChangedDepartment;
+
+  Department get department;
+  @JsonKey(ignore: true)
+  $ChangedDepartmentCopyWith<ChangedDepartment> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 class _$RegisterEnterRoleStateTearOff {
   const _$RegisterEnterRoleStateTearOff();
 
   _RegisterEnterRoleState call(
       {required bool isShowErrorMessage,
       required bool isNavigateNextPage,
-      required Role role,
+      required Role? role,
       required Department? department,
       required bool isLoading,
       required List<Department> departmentChoices,
@@ -497,7 +871,7 @@ const $RegisterEnterRoleState = _$RegisterEnterRoleStateTearOff();
 mixin _$RegisterEnterRoleState {
   bool get isShowErrorMessage => throw _privateConstructorUsedError;
   bool get isNavigateNextPage => throw _privateConstructorUsedError;
-  Role get role => throw _privateConstructorUsedError;
+  Role? get role => throw _privateConstructorUsedError;
   Department? get department => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
   List<Department> get departmentChoices => throw _privateConstructorUsedError;
@@ -516,7 +890,7 @@ abstract class $RegisterEnterRoleStateCopyWith<$Res> {
   $Res call(
       {bool isShowErrorMessage,
       bool isNavigateNextPage,
-      Role role,
+      Role? role,
       Department? department,
       bool isLoading,
       List<Department> departmentChoices,
@@ -556,7 +930,7 @@ class _$RegisterEnterRoleStateCopyWithImpl<$Res>
       role: role == freezed
           ? _value.role
           : role // ignore: cast_nullable_to_non_nullable
-              as Role,
+              as Role?,
       department: department == freezed
           ? _value.department
           : department // ignore: cast_nullable_to_non_nullable
@@ -598,7 +972,7 @@ abstract class _$RegisterEnterRoleStateCopyWith<$Res>
   $Res call(
       {bool isShowErrorMessage,
       bool isNavigateNextPage,
-      Role role,
+      Role? role,
       Department? department,
       bool isLoading,
       List<Department> departmentChoices,
@@ -641,7 +1015,7 @@ class __$RegisterEnterRoleStateCopyWithImpl<$Res>
       role: role == freezed
           ? _value.role
           : role // ignore: cast_nullable_to_non_nullable
-              as Role,
+              as Role?,
       department: department == freezed
           ? _value.department
           : department // ignore: cast_nullable_to_non_nullable
@@ -679,7 +1053,7 @@ class _$_RegisterEnterRoleState implements _RegisterEnterRoleState {
   @override
   final bool isNavigateNextPage;
   @override
-  final Role role;
+  final Role? role;
   @override
   final Department? department;
   @override
@@ -734,7 +1108,7 @@ abstract class _RegisterEnterRoleState implements RegisterEnterRoleState {
   const factory _RegisterEnterRoleState(
       {required bool isShowErrorMessage,
       required bool isNavigateNextPage,
-      required Role role,
+      required Role? role,
       required Department? department,
       required bool isLoading,
       required List<Department> departmentChoices,
@@ -745,7 +1119,7 @@ abstract class _RegisterEnterRoleState implements RegisterEnterRoleState {
   @override
   bool get isNavigateNextPage;
   @override
-  Role get role;
+  Role? get role;
   @override
   Department? get department;
   @override

@@ -4,7 +4,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:frontend/core/presentation/routes/router.gr.dart';
 import 'package:frontend/core/presentation/widgets/bottom_sheet_single_select.dart';
 import 'package:frontend/core/presentation/widgets/button.dart';
+import 'package:frontend/core/utils/enum.dart';
 import 'package:frontend/features/authentication/presentation/bloc/register_enter_role/register_enter_role_bloc.dart';
+import 'package:frontend/features/manage_locker_and_equipment/domain/entities/department.dart';
 import 'package:frontend/injection.dart';
 import 'package:loading_overlay_pro/loading_overlay_pro.dart';
 
@@ -97,14 +99,35 @@ class RegisterEnterRolePage extends StatelessWidget {
                       BottomSheetSingleSelect(
                         label: 'ตำแหน่ง',
                         placeHolder: 'ตำแหน่ง',
-                        onChanged: (_) {},
+                        onChanged: (value) {
+                          context
+                              .read<RegisterEnterRoleBloc>()
+                              .add(ChangedRole(value!['value']! as Role));
+                        },
                         listChoice: const [
-                          {'displayText': 'Admin', 'value': 2},
-                          {'displayText': 'Master maintainer', 'value': 3},
-                          {'displayText': 'Maintainer', 'value': 4},
-                          {'displayText': 'User', 'value': 5},
+                          {'displayText': 'Admin', 'value': Role.admin},
+                          {
+                            'displayText': 'Master maintainer',
+                            'value': Role.masterMaintainer
+                          },
+                          {
+                            'displayText': 'Maintainer',
+                            'value': Role.maintainer
+                          },
+                          {
+                            'displayText': 'User',
+                            'value': Role.user,
+                          },
                         ],
                         isRequired: true,
+                        isError: state.isShowErrorMessage && state.role == null,
+                        errorMessage: 'กรุณากรอกค่า',
+                        initialValue: state.role != null
+                            ? {
+                                'displayText': state.role!.toNameString(),
+                                'value': state.role
+                              }
+                            : null,
                       ),
                       const SizedBox(
                         width: 5,
@@ -112,11 +135,26 @@ class RegisterEnterRolePage extends StatelessWidget {
                       BottomSheetSingleSelect(
                         label: 'แผนก',
                         placeHolder: 'แผนก',
-                        onChanged: (_) {},
+                        onChanged: (value) {
+                          context.read<RegisterEnterRoleBloc>().add(
+                                ChangedDepartment(
+                                  value!['value'] as Department,
+                                ),
+                              );
+                        },
                         listChoice: state.departmentChoices
-                            .map((e) => {'displayText': e.name, 'value': e.id})
+                            .map((e) => {'displayText': e.name, 'value': e})
                             .toList(),
                         isRequired: true,
+                        isError: state.isShowErrorMessage &&
+                            state.department == null,
+                        errorMessage: 'กรุณากรอกค่า',
+                        initialValue: state.department != null
+                            ? {
+                                'displayText': state.department!.name,
+                                'value': state.department
+                              }
+                            : null,
                       ),
                     ],
                   ),

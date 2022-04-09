@@ -26,8 +26,8 @@ class _$PreRegisterUserTearOff {
       required EmailAddress? email,
       required Password? password,
       required Role? role,
-      required String? department,
-      required String? pin}) {
+      required String? pin,
+      required Department? department}) {
     return _PreRegisterUser(
       firstName: firstName,
       lastName: lastName,
@@ -36,8 +36,8 @@ class _$PreRegisterUserTearOff {
       email: email,
       password: password,
       role: role,
-      department: department,
       pin: pin,
+      department: department,
     );
   }
 }
@@ -54,8 +54,8 @@ mixin _$PreRegisterUser {
   EmailAddress? get email => throw _privateConstructorUsedError;
   Password? get password => throw _privateConstructorUsedError;
   Role? get role => throw _privateConstructorUsedError;
-  String? get department => throw _privateConstructorUsedError;
   String? get pin => throw _privateConstructorUsedError;
+  Department? get department => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $PreRegisterUserCopyWith<PreRegisterUser> get copyWith =>
@@ -75,8 +75,10 @@ abstract class $PreRegisterUserCopyWith<$Res> {
       EmailAddress? email,
       Password? password,
       Role? role,
-      String? department,
-      String? pin});
+      String? pin,
+      Department? department});
+
+  $DepartmentCopyWith<$Res>? get department;
 }
 
 /// @nodoc
@@ -97,8 +99,8 @@ class _$PreRegisterUserCopyWithImpl<$Res>
     Object? email = freezed,
     Object? password = freezed,
     Object? role = freezed,
-    Object? department = freezed,
     Object? pin = freezed,
+    Object? department = freezed,
   }) {
     return _then(_value.copyWith(
       firstName: firstName == freezed
@@ -129,15 +131,26 @@ class _$PreRegisterUserCopyWithImpl<$Res>
           ? _value.role
           : role // ignore: cast_nullable_to_non_nullable
               as Role?,
-      department: department == freezed
-          ? _value.department
-          : department // ignore: cast_nullable_to_non_nullable
-              as String?,
       pin: pin == freezed
           ? _value.pin
           : pin // ignore: cast_nullable_to_non_nullable
               as String?,
+      department: department == freezed
+          ? _value.department
+          : department // ignore: cast_nullable_to_non_nullable
+              as Department?,
     ));
+  }
+
+  @override
+  $DepartmentCopyWith<$Res>? get department {
+    if (_value.department == null) {
+      return null;
+    }
+
+    return $DepartmentCopyWith<$Res>(_value.department!, (value) {
+      return _then(_value.copyWith(department: value));
+    });
   }
 }
 
@@ -156,8 +169,11 @@ abstract class _$PreRegisterUserCopyWith<$Res>
       EmailAddress? email,
       Password? password,
       Role? role,
-      String? department,
-      String? pin});
+      String? pin,
+      Department? department});
+
+  @override
+  $DepartmentCopyWith<$Res>? get department;
 }
 
 /// @nodoc
@@ -180,8 +196,8 @@ class __$PreRegisterUserCopyWithImpl<$Res>
     Object? email = freezed,
     Object? password = freezed,
     Object? role = freezed,
-    Object? department = freezed,
     Object? pin = freezed,
+    Object? department = freezed,
   }) {
     return _then(_PreRegisterUser(
       firstName: firstName == freezed
@@ -212,14 +228,14 @@ class __$PreRegisterUserCopyWithImpl<$Res>
           ? _value.role
           : role // ignore: cast_nullable_to_non_nullable
               as Role?,
-      department: department == freezed
-          ? _value.department
-          : department // ignore: cast_nullable_to_non_nullable
-              as String?,
       pin: pin == freezed
           ? _value.pin
           : pin // ignore: cast_nullable_to_non_nullable
               as String?,
+      department: department == freezed
+          ? _value.department
+          : department // ignore: cast_nullable_to_non_nullable
+              as Department?,
     ));
   }
 }
@@ -235,8 +251,8 @@ class _$_PreRegisterUser implements _PreRegisterUser {
       required this.email,
       required this.password,
       required this.role,
-      required this.department,
-      required this.pin});
+      required this.pin,
+      required this.department});
 
   @override
   final FirstName? firstName;
@@ -253,13 +269,13 @@ class _$_PreRegisterUser implements _PreRegisterUser {
   @override
   final Role? role;
   @override
-  final String? department;
-  @override
   final String? pin;
+  @override
+  final Department? department;
 
   @override
   String toString() {
-    return 'PreRegisterUser(firstName: $firstName, lastName: $lastName, gender: $gender, telNo: $telNo, email: $email, password: $password, role: $role, department: $department, pin: $pin)';
+    return 'PreRegisterUser(firstName: $firstName, lastName: $lastName, gender: $gender, telNo: $telNo, email: $email, password: $password, role: $role, pin: $pin, department: $department)';
   }
 
   @override
@@ -274,9 +290,9 @@ class _$_PreRegisterUser implements _PreRegisterUser {
             const DeepCollectionEquality().equals(other.email, email) &&
             const DeepCollectionEquality().equals(other.password, password) &&
             const DeepCollectionEquality().equals(other.role, role) &&
+            const DeepCollectionEquality().equals(other.pin, pin) &&
             const DeepCollectionEquality()
-                .equals(other.department, department) &&
-            const DeepCollectionEquality().equals(other.pin, pin));
+                .equals(other.department, department));
   }
 
   @override
@@ -289,8 +305,8 @@ class _$_PreRegisterUser implements _PreRegisterUser {
       const DeepCollectionEquality().hash(email),
       const DeepCollectionEquality().hash(password),
       const DeepCollectionEquality().hash(role),
-      const DeepCollectionEquality().hash(department),
-      const DeepCollectionEquality().hash(pin));
+      const DeepCollectionEquality().hash(pin),
+      const DeepCollectionEquality().hash(department));
 
   @JsonKey(ignore: true)
   @override
@@ -307,8 +323,8 @@ abstract class _PreRegisterUser implements PreRegisterUser {
       required EmailAddress? email,
       required Password? password,
       required Role? role,
-      required String? department,
-      required String? pin}) = _$_PreRegisterUser;
+      required String? pin,
+      required Department? department}) = _$_PreRegisterUser;
 
   @override
   FirstName? get firstName;
@@ -325,9 +341,9 @@ abstract class _PreRegisterUser implements PreRegisterUser {
   @override
   Role? get role;
   @override
-  String? get department;
-  @override
   String? get pin;
+  @override
+  Department? get department;
   @override
   @JsonKey(ignore: true)
   _$PreRegisterUserCopyWith<_PreRegisterUser> get copyWith =>

@@ -31,7 +31,8 @@ class BottomSheetSingleSelect extends HookWidget {
   Widget build(BuildContext context) {
     final ValueNotifier<Map<String, dynamic>?> currentValue =
         useState(initialValue);
-    final controller = useTextEditingController();
+    final controller =
+        useTextEditingController(text: initialValue?['displayText'] as String?);
     return Expanded(
       child: InkWell(
         onTap: () => _onPressed(context, currentValue, controller),
@@ -55,14 +56,20 @@ class BottomSheetSingleSelect extends HookWidget {
                   Text(
                     '*',
                     style: TextStyle(
-                      fontFamily: 'IBM Plex Sans Thai',
-                      fontSize: 14,
-                      color: Theme.of(context).colorScheme.error,
-                    ),
+                        fontFamily: 'IBM Plex Sans Thai',
+                        fontSize: 14,
+                        color: Theme.of(context).colorScheme.error),
                   )
               ],
             ),
             errorText: isError ? errorMessage : null,
+            errorStyle: TextStyle(
+              color: Theme.of(context).colorScheme.error,
+            ),
+            errorBorder: OutlineInputBorder(
+              borderSide: BorderSide(
+                  color: Theme.of(context).colorScheme.error, width: 0.5),
+            ),
           ),
           enabled: false,
           style: const TextStyle(overflow: TextOverflow.ellipsis),
