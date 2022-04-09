@@ -1,7 +1,11 @@
+import 'dart:math';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:frontend/core/presentation/routes/router.gr.dart';
+import 'package:frontend/features/authentication/domain/repositories/authentication_repository.dart';
+import 'package:frontend/injection.dart';
 
 class RegisterEnterPinSettingPage extends HookWidget {
   const RegisterEnterPinSettingPage({Key? key}) : super(key: key);
@@ -10,6 +14,7 @@ class RegisterEnterPinSettingPage extends HookWidget {
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
     final pinCount = useState(0);
+    final pin = useState('');
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -66,7 +71,7 @@ class RegisterEnterPinSettingPage extends HookWidget {
           ),
           Expanded(
             child: Column(
-              children: _buildNumbPad(context, pinCount),
+              children: _buildNumbPad(context, pinCount, pin),
             ),
           ),
         ],
@@ -77,6 +82,7 @@ class RegisterEnterPinSettingPage extends HookWidget {
   List<Widget> _buildNumbPad(
     BuildContext context,
     ValueNotifier<int> pinCount,
+    ValueNotifier<String> pin,
   ) {
     final List<Widget> rows = [];
     int countNumber = 1;
@@ -133,8 +139,13 @@ class RegisterEnterPinSettingPage extends HookWidget {
                 ),
                 child: TextButton(
                   onPressed: () {
+                    pin.value += countNumber.toString();
                     pinCount.value++;
                     if (pinCount.value == 6) {
+                      final preRegisterUser =
+                          getIt<AuthenticationRepository>().preRegisterUser;
+                      getIt<AuthenticationRepository>().preRegisterUser =
+                          preRegisterUser.copyWith(pin: pin.value);
                       AutoRouter.of(context)
                           .push(const RegisterEnterPinSettingConfirmRoute());
                     }

@@ -13,8 +13,6 @@ class RegisterEnterRoleState with _$RegisterEnterRoleState {
   }) = _RegisterEnterRoleState;
 
   factory RegisterEnterRoleState.initial(PreRegisterUser preRegisterUser) {
-    print('preRegisterUser.role: ${preRegisterUser.role}');
-    print('preRegisterUser.department: ${preRegisterUser.department?.name}');
     return RegisterEnterRoleState(
       isShowErrorMessage: false,
       isNavigateNextPage: false,
