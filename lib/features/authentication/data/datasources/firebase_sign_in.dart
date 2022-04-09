@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
+import 'package:frontend/features/authentication/data/datasources/firebase_user_mapper.dart';
 import 'package:frontend/features/authentication/domain/entities/user.dart';
 import 'package:frontend/features/authentication/domain/repositories/authentication_failure.dart';
 import 'package:frontend/features/authentication/domain/value_objects/value_objects.dart';
@@ -61,11 +62,7 @@ class FirebaseSignInAuth {
     final user = _firebaseAuth.currentUser;
     if (user != null) {
       final userInfo = user.providerData[0];
-      return UserType(
-        uid: user.uid,
-        emailAddress: EmailAddress(userInfo.email ?? ''),
-        providerId: userInfo.providerId,
-      );
+      return user.toDomain();
     } else {
       return null;
     }

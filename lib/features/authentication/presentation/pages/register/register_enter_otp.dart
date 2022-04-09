@@ -153,14 +153,7 @@ class RegisterEnterOTPPage extends StatelessWidget {
                             Button(
                               'ลองอีกครั้ง',
                               onPressed: () {
-                                // controller.sendOTP();
-                                context.read<RegisterEnterOtpBloc>().add(
-                                      SetState(
-                                        state.copyWith(
-                                          isNavigateNextPage: true,
-                                        ),
-                                      ),
-                                    );
+                                controller.sendOTP();
                               },
                             )
                           ],

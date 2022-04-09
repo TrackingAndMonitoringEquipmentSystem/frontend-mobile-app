@@ -46,9 +46,10 @@ class InputText extends HookWidget {
                 Text(
                   '*',
                   style: TextStyle(
-                      fontFamily: 'IBM Plex Sans Thai',
-                      fontSize: 14,
-                      color: Theme.of(context).colorScheme.error),
+                    fontFamily: 'IBM Plex Sans Thai',
+                    fontSize: 14,
+                    color: Theme.of(context).colorScheme.error,
+                  ),
                 )
             ],
           ),

@@ -11,7 +11,6 @@ class RegisterEnterPhoneNumberState with _$RegisterEnterPhoneNumberState {
   factory RegisterEnterPhoneNumberState.initial(
     AuthenticationRepository _authenticationRepository,
   ) {
-    print(_authenticationRepository.preRegisterUser);
     return RegisterEnterPhoneNumberState(
       telNo: _authenticationRepository.preRegisterUser.telNo ?? TelNo(''),
       isShowErrorMessage: false,

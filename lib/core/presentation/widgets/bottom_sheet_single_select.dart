@@ -13,6 +13,7 @@ class BottomSheetSingleSelect extends HookWidget {
   final Map<String, dynamic>? initialValue;
   final List<Map<String, dynamic>> listChoice;
   final Widget? headerWidget;
+  final bool isRequired;
   const BottomSheetSingleSelect({
     required this.onChanged,
     this.isError = false,
@@ -24,6 +25,7 @@ class BottomSheetSingleSelect extends HookWidget {
     this.initialValue,
     this.listChoice = const [],
     this.headerWidget,
+    this.isRequired = false,
   });
   @override
   Widget build(BuildContext context) {
@@ -40,12 +42,25 @@ class BottomSheetSingleSelect extends HookWidget {
               Icons.keyboard_arrow_down,
             ),
             hintText: placeHolder,
-            label: Text(
-              label,
-              style: const TextStyle(
-                fontFamily: 'IBM Plex Sans Thai',
-                fontSize: 14,
-              ),
+            label: Row(
+              children: [
+                Text(
+                  label,
+                  style: const TextStyle(
+                    fontFamily: 'IBM Plex Sans Thai',
+                    fontSize: 14,
+                  ),
+                ),
+                if (isRequired)
+                  Text(
+                    '*',
+                    style: TextStyle(
+                      fontFamily: 'IBM Plex Sans Thai',
+                      fontSize: 14,
+                      color: Theme.of(context).colorScheme.error,
+                    ),
+                  )
+              ],
             ),
             errorText: isError ? errorMessage : null,
           ),

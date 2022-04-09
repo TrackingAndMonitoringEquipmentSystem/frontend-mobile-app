@@ -14,6 +14,9 @@ class EmailAddress extends ValueObject<String> {
   }
 
   const EmailAddress._({required this.value});
+  factory EmailAddress.fromJson(Map<String, dynamic> json) {
+    return EmailAddress(json['email'] as String);
+  }
 }
 
 class Password extends ValueObject<String> {
@@ -79,6 +82,10 @@ class FirstName extends ValueObject<String> {
   }
 
   const FirstName._({required this.value});
+
+  factory FirstName.fromJson(Map<String, dynamic> json) {
+    return FirstName(json['firstName'] as String);
+  }
 }
 
 class LastName extends ValueObject<String> {
@@ -100,6 +107,9 @@ class LastName extends ValueObject<String> {
   }
 
   const LastName._({required this.value});
+  factory LastName.fromJson(Map<String, dynamic> json) {
+    return LastName(json['lastName'] as String);
+  }
 }
 
 class Otp extends ValueObject<String> {

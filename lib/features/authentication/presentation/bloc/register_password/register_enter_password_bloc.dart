@@ -21,6 +21,11 @@ class RegisterEnterPasswordBloc
       event.map(
         passwordChanged: (e) {
           emit(state.copyWith(password: Password(e.password)));
+          if (e.password == state.confirmPassword.value.getOrElse(() => '')) {
+            emit(state.copyWith(isErrorPasswordNotSame: false));
+          } else {
+            emit(state.copyWith(isErrorPasswordNotSame: true));
+          }
         },
         confirmPasswordChanged: (e) {
           emit(state.copyWith(confirmPassword: Password(e.confirmPassword)));
@@ -37,9 +42,6 @@ class RegisterEnterPasswordBloc
           emit(state.copyWith(isShowErrorMessage: true));
           final isPasswordValid = state.password.isValid();
           final isConfirmPassword = state.confirmPassword.isValid();
-          print(
-            '->isPasswordValid: $isPasswordValid, isConfirmPassword: $isConfirmPassword',
-          );
           if (isPasswordValid &&
               isConfirmPassword &&
               !state.isErrorPasswordNotSame) {
