@@ -29,4 +29,8 @@ abstract class AuthenticationRepository {
         onCodeSent,
     required void Function(String) onCodeAutoRetrievalTimeout,
   });
+
+  Future<Either<AuthenticationFailure, UserType>> signIn();
+
+  UserType? get userType;
 }

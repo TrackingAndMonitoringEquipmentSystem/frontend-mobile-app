@@ -36,17 +36,18 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
             ),
           );
         },
-        registerWithEmailAndPasswordPressed: (e) {
-          // _performActionOnAuthFacadeWithEmailAndPassword(
-          //   _authenticationRepository.registerWithEmailAndPassword,
-          //   emit,
-          // );
-        },
         signInWithEmailAndPasswordPressed: (e) async {
-          await _performActionOnAuthFacadeWithEmailAndPassword(
-            _authenticationRepository.signInWithEmailAndPassword,
-            emit,
-          );
+          final isEmailValid = state.emailAddress.isValid();
+          final isPasswordValid = state.password.isValid();
+          if (isEmailValid && isPasswordValid) {
+            final result =
+                await _authenticationRepository.signInWithEmailAndPassword(
+                    emailAddress: state.emailAddress, password: state.password);
+            if (result.isRight()) {
+              final restResult = await _authenticationRepository.signIn();
+              print(restResult);
+            }
+          }
         },
         signInWithGooglePressed: (e) async {
           emit(
@@ -99,41 +100,5 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
         },
       );
     });
-  }
-
-  Future<void> _performActionOnAuthFacadeWithEmailAndPassword(
-    Future<Either<AuthenticationFailure, Unit>> Function({
-      required EmailAddress emailAddress,
-      required Password password,
-    })
-        forwardCall,
-    Emitter<SignInFormState> emit,
-  ) async {
-    Either<AuthenticationFailure, Unit>? failureOrSuccess;
-
-    final isEmailValid = state.emailAddress.isValid();
-    final isPasswordValid = state.password.isValid();
-    if (isEmailValid && isPasswordValid) {
-      emit(
-        state.copyWith(
-          isSubmitting: true,
-          authenticationFailureOrSuccess: null,
-        ),
-      );
-
-      failureOrSuccess = await forwardCall(
-        emailAddress: state.emailAddress,
-        password: state.password,
-      );
-      if (failureOrSuccess.isRight()) {}
-    }
-
-    emit(
-      state.copyWith(
-        isSubmitting: false,
-        isShowErrorMessage: true,
-        authenticationFailureOrSuccess: failureOrSuccess,
-      ),
-    );
   }
 }

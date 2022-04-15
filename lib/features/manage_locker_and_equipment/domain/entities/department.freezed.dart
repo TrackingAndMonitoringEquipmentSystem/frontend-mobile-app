@@ -23,8 +23,8 @@ class _$DepartmentTearOff {
       required String name,
       required DateTime createdAt,
       required DateTime updatedAt,
-      required UserType createdBy,
-      required UserType updatedBy}) {
+      required UserType? createdBy,
+      required UserType? updatedBy}) {
     return _Department(
       id: id,
       name: name,
@@ -45,8 +45,8 @@ mixin _$Department {
   String get name => throw _privateConstructorUsedError;
   DateTime get createdAt => throw _privateConstructorUsedError;
   DateTime get updatedAt => throw _privateConstructorUsedError;
-  UserType get createdBy => throw _privateConstructorUsedError;
-  UserType get updatedBy => throw _privateConstructorUsedError;
+  UserType? get createdBy => throw _privateConstructorUsedError;
+  UserType? get updatedBy => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $DepartmentCopyWith<Department> get copyWith =>
@@ -63,11 +63,11 @@ abstract class $DepartmentCopyWith<$Res> {
       String name,
       DateTime createdAt,
       DateTime updatedAt,
-      UserType createdBy,
-      UserType updatedBy});
+      UserType? createdBy,
+      UserType? updatedBy});
 
-  $UserTypeCopyWith<$Res> get createdBy;
-  $UserTypeCopyWith<$Res> get updatedBy;
+  $UserTypeCopyWith<$Res>? get createdBy;
+  $UserTypeCopyWith<$Res>? get updatedBy;
 }
 
 /// @nodoc
@@ -107,24 +107,32 @@ class _$DepartmentCopyWithImpl<$Res> implements $DepartmentCopyWith<$Res> {
       createdBy: createdBy == freezed
           ? _value.createdBy
           : createdBy // ignore: cast_nullable_to_non_nullable
-              as UserType,
+              as UserType?,
       updatedBy: updatedBy == freezed
           ? _value.updatedBy
           : updatedBy // ignore: cast_nullable_to_non_nullable
-              as UserType,
+              as UserType?,
     ));
   }
 
   @override
-  $UserTypeCopyWith<$Res> get createdBy {
-    return $UserTypeCopyWith<$Res>(_value.createdBy, (value) {
+  $UserTypeCopyWith<$Res>? get createdBy {
+    if (_value.createdBy == null) {
+      return null;
+    }
+
+    return $UserTypeCopyWith<$Res>(_value.createdBy!, (value) {
       return _then(_value.copyWith(createdBy: value));
     });
   }
 
   @override
-  $UserTypeCopyWith<$Res> get updatedBy {
-    return $UserTypeCopyWith<$Res>(_value.updatedBy, (value) {
+  $UserTypeCopyWith<$Res>? get updatedBy {
+    if (_value.updatedBy == null) {
+      return null;
+    }
+
+    return $UserTypeCopyWith<$Res>(_value.updatedBy!, (value) {
       return _then(_value.copyWith(updatedBy: value));
     });
   }
@@ -141,13 +149,13 @@ abstract class _$DepartmentCopyWith<$Res> implements $DepartmentCopyWith<$Res> {
       String name,
       DateTime createdAt,
       DateTime updatedAt,
-      UserType createdBy,
-      UserType updatedBy});
+      UserType? createdBy,
+      UserType? updatedBy});
 
   @override
-  $UserTypeCopyWith<$Res> get createdBy;
+  $UserTypeCopyWith<$Res>? get createdBy;
   @override
-  $UserTypeCopyWith<$Res> get updatedBy;
+  $UserTypeCopyWith<$Res>? get updatedBy;
 }
 
 /// @nodoc
@@ -189,11 +197,11 @@ class __$DepartmentCopyWithImpl<$Res> extends _$DepartmentCopyWithImpl<$Res>
       createdBy: createdBy == freezed
           ? _value.createdBy
           : createdBy // ignore: cast_nullable_to_non_nullable
-              as UserType,
+              as UserType?,
       updatedBy: updatedBy == freezed
           ? _value.updatedBy
           : updatedBy // ignore: cast_nullable_to_non_nullable
-              as UserType,
+              as UserType?,
     ));
   }
 }
@@ -218,9 +226,9 @@ class _$_Department implements _Department {
   @override
   final DateTime updatedAt;
   @override
-  final UserType createdBy;
+  final UserType? createdBy;
   @override
-  final UserType updatedBy;
+  final UserType? updatedBy;
 
   @override
   String toString() {
@@ -262,8 +270,8 @@ abstract class _Department implements Department {
       required String name,
       required DateTime createdAt,
       required DateTime updatedAt,
-      required UserType createdBy,
-      required UserType updatedBy}) = _$_Department;
+      required UserType? createdBy,
+      required UserType? updatedBy}) = _$_Department;
 
   @override
   int get id;
@@ -274,9 +282,9 @@ abstract class _Department implements Department {
   @override
   DateTime get updatedAt;
   @override
-  UserType get createdBy;
+  UserType? get createdBy;
   @override
-  UserType get updatedBy;
+  UserType? get updatedBy;
   @override
   @JsonKey(ignore: true)
   _$DepartmentCopyWith<_Department> get copyWith =>

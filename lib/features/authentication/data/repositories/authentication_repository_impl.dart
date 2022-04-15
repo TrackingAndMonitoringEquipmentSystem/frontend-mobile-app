@@ -25,6 +25,7 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
   final TwitterSignInAuth _twitterSignInAuth;
   final AuthRestApi _authRestApi;
   final FirebaseMessaging _firebaseMessaging;
+  late UserType? _userType;
   AuthenticationRepositoryImpl(
     this._firebaseSigInAuth,
     this._googleSignInAuth,
@@ -33,7 +34,9 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
     this.preRegisterUser,
     this._authRestApi,
     this._firebaseMessaging,
-  );
+  ) {
+    _userType = null;
+  }
   @override
   Future<Either<AuthenticationFailure, Unit>>
       registerWithEmailAndPassword() async {
@@ -67,7 +70,6 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
     }
     try {
       await _firebaseSigInAuth.sendVerifyEmail();
-      print('sent email success');
     } catch (error) {
       return const Left(AuthenticationFailure.cantSendVerifyEmail());
     }
@@ -152,12 +154,20 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
   }
 
   @override
-  Future<UserType?> getSignedInUser() {
-    return _firebaseSigInAuth.getCurrentUser();
+  Future<UserType?> getSignedInUser() async {
+    final firebaseUser = _firebaseSigInAuth.getCurrentUser();
+    if (firebaseUser == null) {
+      return null;
+    }
+    final result = await signIn();
+    return result.fold((l) => null, (r) => r);
   }
 
   @override
   Future<void> signOut() async {
+    final token = await _firebaseSigInAuth.getCurrentUser()!.getIdToken();
+    await _authRestApi.signOut(token: token);
+    _userType = null;
     try {
       await _firebaseSigInAuth.signOut();
     } catch (error) {
@@ -195,4 +205,29 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
       onCodeAutoRetrievalTimeout: onCodeAutoRetrievalTimeout,
     );
   }
+
+  @override
+  Future<Either<AuthenticationFailure, UserType>> signIn() async {
+    final token = await _firebaseSigInAuth.getCurrentUser()!.getIdToken();
+    final fcmToken = (await _firebaseMessaging.getToken())!;
+    final result = await _authRestApi.signIn(token: token, fcmToken: fcmToken);
+    if (result.isLeft()) {
+      return const Left(AuthenticationFailure.serverError());
+    }
+
+    _userType = result.fold(
+      (l) => null,
+      (r) {
+        final firebaseUser = _firebaseSigInAuth.getCurrentUser()!;
+        final userMap = r['data'] as Map<String, dynamic>;
+        userMap['uid'] = firebaseUser.uid;
+        userMap['providerId'] = firebaseUser.providerData[0].providerId;
+        return UserType.fromJson(userMap);
+      },
+    );
+    return Right(_userType!);
+  }
+
+  @override
+  UserType? get userType => _userType;
 }

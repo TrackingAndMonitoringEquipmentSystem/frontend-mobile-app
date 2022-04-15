@@ -90,7 +90,41 @@ class AuthRestApi {
           },
         ),
       );
+      print(response.reasonPhrase);
+      print(response.body);
       if (response.statusCode == 201) {
+        return Right(
+          jsonDecode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>,
+        );
+      } else {
+        return Left(RestFailure.fromHttpStatusCode(response.statusCode));
+      }
+    } catch (error) {
+      return const Left(UnKnownError());
+    }
+  }
+
+  Future<Either<RestFailure, Map<String, dynamic>>> signOut({
+    required String token,
+  }) async {
+    try {
+      final uri = Uri(
+        scheme: environment.baseSchema,
+        host: environment.baseApiUrl,
+        port: environment.baseApiPort,
+        path: environment.authen[environment.AuthenPath.signOut],
+      );
+
+      final response = await _httpClient.get(
+        uri,
+        headers: <String, String>{
+          'Authorization': 'Bearer $token',
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+      );
+      print(response.reasonPhrase);
+      print(response.body);
+      if (response.statusCode == 200) {
         return Right(
           jsonDecode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>,
         );
