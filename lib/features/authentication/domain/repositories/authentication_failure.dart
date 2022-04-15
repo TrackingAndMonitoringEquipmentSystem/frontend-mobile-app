@@ -9,4 +9,6 @@ class AuthenticationFailure with _$AuthenticationFailure {
   const factory AuthenticationFailure.emailAlreadyInUse() = EmailAlreadyInUse;
   const factory AuthenticationFailure.invalidEmailAndPasswordCombination() =
       InvalidEmailAndPasswordCombination;
+  const factory AuthenticationFailure.cantSendVerifyEmail() =
+      CantSendVerifyEmail;
 }

@@ -12,7 +12,7 @@ class RestApi {
 
   RestApi();
 
-  Future<Either<PublicFailure, Map<String, dynamic>>> getDepartments() async {
+  Future<Either<RestFailure, Map<String, dynamic>>> getDepartments() async {
     try {
       final uri = Uri(
         scheme: environment.baseSchema,
@@ -27,7 +27,7 @@ class RestApi {
           jsonDecode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>,
         );
       } else {
-        return Left(PublicFailure.fromHttpStatusCode(response.statusCode));
+        return Left(RestFailure.fromHttpStatusCode(response.statusCode));
       }
     } catch (error) {
       return const Left(UnKnownError());

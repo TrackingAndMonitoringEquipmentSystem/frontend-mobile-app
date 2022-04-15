@@ -11,9 +11,9 @@ class PublicRepositoryImpl implements PublicRepository {
 
   PublicRepositoryImpl(this._restApi);
   @override
-  Future<Either<PublicFailure, List<Department>>> getDepartments() async {
+  Future<Either<RestFailure, List<Department>>> getDepartments() async {
     final departments = <Department>[];
-    PublicFailure? publicFailure;
+    RestFailure? publicFailure;
     final response = await _restApi.getDepartments();
     response.fold((l) => publicFailure = l, (r) {
       final departmentsJson = r['data'];

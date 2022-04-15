@@ -15,8 +15,8 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-class _$PublicFailureTearOff {
-  const _$PublicFailureTearOff();
+class _$RestFailureTearOff {
+  const _$RestFailureTearOff();
 
   ServerError serverError() {
     return const ServerError();
@@ -30,21 +30,26 @@ class _$PublicFailureTearOff {
     return const UnAuthorized();
   }
 
+  NotFound notFound() {
+    return const NotFound();
+  }
+
   UnKnownError unknownError() {
     return const UnKnownError();
   }
 }
 
 /// @nodoc
-const $PublicFailure = _$PublicFailureTearOff();
+const $RestFailure = _$RestFailureTearOff();
 
 /// @nodoc
-mixin _$PublicFailure {
+mixin _$RestFailure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() serverError,
     required TResult Function() badRequest,
     required TResult Function() unAuthorized,
+    required TResult Function() notFound,
     required TResult Function() unknownError,
   }) =>
       throw _privateConstructorUsedError;
@@ -53,6 +58,7 @@ mixin _$PublicFailure {
     TResult Function()? serverError,
     TResult Function()? badRequest,
     TResult Function()? unAuthorized,
+    TResult Function()? notFound,
     TResult Function()? unknownError,
   }) =>
       throw _privateConstructorUsedError;
@@ -61,6 +67,7 @@ mixin _$PublicFailure {
     TResult Function()? serverError,
     TResult Function()? badRequest,
     TResult Function()? unAuthorized,
+    TResult Function()? notFound,
     TResult Function()? unknownError,
     required TResult orElse(),
   }) =>
@@ -70,6 +77,7 @@ mixin _$PublicFailure {
     required TResult Function(ServerError value) serverError,
     required TResult Function(BadRequest value) badRequest,
     required TResult Function(UnAuthorized value) unAuthorized,
+    required TResult Function(NotFound value) notFound,
     required TResult Function(UnKnownError value) unknownError,
   }) =>
       throw _privateConstructorUsedError;
@@ -78,6 +86,7 @@ mixin _$PublicFailure {
     TResult Function(ServerError value)? serverError,
     TResult Function(BadRequest value)? badRequest,
     TResult Function(UnAuthorized value)? unAuthorized,
+    TResult Function(NotFound value)? notFound,
     TResult Function(UnKnownError value)? unknownError,
   }) =>
       throw _privateConstructorUsedError;
@@ -86,6 +95,7 @@ mixin _$PublicFailure {
     TResult Function(ServerError value)? serverError,
     TResult Function(BadRequest value)? badRequest,
     TResult Function(UnAuthorized value)? unAuthorized,
+    TResult Function(NotFound value)? notFound,
     TResult Function(UnKnownError value)? unknownError,
     required TResult orElse(),
   }) =>
@@ -93,20 +103,19 @@ mixin _$PublicFailure {
 }
 
 /// @nodoc
-abstract class $PublicFailureCopyWith<$Res> {
-  factory $PublicFailureCopyWith(
-          PublicFailure value, $Res Function(PublicFailure) then) =
-      _$PublicFailureCopyWithImpl<$Res>;
+abstract class $RestFailureCopyWith<$Res> {
+  factory $RestFailureCopyWith(
+          RestFailure value, $Res Function(RestFailure) then) =
+      _$RestFailureCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$PublicFailureCopyWithImpl<$Res>
-    implements $PublicFailureCopyWith<$Res> {
-  _$PublicFailureCopyWithImpl(this._value, this._then);
+class _$RestFailureCopyWithImpl<$Res> implements $RestFailureCopyWith<$Res> {
+  _$RestFailureCopyWithImpl(this._value, this._then);
 
-  final PublicFailure _value;
+  final RestFailure _value;
   // ignore: unused_field
-  final $Res Function(PublicFailure) _then;
+  final $Res Function(RestFailure) _then;
 }
 
 /// @nodoc
@@ -117,7 +126,7 @@ abstract class $ServerErrorCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ServerErrorCopyWithImpl<$Res> extends _$PublicFailureCopyWithImpl<$Res>
+class _$ServerErrorCopyWithImpl<$Res> extends _$RestFailureCopyWithImpl<$Res>
     implements $ServerErrorCopyWith<$Res> {
   _$ServerErrorCopyWithImpl(
       ServerError _value, $Res Function(ServerError) _then)
@@ -134,7 +143,7 @@ class _$ServerError implements ServerError {
 
   @override
   String toString() {
-    return 'PublicFailure.serverError()';
+    return 'RestFailure.serverError()';
   }
 
   @override
@@ -152,6 +161,7 @@ class _$ServerError implements ServerError {
     required TResult Function() serverError,
     required TResult Function() badRequest,
     required TResult Function() unAuthorized,
+    required TResult Function() notFound,
     required TResult Function() unknownError,
   }) {
     return serverError();
@@ -163,6 +173,7 @@ class _$ServerError implements ServerError {
     TResult Function()? serverError,
     TResult Function()? badRequest,
     TResult Function()? unAuthorized,
+    TResult Function()? notFound,
     TResult Function()? unknownError,
   }) {
     return serverError?.call();
@@ -174,6 +185,7 @@ class _$ServerError implements ServerError {
     TResult Function()? serverError,
     TResult Function()? badRequest,
     TResult Function()? unAuthorized,
+    TResult Function()? notFound,
     TResult Function()? unknownError,
     required TResult orElse(),
   }) {
@@ -189,6 +201,7 @@ class _$ServerError implements ServerError {
     required TResult Function(ServerError value) serverError,
     required TResult Function(BadRequest value) badRequest,
     required TResult Function(UnAuthorized value) unAuthorized,
+    required TResult Function(NotFound value) notFound,
     required TResult Function(UnKnownError value) unknownError,
   }) {
     return serverError(this);
@@ -200,6 +213,7 @@ class _$ServerError implements ServerError {
     TResult Function(ServerError value)? serverError,
     TResult Function(BadRequest value)? badRequest,
     TResult Function(UnAuthorized value)? unAuthorized,
+    TResult Function(NotFound value)? notFound,
     TResult Function(UnKnownError value)? unknownError,
   }) {
     return serverError?.call(this);
@@ -211,6 +225,7 @@ class _$ServerError implements ServerError {
     TResult Function(ServerError value)? serverError,
     TResult Function(BadRequest value)? badRequest,
     TResult Function(UnAuthorized value)? unAuthorized,
+    TResult Function(NotFound value)? notFound,
     TResult Function(UnKnownError value)? unknownError,
     required TResult orElse(),
   }) {
@@ -221,7 +236,7 @@ class _$ServerError implements ServerError {
   }
 }
 
-abstract class ServerError implements PublicFailure {
+abstract class ServerError implements RestFailure {
   const factory ServerError() = _$ServerError;
 }
 
@@ -233,7 +248,7 @@ abstract class $BadRequestCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$BadRequestCopyWithImpl<$Res> extends _$PublicFailureCopyWithImpl<$Res>
+class _$BadRequestCopyWithImpl<$Res> extends _$RestFailureCopyWithImpl<$Res>
     implements $BadRequestCopyWith<$Res> {
   _$BadRequestCopyWithImpl(BadRequest _value, $Res Function(BadRequest) _then)
       : super(_value, (v) => _then(v as BadRequest));
@@ -249,7 +264,7 @@ class _$BadRequest implements BadRequest {
 
   @override
   String toString() {
-    return 'PublicFailure.badRequest()';
+    return 'RestFailure.badRequest()';
   }
 
   @override
@@ -267,6 +282,7 @@ class _$BadRequest implements BadRequest {
     required TResult Function() serverError,
     required TResult Function() badRequest,
     required TResult Function() unAuthorized,
+    required TResult Function() notFound,
     required TResult Function() unknownError,
   }) {
     return badRequest();
@@ -278,6 +294,7 @@ class _$BadRequest implements BadRequest {
     TResult Function()? serverError,
     TResult Function()? badRequest,
     TResult Function()? unAuthorized,
+    TResult Function()? notFound,
     TResult Function()? unknownError,
   }) {
     return badRequest?.call();
@@ -289,6 +306,7 @@ class _$BadRequest implements BadRequest {
     TResult Function()? serverError,
     TResult Function()? badRequest,
     TResult Function()? unAuthorized,
+    TResult Function()? notFound,
     TResult Function()? unknownError,
     required TResult orElse(),
   }) {
@@ -304,6 +322,7 @@ class _$BadRequest implements BadRequest {
     required TResult Function(ServerError value) serverError,
     required TResult Function(BadRequest value) badRequest,
     required TResult Function(UnAuthorized value) unAuthorized,
+    required TResult Function(NotFound value) notFound,
     required TResult Function(UnKnownError value) unknownError,
   }) {
     return badRequest(this);
@@ -315,6 +334,7 @@ class _$BadRequest implements BadRequest {
     TResult Function(ServerError value)? serverError,
     TResult Function(BadRequest value)? badRequest,
     TResult Function(UnAuthorized value)? unAuthorized,
+    TResult Function(NotFound value)? notFound,
     TResult Function(UnKnownError value)? unknownError,
   }) {
     return badRequest?.call(this);
@@ -326,6 +346,7 @@ class _$BadRequest implements BadRequest {
     TResult Function(ServerError value)? serverError,
     TResult Function(BadRequest value)? badRequest,
     TResult Function(UnAuthorized value)? unAuthorized,
+    TResult Function(NotFound value)? notFound,
     TResult Function(UnKnownError value)? unknownError,
     required TResult orElse(),
   }) {
@@ -336,7 +357,7 @@ class _$BadRequest implements BadRequest {
   }
 }
 
-abstract class BadRequest implements PublicFailure {
+abstract class BadRequest implements RestFailure {
   const factory BadRequest() = _$BadRequest;
 }
 
@@ -348,7 +369,7 @@ abstract class $UnAuthorizedCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$UnAuthorizedCopyWithImpl<$Res> extends _$PublicFailureCopyWithImpl<$Res>
+class _$UnAuthorizedCopyWithImpl<$Res> extends _$RestFailureCopyWithImpl<$Res>
     implements $UnAuthorizedCopyWith<$Res> {
   _$UnAuthorizedCopyWithImpl(
       UnAuthorized _value, $Res Function(UnAuthorized) _then)
@@ -365,7 +386,7 @@ class _$UnAuthorized implements UnAuthorized {
 
   @override
   String toString() {
-    return 'PublicFailure.unAuthorized()';
+    return 'RestFailure.unAuthorized()';
   }
 
   @override
@@ -383,6 +404,7 @@ class _$UnAuthorized implements UnAuthorized {
     required TResult Function() serverError,
     required TResult Function() badRequest,
     required TResult Function() unAuthorized,
+    required TResult Function() notFound,
     required TResult Function() unknownError,
   }) {
     return unAuthorized();
@@ -394,6 +416,7 @@ class _$UnAuthorized implements UnAuthorized {
     TResult Function()? serverError,
     TResult Function()? badRequest,
     TResult Function()? unAuthorized,
+    TResult Function()? notFound,
     TResult Function()? unknownError,
   }) {
     return unAuthorized?.call();
@@ -405,6 +428,7 @@ class _$UnAuthorized implements UnAuthorized {
     TResult Function()? serverError,
     TResult Function()? badRequest,
     TResult Function()? unAuthorized,
+    TResult Function()? notFound,
     TResult Function()? unknownError,
     required TResult orElse(),
   }) {
@@ -420,6 +444,7 @@ class _$UnAuthorized implements UnAuthorized {
     required TResult Function(ServerError value) serverError,
     required TResult Function(BadRequest value) badRequest,
     required TResult Function(UnAuthorized value) unAuthorized,
+    required TResult Function(NotFound value) notFound,
     required TResult Function(UnKnownError value) unknownError,
   }) {
     return unAuthorized(this);
@@ -431,6 +456,7 @@ class _$UnAuthorized implements UnAuthorized {
     TResult Function(ServerError value)? serverError,
     TResult Function(BadRequest value)? badRequest,
     TResult Function(UnAuthorized value)? unAuthorized,
+    TResult Function(NotFound value)? notFound,
     TResult Function(UnKnownError value)? unknownError,
   }) {
     return unAuthorized?.call(this);
@@ -442,6 +468,7 @@ class _$UnAuthorized implements UnAuthorized {
     TResult Function(ServerError value)? serverError,
     TResult Function(BadRequest value)? badRequest,
     TResult Function(UnAuthorized value)? unAuthorized,
+    TResult Function(NotFound value)? notFound,
     TResult Function(UnKnownError value)? unknownError,
     required TResult orElse(),
   }) {
@@ -452,8 +479,128 @@ class _$UnAuthorized implements UnAuthorized {
   }
 }
 
-abstract class UnAuthorized implements PublicFailure {
+abstract class UnAuthorized implements RestFailure {
   const factory UnAuthorized() = _$UnAuthorized;
+}
+
+/// @nodoc
+abstract class $NotFoundCopyWith<$Res> {
+  factory $NotFoundCopyWith(NotFound value, $Res Function(NotFound) then) =
+      _$NotFoundCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$NotFoundCopyWithImpl<$Res> extends _$RestFailureCopyWithImpl<$Res>
+    implements $NotFoundCopyWith<$Res> {
+  _$NotFoundCopyWithImpl(NotFound _value, $Res Function(NotFound) _then)
+      : super(_value, (v) => _then(v as NotFound));
+
+  @override
+  NotFound get _value => super._value as NotFound;
+}
+
+/// @nodoc
+
+class _$NotFound implements NotFound {
+  const _$NotFound();
+
+  @override
+  String toString() {
+    return 'RestFailure.notFound()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is NotFound);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() serverError,
+    required TResult Function() badRequest,
+    required TResult Function() unAuthorized,
+    required TResult Function() notFound,
+    required TResult Function() unknownError,
+  }) {
+    return notFound();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? serverError,
+    TResult Function()? badRequest,
+    TResult Function()? unAuthorized,
+    TResult Function()? notFound,
+    TResult Function()? unknownError,
+  }) {
+    return notFound?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? serverError,
+    TResult Function()? badRequest,
+    TResult Function()? unAuthorized,
+    TResult Function()? notFound,
+    TResult Function()? unknownError,
+    required TResult orElse(),
+  }) {
+    if (notFound != null) {
+      return notFound();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ServerError value) serverError,
+    required TResult Function(BadRequest value) badRequest,
+    required TResult Function(UnAuthorized value) unAuthorized,
+    required TResult Function(NotFound value) notFound,
+    required TResult Function(UnKnownError value) unknownError,
+  }) {
+    return notFound(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(ServerError value)? serverError,
+    TResult Function(BadRequest value)? badRequest,
+    TResult Function(UnAuthorized value)? unAuthorized,
+    TResult Function(NotFound value)? notFound,
+    TResult Function(UnKnownError value)? unknownError,
+  }) {
+    return notFound?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ServerError value)? serverError,
+    TResult Function(BadRequest value)? badRequest,
+    TResult Function(UnAuthorized value)? unAuthorized,
+    TResult Function(NotFound value)? notFound,
+    TResult Function(UnKnownError value)? unknownError,
+    required TResult orElse(),
+  }) {
+    if (notFound != null) {
+      return notFound(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class NotFound implements RestFailure {
+  const factory NotFound() = _$NotFound;
 }
 
 /// @nodoc
@@ -464,7 +611,7 @@ abstract class $UnKnownErrorCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$UnKnownErrorCopyWithImpl<$Res> extends _$PublicFailureCopyWithImpl<$Res>
+class _$UnKnownErrorCopyWithImpl<$Res> extends _$RestFailureCopyWithImpl<$Res>
     implements $UnKnownErrorCopyWith<$Res> {
   _$UnKnownErrorCopyWithImpl(
       UnKnownError _value, $Res Function(UnKnownError) _then)
@@ -481,7 +628,7 @@ class _$UnKnownError implements UnKnownError {
 
   @override
   String toString() {
-    return 'PublicFailure.unknownError()';
+    return 'RestFailure.unknownError()';
   }
 
   @override
@@ -499,6 +646,7 @@ class _$UnKnownError implements UnKnownError {
     required TResult Function() serverError,
     required TResult Function() badRequest,
     required TResult Function() unAuthorized,
+    required TResult Function() notFound,
     required TResult Function() unknownError,
   }) {
     return unknownError();
@@ -510,6 +658,7 @@ class _$UnKnownError implements UnKnownError {
     TResult Function()? serverError,
     TResult Function()? badRequest,
     TResult Function()? unAuthorized,
+    TResult Function()? notFound,
     TResult Function()? unknownError,
   }) {
     return unknownError?.call();
@@ -521,6 +670,7 @@ class _$UnKnownError implements UnKnownError {
     TResult Function()? serverError,
     TResult Function()? badRequest,
     TResult Function()? unAuthorized,
+    TResult Function()? notFound,
     TResult Function()? unknownError,
     required TResult orElse(),
   }) {
@@ -536,6 +686,7 @@ class _$UnKnownError implements UnKnownError {
     required TResult Function(ServerError value) serverError,
     required TResult Function(BadRequest value) badRequest,
     required TResult Function(UnAuthorized value) unAuthorized,
+    required TResult Function(NotFound value) notFound,
     required TResult Function(UnKnownError value) unknownError,
   }) {
     return unknownError(this);
@@ -547,6 +698,7 @@ class _$UnKnownError implements UnKnownError {
     TResult Function(ServerError value)? serverError,
     TResult Function(BadRequest value)? badRequest,
     TResult Function(UnAuthorized value)? unAuthorized,
+    TResult Function(NotFound value)? notFound,
     TResult Function(UnKnownError value)? unknownError,
   }) {
     return unknownError?.call(this);
@@ -558,6 +710,7 @@ class _$UnKnownError implements UnKnownError {
     TResult Function(ServerError value)? serverError,
     TResult Function(BadRequest value)? badRequest,
     TResult Function(UnAuthorized value)? unAuthorized,
+    TResult Function(NotFound value)? notFound,
     TResult Function(UnKnownError value)? unknownError,
     required TResult orElse(),
   }) {
@@ -568,6 +721,6 @@ class _$UnKnownError implements UnKnownError {
   }
 }
 
-abstract class UnKnownError implements PublicFailure {
+abstract class UnKnownError implements RestFailure {
   const factory UnKnownError() = _$UnKnownError;
 }

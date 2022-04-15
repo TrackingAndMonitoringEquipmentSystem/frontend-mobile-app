@@ -22,6 +22,7 @@ class SignInForm extends StatelessWidget {
                 emailAlreadyInUse: (_) => 'Email already in use',
                 invalidEmailAndPasswordCombination: (_) =>
                     'Invalide email and password combination',
+                cantSendVerifyEmail: (_) => 'Cant send verify email',
               ),
             ).show(context),
             (_) => {},
@@ -227,7 +228,7 @@ class SignInForm extends StatelessWidget {
                     TextButton(
                       onPressed: () {
                         AutoRouter.of(context)
-                            .navigate(const RegisterEnterRoleRoute());
+                            .navigate(const RegisterWelcomeRoute());
                       },
                       child: Text(
                         'สมัครสมาชิก',

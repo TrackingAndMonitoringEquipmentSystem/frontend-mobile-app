@@ -7,10 +7,7 @@ import 'package:frontend/features/authentication/domain/value_objects/value_obje
 
 abstract class AuthenticationRepository {
   Future<UserType?> getSignedInUser();
-  Future<Either<AuthenticationFailure, Unit>> registerWithEmailAndPassword({
-    required EmailAddress emailAddress,
-    required Password password,
-  });
+  Future<Either<AuthenticationFailure, Unit>> registerWithEmailAndPassword();
   Future<Either<AuthenticationFailure, Unit>> signInWithEmailAndPassword({
     required EmailAddress emailAddress,
     required Password password,

@@ -153,7 +153,9 @@ class RegisterEnterOTPPage extends StatelessWidget {
                             Button(
                               'ลองอีกครั้ง',
                               onPressed: () {
-                                controller.sendOTP();
+                                // controller.sendOTP();
+                                AutoRouter.of(context)
+                                    .push(const RegisterEnterEmailRoute());
                               },
                             )
                           ],

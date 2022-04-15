@@ -1,4 +1,7 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:frontend/core/presentation/routes/router.gr.dart';
 import 'package:frontend/features/authentication/domain/repositories/authentication_repository.dart';
 import 'package:frontend/features/authentication/presentation/bloc/authen/authen_bloc.dart';
 import 'package:frontend/injection.dart';
@@ -63,9 +66,9 @@ class AccountPage extends StatelessWidget {
                     child: CircleAvatar(
                       radius: 40,
                       backgroundImage: Image.asset(
-                              'assets/images/account/profile_image_example.png',
-                              fit: BoxFit.fill)
-                          .image,
+                        'assets/images/account/profile_image_example.png',
+                        fit: BoxFit.fill,
+                      ).image,
                     ),
                   )
                 ],
@@ -135,7 +138,10 @@ class AccountPage extends StatelessWidget {
               ),
               TextButton(
                 onPressed: () {
-                  getIt<AuthenBloc>().add(const SignedOut());
+                  getIt<AuthenticationRepository>().signOut().then(
+                        (value) =>
+                            AutoRouter.of(context).replace(const SignInRoute()),
+                      );
                 },
                 child: Text(
                   'ออกจากระบบ',

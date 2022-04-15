@@ -33,6 +33,10 @@ class _$AuthenticationFailureTearOff {
   InvalidEmailAndPasswordCombination invalidEmailAndPasswordCombination() {
     return const InvalidEmailAndPasswordCombination();
   }
+
+  CantSendVerifyEmail cantSendVerifyEmail() {
+    return const CantSendVerifyEmail();
+  }
 }
 
 /// @nodoc
@@ -46,6 +50,7 @@ mixin _$AuthenticationFailure {
     required TResult Function() serverError,
     required TResult Function() emailAlreadyInUse,
     required TResult Function() invalidEmailAndPasswordCombination,
+    required TResult Function() cantSendVerifyEmail,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -54,6 +59,7 @@ mixin _$AuthenticationFailure {
     TResult Function()? serverError,
     TResult Function()? emailAlreadyInUse,
     TResult Function()? invalidEmailAndPasswordCombination,
+    TResult Function()? cantSendVerifyEmail,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -62,6 +68,7 @@ mixin _$AuthenticationFailure {
     TResult Function()? serverError,
     TResult Function()? emailAlreadyInUse,
     TResult Function()? invalidEmailAndPasswordCombination,
+    TResult Function()? cantSendVerifyEmail,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -72,6 +79,7 @@ mixin _$AuthenticationFailure {
     required TResult Function(EmailAlreadyInUse value) emailAlreadyInUse,
     required TResult Function(InvalidEmailAndPasswordCombination value)
         invalidEmailAndPasswordCombination,
+    required TResult Function(CantSendVerifyEmail value) cantSendVerifyEmail,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -81,6 +89,7 @@ mixin _$AuthenticationFailure {
     TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
     TResult Function(InvalidEmailAndPasswordCombination value)?
         invalidEmailAndPasswordCombination,
+    TResult Function(CantSendVerifyEmail value)? cantSendVerifyEmail,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -90,6 +99,7 @@ mixin _$AuthenticationFailure {
     TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
     TResult Function(InvalidEmailAndPasswordCombination value)?
         invalidEmailAndPasswordCombination,
+    TResult Function(CantSendVerifyEmail value)? cantSendVerifyEmail,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -157,6 +167,7 @@ class _$CancelledByUser implements CancelledByUser {
     required TResult Function() serverError,
     required TResult Function() emailAlreadyInUse,
     required TResult Function() invalidEmailAndPasswordCombination,
+    required TResult Function() cantSendVerifyEmail,
   }) {
     return cancelledByUser();
   }
@@ -168,6 +179,7 @@ class _$CancelledByUser implements CancelledByUser {
     TResult Function()? serverError,
     TResult Function()? emailAlreadyInUse,
     TResult Function()? invalidEmailAndPasswordCombination,
+    TResult Function()? cantSendVerifyEmail,
   }) {
     return cancelledByUser?.call();
   }
@@ -179,6 +191,7 @@ class _$CancelledByUser implements CancelledByUser {
     TResult Function()? serverError,
     TResult Function()? emailAlreadyInUse,
     TResult Function()? invalidEmailAndPasswordCombination,
+    TResult Function()? cantSendVerifyEmail,
     required TResult orElse(),
   }) {
     if (cancelledByUser != null) {
@@ -195,6 +208,7 @@ class _$CancelledByUser implements CancelledByUser {
     required TResult Function(EmailAlreadyInUse value) emailAlreadyInUse,
     required TResult Function(InvalidEmailAndPasswordCombination value)
         invalidEmailAndPasswordCombination,
+    required TResult Function(CantSendVerifyEmail value) cantSendVerifyEmail,
   }) {
     return cancelledByUser(this);
   }
@@ -207,6 +221,7 @@ class _$CancelledByUser implements CancelledByUser {
     TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
     TResult Function(InvalidEmailAndPasswordCombination value)?
         invalidEmailAndPasswordCombination,
+    TResult Function(CantSendVerifyEmail value)? cantSendVerifyEmail,
   }) {
     return cancelledByUser?.call(this);
   }
@@ -219,6 +234,7 @@ class _$CancelledByUser implements CancelledByUser {
     TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
     TResult Function(InvalidEmailAndPasswordCombination value)?
         invalidEmailAndPasswordCombination,
+    TResult Function(CantSendVerifyEmail value)? cantSendVerifyEmail,
     required TResult orElse(),
   }) {
     if (cancelledByUser != null) {
@@ -277,6 +293,7 @@ class _$ServerError implements ServerError {
     required TResult Function() serverError,
     required TResult Function() emailAlreadyInUse,
     required TResult Function() invalidEmailAndPasswordCombination,
+    required TResult Function() cantSendVerifyEmail,
   }) {
     return serverError();
   }
@@ -288,6 +305,7 @@ class _$ServerError implements ServerError {
     TResult Function()? serverError,
     TResult Function()? emailAlreadyInUse,
     TResult Function()? invalidEmailAndPasswordCombination,
+    TResult Function()? cantSendVerifyEmail,
   }) {
     return serverError?.call();
   }
@@ -299,6 +317,7 @@ class _$ServerError implements ServerError {
     TResult Function()? serverError,
     TResult Function()? emailAlreadyInUse,
     TResult Function()? invalidEmailAndPasswordCombination,
+    TResult Function()? cantSendVerifyEmail,
     required TResult orElse(),
   }) {
     if (serverError != null) {
@@ -315,6 +334,7 @@ class _$ServerError implements ServerError {
     required TResult Function(EmailAlreadyInUse value) emailAlreadyInUse,
     required TResult Function(InvalidEmailAndPasswordCombination value)
         invalidEmailAndPasswordCombination,
+    required TResult Function(CantSendVerifyEmail value) cantSendVerifyEmail,
   }) {
     return serverError(this);
   }
@@ -327,6 +347,7 @@ class _$ServerError implements ServerError {
     TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
     TResult Function(InvalidEmailAndPasswordCombination value)?
         invalidEmailAndPasswordCombination,
+    TResult Function(CantSendVerifyEmail value)? cantSendVerifyEmail,
   }) {
     return serverError?.call(this);
   }
@@ -339,6 +360,7 @@ class _$ServerError implements ServerError {
     TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
     TResult Function(InvalidEmailAndPasswordCombination value)?
         invalidEmailAndPasswordCombination,
+    TResult Function(CantSendVerifyEmail value)? cantSendVerifyEmail,
     required TResult orElse(),
   }) {
     if (serverError != null) {
@@ -397,6 +419,7 @@ class _$EmailAlreadyInUse implements EmailAlreadyInUse {
     required TResult Function() serverError,
     required TResult Function() emailAlreadyInUse,
     required TResult Function() invalidEmailAndPasswordCombination,
+    required TResult Function() cantSendVerifyEmail,
   }) {
     return emailAlreadyInUse();
   }
@@ -408,6 +431,7 @@ class _$EmailAlreadyInUse implements EmailAlreadyInUse {
     TResult Function()? serverError,
     TResult Function()? emailAlreadyInUse,
     TResult Function()? invalidEmailAndPasswordCombination,
+    TResult Function()? cantSendVerifyEmail,
   }) {
     return emailAlreadyInUse?.call();
   }
@@ -419,6 +443,7 @@ class _$EmailAlreadyInUse implements EmailAlreadyInUse {
     TResult Function()? serverError,
     TResult Function()? emailAlreadyInUse,
     TResult Function()? invalidEmailAndPasswordCombination,
+    TResult Function()? cantSendVerifyEmail,
     required TResult orElse(),
   }) {
     if (emailAlreadyInUse != null) {
@@ -435,6 +460,7 @@ class _$EmailAlreadyInUse implements EmailAlreadyInUse {
     required TResult Function(EmailAlreadyInUse value) emailAlreadyInUse,
     required TResult Function(InvalidEmailAndPasswordCombination value)
         invalidEmailAndPasswordCombination,
+    required TResult Function(CantSendVerifyEmail value) cantSendVerifyEmail,
   }) {
     return emailAlreadyInUse(this);
   }
@@ -447,6 +473,7 @@ class _$EmailAlreadyInUse implements EmailAlreadyInUse {
     TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
     TResult Function(InvalidEmailAndPasswordCombination value)?
         invalidEmailAndPasswordCombination,
+    TResult Function(CantSendVerifyEmail value)? cantSendVerifyEmail,
   }) {
     return emailAlreadyInUse?.call(this);
   }
@@ -459,6 +486,7 @@ class _$EmailAlreadyInUse implements EmailAlreadyInUse {
     TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
     TResult Function(InvalidEmailAndPasswordCombination value)?
         invalidEmailAndPasswordCombination,
+    TResult Function(CantSendVerifyEmail value)? cantSendVerifyEmail,
     required TResult orElse(),
   }) {
     if (emailAlreadyInUse != null) {
@@ -522,6 +550,7 @@ class _$InvalidEmailAndPasswordCombination
     required TResult Function() serverError,
     required TResult Function() emailAlreadyInUse,
     required TResult Function() invalidEmailAndPasswordCombination,
+    required TResult Function() cantSendVerifyEmail,
   }) {
     return invalidEmailAndPasswordCombination();
   }
@@ -533,6 +562,7 @@ class _$InvalidEmailAndPasswordCombination
     TResult Function()? serverError,
     TResult Function()? emailAlreadyInUse,
     TResult Function()? invalidEmailAndPasswordCombination,
+    TResult Function()? cantSendVerifyEmail,
   }) {
     return invalidEmailAndPasswordCombination?.call();
   }
@@ -544,6 +574,7 @@ class _$InvalidEmailAndPasswordCombination
     TResult Function()? serverError,
     TResult Function()? emailAlreadyInUse,
     TResult Function()? invalidEmailAndPasswordCombination,
+    TResult Function()? cantSendVerifyEmail,
     required TResult orElse(),
   }) {
     if (invalidEmailAndPasswordCombination != null) {
@@ -560,6 +591,7 @@ class _$InvalidEmailAndPasswordCombination
     required TResult Function(EmailAlreadyInUse value) emailAlreadyInUse,
     required TResult Function(InvalidEmailAndPasswordCombination value)
         invalidEmailAndPasswordCombination,
+    required TResult Function(CantSendVerifyEmail value) cantSendVerifyEmail,
   }) {
     return invalidEmailAndPasswordCombination(this);
   }
@@ -572,6 +604,7 @@ class _$InvalidEmailAndPasswordCombination
     TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
     TResult Function(InvalidEmailAndPasswordCombination value)?
         invalidEmailAndPasswordCombination,
+    TResult Function(CantSendVerifyEmail value)? cantSendVerifyEmail,
   }) {
     return invalidEmailAndPasswordCombination?.call(this);
   }
@@ -584,6 +617,7 @@ class _$InvalidEmailAndPasswordCombination
     TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
     TResult Function(InvalidEmailAndPasswordCombination value)?
         invalidEmailAndPasswordCombination,
+    TResult Function(CantSendVerifyEmail value)? cantSendVerifyEmail,
     required TResult orElse(),
   }) {
     if (invalidEmailAndPasswordCombination != null) {
@@ -597,4 +631,130 @@ abstract class InvalidEmailAndPasswordCombination
     implements AuthenticationFailure {
   const factory InvalidEmailAndPasswordCombination() =
       _$InvalidEmailAndPasswordCombination;
+}
+
+/// @nodoc
+abstract class $CantSendVerifyEmailCopyWith<$Res> {
+  factory $CantSendVerifyEmailCopyWith(
+          CantSendVerifyEmail value, $Res Function(CantSendVerifyEmail) then) =
+      _$CantSendVerifyEmailCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$CantSendVerifyEmailCopyWithImpl<$Res>
+    extends _$AuthenticationFailureCopyWithImpl<$Res>
+    implements $CantSendVerifyEmailCopyWith<$Res> {
+  _$CantSendVerifyEmailCopyWithImpl(
+      CantSendVerifyEmail _value, $Res Function(CantSendVerifyEmail) _then)
+      : super(_value, (v) => _then(v as CantSendVerifyEmail));
+
+  @override
+  CantSendVerifyEmail get _value => super._value as CantSendVerifyEmail;
+}
+
+/// @nodoc
+
+class _$CantSendVerifyEmail implements CantSendVerifyEmail {
+  const _$CantSendVerifyEmail();
+
+  @override
+  String toString() {
+    return 'AuthenticationFailure.cantSendVerifyEmail()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is CantSendVerifyEmail);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() cancelledByUser,
+    required TResult Function() serverError,
+    required TResult Function() emailAlreadyInUse,
+    required TResult Function() invalidEmailAndPasswordCombination,
+    required TResult Function() cantSendVerifyEmail,
+  }) {
+    return cantSendVerifyEmail();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? cancelledByUser,
+    TResult Function()? serverError,
+    TResult Function()? emailAlreadyInUse,
+    TResult Function()? invalidEmailAndPasswordCombination,
+    TResult Function()? cantSendVerifyEmail,
+  }) {
+    return cantSendVerifyEmail?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? cancelledByUser,
+    TResult Function()? serverError,
+    TResult Function()? emailAlreadyInUse,
+    TResult Function()? invalidEmailAndPasswordCombination,
+    TResult Function()? cantSendVerifyEmail,
+    required TResult orElse(),
+  }) {
+    if (cantSendVerifyEmail != null) {
+      return cantSendVerifyEmail();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(CancelledByUser value) cancelledByUser,
+    required TResult Function(ServerError value) serverError,
+    required TResult Function(EmailAlreadyInUse value) emailAlreadyInUse,
+    required TResult Function(InvalidEmailAndPasswordCombination value)
+        invalidEmailAndPasswordCombination,
+    required TResult Function(CantSendVerifyEmail value) cantSendVerifyEmail,
+  }) {
+    return cantSendVerifyEmail(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(CancelledByUser value)? cancelledByUser,
+    TResult Function(ServerError value)? serverError,
+    TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
+    TResult Function(InvalidEmailAndPasswordCombination value)?
+        invalidEmailAndPasswordCombination,
+    TResult Function(CantSendVerifyEmail value)? cantSendVerifyEmail,
+  }) {
+    return cantSendVerifyEmail?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(CancelledByUser value)? cancelledByUser,
+    TResult Function(ServerError value)? serverError,
+    TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
+    TResult Function(InvalidEmailAndPasswordCombination value)?
+        invalidEmailAndPasswordCombination,
+    TResult Function(CantSendVerifyEmail value)? cantSendVerifyEmail,
+    required TResult orElse(),
+  }) {
+    if (cantSendVerifyEmail != null) {
+      return cantSendVerifyEmail(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CantSendVerifyEmail implements AuthenticationFailure {
+  const factory CantSendVerifyEmail() = _$CantSendVerifyEmail;
 }

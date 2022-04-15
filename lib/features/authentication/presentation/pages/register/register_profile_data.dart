@@ -142,7 +142,9 @@ class RegisterProfileDataPage extends StatelessWidget {
                                   decoration: TextDecoration.underline,
                                 ),
                           ),
-                          onPressed: () {},
+                          onPressed: () {
+                            AutoRouter.of(context).push(const HomeRoute());
+                          },
                         )
                       ],
                     )

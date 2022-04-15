@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:frontend/core/data/data_sources/rest_api.dart';
 import 'package:frontend/features/authentication/domain/entities/pre_register_user.dart';
@@ -37,4 +38,7 @@ abstract class FirebaseInjectableModule {
         department: null,
         pin: null,
       );
+
+  @lazySingleton
+  FirebaseMessaging get firebaseMessage => FirebaseMessaging.instance;
 }

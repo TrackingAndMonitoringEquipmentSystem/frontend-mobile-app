@@ -27,8 +27,8 @@ class _$UserTypeTearOff {
       required String tel,
       required String? providerId,
       required Gender? gender,
-      required String faceIdUrl,
-      required String profilePicUrl,
+      required String? faceIdUrl,
+      required String? profilePicUrl,
       required DateTime createdAt,
       required DateTime updatedAt}) {
     return _User(
@@ -61,8 +61,8 @@ mixin _$UserType {
   String get tel => throw _privateConstructorUsedError;
   String? get providerId => throw _privateConstructorUsedError;
   Gender? get gender => throw _privateConstructorUsedError;
-  String get faceIdUrl => throw _privateConstructorUsedError;
-  String get profilePicUrl => throw _privateConstructorUsedError;
+  String? get faceIdUrl => throw _privateConstructorUsedError;
+  String? get profilePicUrl => throw _privateConstructorUsedError;
   DateTime get createdAt => throw _privateConstructorUsedError;
   DateTime get updatedAt => throw _privateConstructorUsedError;
 
@@ -84,8 +84,8 @@ abstract class $UserTypeCopyWith<$Res> {
       String tel,
       String? providerId,
       Gender? gender,
-      String faceIdUrl,
-      String profilePicUrl,
+      String? faceIdUrl,
+      String? profilePicUrl,
       DateTime createdAt,
       DateTime updatedAt});
 }
@@ -149,11 +149,11 @@ class _$UserTypeCopyWithImpl<$Res> implements $UserTypeCopyWith<$Res> {
       faceIdUrl: faceIdUrl == freezed
           ? _value.faceIdUrl
           : faceIdUrl // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       profilePicUrl: profilePicUrl == freezed
           ? _value.profilePicUrl
           : profilePicUrl // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       createdAt: createdAt == freezed
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -180,8 +180,8 @@ abstract class _$UserCopyWith<$Res> implements $UserTypeCopyWith<$Res> {
       String tel,
       String? providerId,
       Gender? gender,
-      String faceIdUrl,
-      String profilePicUrl,
+      String? faceIdUrl,
+      String? profilePicUrl,
       DateTime createdAt,
       DateTime updatedAt});
 }
@@ -246,11 +246,11 @@ class __$UserCopyWithImpl<$Res> extends _$UserTypeCopyWithImpl<$Res>
       faceIdUrl: faceIdUrl == freezed
           ? _value.faceIdUrl
           : faceIdUrl // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       profilePicUrl: profilePicUrl == freezed
           ? _value.profilePicUrl
           : profilePicUrl // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       createdAt: createdAt == freezed
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -297,9 +297,9 @@ class _$_User implements _User {
   @override
   final Gender? gender;
   @override
-  final String faceIdUrl;
+  final String? faceIdUrl;
   @override
-  final String profilePicUrl;
+  final String? profilePicUrl;
   @override
   final DateTime createdAt;
   @override
@@ -363,8 +363,8 @@ abstract class _User implements UserType {
       required String tel,
       required String? providerId,
       required Gender? gender,
-      required String faceIdUrl,
-      required String profilePicUrl,
+      required String? faceIdUrl,
+      required String? profilePicUrl,
       required DateTime createdAt,
       required DateTime updatedAt}) = _$_User;
 
@@ -385,9 +385,9 @@ abstract class _User implements UserType {
   @override
   Gender? get gender;
   @override
-  String get faceIdUrl;
+  String? get faceIdUrl;
   @override
-  String get profilePicUrl;
+  String? get profilePicUrl;
   @override
   DateTime get createdAt;
   @override

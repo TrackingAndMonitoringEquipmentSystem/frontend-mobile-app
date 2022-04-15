@@ -15,8 +15,8 @@ class UserType with _$UserType {
     required String tel,
     required String? providerId,
     required Gender? gender,
-    required String faceIdUrl,
-    required String profilePicUrl,
+    required String? faceIdUrl,
+    required String? profilePicUrl,
     required DateTime createdAt,
     required DateTime updatedAt,
   }) = _User;

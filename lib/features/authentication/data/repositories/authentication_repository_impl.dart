@@ -1,8 +1,10 @@
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
+import 'package:frontend/features/authentication/data/datasources/auth_rest_api.dart';
 import 'package:frontend/features/authentication/data/datasources/facebook_sign_in_auth.dart';
 import 'package:frontend/features/authentication/data/datasources/firebase_sign_in.dart';
 import 'package:frontend/features/authentication/data/datasources/google_sign_in_auth.dart';
@@ -21,22 +23,55 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
   final GoogleSignInAuth _googleSignInAuth;
   final FacebookSignInAuth _facebookSignInInAuth;
   final TwitterSignInAuth _twitterSignInAuth;
+  final AuthRestApi _authRestApi;
+  final FirebaseMessaging _firebaseMessaging;
   AuthenticationRepositoryImpl(
     this._firebaseSigInAuth,
     this._googleSignInAuth,
     this._facebookSignInInAuth,
     this._twitterSignInAuth,
     this.preRegisterUser,
+    this._authRestApi,
+    this._firebaseMessaging,
   );
   @override
-  Future<Either<AuthenticationFailure, Unit>> registerWithEmailAndPassword(
-      {required EmailAddress emailAddress, required Password password}) async {
-    final emailAddressStr = emailAddress.getOrCrash();
-    final passwordStr = password.getOrCrash();
-    return _firebaseSigInAuth.createUserWithEmailAndPassword(
-      emailAddressStr,
-      passwordStr,
+  Future<Either<AuthenticationFailure, Unit>>
+      registerWithEmailAndPassword() async {
+    final firebaseAuthResult =
+        await _firebaseSigInAuth.createUserWithEmailAndPassword(
+      preRegisterUser.email!.getOrCrash(),
+      preRegisterUser.password!.getOrCrash(),
     );
+    if (firebaseAuthResult.isLeft()) {
+      return Left(
+        firebaseAuthResult.fold((l) => l, (r) => throw UnimplementedError()),
+      );
+    }
+    late UserCredential userCredential;
+    firebaseAuthResult.fold((l) => l, (r) => userCredential = r);
+    final String token = await userCredential.user!.getIdToken();
+    final String fcmToken = (await _firebaseMessaging.getToken())!;
+    final result = await _authRestApi.register(
+      token: token,
+      firstName: preRegisterUser.firstName!.getOrCrash(),
+      lastName: preRegisterUser.lastName!.getOrCrash(),
+      email: preRegisterUser.email!.getOrCrash(),
+      tel: preRegisterUser.telNo!.getOrCrash(),
+      fcmToken: fcmToken,
+      roleId: preRegisterUser.role!.index + 1,
+      departmentId: preRegisterUser.department!.id,
+    );
+
+    if (result.isLeft()) {
+      return const Left(AuthenticationFailure.serverError());
+    }
+    try {
+      await _firebaseSigInAuth.sendVerifyEmail();
+      print('sent email success');
+    } catch (error) {
+      return const Left(AuthenticationFailure.cantSendVerifyEmail());
+    }
+    return const Right(unit);
   }
 
   @override
@@ -122,11 +157,23 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
   }
 
   @override
-  Future<void> signOut() => Future.wait([
-        _firebaseSigInAuth.signOut(),
-        _googleSignInAuth.signOut(),
-        _facebookSignInInAuth.signOut(),
-      ]);
+  Future<void> signOut() async {
+    try {
+      await _firebaseSigInAuth.signOut();
+    } catch (error) {
+      print(error);
+    }
+    try {
+      await _googleSignInAuth.signOut();
+    } catch (error) {
+      print(error);
+    }
+    try {
+      await _facebookSignInInAuth.signOut();
+    } catch (error) {
+      print(error);
+    }
+  }
 
   @override
   PreRegisterUser preRegisterUser;

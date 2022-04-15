@@ -13,16 +13,18 @@ class FirebaseSignInAuth {
 
   FirebaseSignInAuth(this._firebaseAuth);
 
-  Future<Either<AuthenticationFailure, Unit>> createUserWithEmailAndPassword(
+  Future<Either<AuthenticationFailure, UserCredential>>
+      createUserWithEmailAndPassword(
     String emailAddress,
     String password,
   ) async {
     try {
-      await _firebaseAuth.createUserWithEmailAndPassword(
+      final UserCredential userCredential =
+          await _firebaseAuth.createUserWithEmailAndPassword(
         email: emailAddress,
         password: password,
       );
-      return right(unit);
+      return right(userCredential);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'email-already-in-use') {
         return left(const AuthenticationFailure.emailAlreadyInUse());
@@ -86,5 +88,9 @@ class FirebaseSignInAuth {
       codeSent: onCodeSent,
       codeAutoRetrievalTimeout: onCodeAutoRetrievalTimeout,
     );
+  }
+
+  Future<void> sendVerifyEmail() async {
+    return _firebaseAuth.currentUser!.sendEmailVerification();
   }
 }

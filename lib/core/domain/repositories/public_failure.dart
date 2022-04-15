@@ -4,21 +4,24 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'public_failure.freezed.dart';
 
 @freezed
-class PublicFailure with _$PublicFailure {
-  const factory PublicFailure.serverError() = ServerError;
-  const factory PublicFailure.badRequest() = BadRequest;
-  const factory PublicFailure.unAuthorized() = UnAuthorized;
-  const factory PublicFailure.unknownError() = UnKnownError;
-  factory PublicFailure.fromHttpStatusCode(int statusCode) {
+class RestFailure with _$RestFailure {
+  const factory RestFailure.serverError() = ServerError;
+  const factory RestFailure.badRequest() = BadRequest;
+  const factory RestFailure.unAuthorized() = UnAuthorized;
+  const factory RestFailure.notFound() = NotFound;
+  const factory RestFailure.unknownError() = UnKnownError;
+  factory RestFailure.fromHttpStatusCode(int statusCode) {
     switch (statusCode) {
       case 500:
-        return const PublicFailure.serverError();
+        return const RestFailure.serverError();
       case 400:
-        return const PublicFailure.badRequest();
+        return const RestFailure.badRequest();
       case 401:
-        return const PublicFailure.unAuthorized();
+        return const RestFailure.unAuthorized();
+      case 404:
+        return const RestFailure.unknownError();
       default:
-        return const PublicFailure.unknownError();
+        return const RestFailure.unknownError();
     }
   }
 }

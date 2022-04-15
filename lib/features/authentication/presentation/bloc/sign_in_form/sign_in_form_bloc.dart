@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -16,8 +18,8 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
 
   SignInFormBloc(this._authenticationRepository)
       : super(SignInFormState.initial()) {
-    on<SignInFormEvent>((event, emit) {
-      event.map(
+    on<SignInFormEvent>((event, emit) async {
+      await event.map<FutureOr<void>>(
         emailChanged: (e) {
           emit(
             state.copyWith(
@@ -35,13 +37,13 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
           );
         },
         registerWithEmailAndPasswordPressed: (e) {
-          _performActionOnAuthFacadeWithEmailAndPassword(
-            _authenticationRepository.registerWithEmailAndPassword,
-            emit,
-          );
+          // _performActionOnAuthFacadeWithEmailAndPassword(
+          //   _authenticationRepository.registerWithEmailAndPassword,
+          //   emit,
+          // );
         },
         signInWithEmailAndPasswordPressed: (e) async {
-          _performActionOnAuthFacadeWithEmailAndPassword(
+          await _performActionOnAuthFacadeWithEmailAndPassword(
             _authenticationRepository.signInWithEmailAndPassword,
             emit,
           );
@@ -123,6 +125,7 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
         emailAddress: state.emailAddress,
         password: state.password,
       );
+      if (failureOrSuccess.isRight()) {}
     }
 
     emit(

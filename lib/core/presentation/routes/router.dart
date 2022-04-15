@@ -21,7 +21,6 @@ import 'package:frontend/features/authentication/presentation/pages/register/reg
 import 'package:frontend/features/authentication/presentation/pages/register/register_verify_email.dart';
 import 'package:frontend/features/authentication/presentation/pages/register/register_welcome_page.dart';
 import 'package:frontend/features/authentication/presentation/pages/sign_in/sing_in_page.dart';
-import 'package:frontend/features/authentication/presentation/pages/test_page/social_login_test.dart';
 import 'package:frontend/features/borrowing/presentation/pages/dash_board/dash_board.dart';
 import 'package:frontend/features/borrowing/presentation/pages/unlock_locker/list_locker.dart';
 import 'package:frontend/features/borrowing/presentation/pages/unlock_locker/toggle_locker.dart';
@@ -86,7 +85,6 @@ import 'package:frontend/features/streaming_and_record/presentation/pages/stream
     AutoRoute(page: RegisterCompletedPage),
     AutoRoute(page: RegisterProfileDataPage),
     AutoRoute(page: RegisterProfileDataFormPage),
-    AutoRoute(page: SocialLoginTestPage),
     AutoRoute(page: RegisterProfileDataCompletedPage),
     AutoRoute(page: RegisterAddFaceIdPage),
     AutoRoute(page: RegisterAddFaceIdCompletedPage),
