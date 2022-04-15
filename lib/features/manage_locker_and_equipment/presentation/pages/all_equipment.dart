@@ -28,7 +28,7 @@ class AllEquipmentPage extends StatelessWidget {
               switch (value) {
                 case 1:
                   AutoRouter.of(context)
-                      .push(AddOrEditLockerRoute(isEdit: true));
+                      .push(AddOrEditLockerRoute(lockerId: 1));
                   break;
                 case 2:
                   AutoRouter.of(context).push(const LockerDetailRoute());

@@ -6,6 +6,7 @@ import 'package:frontend/core/presentation/routes/router.gr.dart';
 import 'package:frontend/core/presentation/widgets/button.dart';
 import 'package:frontend/core/presentation/widgets/input_text.dart';
 import 'package:frontend/features/authentication/presentation/bloc/sign_in_form/sign_in_form_bloc.dart';
+import 'package:loading_overlay_pro/loading_overlay_pro.dart';
 
 class SignInForm extends StatelessWidget {
   @override
@@ -25,222 +26,231 @@ class SignInForm extends StatelessWidget {
                 cantSendVerifyEmail: (_) => 'Cant send verify email',
               ),
             ).show(context),
-            (_) => {},
+            (_) => AutoRouter.of(context).replace(const HomeRoute()),
           );
         }
       },
       builder: (context, state) {
-        return Padding(
-          padding: EdgeInsets.fromLTRB(
-            screenSize.width * 0.125,
-            screenSize.height * 0.05,
-            screenSize.width * 0.125,
-            0,
+        return LoadingOverlayPro(
+          isLoading: state.isSubmitting,
+          progressIndicator: CircularProgressIndicator(
+            color: Theme.of(context).colorScheme.primary,
           ),
-          child: Form(
-            child: Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Image.asset(
-                      'assets/images/authentication_feature/logo_with_name.png',
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 48,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    InputText(
-                        label: 'Email',
-                        placeHolder: 'Email',
+          child: Padding(
+            padding: EdgeInsets.fromLTRB(
+              screenSize.width * 0.125,
+              screenSize.height * 0.05,
+              screenSize.width * 0.125,
+              0,
+            ),
+            child: Form(
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        'assets/images/authentication_feature/logo_with_name.png',
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 48,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      InputText(
+                          label: 'Email',
+                          placeHolder: 'Email',
+                          onChanged: (value) =>
+                              context.read<SignInFormBloc>().add(
+                                    EmailChanged(value),
+                                  ),
+                          errorMessage: state.emailAddress.value.fold(
+                            (f) => f.maybeMap(
+                              invalidEmail: (_) => 'Email ไม่ถูกต้อง',
+                              orElse: () => '',
+                            ),
+                            (_) => '',
+                          ),
+                          isError: state.isShowErrorMessage &&
+                              !context
+                                  .read<SignInFormBloc>()
+                                  .state
+                                  .emailAddress
+                                  .isValid()),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 48,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      InputText(
+                        label: 'Password',
+                        placeHolder: 'Password',
                         onChanged: (value) =>
                             context.read<SignInFormBloc>().add(
-                                  EmailChanged(value),
+                                  PasswordChanged(value),
                                 ),
-                        errorMessage: state.emailAddress.value.fold(
-                          (f) => f.maybeMap(
-                            invalidEmail: (_) => 'Email ไม่ถูกต้อง',
-                            orElse: () => '',
-                          ),
-                          (_) => '',
-                        ),
+                        errorMessage: 'Password ไม่ถูกต้อง',
                         isError: state.isShowErrorMessage &&
-                            !context
-                                .read<SignInFormBloc>()
-                                .state
-                                .emailAddress
-                                .isValid()),
-                  ],
-                ),
-                const SizedBox(
-                  height: 48,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    InputText(
-                      label: 'Password',
-                      placeHolder: 'Password',
-                      onChanged: (value) => context.read<SignInFormBloc>().add(
-                            PasswordChanged(value),
+                            !state.password.isValid(),
+                        isObscureText: !state.isShowPassword,
+                        suffixIcon: IconButton(
+                          icon: Icon(
+                            state.isShowPassword
+                                ? Icons.visibility
+                                : Icons.visibility_off,
                           ),
-                      errorMessage: 'Password ไม่ถูกต้อง',
-                      isError:
-                          state.isShowErrorMessage && !state.password.isValid(),
-                      isObscureText: !state.isShowPassword,
-                      suffixIcon: IconButton(
-                        icon: Icon(
-                          state.isShowPassword
-                              ? Icons.visibility
-                              : Icons.visibility_off,
+                          onPressed: () => context
+                              .read<SignInFormBloc>()
+                              .add(const ToggleShowPasswordPressed()),
                         ),
-                        onPressed: () => context
-                            .read<SignInFormBloc>()
-                            .add(const ToggleShowPasswordPressed()),
                       ),
-                    ),
-                  ],
-                ),
-                Align(
-                  alignment: Alignment.centerRight,
-                  child: TextButton(
-                    onPressed: () {},
-                    child: Text(
-                      'ลืมรหัสผ่าน ?',
-                      style: Theme.of(context)
-                          .primaryTextTheme
-                          .bodyText1!
-                          .copyWith(
-                              color: Theme.of(context).colorScheme.secondary),
-                    ),
+                    ],
                   ),
-                ),
-                const SizedBox(
-                  height: 30,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Button(
-                      'เข้าสู่ระบบ',
-                      onPressed: () {
-                        context.read<SignInFormBloc>().add(
-                              const SignInFormEvent
-                                  .signInWithEmailAndPasswordPressed(),
-                            );
-                      },
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 30,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Expanded(
-                      child: Container(
-                        height: 1,
-                        color: Theme.of(context).colorScheme.background,
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 10,
-                      ),
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: TextButton(
+                      onPressed: () {},
                       child: Text(
-                        'หรือ',
-                        style: Theme.of(context).primaryTextTheme.caption,
-                      ),
-                    ),
-                    Expanded(
-                      child: Container(
-                        height: 1,
-                        color: Theme.of(context).colorScheme.background,
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 30,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    InkWell(
-                      onTap: () {
-                        context.read<SignInFormBloc>().add(
-                              const SignInFormEvent.signInWithFacebookPressed(),
-                            );
-                      },
-                      child: SizedBox(
-                        width: 80,
-                        height: 80,
-                        child: Image.asset(
-                          'assets/icons/authentication_feature/fb.png',
-                        ),
-                      ),
-                    ),
-                    InkWell(
-                      onTap: () {
-                        context.read<SignInFormBloc>().add(
-                              const SignInFormEvent.signInWithGooglePressed(),
-                            );
-                      },
-                      child: SizedBox(
-                        width: 80,
-                        height: 80,
-                        child: Image.asset(
-                          'assets/icons/authentication_feature/google.png',
-                        ),
-                      ),
-                    ),
-                    InkWell(
-                      onTap: () {
-                        context.read<SignInFormBloc>().add(
-                              const SignInFormEvent.signInWithTwitterPressed(),
-                            );
-                      },
-                      child: SizedBox(
-                        width: 80,
-                        height: 80,
-                        child: Image.asset(
-                          'assets/icons/authentication_feature/twitter.png',
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'ยังไม่ได้เป็นสมาชิกใช่หรือไม่',
-                      style: Theme.of(context).primaryTextTheme.caption,
-                    ),
-                    TextButton(
-                      onPressed: () {
-                        AutoRouter.of(context)
-                            .navigate(const RegisterWelcomeRoute());
-                      },
-                      child: Text(
-                        'สมัครสมาชิก',
+                        'ลืมรหัสผ่าน ?',
                         style: Theme.of(context)
                             .primaryTextTheme
-                            .caption
-                            ?.copyWith(color: Theme.of(context).primaryColor),
+                            .bodyText1!
+                            .copyWith(
+                                color: Theme.of(context).colorScheme.secondary),
                       ),
                     ),
-                  ],
-                )
-              ],
+                  ),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Button(
+                        'เข้าสู่ระบบ',
+                        onPressed: () {
+                          context.read<SignInFormBloc>().add(
+                                const SignInFormEvent
+                                    .signInWithEmailAndPasswordPressed(),
+                              );
+                        },
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Expanded(
+                        child: Container(
+                          height: 1,
+                          color: Theme.of(context).colorScheme.background,
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 10,
+                        ),
+                        child: Text(
+                          'หรือ',
+                          style: Theme.of(context).primaryTextTheme.caption,
+                        ),
+                      ),
+                      Expanded(
+                        child: Container(
+                          height: 1,
+                          color: Theme.of(context).colorScheme.background,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          context.read<SignInFormBloc>().add(
+                                const SignInFormEvent
+                                    .signInWithFacebookPressed(),
+                              );
+                        },
+                        child: SizedBox(
+                          width: 80,
+                          height: 80,
+                          child: Image.asset(
+                            'assets/icons/authentication_feature/fb.png',
+                          ),
+                        ),
+                      ),
+                      InkWell(
+                        onTap: () {
+                          context.read<SignInFormBloc>().add(
+                                const SignInFormEvent.signInWithGooglePressed(),
+                              );
+                        },
+                        child: SizedBox(
+                          width: 80,
+                          height: 80,
+                          child: Image.asset(
+                            'assets/icons/authentication_feature/google.png',
+                          ),
+                        ),
+                      ),
+                      InkWell(
+                        onTap: () {
+                          context.read<SignInFormBloc>().add(
+                                const SignInFormEvent
+                                    .signInWithTwitterPressed(),
+                              );
+                        },
+                        child: SizedBox(
+                          width: 80,
+                          height: 80,
+                          child: Image.asset(
+                            'assets/icons/authentication_feature/twitter.png',
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'ยังไม่ได้เป็นสมาชิกใช่หรือไม่',
+                        style: Theme.of(context).primaryTextTheme.caption,
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          AutoRouter.of(context)
+                              .navigate(const RegisterWelcomeRoute());
+                        },
+                        child: Text(
+                          'สมัครสมาชิก',
+                          style: Theme.of(context)
+                              .primaryTextTheme
+                              .caption
+                              ?.copyWith(color: Theme.of(context).primaryColor),
+                        ),
+                      ),
+                    ],
+                  )
+                ],
+              ),
             ),
           ),
         );

@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:dartz/dartz.dart';
-import 'package:frontend/core/domain/repositories/public_failure.dart';
+import 'package:frontend/core/domain/repositories/rest_failure.dart';
 import 'package:frontend/core/utils/environment.dart' as environment;
 import 'package:http/http.dart' as http;
 import 'package:injectable/injectable.dart';

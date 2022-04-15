@@ -33,4 +33,6 @@ abstract class AuthenticationRepository {
   Future<Either<AuthenticationFailure, UserType>> signIn();
 
   UserType? get userType;
+
+  User? get getFirebaseUser;
 }

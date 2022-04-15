@@ -10,10 +10,13 @@ import 'package:frontend/core/presentation/widgets/multiple_select_custom_widget
 
 class AddOrEditLockerPage extends HookWidget {
   final bool isEdit;
-  const AddOrEditLockerPage({Key? key, this.isEdit = false}) : super(key: key);
-
+  const AddOrEditLockerPage(this.lockerId, {Key? key, this.isEdit = false})
+      : super(key: key);
+  final int lockerId;
   @override
   Widget build(BuildContext context) {
+    print('lockerId:');
+    print(lockerId);
     final screenSize = MediaQuery.of(context).size;
     final ValueNotifier<List<String>?> selectedAccount = useState(null);
     return Scaffold(

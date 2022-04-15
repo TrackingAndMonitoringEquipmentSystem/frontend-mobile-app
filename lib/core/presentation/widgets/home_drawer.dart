@@ -27,16 +27,20 @@ class HomeDrawer extends HookWidget {
                 ],
                 color: Colors.white,
               ),
-              child: const SizedBox(
+              child: SizedBox(
                 width: 300,
                 child: Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: AccountCardWidget(
-                    imagePath:
-                        'assets/images/account/profile_image_example.png',
-                    name: 'Darlene Robertson',
-                    role: Role.superAdmin,
-                    department: 'แผนกบริหาร',
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    children: const [
+                      AccountCardWidget(
+                        imagePath:
+                            'assets/images/account/profile_image_example.png',
+                        name: 'Darlene Robertson',
+                        role: Role.superAdmin,
+                        department: 'แผนกบริหาร',
+                      ),
+                    ],
                   ),
                 ),
               ),

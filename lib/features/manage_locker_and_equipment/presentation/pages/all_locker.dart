@@ -1,46 +1,59 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:frontend/core/presentation/routes/router.gr.dart';
 import 'package:frontend/core/presentation/widgets/tabs_widget.dart';
 import 'package:frontend/core/utils/enum.dart';
+import 'package:frontend/features/manage_locker_and_equipment/presentation/bloc/locker/locker_bloc.dart';
 import 'package:frontend/features/manage_locker_and_equipment/presentation/widgets/list_locker_and_equipment_widget.dart';
+import 'package:frontend/injection.dart';
+import 'package:loading_overlay_pro/loading_overlay_pro.dart';
 
 class AllLockerPage extends StatelessWidget {
-  final bool isHasLocker;
-  const AllLockerPage({Key? key, this.isHasLocker = true}) : super(key: key);
+  const AllLockerPage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
-
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          'จัดการตู้และอุปกรณ์',
-          style: TextStyle(color: Colors.black),
-        ),
-        backgroundColor: Colors.white,
-        iconTheme: const IconThemeData(color: Colors.black),
-        elevation: 0,
-        actions: [
-          IconButton(onPressed: () {}, icon: const Icon(Icons.search)),
-          IconButton(
-            onPressed: () {
-              AutoRouter.of(context).push(const QrScanningRoute());
-            },
-            icon: const Icon(Icons.add),
+    print(screenSize);
+    return BlocProvider(
+      create: (context) => getIt<LockerBloc>()..add(const InitState()),
+      child: BlocConsumer<LockerBloc, LockerState>(
+        listener: (context, state) {},
+        builder: (context, state) => LoadingOverlayPro(
+          isLoading: state.isLoading,
+          progressIndicator: const CircularProgressIndicator(),
+          child: Scaffold(
+            appBar: AppBar(
+              title: const Text(
+                'จัดการตู้และอุปกรณ์',
+                style: TextStyle(color: Colors.black),
+              ),
+              backgroundColor: Colors.white,
+              iconTheme: const IconThemeData(color: Colors.black),
+              elevation: 0,
+              actions: [
+                IconButton(onPressed: () {}, icon: const Icon(Icons.search)),
+                IconButton(
+                  onPressed: () {
+                    AutoRouter.of(context).push(const QrScanningRoute());
+                  },
+                  icon: const Icon(Icons.add),
+                ),
+              ],
+            ),
+            body: Padding(
+              padding: EdgeInsets.fromLTRB(
+                screenSize.width * 0.1,
+                screenSize.height * 0.05,
+                screenSize.width * 0.1,
+                0,
+              ),
+              child: state.lockers.isNotEmpty
+                  ? _buildFoundCase(context)
+                  : _buildNotFoundCase(context),
+            ),
           ),
-        ],
-      ),
-      body: Padding(
-        padding: EdgeInsets.fromLTRB(
-          screenSize.width * 0.1,
-          screenSize.height * 0.05,
-          screenSize.width * 0.1,
-          0,
         ),
-        child: isHasLocker
-            ? _buildFoundCase(context)
-            : _buildNotFoundCase(context),
       ),
     );
   }
@@ -67,7 +80,7 @@ class AllLockerPage extends StatelessWidget {
               onPressed: () {},
               child: Text(
                 '+ เพิ่มตู้ล็อกเกอร์',
-                style: Theme.of(context).primaryTextTheme.headline3!.copyWith(
+                style: Theme.of(context).primaryTextTheme.bodyText1!.copyWith(
                       color: Theme.of(context).colorScheme.secondary,
                     ),
               ),

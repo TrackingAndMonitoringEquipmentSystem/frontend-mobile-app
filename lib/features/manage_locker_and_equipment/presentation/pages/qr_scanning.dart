@@ -31,12 +31,6 @@ class _QrScanningPageState extends State<QrScanningPage> {
   }
 
   @override
-  void initState() {
-    super.initState();
-    AutoRouter.of(context).replace(AddOrEditLockerRoute());
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -84,11 +78,12 @@ class _QrScanningPageState extends State<QrScanningPage> {
       key: qrKey,
       onQRViewCreated: _onQRViewCreated,
       overlay: QrScannerOverlayShape(
-          borderColor: Colors.red,
-          borderRadius: 10,
-          borderLength: 30,
-          borderWidth: 10,
-          cutOutSize: scanArea),
+        borderColor: Colors.red,
+        borderRadius: 10,
+        borderLength: 30,
+        borderWidth: 10,
+        cutOutSize: scanArea,
+      ),
       onPermissionSet: (ctrl, p) => _onPermissionSet(context, ctrl, p),
     );
   }
@@ -98,7 +93,13 @@ class _QrScanningPageState extends State<QrScanningPage> {
       this.controller = controller;
     });
     controller.scannedDataStream.listen((scanData) {
-      AutoRouter.of(context).navigate(AddOrEditLockerRoute());
+      // print('scanData:');
+      // print(scanData.code);
+      if (scanData.code != null) {
+        AutoRouter.of(context).navigate(
+          AddOrEditLockerRoute(lockerId: int.parse(scanData.code!)),
+        );
+      }
     });
   }
 

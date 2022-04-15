@@ -7,7 +7,7 @@ class SignInFormState with _$SignInFormState {
     required Password password,
     required bool isShowErrorMessage,
     required bool isSubmitting,
-    required Either<AuthenticationFailure, Unit>?
+    required Either<AuthenticationFailure, dynamic>?
         authenticationFailureOrSuccess,
     required bool isShowPassword,
   }) = _SignInFormState;

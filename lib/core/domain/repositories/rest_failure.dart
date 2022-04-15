@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'public_failure.freezed.dart';
+part 'rest_failure.freezed.dart';
 
 @freezed
 class RestFailure with _$RestFailure {

@@ -266,23 +266,19 @@ class AppRouter extends _i56.RootStackRouter {
           routeData: routeData, child: const _i28.BlockAccountPage());
     },
     AllLockerRoute.name: (routeData) {
-      final args = routeData.argsAs<AllLockerRouteArgs>(
-          orElse: () => const AllLockerRouteArgs());
       return _i56.MaterialPageX<dynamic>(
-          routeData: routeData,
-          child:
-              _i29.AllLockerPage(key: args.key, isHasLocker: args.isHasLocker));
+          routeData: routeData, child: const _i29.AllLockerPage());
     },
     QrScanningRoute.name: (routeData) {
       return _i56.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i30.QrScanningPage());
     },
     AddOrEditLockerRoute.name: (routeData) {
-      final args = routeData.argsAs<AddOrEditLockerRouteArgs>(
-          orElse: () => const AddOrEditLockerRouteArgs());
+      final args = routeData.argsAs<AddOrEditLockerRouteArgs>();
       return _i56.MaterialPageX<dynamic>(
           routeData: routeData,
-          child: _i31.AddOrEditLockerPage(key: args.key, isEdit: args.isEdit));
+          child: _i31.AddOrEditLockerPage(args.lockerId,
+              key: args.key, isEdit: args.isEdit));
     },
     AllEquipmentRoute.name: (routeData) {
       final args = routeData.argsAs<AllEquipmentRouteArgs>(
@@ -890,26 +886,10 @@ class BlockAccountRoute extends _i56.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i29.AllLockerPage]
-class AllLockerRoute extends _i56.PageRouteInfo<AllLockerRouteArgs> {
-  AllLockerRoute({_i69.Key? key, bool isHasLocker = true})
-      : super(AllLockerRoute.name,
-            path: '/all-locker-page',
-            args: AllLockerRouteArgs(key: key, isHasLocker: isHasLocker));
+class AllLockerRoute extends _i56.PageRouteInfo<void> {
+  const AllLockerRoute() : super(AllLockerRoute.name, path: '/all-locker-page');
 
   static const String name = 'AllLockerRoute';
-}
-
-class AllLockerRouteArgs {
-  const AllLockerRouteArgs({this.key, this.isHasLocker = true});
-
-  final _i69.Key? key;
-
-  final bool isHasLocker;
-
-  @override
-  String toString() {
-    return 'AllLockerRouteArgs{key: $key, isHasLocker: $isHasLocker}';
-  }
 }
 
 /// generated route for
@@ -925,16 +905,21 @@ class QrScanningRoute extends _i56.PageRouteInfo<void> {
 /// [_i31.AddOrEditLockerPage]
 class AddOrEditLockerRoute
     extends _i56.PageRouteInfo<AddOrEditLockerRouteArgs> {
-  AddOrEditLockerRoute({_i69.Key? key, bool isEdit = false})
+  AddOrEditLockerRoute(
+      {required int lockerId, _i69.Key? key, bool isEdit = false})
       : super(AddOrEditLockerRoute.name,
             path: '/add-or-edit-locker-page',
-            args: AddOrEditLockerRouteArgs(key: key, isEdit: isEdit));
+            args: AddOrEditLockerRouteArgs(
+                lockerId: lockerId, key: key, isEdit: isEdit));
 
   static const String name = 'AddOrEditLockerRoute';
 }
 
 class AddOrEditLockerRouteArgs {
-  const AddOrEditLockerRouteArgs({this.key, this.isEdit = false});
+  const AddOrEditLockerRouteArgs(
+      {required this.lockerId, this.key, this.isEdit = false});
+
+  final int lockerId;
 
   final _i69.Key? key;
 
@@ -942,7 +927,7 @@ class AddOrEditLockerRouteArgs {
 
   @override
   String toString() {
-    return 'AddOrEditLockerRouteArgs{key: $key, isEdit: $isEdit}';
+    return 'AddOrEditLockerRouteArgs{lockerId: $lockerId, key: $key, isEdit: $isEdit}';
   }
 }
 

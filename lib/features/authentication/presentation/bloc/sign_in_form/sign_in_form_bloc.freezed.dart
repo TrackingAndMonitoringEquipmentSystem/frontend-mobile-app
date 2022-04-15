@@ -1274,7 +1274,7 @@ class _$SignInFormStateTearOff {
       required Password password,
       required bool isShowErrorMessage,
       required bool isSubmitting,
-      required Either<AuthenticationFailure, Unit>?
+      required Either<AuthenticationFailure, dynamic>?
           authenticationFailureOrSuccess,
       required bool isShowPassword}) {
     return _SignInFormState(
@@ -1297,7 +1297,7 @@ mixin _$SignInFormState {
   Password get password => throw _privateConstructorUsedError;
   bool get isShowErrorMessage => throw _privateConstructorUsedError;
   bool get isSubmitting => throw _privateConstructorUsedError;
-  Either<AuthenticationFailure, Unit>? get authenticationFailureOrSuccess =>
+  Either<AuthenticationFailure, dynamic>? get authenticationFailureOrSuccess =>
       throw _privateConstructorUsedError;
   bool get isShowPassword => throw _privateConstructorUsedError;
 
@@ -1316,7 +1316,7 @@ abstract class $SignInFormStateCopyWith<$Res> {
       Password password,
       bool isShowErrorMessage,
       bool isSubmitting,
-      Either<AuthenticationFailure, Unit>? authenticationFailureOrSuccess,
+      Either<AuthenticationFailure, dynamic>? authenticationFailureOrSuccess,
       bool isShowPassword});
 }
 
@@ -1358,7 +1358,7 @@ class _$SignInFormStateCopyWithImpl<$Res>
       authenticationFailureOrSuccess: authenticationFailureOrSuccess == freezed
           ? _value.authenticationFailureOrSuccess
           : authenticationFailureOrSuccess // ignore: cast_nullable_to_non_nullable
-              as Either<AuthenticationFailure, Unit>?,
+              as Either<AuthenticationFailure, dynamic>?,
       isShowPassword: isShowPassword == freezed
           ? _value.isShowPassword
           : isShowPassword // ignore: cast_nullable_to_non_nullable
@@ -1379,7 +1379,7 @@ abstract class _$SignInFormStateCopyWith<$Res>
       Password password,
       bool isShowErrorMessage,
       bool isSubmitting,
-      Either<AuthenticationFailure, Unit>? authenticationFailureOrSuccess,
+      Either<AuthenticationFailure, dynamic>? authenticationFailureOrSuccess,
       bool isShowPassword});
 }
 
@@ -1423,7 +1423,7 @@ class __$SignInFormStateCopyWithImpl<$Res>
       authenticationFailureOrSuccess: authenticationFailureOrSuccess == freezed
           ? _value.authenticationFailureOrSuccess
           : authenticationFailureOrSuccess // ignore: cast_nullable_to_non_nullable
-              as Either<AuthenticationFailure, Unit>?,
+              as Either<AuthenticationFailure, dynamic>?,
       isShowPassword: isShowPassword == freezed
           ? _value.isShowPassword
           : isShowPassword // ignore: cast_nullable_to_non_nullable
@@ -1452,7 +1452,7 @@ class _$_SignInFormState implements _SignInFormState {
   @override
   final bool isSubmitting;
   @override
-  final Either<AuthenticationFailure, Unit>? authenticationFailureOrSuccess;
+  final Either<AuthenticationFailure, dynamic>? authenticationFailureOrSuccess;
   @override
   final bool isShowPassword;
 
@@ -1502,7 +1502,7 @@ abstract class _SignInFormState implements SignInFormState {
       required Password password,
       required bool isShowErrorMessage,
       required bool isSubmitting,
-      required Either<AuthenticationFailure, Unit>?
+      required Either<AuthenticationFailure, dynamic>?
           authenticationFailureOrSuccess,
       required bool isShowPassword}) = _$_SignInFormState;
 
@@ -1515,7 +1515,7 @@ abstract class _SignInFormState implements SignInFormState {
   @override
   bool get isSubmitting;
   @override
-  Either<AuthenticationFailure, Unit>? get authenticationFailureOrSuccess;
+  Either<AuthenticationFailure, dynamic>? get authenticationFailureOrSuccess;
   @override
   bool get isShowPassword;
   @override

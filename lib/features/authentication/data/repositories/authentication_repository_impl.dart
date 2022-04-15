@@ -159,8 +159,11 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
     if (firebaseUser == null) {
       return null;
     }
-    final result = await signIn();
-    return result.fold((l) => null, (r) => r);
+    if (_userType == null) {
+      await signIn();
+    }
+
+    return _userType;
   }
 
   @override
@@ -230,4 +233,7 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
 
   @override
   UserType? get userType => _userType;
+
+  @override
+  User? get getFirebaseUser => _firebaseSigInAuth.getCurrentUser();
 }
