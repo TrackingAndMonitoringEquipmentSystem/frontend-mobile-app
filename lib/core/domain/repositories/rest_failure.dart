@@ -19,7 +19,7 @@ class RestFailure with _$RestFailure {
       case 401:
         return const RestFailure.unAuthorized();
       case 404:
-        return const RestFailure.unknownError();
+        return const RestFailure.notFound();
       default:
         return const RestFailure.unknownError();
     }

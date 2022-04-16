@@ -1,28 +1,66 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:frontend/core/domain/repositories/public_repository.dart';
+import 'package:frontend/core/domain/repositories/rest_failure.dart';
 import 'package:frontend/core/presentation/routes/router.gr.dart';
 import 'package:frontend/core/presentation/widgets/bottom_sheet_multiple_select.dart';
 import 'package:frontend/core/presentation/widgets/bottom_sheet_single_select.dart';
 import 'package:frontend/core/presentation/widgets/button.dart';
 import 'package:frontend/core/presentation/widgets/input_text.dart';
 import 'package:frontend/core/presentation/widgets/multiple_select_custom_widget.dart';
+import 'package:frontend/features/manage_locker_and_equipment/domain/entities/building.dart';
+import 'package:frontend/features/manage_locker_and_equipment/domain/entities/department.dart';
+import 'package:frontend/features/manage_locker_and_equipment/domain/entities/floor.dart';
+import 'package:frontend/features/manage_locker_and_equipment/domain/entities/room.dart';
+import 'package:frontend/features/manage_locker_and_equipment/domain/locker-repository.dart';
+import 'package:frontend/injection.dart';
 
 class AddOrEditLockerPage extends HookWidget {
-  final bool isEdit;
-  const AddOrEditLockerPage(this.lockerId, {Key? key, this.isEdit = false})
-      : super(key: key);
+  const AddOrEditLockerPage(this.lockerId, {Key? key}) : super(key: key);
   final int lockerId;
   @override
   Widget build(BuildContext context) {
-    print('lockerId:');
-    print(lockerId);
     final screenSize = MediaQuery.of(context).size;
     final ValueNotifier<List<String>?> selectedAccount = useState(null);
+    final ValueNotifier<bool> isEdit = useState(false);
+    final ValueNotifier<RestFailure?> restFailure = useState(null);
+    final ValueNotifier<List<Department>> departments = useState([]);
+    final ValueNotifier<List<Building>> buildings = useState([]);
+    final ValueNotifier<Building?> buildingSelected = useState(null);
+    final ValueNotifier<Room?> roomSelected = useState(null);
+    final ValueNotifier<Floor?> floorSelected = useState(null);
+    final ValueNotifier<String> name = useState('');
+    final ValueNotifier<String> description = useState('');
+    void Function()? floorClear;
+    void Function()? roomClear;
+    final lockerRepository = getIt<LockerRepository>();
+    useEffect(
+      () {
+        Future<void>.microtask(() async {
+          final departmentsResult =
+              await getIt<PublicRepository>().getDepartments();
+          departmentsResult.fold(
+            (l) => restFailure.value = l,
+            (r) => departments.value = r,
+          );
+          if (departmentsResult.isLeft()) {
+            return;
+          }
+          final buildingsResult = await lockerRepository.getBuildings();
+          buildingsResult.fold(
+            (l) => restFailure.value = l,
+            (r) => buildings.value = r,
+          );
+        });
+        return null;
+      },
+      [],
+    );
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          isEdit ? 'แก้ไขข้อมูล' : 'เพิ่มตู้ล็อกเกอร์',
+          isEdit.value ? 'แก้ไขข้อมูล' : 'เพิ่มตู้ล็อกเกอร์',
           style: const TextStyle(color: Colors.black),
         ),
         backgroundColor: Colors.white,
@@ -39,9 +77,9 @@ class AddOrEditLockerPage extends HookWidget {
               child: Column(
                 children: [
                   Row(
-                    children: const [
+                    children: [
                       InputText(
-                        onChanged: print,
+                        onChanged: (value) => name.value = value,
                         label: 'ชื่อตู้ล็อกเกอร์',
                         placeHolder: 'ชื่อตู้ล็อกเกอร์',
                       ),
@@ -51,9 +89,9 @@ class AddOrEditLockerPage extends HookWidget {
                     height: 20,
                   ),
                   Row(
-                    children: const [
+                    children: [
                       InputText(
-                        onChanged: print,
+                        onChanged: (value) => description.value = value,
                         label: 'คำอธิบาย',
                         placeHolder: 'คำอธิบาย',
                       ),
@@ -100,14 +138,20 @@ class AddOrEditLockerPage extends HookWidget {
                       BottomSheetSingleSelect(
                         label: 'อาคาร',
                         placeHolder: 'อาคาร',
-                        onChanged: (_) {},
-                        listChoice: const [
-                          {'displayText': 'อาคาร 1', 'value': 1},
-                          {'displayText': 'อาคาร 2', 'value': 2},
-                          {'displayText': 'อาคาร 3', 'value': 3},
-                          {'displayText': 'อาคาร 4', 'value': 4},
-                          {'displayText': 'อาคาร 5', 'value': 5},
-                        ],
+                        onChanged: (value) {
+                          buildingSelected.value = value?['value'] as Building?;
+                          floorSelected.value = null;
+                          if (floorClear != null) {
+                            floorClear!();
+                          } else {
+                            print('floor clear = null');
+                          }
+                        },
+                        listChoice: buildings.value
+                            .map(
+                              (e) => {'displayText': e.name, 'value': e},
+                            )
+                            .toList(),
                       ),
                     ],
                   ),
@@ -116,14 +160,27 @@ class AddOrEditLockerPage extends HookWidget {
                       BottomSheetSingleSelect(
                         label: 'ชั้น',
                         placeHolder: 'ชั้น',
-                        onChanged: (_) {},
-                        listChoice: const [
-                          {'displayText': 'ชั้น 1', 'value': 1},
-                          {'displayText': 'ชั้น 2', 'value': 2},
-                          {'displayText': 'ชั้น 3', 'value': 3},
-                          {'displayText': 'ชั้น 4', 'value': 4},
-                          {'displayText': 'ชั้น 5', 'value': 5},
-                        ],
+                        onChanged: (value) {
+                          floorSelected.value = value?['value'] as Floor?;
+                          roomSelected.value = null;
+                          if (roomClear != null) {
+                            roomClear!();
+                          } else {
+                            print('room clear = null');
+                          }
+                        },
+                        listChoice: buildingSelected.value != null
+                            ? [
+                                ...buildingSelected.value!.floors.map(
+                                  (e) => {
+                                    'displayText': e.name,
+                                    'value': e,
+                                  },
+                                )
+                              ]
+                            : [],
+                        bindClearFunction: (clearFunction) =>
+                            floorClear = clearFunction,
                       ),
                       const SizedBox(
                         width: 10,
@@ -131,14 +188,21 @@ class AddOrEditLockerPage extends HookWidget {
                       BottomSheetSingleSelect(
                         label: 'ห้อง',
                         placeHolder: 'ห้อง',
-                        onChanged: (_) {},
-                        listChoice: const [
-                          {'displayText': 'ห้อง 1', 'value': 1},
-                          {'displayText': 'ห้อง 2', 'value': 2},
-                          {'displayText': 'ห้อง 3', 'value': 3},
-                          {'displayText': 'ห้อง 4', 'value': 4},
-                          {'displayText': 'ห้อง 5', 'value': 5},
-                        ],
+                        onChanged: (value) {
+                          roomSelected.value = value?['value'] as Room?;
+                        },
+                        listChoice: floorSelected.value != null
+                            ? [
+                                ...floorSelected.value!.rooms.map(
+                                  (e) => {
+                                    'displayText': e.name,
+                                    'value': e,
+                                  },
+                                )
+                              ]
+                            : [],
+                        bindClearFunction: (clearFunction) =>
+                            roomClear = clearFunction,
                       ),
                     ],
                   ),
@@ -184,33 +248,15 @@ class AddOrEditLockerPage extends HookWidget {
                         onChanged: (value) {
                           print(value);
                         },
-                        listChoice: const [
-                          {
-                            'displayText': 'แผนก 1',
-                            'value': 1,
-                            'isSelected': false,
-                          },
-                          {
-                            'displayText': 'แผนก 2',
-                            'value': 2,
-                            'isSelected': false,
-                          },
-                          {
-                            'displayText': 'แผนก 3',
-                            'value': 3,
-                            'isSelected': false,
-                          },
-                          {
-                            'displayText': 'แผนก 4',
-                            'value': 4,
-                            'isSelected': false,
-                          },
-                          {
-                            'displayText': 'แผนก 5',
-                            'value': 5,
-                            'isSelected': false,
-                          },
-                        ],
+                        listChoice: departments.value
+                            .map(
+                              (e) => {
+                                'displayText': e.name,
+                                'value': e,
+                                'isSelected': false,
+                              },
+                            )
+                            .toList(),
                       ),
                     ],
                   ),
@@ -238,11 +284,25 @@ class AddOrEditLockerPage extends HookWidget {
                   ),
                   SizedBox(
                     width: 300,
-                    child: Button(
-                      'ถัดไป',
-                      onPressed: () {
-                        AutoRouter.of(context).push(AllEquipmentRoute());
-                      },
+                    child: Row(
+                      children: [
+                        Button(
+                          'ถัดไป',
+                          onPressed: () async {
+                            final result =
+                                await lockerRepository.registerLocker(
+                              id: lockerId,
+                              name: name.value,
+                              description: description.value,
+                              departments: departments.value,
+                              room: roomSelected.value!,
+                            );
+                            if (result.isRight()) {
+                              AutoRouter.of(context).push(AllEquipmentRoute());
+                            }
+                          },
+                        ),
+                      ],
                     ),
                   ),
                 ],

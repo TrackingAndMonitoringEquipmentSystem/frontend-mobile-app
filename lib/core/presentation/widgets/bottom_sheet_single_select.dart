@@ -14,6 +14,7 @@ class BottomSheetSingleSelect extends HookWidget {
   final List<Map<String, dynamic>> listChoice;
   final Widget? headerWidget;
   final bool isRequired;
+  final void Function(void Function())? bindClearFunction;
   const BottomSheetSingleSelect({
     required this.onChanged,
     this.isError = false,
@@ -26,6 +27,7 @@ class BottomSheetSingleSelect extends HookWidget {
     this.listChoice = const [],
     this.headerWidget,
     this.isRequired = false,
+    this.bindClearFunction,
   });
   @override
   Widget build(BuildContext context) {
@@ -33,6 +35,13 @@ class BottomSheetSingleSelect extends HookWidget {
         useState(initialValue);
     final controller =
         useTextEditingController(text: initialValue?['displayText'] as String?);
+    void clearFunction() {
+      controller.clear();
+      currentValue.value = null;
+    }
+
+    bindClearFunction?.call(clearFunction);
+
     return Expanded(
       child: InkWell(
         onTap: () => _onPressed(context, currentValue, controller),

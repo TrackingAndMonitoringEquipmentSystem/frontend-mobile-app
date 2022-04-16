@@ -71,6 +71,8 @@ class AuthRestApi {
     required String fcmToken,
   }) async {
     try {
+      print('token');
+      print(token);
       final uri = Uri(
         scheme: environment.baseSchema,
         host: environment.baseApiUrl,
@@ -90,8 +92,8 @@ class AuthRestApi {
           },
         ),
       );
-      print(response.reasonPhrase);
-      print(response.body);
+      // print(response.reasonPhrase);
+      // print(response.body);
       if (response.statusCode == 201) {
         return Right(
           jsonDecode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>,

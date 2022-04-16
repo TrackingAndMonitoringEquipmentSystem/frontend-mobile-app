@@ -3,7 +3,8 @@ const String baseApiUrl = '5d4f-49-237-14-212.ngrok.io';
 const int baseApiPort = 80;
 enum PublicsPath { getDepartments }
 enum AuthenPath { register, signIn, signOut }
-enum LockerPath { getLockersByDepartment, getLockers }
+enum LockerPath { getLockersByDepartment, getLockers, registerLocker }
+enum LocationPath { getBuildings }
 const Map<PublicsPath, String> publics = {
   PublicsPath.getDepartments: '/publics/departments'
 };
@@ -16,5 +17,10 @@ const Map<AuthenPath, String> authen = {
 
 const Map<LockerPath, String> lockers = {
   LockerPath.getLockersByDepartment: '/lockers/lockersByDepartment',
-  LockerPath.getLockers: '/lockers'
+  LockerPath.getLockers: '/lockers',
+  LockerPath.registerLocker: '/lockers/registerLocker'
+};
+
+const Map<LocationPath, String> location = {
+  LocationPath.getBuildings: '/location/buildings',
 };

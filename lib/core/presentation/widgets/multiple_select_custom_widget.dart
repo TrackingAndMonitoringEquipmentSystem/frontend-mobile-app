@@ -49,7 +49,7 @@ class MultipleSelectCustomWidget extends HookWidget {
               label,
               style: const TextStyle(
                 fontFamily: 'IBM Plex Sans Thai',
-                fontSize: 25,
+                fontSize: 14,
               ),
             ),
             errorText: isError ? errorMessage : null,

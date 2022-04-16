@@ -2,9 +2,9 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
-class BottomSheetMultipleSelect extends HookWidget {
+class BottomSheetMultipleSelect<T> extends HookWidget {
   final String label;
-  final void Function(List<bool>) onChanged;
+  final void Function(List<T>) onChanged;
   final bool isError;
   final String errorMessage;
   final String placeHolder;
@@ -25,8 +25,10 @@ class BottomSheetMultipleSelect extends HookWidget {
   });
   @override
   Widget build(BuildContext context) {
-    final ValueNotifier<List<bool>> currentValue =
-        useState(listChoice.map((e) => e['isSelected'] as bool).toList());
+    final ValueNotifier<List<T>> currentValue = useState(listChoice
+        .where((element) => element['isSelected'] as bool)
+        .map((e) => e['value'] as T)
+        .toList());
     final controller = useTextEditingController();
     return Expanded(
       child: InkWell(
@@ -42,7 +44,7 @@ class BottomSheetMultipleSelect extends HookWidget {
               label,
               style: const TextStyle(
                 fontFamily: 'IBM Plex Sans Thai',
-                fontSize: 25,
+                fontSize: 14,
               ),
             ),
             errorText: isError ? errorMessage : null,
@@ -56,7 +58,7 @@ class BottomSheetMultipleSelect extends HookWidget {
 
   void _onPressed(
     BuildContext context,
-    ValueNotifier<List<bool>> currentValue,
+    ValueNotifier<List<T>> currentValue,
     TextEditingController controller,
   ) {
     showModalBottomSheet<dynamic>(
@@ -86,7 +88,7 @@ class BottomSheetMultipleSelect extends HookWidget {
 
   Widget _buildBody(
     BuildContext context,
-    ValueNotifier<List<bool>> currentValue,
+    ValueNotifier<List<T>> currentValue,
     TextEditingController controller,
   ) {
     return StatefulBuilder(
@@ -113,19 +115,18 @@ class BottomSheetMultipleSelect extends HookWidget {
               children: <Widget>[
                 ListTile(
                   leading: Icon(
-                    (currentValue.value.every((element) => element))
+                    currentValue.value.length == listChoice.length
                         ? Icons.check_box_rounded
                         : Icons.check_box_outline_blank_rounded,
                     color: Theme.of(context).primaryColor,
                   ),
                   title: const Text('ทั้งหมด'),
                   onTap: () {
-                    if (currentValue.value.every((element) => element)) {
-                      currentValue.value =
-                          List.filled(currentValue.value.length, false);
+                    if (currentValue.value.length == listChoice.length) {
+                      currentValue.value.clear();
                     } else {
                       currentValue.value =
-                          List.filled(currentValue.value.length, true);
+                          listChoice.map((e) => e['value'] as T).toList();
                     }
                     onChanged(currentValue.value);
                     setState(() {});
@@ -136,23 +137,26 @@ class BottomSheetMultipleSelect extends HookWidget {
                   indent: 15,
                   endIndent: 15,
                 ),
-                ...listChoice.asMap().entries.map(
-                      (entry) => ListTile(
-                        leading: Icon(
-                          (currentValue.value[entry.key])
-                              ? Icons.check_box_rounded
-                              : Icons.check_box_outline_blank_rounded,
-                          color: Theme.of(context).primaryColor,
-                        ),
-                        title: Text(entry.value['displayText'].toString()),
-                        onTap: () {
-                          currentValue.value[entry.key] =
-                              !currentValue.value[entry.key];
-                          onChanged(currentValue.value);
-                          setState(() {});
-                        },
-                      ),
+                ...listChoice.map(
+                  (choice) => ListTile(
+                    leading: Icon(
+                      currentValue.value.contains(choice['value'] as T)
+                          ? Icons.check_box_rounded
+                          : Icons.check_box_outline_blank_rounded,
+                      color: Theme.of(context).primaryColor,
                     ),
+                    title: Text(choice['displayText'] as String),
+                    onTap: () {
+                      if (currentValue.value.contains(choice['value'] as T)) {
+                        currentValue.value.remove(choice['value'] as T);
+                      } else {
+                        currentValue.value.add(choice['value'] as T);
+                      }
+                      onChanged(currentValue.value);
+                      setState(() {});
+                    },
+                  ),
+                ),
               ],
             ),
           ],
