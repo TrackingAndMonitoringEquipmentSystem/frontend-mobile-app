@@ -1,67 +1,101 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:frontend/core/domain/repositories/rest_failure.dart';
 import 'package:frontend/core/presentation/routes/router.gr.dart';
 import 'package:frontend/core/utils/enum.dart';
+import 'package:frontend/features/manage_locker_and_equipment/domain/entities/department.dart';
+import 'package:frontend/features/manage_locker_and_equipment/domain/entities/locker.dart';
+import 'package:frontend/features/manage_locker_and_equipment/domain/entities/room.dart';
+import 'package:frontend/features/manage_locker_and_equipment/domain/locker-repository.dart';
 import 'package:frontend/features/manage_locker_and_equipment/presentation/widgets/department_filter_widget.dart';
 import 'package:frontend/features/manage_locker_and_equipment/presentation/widgets/equipment_display_widget.dart';
 import 'package:frontend/features/manage_locker_and_equipment/presentation/widgets/equipment_filter_widget.dart';
 import 'package:frontend/features/manage_locker_and_equipment/presentation/widgets/location_filter_widget.dart';
+import 'package:frontend/injection.dart';
+import 'package:loading_overlay_pro/loading_overlay_pro.dart';
 
 class ListLockerAndEquipmentWidget extends HookWidget {
   final ManagementLockerAndEquipmentView viewBy;
+  final List<Department>? departments;
   const ListLockerAndEquipmentWidget({
     Key? key,
     required this.viewBy,
+    this.departments,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            PopupMenuButton(
-              onSelected: (value) {},
-              child: Row(
-                children: [
-                  Text(
-                    'เรียงตาม ก-ฮ ',
-                    style: Theme.of(context).primaryTextTheme.caption,
-                  ),
-                  const Icon(Icons.expand_more)
-                ],
-              ),
-              itemBuilder: (context) => [
-                PopupMenuItem(
-                  value: 1,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      "เรียงตาม ก-ฮ",
-                      style: Theme.of(context).primaryTextTheme.bodyText1,
+    final departments = useState(this.departments ?? <Department>[]);
+    final rooms = useState(<Room>[]);
+    final equipments = useState([]);
+    final ValueNotifier<RestFailure?> restFailure = useState(null);
+    final isLoading = useState(false);
+    useEffect(
+      () {
+        Future<void>.microtask(() async {
+          if (viewBy == ManagementLockerAndEquipmentView.department) {
+            if (departments.value.isEmpty) {
+              isLoading.value = true;
+              final result =
+                  await getIt<LockerRepository>().getAllByDepartment();
+              isLoading.value = false;
+              result.fold(
+                (l) => restFailure.value = l,
+                (r) => departments.value = r,
+              );
+            }
+          }
+        });
+        return null;
+      },
+      [],
+    );
+    return LoadingOverlayPro(
+      isLoading: isLoading.value,
+      progressIndicator: const CircularProgressIndicator(),
+      child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              PopupMenuButton(
+                onSelected: (value) {},
+                child: Row(
+                  children: [
+                    Text(
+                      'เรียงตาม ก-ฮ ',
+                      style: Theme.of(context).primaryTextTheme.caption,
+                    ),
+                    const Icon(Icons.expand_more)
+                  ],
+                ),
+                itemBuilder: (context) => [
+                  PopupMenuItem(
+                    value: 1,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        "เรียงตาม ก-ฮ",
+                        style: Theme.of(context).primaryTextTheme.bodyText1,
+                      ),
                     ),
                   ),
-                ),
-              ],
-            ),
-            IconButton(
+                ],
+              ),
+              IconButton(
                 onPressed: () {
                   if (viewBy == ManagementLockerAndEquipmentView.department) {
                     showModalBottomSheet<dynamic>(
                       context: context,
                       isScrollControlled: true,
                       builder: (context) {
-                        return const DepartmentFilterWidget(
-                          listChoices: [
-                            {'displayText': 'แผนกบริหาร'},
-                            {'displayText': 'แผนกบุคคล'},
-                            {'displayText': 'แผนกจัดซื้อ'},
-                            {'displayText': 'แผนกบัญชี'},
-                            {'displayText': 'แผนกขาย'},
-                            {'displayText': 'แผนกการตลาด'},
-                          ],
+                        return DepartmentFilterWidget(
+                          listChoices: departments.value
+                              .map(
+                                (e) => {'displayText': e.name},
+                              )
+                              .toList(),
                         );
                       },
                     );
@@ -161,30 +195,84 @@ class ListLockerAndEquipmentWidget extends HookWidget {
                     );
                   }
                 },
-                icon: const Icon(Icons.tune))
-          ],
-        ),
-        Expanded(
-          child: SingleChildScrollView(
-            child: ExpansionPanelList.radio(
-              children: List<ExpansionPanelRadio>.generate(15, (index) {
-                return ExpansionPanelRadio(
-                  canTapOnHeader: true,
-                  body: _buildExpansionPanelRadioBody(context),
-                  headerBuilder: (BuildContext context, bool isExpanded) {
-                    return _buildExpansionPanelRadioHeader(context);
-                  },
-                  value: index,
-                );
-              }),
-            ),
+                icon: const Icon(Icons.tune),
+              )
+            ],
           ),
-        )
-      ],
+          Expanded(
+            child: SingleChildScrollView(
+              child: ExpansionPanelList.radio(
+                children: List<ExpansionPanelRadio>.generate(
+                    getEntityLength(
+                      departments: departments.value,
+                      rooms: rooms.value,
+                      equipments: equipments.value,
+                    ), (index) {
+                  return ExpansionPanelRadio(
+                    canTapOnHeader: true,
+                    body: _buildExpansionPanelRadioBody(
+                      context,
+                      department:
+                          viewBy == ManagementLockerAndEquipmentView.department
+                              ? departments.value[index]
+                              : null,
+                      room: viewBy == ManagementLockerAndEquipmentView.location
+                          ? rooms.value[index]
+                          : null,
+                      equipment:
+                          viewBy == ManagementLockerAndEquipmentView.equipment
+                              ? equipments.value[index]
+                              : null,
+                    ),
+                    headerBuilder: (BuildContext context, bool isExpanded) {
+                      return _buildExpansionPanelRadioHeader(
+                        context,
+                        department: viewBy ==
+                                ManagementLockerAndEquipmentView.department
+                            ? departments.value[index]
+                            : null,
+                        room:
+                            viewBy == ManagementLockerAndEquipmentView.location
+                                ? rooms.value[index]
+                                : null,
+                        equipment:
+                            viewBy == ManagementLockerAndEquipmentView.equipment
+                                ? equipments.value[index]
+                                : null,
+                      );
+                    },
+                    value: index,
+                  );
+                }),
+              ),
+            ),
+          )
+        ],
+      ),
     );
   }
 
-  Widget _buildExpansionPanelRadioHeader(BuildContext context) {
+  int getEntityLength({
+    required List<Department> departments,
+    required List<Room> rooms,
+    required List equipments,
+  }) {
+    switch (viewBy) {
+      case ManagementLockerAndEquipmentView.department:
+        return departments.length;
+      case ManagementLockerAndEquipmentView.location:
+        return rooms.length;
+      case ManagementLockerAndEquipmentView.equipment:
+        return equipments.length;
+    }
+  }
+
+  Widget _buildExpansionPanelRadioHeader(
+    BuildContext context, {
+    required Department? department,
+    required Room? room,
+    required dynamic equipment,
+  }) {
     switch (viewBy) {
       case ManagementLockerAndEquipmentView.department:
         return Row(
@@ -193,11 +281,11 @@ class ListLockerAndEquipmentWidget extends HookWidget {
               width: 10,
             ),
             Text(
-              'แผนกบริหาร',
+              department!.name,
               style: Theme.of(context).primaryTextTheme.bodyText1,
             ),
             Text(
-              ' (2)',
+              ' (${department.lockers!.length})',
               style: Theme.of(context).primaryTextTheme.caption,
             ),
           ],
@@ -237,7 +325,12 @@ class ListLockerAndEquipmentWidget extends HookWidget {
     }
   }
 
-  Widget _buildExpansionPanelRadioBody(BuildContext context) {
+  Widget _buildExpansionPanelRadioBody(
+    BuildContext context, {
+    required Department? department,
+    required Room? room,
+    required dynamic equipment,
+  }) {
     if (viewBy == ManagementLockerAndEquipmentView.equipment) {
       return Column(
         children: [
@@ -325,22 +418,60 @@ class ListLockerAndEquipmentWidget extends HookWidget {
         ],
       );
     } else {
-      return ListTile(
-        leading: Image.asset(
-          'assets/icons/manage_locker_and_equipment/locker_icon_medium.png',
-          width: 48,
-          height: 45.18,
-        ),
-        title: const Text('ตู้เก็บ Macbook 1'),
-        subtitle: const Text('ID: 111111'),
-        trailing: IconButton(
-          onPressed: () {},
-          icon: const Icon(Icons.more_vert),
-        ),
-        onTap: () {
-          AutoRouter.of(context).push(AllEquipmentRoute(isHasEquipment: true));
-        },
-      );
+      if (viewBy == ManagementLockerAndEquipmentView.department) {
+        return Column(
+          children: department!.lockers!
+              .map(
+                (e) => ListTile(
+                  leading: Image.asset(
+                    'assets/icons/manage_locker_and_equipment/locker_icon_medium.png',
+                    width: 48,
+                    height: 45.18,
+                  ),
+                  title: Text(e.name),
+                  subtitle: Text('ID: ${e.id}'),
+                  trailing: IconButton(
+                    onPressed: () {},
+                    icon: const Icon(Icons.more_vert),
+                  ),
+                  onTap: () {
+                    AutoRouter.of(context).push(AllEquipmentRoute(locker: e));
+                  },
+                ),
+              )
+              .toList(),
+        );
+      } else {
+        return ListTile(
+          leading: Image.asset(
+            'assets/icons/manage_locker_and_equipment/locker_icon_medium.png',
+            width: 48,
+            height: 45.18,
+          ),
+          title: const Text('ตู้เก็บ Macbook 1'),
+          subtitle: const Text('ID: 111111'),
+          trailing: IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.more_vert),
+          ),
+          onTap: () {
+            AutoRouter.of(context).push(
+              AllEquipmentRoute(
+                locker: Locker(
+                  createdAt: DateTime.now(),
+                  description: '',
+                  id: 1,
+                  name: '',
+                  status: '',
+                  totalCams: 5,
+                  updatedAt: DateTime.now(),
+                  equipments: [],
+                ),
+              ),
+            );
+          },
+        );
+      }
     }
   }
 }

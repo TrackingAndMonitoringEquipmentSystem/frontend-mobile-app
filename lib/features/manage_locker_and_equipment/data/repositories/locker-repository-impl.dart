@@ -1,5 +1,4 @@
 import 'package:dartz/dartz.dart';
-import 'package:frontend/core/data/data_sources/rest_api.dart';
 import 'package:frontend/core/domain/repositories/rest_failure.dart';
 import 'package:frontend/features/authentication/domain/repositories/authentication_repository.dart';
 import 'package:frontend/features/manage_locker_and_equipment/data/datasources/location_rest_api.dart';
@@ -21,14 +20,6 @@ class LockerRepositoryImpl implements LockerRepository {
     this._lockerRestApi,
     this._locationRestApi,
   );
-
-  @override
-  Future<Either<RestFailure, List<Locker>>> getLockersByDepartment(
-    int departmentId,
-  ) {
-    // TODO: implement getLockerByDepartment
-    throw UnimplementedError();
-  }
 
   @override
   Future<Either<RestFailure, List<Locker>>> getAll() async {
@@ -76,6 +67,45 @@ class LockerRepositoryImpl implements LockerRepository {
     return result.fold((l) => Left(l), (r) {
       final locker = Locker.fromJson(r['data'] as Map<String, dynamic>);
       return Right(locker);
+    });
+  }
+
+  @override
+  Future<Either<RestFailure, dynamic>> addEquipment({required int id}) async {
+    final token = await _authenticationRepository.getFirebaseUser!.getIdToken();
+    final result =
+        await _lockerRestApi.addEquipment(token: token, lockerId: id);
+    return result.fold((l) => Left(l), (r) {
+      return Right(r['data']);
+    });
+  }
+
+  @override
+  Locker? currentLocker;
+
+  @override
+  Future<Either<RestFailure, List<Department>>> getAllByDepartment() async {
+    final token = await _authenticationRepository.getFirebaseUser!.getIdToken();
+    final result = await _lockerRestApi.getAllByDepartment(token: token);
+    return result.fold((l) => Left(l), (r) {
+      return Right(
+        (r['data'] as List)
+            .map((e) => Department.fromJson(e as Map<String, dynamic>))
+            .toList(),
+      );
+    });
+  }
+
+  @override
+  Future<Either<RestFailure, Locker>> getLockerById() {
+    final token = await _authenticationRepository.getFirebaseUser!.getIdToken();
+    final result = await _lockerRestApi.getAllByDepartment(token: token);
+    return result.fold((l) => Left(l), (r) {
+      return Right(
+        (r['data'] as List)
+            .map((e) => Department.fromJson(e as Map<String, dynamic>))
+            .toList(),
+      );
     });
   }
 }

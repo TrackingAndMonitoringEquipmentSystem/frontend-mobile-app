@@ -12,31 +12,6 @@ class LockerRestApi {
 
   LockerRestApi();
 
-  Future<Either<RestFailure, Map<String, dynamic>>> getLockersByDepartment(
-    String token,
-    int departmentId,
-  ) async {
-    try {
-      final uri = Uri(
-        scheme: environment.baseSchema,
-        host: environment.baseApiUrl,
-        port: environment.baseApiPort,
-        path: environment.publics[environment.PublicsPath.getDepartments],
-      );
-
-      final response = await _httpClient.get(uri);
-      if (response.statusCode == 200) {
-        return Right(
-          jsonDecode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>,
-        );
-      } else {
-        return Left(RestFailure.fromHttpStatusCode(response.statusCode));
-      }
-    } catch (error) {
-      return const Left(UnKnownError());
-    }
-  }
-
   Future<Either<RestFailure, Map<String, dynamic>>> getAll(
     String token,
   ) async {
@@ -102,6 +77,109 @@ class LockerRestApi {
       print(response.reasonPhrase);
       print(response.body);
       if (response.statusCode == 201) {
+        return Right(
+          jsonDecode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>,
+        );
+      } else {
+        return Left(RestFailure.fromHttpStatusCode(response.statusCode));
+      }
+    } catch (error) {
+      print('error:');
+      print(error);
+      return const Left(UnKnownError());
+    }
+  }
+
+  Future<Either<RestFailure, Map<String, dynamic>>> addEquipment({
+    required String token,
+    required int lockerId,
+  }) async {
+    try {
+      final uri = Uri(
+        scheme: environment.baseSchema,
+        host: environment.baseApiUrl,
+        port: environment.baseApiPort,
+        path:
+            '${environment.lockers[environment.LockerPath.addEquipment]}/$lockerId',
+      );
+      final response = await _httpClient.get(
+        uri,
+        headers: <String, String>{
+          'Authorization': 'Bearer $token',
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+      );
+      print(response.reasonPhrase);
+      print(response.body);
+      if (response.statusCode == 200) {
+        return Right(
+          jsonDecode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>,
+        );
+      } else {
+        return Left(RestFailure.fromHttpStatusCode(response.statusCode));
+      }
+    } catch (error) {
+      print('error:');
+      print(error);
+      return const Left(UnKnownError());
+    }
+  }
+
+  Future<Either<RestFailure, Map<String, dynamic>>> getAllByDepartment({
+    required String token,
+  }) async {
+    try {
+      final uri = Uri(
+        scheme: environment.baseSchema,
+        host: environment.baseApiUrl,
+        port: environment.baseApiPort,
+        path: environment.department[environment.DepartmentPath.getLockers],
+      );
+      final response = await _httpClient.get(
+        uri,
+        headers: <String, String>{
+          'Authorization': 'Bearer $token',
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+      );
+      print(response.reasonPhrase);
+      print(response.body);
+      if (response.statusCode == 200) {
+        return Right(
+          jsonDecode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>,
+        );
+      } else {
+        return Left(RestFailure.fromHttpStatusCode(response.statusCode));
+      }
+    } catch (error) {
+      print('error:');
+      print(error);
+      return const Left(UnKnownError());
+    }
+  }
+
+  Future<Either<RestFailure, Map<String, dynamic>>> getLockerByIds({
+    required String token,
+    required List<int> ids,
+  }) async {
+    try {
+      final uri = Uri(
+        scheme: environment.baseSchema,
+        host: environment.baseApiUrl,
+        port: environment.baseApiPort,
+        path:
+            'environment.lockers[environment.LockerPath.viewLocker]/${ids.join(',')}',
+      );
+      final response = await _httpClient.get(
+        uri,
+        headers: <String, String>{
+          'Authorization': 'Bearer $token',
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+      );
+      print(response.reasonPhrase);
+      print(response.body);
+      if (response.statusCode == 200) {
         return Right(
           jsonDecode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>,
         );

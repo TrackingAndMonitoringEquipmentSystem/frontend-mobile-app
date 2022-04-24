@@ -24,7 +24,8 @@ class _$DepartmentTearOff {
       required DateTime createdAt,
       required DateTime updatedAt,
       required UserType? createdBy,
-      required UserType? updatedBy}) {
+      required UserType? updatedBy,
+      required List<Locker>? lockers}) {
     return _Department(
       id: id,
       name: name,
@@ -32,6 +33,7 @@ class _$DepartmentTearOff {
       updatedAt: updatedAt,
       createdBy: createdBy,
       updatedBy: updatedBy,
+      lockers: lockers,
     );
   }
 }
@@ -47,6 +49,7 @@ mixin _$Department {
   DateTime get updatedAt => throw _privateConstructorUsedError;
   UserType? get createdBy => throw _privateConstructorUsedError;
   UserType? get updatedBy => throw _privateConstructorUsedError;
+  List<Locker>? get lockers => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $DepartmentCopyWith<Department> get copyWith =>
@@ -64,7 +67,8 @@ abstract class $DepartmentCopyWith<$Res> {
       DateTime createdAt,
       DateTime updatedAt,
       UserType? createdBy,
-      UserType? updatedBy});
+      UserType? updatedBy,
+      List<Locker>? lockers});
 
   $UserTypeCopyWith<$Res>? get createdBy;
   $UserTypeCopyWith<$Res>? get updatedBy;
@@ -86,6 +90,7 @@ class _$DepartmentCopyWithImpl<$Res> implements $DepartmentCopyWith<$Res> {
     Object? updatedAt = freezed,
     Object? createdBy = freezed,
     Object? updatedBy = freezed,
+    Object? lockers = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -112,6 +117,10 @@ class _$DepartmentCopyWithImpl<$Res> implements $DepartmentCopyWith<$Res> {
           ? _value.updatedBy
           : updatedBy // ignore: cast_nullable_to_non_nullable
               as UserType?,
+      lockers: lockers == freezed
+          ? _value.lockers
+          : lockers // ignore: cast_nullable_to_non_nullable
+              as List<Locker>?,
     ));
   }
 
@@ -150,7 +159,8 @@ abstract class _$DepartmentCopyWith<$Res> implements $DepartmentCopyWith<$Res> {
       DateTime createdAt,
       DateTime updatedAt,
       UserType? createdBy,
-      UserType? updatedBy});
+      UserType? updatedBy,
+      List<Locker>? lockers});
 
   @override
   $UserTypeCopyWith<$Res>? get createdBy;
@@ -176,6 +186,7 @@ class __$DepartmentCopyWithImpl<$Res> extends _$DepartmentCopyWithImpl<$Res>
     Object? updatedAt = freezed,
     Object? createdBy = freezed,
     Object? updatedBy = freezed,
+    Object? lockers = freezed,
   }) {
     return _then(_Department(
       id: id == freezed
@@ -202,6 +213,10 @@ class __$DepartmentCopyWithImpl<$Res> extends _$DepartmentCopyWithImpl<$Res>
           ? _value.updatedBy
           : updatedBy // ignore: cast_nullable_to_non_nullable
               as UserType?,
+      lockers: lockers == freezed
+          ? _value.lockers
+          : lockers // ignore: cast_nullable_to_non_nullable
+              as List<Locker>?,
     ));
   }
 }
@@ -215,7 +230,8 @@ class _$_Department implements _Department {
       required this.createdAt,
       required this.updatedAt,
       required this.createdBy,
-      required this.updatedBy});
+      required this.updatedBy,
+      required this.lockers});
 
   @override
   final int id;
@@ -229,10 +245,12 @@ class _$_Department implements _Department {
   final UserType? createdBy;
   @override
   final UserType? updatedBy;
+  @override
+  final List<Locker>? lockers;
 
   @override
   String toString() {
-    return 'Department(id: $id, name: $name, createdAt: $createdAt, updatedAt: $updatedAt, createdBy: $createdBy, updatedBy: $updatedBy)';
+    return 'Department(id: $id, name: $name, createdAt: $createdAt, updatedAt: $updatedAt, createdBy: $createdBy, updatedBy: $updatedBy, lockers: $lockers)';
   }
 
   @override
@@ -245,7 +263,8 @@ class _$_Department implements _Department {
             const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
             const DeepCollectionEquality().equals(other.updatedAt, updatedAt) &&
             const DeepCollectionEquality().equals(other.createdBy, createdBy) &&
-            const DeepCollectionEquality().equals(other.updatedBy, updatedBy));
+            const DeepCollectionEquality().equals(other.updatedBy, updatedBy) &&
+            const DeepCollectionEquality().equals(other.lockers, lockers));
   }
 
   @override
@@ -256,7 +275,8 @@ class _$_Department implements _Department {
       const DeepCollectionEquality().hash(createdAt),
       const DeepCollectionEquality().hash(updatedAt),
       const DeepCollectionEquality().hash(createdBy),
-      const DeepCollectionEquality().hash(updatedBy));
+      const DeepCollectionEquality().hash(updatedBy),
+      const DeepCollectionEquality().hash(lockers));
 
   @JsonKey(ignore: true)
   @override
@@ -271,7 +291,8 @@ abstract class _Department implements Department {
       required DateTime createdAt,
       required DateTime updatedAt,
       required UserType? createdBy,
-      required UserType? updatedBy}) = _$_Department;
+      required UserType? updatedBy,
+      required List<Locker>? lockers}) = _$_Department;
 
   @override
   int get id;
@@ -285,6 +306,8 @@ abstract class _Department implements Department {
   UserType? get createdBy;
   @override
   UserType? get updatedBy;
+  @override
+  List<Locker>? get lockers;
   @override
   @JsonKey(ignore: true)
   _$DepartmentCopyWith<_Department> get copyWith =>

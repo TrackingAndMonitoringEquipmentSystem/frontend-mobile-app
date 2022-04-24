@@ -298,7 +298,13 @@ class AddOrEditLockerPage extends HookWidget {
                               room: roomSelected.value!,
                             );
                             if (result.isRight()) {
-                              AutoRouter.of(context).push(AllEquipmentRoute());
+                              lockerRepository.currentLocker =
+                                  result.fold((l) => null, (r) => r);
+                              AutoRouter.of(context).push(
+                                AllEquipmentRoute(
+                                  locker: lockerRepository.currentLocker!,
+                                ),
+                              );
                             }
                           },
                         ),

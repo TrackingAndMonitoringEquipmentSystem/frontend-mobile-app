@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:frontend/core/presentation/routes/router.gr.dart';
 import 'package:frontend/core/presentation/widgets/tabs_widget.dart';
 import 'package:frontend/core/utils/enum.dart';
+import 'package:frontend/features/manage_locker_and_equipment/domain/entities/department.dart';
 import 'package:frontend/features/manage_locker_and_equipment/presentation/bloc/locker/locker_bloc.dart';
 import 'package:frontend/features/manage_locker_and_equipment/presentation/widgets/list_locker_and_equipment_widget.dart';
 import 'package:frontend/injection.dart';
@@ -14,7 +15,6 @@ class AllLockerPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
-    print(screenSize);
     return BlocProvider(
       create: (context) => getIt<LockerBloc>()..add(const InitState()),
       child: BlocConsumer<LockerBloc, LockerState>(
@@ -48,8 +48,8 @@ class AllLockerPage extends StatelessWidget {
                 screenSize.width * 0.1,
                 0,
               ),
-              child: state.lockers.isNotEmpty
-                  ? _buildFoundCase(context)
+              child: state.departments.isNotEmpty
+                  ? _buildFoundCase(context, state.departments)
                   : _buildNotFoundCase(context),
             ),
           ),
@@ -91,15 +91,16 @@ class AllLockerPage extends StatelessWidget {
     );
   }
 
-  Widget _buildFoundCase(BuildContext context) {
-    const tabs = <Widget>[
+  Widget _buildFoundCase(BuildContext context, List<Department> departments) {
+    final tabs = <Widget>[
       ListLockerAndEquipmentWidget(
         viewBy: ManagementLockerAndEquipmentView.department,
+        departments: departments,
       ),
-      ListLockerAndEquipmentWidget(
+      const ListLockerAndEquipmentWidget(
         viewBy: ManagementLockerAndEquipmentView.location,
       ),
-      ListLockerAndEquipmentWidget(
+      const ListLockerAndEquipmentWidget(
         viewBy: ManagementLockerAndEquipmentView.equipment,
       )
     ];

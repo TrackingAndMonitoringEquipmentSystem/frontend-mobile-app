@@ -7,10 +7,6 @@ import 'package:frontend/features/manage_locker_and_equipment/domain/entities/lo
 import 'package:frontend/features/manage_locker_and_equipment/domain/entities/room.dart';
 
 abstract class LockerRepository {
-  Future<Either<RestFailure, List<Locker>>> getLockersByDepartment(
-    int departmentId,
-  );
-
   Future<Either<RestFailure, List<Locker>>> getAll();
 
   Future<Either<RestFailure, List<Building>>> getBuildings();
@@ -22,4 +18,14 @@ abstract class LockerRepository {
     required List<Department> departments,
     required Room room,
   });
+  Future<Either<RestFailure, dynamic>> addEquipment({
+    required int id,
+  });
+
+  set currentLocker(Locker? preRegisterUser);
+  Future<Either<RestFailure, List<Department>>> getAllByDepartment();
+
+  Locker? get currentLocker;
+
+  Future<Either<RestFailure, Locker>> getLockerByIds(List<int> ids);
 }

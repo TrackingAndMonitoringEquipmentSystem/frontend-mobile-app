@@ -178,10 +178,16 @@ abstract class InitState implements LockerEvent {
 class _$LockerStateTearOff {
   const _$LockerStateTearOff();
 
-  _LockerState call({required bool isLoading, required List<Locker> lockers}) {
+  _LockerState call(
+      {required bool isLoading,
+      required List<Locker> lockers,
+      required List<Department> departments,
+      required RestFailure? failure}) {
     return _LockerState(
       isLoading: isLoading,
       lockers: lockers,
+      departments: departments,
+      failure: failure,
     );
   }
 }
@@ -193,6 +199,8 @@ const $LockerState = _$LockerStateTearOff();
 mixin _$LockerState {
   bool get isLoading => throw _privateConstructorUsedError;
   List<Locker> get lockers => throw _privateConstructorUsedError;
+  List<Department> get departments => throw _privateConstructorUsedError;
+  RestFailure? get failure => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $LockerStateCopyWith<LockerState> get copyWith =>
@@ -204,7 +212,13 @@ abstract class $LockerStateCopyWith<$Res> {
   factory $LockerStateCopyWith(
           LockerState value, $Res Function(LockerState) then) =
       _$LockerStateCopyWithImpl<$Res>;
-  $Res call({bool isLoading, List<Locker> lockers});
+  $Res call(
+      {bool isLoading,
+      List<Locker> lockers,
+      List<Department> departments,
+      RestFailure? failure});
+
+  $RestFailureCopyWith<$Res>? get failure;
 }
 
 /// @nodoc
@@ -219,6 +233,8 @@ class _$LockerStateCopyWithImpl<$Res> implements $LockerStateCopyWith<$Res> {
   $Res call({
     Object? isLoading = freezed,
     Object? lockers = freezed,
+    Object? departments = freezed,
+    Object? failure = freezed,
   }) {
     return _then(_value.copyWith(
       isLoading: isLoading == freezed
@@ -229,7 +245,26 @@ class _$LockerStateCopyWithImpl<$Res> implements $LockerStateCopyWith<$Res> {
           ? _value.lockers
           : lockers // ignore: cast_nullable_to_non_nullable
               as List<Locker>,
+      departments: departments == freezed
+          ? _value.departments
+          : departments // ignore: cast_nullable_to_non_nullable
+              as List<Department>,
+      failure: failure == freezed
+          ? _value.failure
+          : failure // ignore: cast_nullable_to_non_nullable
+              as RestFailure?,
     ));
+  }
+
+  @override
+  $RestFailureCopyWith<$Res>? get failure {
+    if (_value.failure == null) {
+      return null;
+    }
+
+    return $RestFailureCopyWith<$Res>(_value.failure!, (value) {
+      return _then(_value.copyWith(failure: value));
+    });
   }
 }
 
@@ -240,7 +275,14 @@ abstract class _$LockerStateCopyWith<$Res>
           _LockerState value, $Res Function(_LockerState) then) =
       __$LockerStateCopyWithImpl<$Res>;
   @override
-  $Res call({bool isLoading, List<Locker> lockers});
+  $Res call(
+      {bool isLoading,
+      List<Locker> lockers,
+      List<Department> departments,
+      RestFailure? failure});
+
+  @override
+  $RestFailureCopyWith<$Res>? get failure;
 }
 
 /// @nodoc
@@ -257,6 +299,8 @@ class __$LockerStateCopyWithImpl<$Res> extends _$LockerStateCopyWithImpl<$Res>
   $Res call({
     Object? isLoading = freezed,
     Object? lockers = freezed,
+    Object? departments = freezed,
+    Object? failure = freezed,
   }) {
     return _then(_LockerState(
       isLoading: isLoading == freezed
@@ -267,6 +311,14 @@ class __$LockerStateCopyWithImpl<$Res> extends _$LockerStateCopyWithImpl<$Res>
           ? _value.lockers
           : lockers // ignore: cast_nullable_to_non_nullable
               as List<Locker>,
+      departments: departments == freezed
+          ? _value.departments
+          : departments // ignore: cast_nullable_to_non_nullable
+              as List<Department>,
+      failure: failure == freezed
+          ? _value.failure
+          : failure // ignore: cast_nullable_to_non_nullable
+              as RestFailure?,
     ));
   }
 }
@@ -274,16 +326,24 @@ class __$LockerStateCopyWithImpl<$Res> extends _$LockerStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_LockerState implements _LockerState {
-  const _$_LockerState({required this.isLoading, required this.lockers});
+  const _$_LockerState(
+      {required this.isLoading,
+      required this.lockers,
+      required this.departments,
+      required this.failure});
 
   @override
   final bool isLoading;
   @override
   final List<Locker> lockers;
+  @override
+  final List<Department> departments;
+  @override
+  final RestFailure? failure;
 
   @override
   String toString() {
-    return 'LockerState(isLoading: $isLoading, lockers: $lockers)';
+    return 'LockerState(isLoading: $isLoading, lockers: $lockers, departments: $departments, failure: $failure)';
   }
 
   @override
@@ -292,14 +352,19 @@ class _$_LockerState implements _LockerState {
         (other.runtimeType == runtimeType &&
             other is _LockerState &&
             const DeepCollectionEquality().equals(other.isLoading, isLoading) &&
-            const DeepCollectionEquality().equals(other.lockers, lockers));
+            const DeepCollectionEquality().equals(other.lockers, lockers) &&
+            const DeepCollectionEquality()
+                .equals(other.departments, departments) &&
+            const DeepCollectionEquality().equals(other.failure, failure));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(isLoading),
-      const DeepCollectionEquality().hash(lockers));
+      const DeepCollectionEquality().hash(lockers),
+      const DeepCollectionEquality().hash(departments),
+      const DeepCollectionEquality().hash(failure));
 
   @JsonKey(ignore: true)
   @override
@@ -310,12 +375,18 @@ class _$_LockerState implements _LockerState {
 abstract class _LockerState implements LockerState {
   const factory _LockerState(
       {required bool isLoading,
-      required List<Locker> lockers}) = _$_LockerState;
+      required List<Locker> lockers,
+      required List<Department> departments,
+      required RestFailure? failure}) = _$_LockerState;
 
   @override
   bool get isLoading;
   @override
   List<Locker> get lockers;
+  @override
+  List<Department> get departments;
+  @override
+  RestFailure? get failure;
   @override
   @JsonKey(ignore: true)
   _$LockerStateCopyWith<_LockerState> get copyWith =>

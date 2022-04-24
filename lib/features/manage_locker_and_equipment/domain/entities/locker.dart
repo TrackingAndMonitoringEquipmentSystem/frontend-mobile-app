@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:frontend/features/manage_locker_and_equipment/domain/entities/equipment.dart';
 
 part 'locker.freezed.dart';
 
@@ -12,6 +13,7 @@ class Locker with _$Locker {
     required DateTime createdAt,
     required DateTime updatedAt,
     required int totalCams,
+    required List<Equipment>? equipments,
   }) = _Locker;
 
   @override
@@ -24,6 +26,11 @@ class Locker with _$Locker {
       createdAt: DateTime.parse(json['created_at'] as String),
       updatedAt: DateTime.parse(json['updated_at'] as String),
       totalCams: json['num_camera'] as int,
+      equipments: json.containsKey('equipment')
+          ? (json['equipment'] as List)
+              .map((e) => Equipment.fromJson(e as Map<String, dynamic>))
+              .toList()
+          : null,
     );
   }
 }

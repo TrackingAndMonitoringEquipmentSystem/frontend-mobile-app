@@ -62,6 +62,8 @@ import '../../../features/fixing/presentation/pages/fixing_detail.dart' as _i52;
 import '../../../features/fixing/presentation/pages/fixing_locker_detail.dart'
     as _i51;
 import '../../../features/history/presentation/pages/history.dart' as _i63;
+import '../../../features/manage_locker_and_equipment/domain/entities/locker.dart'
+    as _i70;
 import '../../../features/manage_locker_and_equipment/presentation/pages/add_category.dart'
     as _i39;
 import '../../../features/manage_locker_and_equipment/presentation/pages/add_equipment.dart'
@@ -136,7 +138,7 @@ import '../../../features/streaming_and_record/presentation/pages/record_video.d
     as _i50;
 import '../../../features/streaming_and_record/presentation/pages/streaming_and_record.dart'
     as _i60;
-import '../../utils/enum.dart' as _i70;
+import '../../utils/enum.dart' as _i71;
 import '../page/add_account.dart' as _i24;
 import '../page/home.dart' as _i19;
 import '../page/splash.dart' as _i1;
@@ -280,12 +282,10 @@ class AppRouter extends _i56.RootStackRouter {
           child: _i31.AddOrEditLockerPage(args.lockerId, key: args.key));
     },
     AllEquipmentRoute.name: (routeData) {
-      final args = routeData.argsAs<AllEquipmentRouteArgs>(
-          orElse: () => const AllEquipmentRouteArgs());
+      final args = routeData.argsAs<AllEquipmentRouteArgs>();
       return _i56.MaterialPageX<dynamic>(
           routeData: routeData,
-          child: _i32.AllEquipmentPage(
-              key: args.key, isHasEquipment: args.isHasEquipment));
+          child: _i32.AllEquipmentPage(key: args.key, locker: args.locker));
     },
     AddingEquipment.name: (routeData) {
       return _i56.MaterialPageX<dynamic>(
@@ -928,25 +928,24 @@ class AddOrEditLockerRouteArgs {
 /// generated route for
 /// [_i32.AllEquipmentPage]
 class AllEquipmentRoute extends _i56.PageRouteInfo<AllEquipmentRouteArgs> {
-  AllEquipmentRoute({_i69.Key? key, bool isHasEquipment = false})
+  AllEquipmentRoute({_i69.Key? key, required _i70.Locker locker})
       : super(AllEquipmentRoute.name,
             path: '/all-equipment-page',
-            args: AllEquipmentRouteArgs(
-                key: key, isHasEquipment: isHasEquipment));
+            args: AllEquipmentRouteArgs(key: key, locker: locker));
 
   static const String name = 'AllEquipmentRoute';
 }
 
 class AllEquipmentRouteArgs {
-  const AllEquipmentRouteArgs({this.key, this.isHasEquipment = false});
+  const AllEquipmentRouteArgs({this.key, required this.locker});
 
   final _i69.Key? key;
 
-  final bool isHasEquipment;
+  final _i70.Locker locker;
 
   @override
   String toString() {
-    return 'AllEquipmentRouteArgs{key: $key, isHasEquipment: $isHasEquipment}';
+    return 'AllEquipmentRouteArgs{key: $key, locker: $locker}';
   }
 }
 
@@ -982,7 +981,7 @@ class MacAddressHelpRoute extends _i56.PageRouteInfo<void> {
 class AllLocationRoute extends _i56.PageRouteInfo<AllLocationRouteArgs> {
   AllLocationRoute(
       {_i69.Key? key,
-      required _i70.ManagementLocationView viewBy,
+      required _i71.ManagementLocationView viewBy,
       required String title,
       bool isHasLocation = true})
       : super(AllLocationRoute.name,
@@ -1005,7 +1004,7 @@ class AllLocationRouteArgs {
 
   final _i69.Key? key;
 
-  final _i70.ManagementLocationView viewBy;
+  final _i71.ManagementLocationView viewBy;
 
   final String title;
 

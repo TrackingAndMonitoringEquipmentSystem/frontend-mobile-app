@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:frontend/features/authentication/domain/entities/user.dart';
+import 'package:frontend/features/manage_locker_and_equipment/domain/entities/locker.dart';
 
 part 'department.freezed.dart';
 
@@ -12,6 +13,7 @@ class Department with _$Department {
     required DateTime updatedAt,
     required UserType? createdBy,
     required UserType? updatedBy,
+    required List<Locker>? lockers,
   }) = _Department;
 
   @override
@@ -26,6 +28,11 @@ class Department with _$Department {
           : null,
       updatedBy: json.containsKey('updated_by')
           ? UserType.fromJson(json['updated_by'] as Map<String, dynamic>)
+          : null,
+      lockers: json.containsKey('locker')
+          ? (json['locker'] as List)
+              .map((e) => Locker.fromJson(e as Map<String, dynamic>))
+              .toList()
           : null,
     );
   }

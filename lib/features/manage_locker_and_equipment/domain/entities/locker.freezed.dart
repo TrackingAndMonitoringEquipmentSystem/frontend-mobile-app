@@ -25,7 +25,8 @@ class _$LockerTearOff {
       required String status,
       required DateTime createdAt,
       required DateTime updatedAt,
-      required int totalCams}) {
+      required int totalCams,
+      required List<Equipment>? equipments}) {
     return _Locker(
       id: id,
       name: name,
@@ -34,6 +35,7 @@ class _$LockerTearOff {
       createdAt: createdAt,
       updatedAt: updatedAt,
       totalCams: totalCams,
+      equipments: equipments,
     );
   }
 }
@@ -50,6 +52,7 @@ mixin _$Locker {
   DateTime get createdAt => throw _privateConstructorUsedError;
   DateTime get updatedAt => throw _privateConstructorUsedError;
   int get totalCams => throw _privateConstructorUsedError;
+  List<Equipment>? get equipments => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $LockerCopyWith<Locker> get copyWith => throw _privateConstructorUsedError;
@@ -66,7 +69,8 @@ abstract class $LockerCopyWith<$Res> {
       String status,
       DateTime createdAt,
       DateTime updatedAt,
-      int totalCams});
+      int totalCams,
+      List<Equipment>? equipments});
 }
 
 /// @nodoc
@@ -86,6 +90,7 @@ class _$LockerCopyWithImpl<$Res> implements $LockerCopyWith<$Res> {
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
     Object? totalCams = freezed,
+    Object? equipments = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -116,6 +121,10 @@ class _$LockerCopyWithImpl<$Res> implements $LockerCopyWith<$Res> {
           ? _value.totalCams
           : totalCams // ignore: cast_nullable_to_non_nullable
               as int,
+      equipments: equipments == freezed
+          ? _value.equipments
+          : equipments // ignore: cast_nullable_to_non_nullable
+              as List<Equipment>?,
     ));
   }
 }
@@ -132,7 +141,8 @@ abstract class _$LockerCopyWith<$Res> implements $LockerCopyWith<$Res> {
       String status,
       DateTime createdAt,
       DateTime updatedAt,
-      int totalCams});
+      int totalCams,
+      List<Equipment>? equipments});
 }
 
 /// @nodoc
@@ -153,6 +163,7 @@ class __$LockerCopyWithImpl<$Res> extends _$LockerCopyWithImpl<$Res>
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
     Object? totalCams = freezed,
+    Object? equipments = freezed,
   }) {
     return _then(_Locker(
       id: id == freezed
@@ -183,6 +194,10 @@ class __$LockerCopyWithImpl<$Res> extends _$LockerCopyWithImpl<$Res>
           ? _value.totalCams
           : totalCams // ignore: cast_nullable_to_non_nullable
               as int,
+      equipments: equipments == freezed
+          ? _value.equipments
+          : equipments // ignore: cast_nullable_to_non_nullable
+              as List<Equipment>?,
     ));
   }
 }
@@ -197,7 +212,8 @@ class _$_Locker implements _Locker {
       required this.status,
       required this.createdAt,
       required this.updatedAt,
-      required this.totalCams});
+      required this.totalCams,
+      required this.equipments});
 
   @override
   final int id;
@@ -213,10 +229,12 @@ class _$_Locker implements _Locker {
   final DateTime updatedAt;
   @override
   final int totalCams;
+  @override
+  final List<Equipment>? equipments;
 
   @override
   String toString() {
-    return 'Locker(id: $id, name: $name, description: $description, status: $status, createdAt: $createdAt, updatedAt: $updatedAt, totalCams: $totalCams)';
+    return 'Locker(id: $id, name: $name, description: $description, status: $status, createdAt: $createdAt, updatedAt: $updatedAt, totalCams: $totalCams, equipments: $equipments)';
   }
 
   @override
@@ -231,7 +249,9 @@ class _$_Locker implements _Locker {
             const DeepCollectionEquality().equals(other.status, status) &&
             const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
             const DeepCollectionEquality().equals(other.updatedAt, updatedAt) &&
-            const DeepCollectionEquality().equals(other.totalCams, totalCams));
+            const DeepCollectionEquality().equals(other.totalCams, totalCams) &&
+            const DeepCollectionEquality()
+                .equals(other.equipments, equipments));
   }
 
   @override
@@ -243,7 +263,8 @@ class _$_Locker implements _Locker {
       const DeepCollectionEquality().hash(status),
       const DeepCollectionEquality().hash(createdAt),
       const DeepCollectionEquality().hash(updatedAt),
-      const DeepCollectionEquality().hash(totalCams));
+      const DeepCollectionEquality().hash(totalCams),
+      const DeepCollectionEquality().hash(equipments));
 
   @JsonKey(ignore: true)
   @override
@@ -259,7 +280,8 @@ abstract class _Locker implements Locker {
       required String status,
       required DateTime createdAt,
       required DateTime updatedAt,
-      required int totalCams}) = _$_Locker;
+      required int totalCams,
+      required List<Equipment>? equipments}) = _$_Locker;
 
   @override
   int get id;
@@ -275,6 +297,8 @@ abstract class _Locker implements Locker {
   DateTime get updatedAt;
   @override
   int get totalCams;
+  @override
+  List<Equipment>? get equipments;
   @override
   @JsonKey(ignore: true)
   _$LockerCopyWith<_Locker> get copyWith => throw _privateConstructorUsedError;
