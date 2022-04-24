@@ -11,12 +11,12 @@ class Equipment with _$Equipment {
     required String name,
     required String status,
     required String picUrl,
-    required int duration,
+    required int? duration,
     required DateTime createdAt,
     required DateTime updatedAt,
     required Locker? locker,
-    required UserType createdBy,
-    required UserType updatedBy,
+    required UserType? createdBy,
+    required UserType? updatedBy,
     required Map<String, dynamic>? type,
     required List? borrowReturns,
     required List? repairs,
@@ -26,16 +26,20 @@ class Equipment with _$Equipment {
   @override
   factory Equipment.fromJson(Map<String, dynamic> json) {
     return Equipment(
-      id: json['id'] as int,
+      id: json['equipment_id'] as int,
       name: json['name'] as String,
       createdAt: DateTime.parse(json['created_at'] as String),
       updatedAt: DateTime.parse(json['updated_at'] as String),
       borrowReturns: json.containsKey('borrowReturns')
           ? json['borrowReturns'] as List
           : null,
-      createdBy: UserType.fromJson(json['created_by'] as Map<String, dynamic>),
-      updatedBy: UserType.fromJson(json['updated_by'] as Map<String, dynamic>),
-      duration: json['duration'] as int,
+      createdBy: json.containsKey('created_by')
+          ? UserType.fromJson(json['created_by'] as Map<String, dynamic>)
+          : null,
+      updatedBy: json.containsKey('updated_by')
+          ? UserType.fromJson(json['updated_by'] as Map<String, dynamic>)
+          : null,
+      duration: json['duration'] != null ? json['duration'] as int : null,
       locker: json.containsKey('locker')
           ? Locker.fromJson(json['locker'] as Map<String, dynamic>)
           : null,

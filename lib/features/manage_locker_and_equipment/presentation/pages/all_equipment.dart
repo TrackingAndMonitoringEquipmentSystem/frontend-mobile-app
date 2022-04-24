@@ -1,11 +1,14 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:frontend/core/domain/repositories/rest_failure.dart';
 import 'package:frontend/core/presentation/routes/router.gr.dart';
 import 'package:frontend/core/presentation/widgets/button.dart';
 import 'package:frontend/features/manage_locker_and_equipment/domain/entities/equipment.dart';
 import 'package:frontend/features/manage_locker_and_equipment/domain/entities/locker.dart';
+import 'package:frontend/features/manage_locker_and_equipment/domain/locker-repository.dart';
 import 'package:frontend/features/manage_locker_and_equipment/presentation/widgets/list_equipment_widget.dart';
+import 'package:frontend/injection.dart';
 import 'package:loading_overlay_pro/loading_overlay_pro.dart';
 
 class AllEquipmentPage extends HookWidget {
@@ -20,14 +23,26 @@ class AllEquipmentPage extends HookWidget {
     final screenSize = MediaQuery.of(context).size;
     final isLoading = useState(false);
     final equipments = useState(<Equipment>[]);
+    final ValueNotifier<RestFailure?> failure = useState(null);
     useEffect(
       () {
+        Future<void>.microtask(() async {
+          isLoading.value = true;
+          final results =
+              await getIt<LockerRepository>().getLockerByIds([locker.id]);
+          isLoading.value = false;
+          results.fold(
+            (l) => failure.value = l,
+            (r) => equipments.value = r[0].equipments!,
+          );
+        });
         return null;
       },
       [],
     );
     return LoadingOverlayPro(
       isLoading: isLoading.value,
+      progressIndicator: const CircularProgressIndicator(),
       child: Scaffold(
         appBar: AppBar(
           title: Text(
@@ -105,14 +120,17 @@ class AllEquipmentPage extends HookWidget {
             screenSize.width * 0.1,
             0,
           ),
-          child: false ? _buildFoundCase(context) : _buildNotFoundCase(context),
+          child: equipments.value.isNotEmpty
+              ? _buildFoundCase(context)
+              : _buildNotFoundCase(context),
         ),
         bottomNavigationBar: Container(
           padding: const EdgeInsets.all(10),
           child: Button(
             'เพิ่มอุปกรณ์',
             onPressed: () {
-              AutoRouter.of(context).push(const AddingEquipment());
+              AutoRouter.of(context)
+                  .push(AddingEquipmentRoute(lockerId: locker.id));
             },
           ),
         ),

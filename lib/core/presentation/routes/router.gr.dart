@@ -287,13 +287,20 @@ class AppRouter extends _i56.RootStackRouter {
           routeData: routeData,
           child: _i32.AllEquipmentPage(key: args.key, locker: args.locker));
     },
-    AddingEquipment.name: (routeData) {
+    AddingEquipmentRoute.name: (routeData) {
+      final args = routeData.argsAs<AddingEquipmentRouteArgs>();
       return _i56.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i33.AddingEquipment());
+          routeData: routeData,
+          child: _i33.AddingEquipmentPage(args.lockerId, key: args.key));
     },
     AddEquipmentRoute.name: (routeData) {
+      final args = routeData.argsAs<AddEquipmentRouteArgs>();
       return _i56.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i34.AddEquipmentPage());
+          routeData: routeData,
+          child: _i34.AddEquipmentPage(
+              key: args.key,
+              scanResult: args.scanResult,
+              lockerId: args.lockerId));
     },
     MacAddressHelpRoute.name: (routeData) {
       return _i56.MaterialPageX<dynamic>(
@@ -587,7 +594,8 @@ class AppRouter extends _i56.RootStackRouter {
         _i56.RouteConfig(AddOrEditLockerRoute.name,
             path: '/add-or-edit-locker-page'),
         _i56.RouteConfig(AllEquipmentRoute.name, path: '/all-equipment-page'),
-        _i56.RouteConfig(AddingEquipment.name, path: '/adding-equipment'),
+        _i56.RouteConfig(AddingEquipmentRoute.name,
+            path: '/adding-equipment-page'),
         _i56.RouteConfig(AddEquipmentRoute.name, path: '/add-equipment-page'),
         _i56.RouteConfig(MacAddressHelpRoute.name,
             path: '/mac-address-help-page'),
@@ -950,21 +958,59 @@ class AllEquipmentRouteArgs {
 }
 
 /// generated route for
-/// [_i33.AddingEquipment]
-class AddingEquipment extends _i56.PageRouteInfo<void> {
-  const AddingEquipment()
-      : super(AddingEquipment.name, path: '/adding-equipment');
+/// [_i33.AddingEquipmentPage]
+class AddingEquipmentRoute
+    extends _i56.PageRouteInfo<AddingEquipmentRouteArgs> {
+  AddingEquipmentRoute({required int lockerId, _i69.Key? key})
+      : super(AddingEquipmentRoute.name,
+            path: '/adding-equipment-page',
+            args: AddingEquipmentRouteArgs(lockerId: lockerId, key: key));
 
-  static const String name = 'AddingEquipment';
+  static const String name = 'AddingEquipmentRoute';
+}
+
+class AddingEquipmentRouteArgs {
+  const AddingEquipmentRouteArgs({required this.lockerId, this.key});
+
+  final int lockerId;
+
+  final _i69.Key? key;
+
+  @override
+  String toString() {
+    return 'AddingEquipmentRouteArgs{lockerId: $lockerId, key: $key}';
+  }
 }
 
 /// generated route for
 /// [_i34.AddEquipmentPage]
-class AddEquipmentRoute extends _i56.PageRouteInfo<void> {
-  const AddEquipmentRoute()
-      : super(AddEquipmentRoute.name, path: '/add-equipment-page');
+class AddEquipmentRoute extends _i56.PageRouteInfo<AddEquipmentRouteArgs> {
+  AddEquipmentRoute(
+      {_i69.Key? key,
+      required Map<String, dynamic> scanResult,
+      required int lockerId})
+      : super(AddEquipmentRoute.name,
+            path: '/add-equipment-page',
+            args: AddEquipmentRouteArgs(
+                key: key, scanResult: scanResult, lockerId: lockerId));
 
   static const String name = 'AddEquipmentRoute';
+}
+
+class AddEquipmentRouteArgs {
+  const AddEquipmentRouteArgs(
+      {this.key, required this.scanResult, required this.lockerId});
+
+  final _i69.Key? key;
+
+  final Map<String, dynamic> scanResult;
+
+  final int lockerId;
+
+  @override
+  String toString() {
+    return 'AddEquipmentRouteArgs{key: $key, scanResult: $scanResult, lockerId: $lockerId}';
+  }
 }
 
 /// generated route for

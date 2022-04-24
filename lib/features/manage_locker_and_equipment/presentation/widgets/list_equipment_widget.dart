@@ -73,8 +73,7 @@ class ListEquipmentWidget extends HookWidget {
                 child: Card(
                   child: EquipmentDisplayWidget(
                     id: index,
-                    imagePath:
-                        'assets/images/manage_locker_and_equipment/hammer_image.png',
+                    image: Container(),
                   ),
                 ),
               );

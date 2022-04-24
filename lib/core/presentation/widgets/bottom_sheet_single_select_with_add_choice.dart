@@ -46,7 +46,7 @@ class BottomSheetSingleSelectWithAddChoice extends HookWidget {
               label,
               style: const TextStyle(
                 fontFamily: 'IBM Plex Sans Thai',
-                fontSize: 25,
+                fontSize: 14,
               ),
             ),
             errorText: isError ? errorMessage : null,
@@ -69,7 +69,8 @@ class BottomSheetSingleSelectWithAddChoice extends HookWidget {
       builder: (context) {
         return ConstrainedBox(
           constraints: BoxConstraints(
-              maxHeight: MediaQuery.of(context).size.height * 0.9),
+            maxHeight: MediaQuery.of(context).size.height * 0.9,
+          ),
           child: Container(
             color: const Color(0xFF737373),
             child: Container(
@@ -141,8 +142,10 @@ class BottomSheetSingleSelectWithAddChoice extends HookWidget {
             ),
             const Divider(),
             ListTile(
-              leading: Icon(Icons.add,
-                  color: Theme.of(context).colorScheme.secondary),
+              leading: Icon(
+                Icons.add,
+                color: Theme.of(context).colorScheme.secondary,
+              ),
               title: Text(
                 addChoiceText,
                 style:

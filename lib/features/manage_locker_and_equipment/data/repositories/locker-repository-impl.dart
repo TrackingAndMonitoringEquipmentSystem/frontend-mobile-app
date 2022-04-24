@@ -71,12 +71,14 @@ class LockerRepositoryImpl implements LockerRepository {
   }
 
   @override
-  Future<Either<RestFailure, dynamic>> addEquipment({required int id}) async {
+  Future<Either<RestFailure, Map<String, dynamic>>> addEquipment({
+    required int id,
+  }) async {
     final token = await _authenticationRepository.getFirebaseUser!.getIdToken();
     final result =
         await _lockerRestApi.addEquipment(token: token, lockerId: id);
     return result.fold((l) => Left(l), (r) {
-      return Right(r['data']);
+      return Right(r['data'] as Map<String, dynamic>);
     });
   }
 
@@ -97,13 +99,15 @@ class LockerRepositoryImpl implements LockerRepository {
   }
 
   @override
-  Future<Either<RestFailure, Locker>> getLockerById() {
+  Future<Either<RestFailure, List<Locker>>> getLockerByIds(
+    List<int> ids,
+  ) async {
     final token = await _authenticationRepository.getFirebaseUser!.getIdToken();
-    final result = await _lockerRestApi.getAllByDepartment(token: token);
+    final result = await _lockerRestApi.getLockerByIds(token: token, ids: ids);
     return result.fold((l) => Left(l), (r) {
       return Right(
         (r['data'] as List)
-            .map((e) => Department.fromJson(e as Map<String, dynamic>))
+            .map((e) => Locker.fromJson(e as Map<String, dynamic>))
             .toList(),
       );
     });

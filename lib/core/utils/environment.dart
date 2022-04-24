@@ -1,5 +1,5 @@
 const String baseSchema = 'http';
-const String baseApiUrl = 'ee2d-161-246-5-203.ngrok.io';
+const String baseApiUrl = '87ae-161-246-5-203.ngrok.io';
 const int baseApiPort = 80;
 enum PublicsPath { getDepartments }
 enum AuthenPath { register, signIn, signOut }

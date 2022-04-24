@@ -14,20 +14,19 @@ class EquipmentListWidget extends StatelessWidget {
       itemBuilder: (context, index) {
         return InkWell(
           onTap: () {
-            AutoRouter.of(context).push(ReportProblemDetailRoute());
+            AutoRouter.of(context).push(const ReportProblemDetailRoute());
           },
           child: Column(
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
+                children: [
                   Expanded(
                     child: Padding(
-                      padding: EdgeInsets.all(10),
+                      padding: const EdgeInsets.all(10),
                       child: EquipmentDisplayWidget(
                         id: 1,
-                        imagePath:
-                            'assets/images/manage_locker_and_equipment/hammer_image.png',
+                        image: Container(),
                       ),
                     ),
                   )

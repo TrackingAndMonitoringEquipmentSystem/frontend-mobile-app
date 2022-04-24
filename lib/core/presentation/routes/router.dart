@@ -177,7 +177,7 @@ import 'package:frontend/features/streaming_and_record/presentation/pages/stream
     AutoRoute(page: QrScanningPage),
     AutoRoute(page: AddOrEditLockerPage),
     AutoRoute(page: AllEquipmentPage),
-    AutoRoute(page: AddingEquipment),
+    AutoRoute(page: AddingEquipmentPage),
     AutoRoute(page: AddEquipmentPage),
     AutoRoute(page: MacAddressHelpPage),
     AutoRoute(page: AllLocationPage),

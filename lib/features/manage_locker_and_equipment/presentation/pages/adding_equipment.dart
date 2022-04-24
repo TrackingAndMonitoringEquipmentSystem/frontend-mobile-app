@@ -5,8 +5,9 @@ import 'package:frontend/core/presentation/routes/router.gr.dart';
 import 'package:frontend/features/manage_locker_and_equipment/domain/locker-repository.dart';
 import 'package:frontend/injection.dart';
 
-class AddingEquipment extends HookWidget {
-  const AddingEquipment({Key? key}) : super(key: key);
+class AddingEquipmentPage extends HookWidget {
+  final int lockerId;
+  const AddingEquipmentPage(this.lockerId, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,31 +16,41 @@ class AddingEquipment extends HookWidget {
       () {
         Future<void>.microtask(() async {
           final result = await lockerRepository.addEquipment(
-            id: lockerRepository.currentLocker!.id,
+            id: lockerId,
           );
-          print('result:');
-          print(result);
+          result.fold(
+            (l) => null,
+            (r) => AutoRouter.of(context).replace(
+              AddEquipmentRoute(
+                scanResult: r,
+                lockerId: lockerId,
+              ),
+            ),
+          );
         });
+        return null;
       },
       [],
     );
     return Scaffold(
       body: SafeArea(
-          child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Center(
-            child: Image.asset(
-              'assets/images/manage_locker_and_equipment/toollo_loading.png',
-              fit: BoxFit.fill,
-              width: 200,
-              height: 200,
-            ),
-          ),
-          const Center(child: Text('กรุณารอสักครู่')),
-          const Center(child: Text('ระบบกำลังแสกนหาอุปกรณ์')),
-        ],
-      )),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: const [
+            // Center(
+            //   child: Image.asset(
+            //     'assets/images/manage_locker_and_equipment/toollo_loading.png',
+            //     fit: BoxFit.fill,
+            //     width: 200,
+            //     height: 200,
+            //   ),
+            // ),
+            Center(child: CircularProgressIndicator()),
+            Center(child: Text('กรุณารอสักครู่')),
+            Center(child: Text('ระบบกำลังแสกนหาอุปกรณ์')),
+          ],
+        ),
+      ),
     );
   }
 }

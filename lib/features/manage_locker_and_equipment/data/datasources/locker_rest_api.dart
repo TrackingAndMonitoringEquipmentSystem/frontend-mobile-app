@@ -168,7 +168,7 @@ class LockerRestApi {
         host: environment.baseApiUrl,
         port: environment.baseApiPort,
         path:
-            'environment.lockers[environment.LockerPath.viewLocker]/${ids.join(',')}',
+            '${environment.lockers[environment.LockerPath.viewLocker]}/${ids.join(',')}',
       );
       final response = await _httpClient.get(
         uri,

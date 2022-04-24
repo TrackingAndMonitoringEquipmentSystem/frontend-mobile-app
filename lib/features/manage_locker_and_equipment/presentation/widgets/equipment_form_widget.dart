@@ -9,11 +9,13 @@ import 'package:frontend/core/presentation/widgets/input_text.dart';
 
 class EquipmentFormWidget extends StatelessWidget {
   final int id;
-  final String imagePath;
+  final Widget image;
+  final List<String> macAddresses;
   const EquipmentFormWidget({
     Key? key,
     required this.id,
-    required this.imagePath,
+    required this.image,
+    required this.macAddresses,
   }) : super(key: key);
 
   @override
@@ -26,7 +28,9 @@ class EquipmentFormWidget extends StatelessWidget {
           child: Column(
             children: [
               EquipmentImageDisplayWidget(
-                  imagePath: imagePath, size: const Size(104, 104))
+                image: image,
+                size: const Size(104, 104),
+              )
             ],
           ),
         ),
@@ -49,9 +53,9 @@ class EquipmentFormWidget extends StatelessWidget {
                     label: 'เลือกหมวดหมู่',
                     placeHolder: 'เลือกหมวดหมู่',
                     listChoice: const [
-                      {'displayText': 'ไม่หมวดหมู่', 'value': 1},
+                      {'displayText': 'ไม่มีหมวดหมู่', 'value': 1},
                     ],
-                    initialValue: {'displayText': 'ไม่หมวดหมู่', 'value': 1},
+                    initialValue: {'displayText': 'ไม่มีหมวดหมู่', 'value': 1},
                     onChanged: (value) {},
                     addChoiceText: 'เพิ่มหมวดหมู่',
                     onAddChoice: (context) {
@@ -77,12 +81,14 @@ class EquipmentFormWidget extends StatelessWidget {
                     label: 'เลือก Mac address',
                     placeHolder: 'เลือก Mac address',
                     onChanged: (value) {},
-                    listChoice: const [
-                      {
-                        'displayText': 'C1-11-FE-FF-FF-FF',
-                        'value': 'C1-11-FE-FF-FF-FF'
-                      },
-                    ],
+                    listChoice: macAddresses
+                        .map(
+                          (e) => {
+                            'displayText': e,
+                            'value': e,
+                          },
+                        )
+                        .toList(),
                     headerWidget: ListTile(
                       title: Row(
                         children: [

@@ -1,20 +1,14 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:frontend/core/presentation/routes/router.gr.dart';
-import 'package:frontend/core/presentation/widgets/bottom_sheet_number_picker.dart';
-import 'package:frontend/core/presentation/widgets/bottom_sheet_single_select.dart';
-import 'package:frontend/core/presentation/widgets/bottom_sheet_single_select_with_add_choice.dart';
 import 'package:frontend/core/presentation/widgets/equipment_display_widget.dart';
-import 'package:frontend/core/presentation/widgets/input_text.dart';
 import 'package:frontend/core/utils/enum.dart';
 
 class EquipmentDisplayWidget extends StatelessWidget {
   final int id;
-  final String imagePath;
+  final Widget image;
   const EquipmentDisplayWidget({
     Key? key,
     required this.id,
-    required this.imagePath,
+    required this.image,
   }) : super(key: key);
 
   @override
@@ -28,9 +22,10 @@ class EquipmentDisplayWidget extends StatelessWidget {
           child: Column(
             children: [
               EquipmentImageDisplayWidget(
-                  status: EquipmentStatus.late,
-                  imagePath: imagePath,
-                  size: const Size(104, 104))
+                status: EquipmentStatus.late,
+                image: image,
+                size: const Size(104, 104),
+              )
             ],
           ),
         ),

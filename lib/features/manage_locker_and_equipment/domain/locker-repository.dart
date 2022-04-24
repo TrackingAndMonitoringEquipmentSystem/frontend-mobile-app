@@ -18,7 +18,7 @@ abstract class LockerRepository {
     required List<Department> departments,
     required Room room,
   });
-  Future<Either<RestFailure, dynamic>> addEquipment({
+  Future<Either<RestFailure, Map<String, dynamic>>> addEquipment({
     required int id,
   });
 
@@ -27,5 +27,5 @@ abstract class LockerRepository {
 
   Locker? get currentLocker;
 
-  Future<Either<RestFailure, Locker>> getLockerByIds(List<int> ids);
+  Future<Either<RestFailure, List<Locker>>> getLockerByIds(List<int> ids);
 }

@@ -21,7 +21,6 @@ class AddOrEditLockerPage extends HookWidget {
   final int lockerId;
   @override
   Widget build(BuildContext context) {
-    final screenSize = MediaQuery.of(context).size;
     final ValueNotifier<List<String>?> selectedAccount = useState(null);
     final ValueNotifier<bool> isEdit = useState(false);
     final ValueNotifier<RestFailure?> restFailure = useState(null);

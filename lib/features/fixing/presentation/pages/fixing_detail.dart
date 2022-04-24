@@ -46,13 +46,12 @@ class FixingDetailPage extends StatelessWidget {
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
+              children: [
                 Expanded(
                   child: Card(
                     child: EquipmentDisplayWidget(
                       id: 1,
-                      imagePath:
-                          'assets/images/manage_locker_and_equipment/hammer_image.png',
+                      image: Container(),
                     ),
                   ),
                 ),
