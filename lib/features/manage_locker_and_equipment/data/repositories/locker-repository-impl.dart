@@ -3,6 +3,7 @@ import 'package:frontend/core/domain/repositories/rest_failure.dart';
 import 'package:frontend/features/authentication/domain/repositories/authentication_repository.dart';
 import 'package:frontend/features/manage_locker_and_equipment/data/datasources/location_rest_api.dart';
 import 'package:frontend/features/manage_locker_and_equipment/data/datasources/locker_rest_api.dart';
+import 'package:frontend/features/manage_locker_and_equipment/domain/dto/save_equipments_request.dart';
 import 'package:frontend/features/manage_locker_and_equipment/domain/entities/building.dart';
 import 'package:frontend/features/manage_locker_and_equipment/domain/entities/department.dart';
 import 'package:frontend/features/manage_locker_and_equipment/domain/entities/locker.dart';
@@ -110,6 +111,18 @@ class LockerRepositoryImpl implements LockerRepository {
             .map((e) => Locker.fromJson(e as Map<String, dynamic>))
             .toList(),
       );
+    });
+  }
+
+  @override
+  Future<Either<RestFailure, dynamic>> saveEquipments(
+    SaveEquipmentsRequest saveEquipmentsRequest,
+  ) async {
+    final token = await _authenticationRepository.getFirebaseUser!.getIdToken();
+    final result = await _lockerRestApi.saveEquipments(
+        token: token, saveEquipmentsRequest: saveEquipmentsRequest);
+    return result.fold((l) => Left(l), (r) {
+      return Right(r['data']);
     });
   }
 }

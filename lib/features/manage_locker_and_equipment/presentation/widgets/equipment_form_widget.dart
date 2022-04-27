@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:frontend/core/presentation/routes/router.gr.dart';
 import 'package:frontend/core/presentation/widgets/bottom_sheet_number_picker.dart';
 import 'package:frontend/core/presentation/widgets/bottom_sheet_single_select.dart';
@@ -7,19 +8,25 @@ import 'package:frontend/core/presentation/widgets/bottom_sheet_single_select_wi
 import 'package:frontend/core/presentation/widgets/equipment_display_widget.dart';
 import 'package:frontend/core/presentation/widgets/input_text.dart';
 
-class EquipmentFormWidget extends StatelessWidget {
+class EquipmentFormWidget extends HookWidget {
   final int id;
   final Widget image;
   final List<String> macAddresses;
+  final void Function(Map<String, dynamic> dataUpdated) onChanged;
   const EquipmentFormWidget({
     Key? key,
     required this.id,
     required this.image,
     required this.macAddresses,
+    required this.onChanged,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final name = useState('');
+    final typeId = useState<int?>(null);
+    final duration = useState<int?>(null);
+    final macAddress = useState('');
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -41,7 +48,15 @@ class EquipmentFormWidget extends StatelessWidget {
               Row(
                 children: [
                   InputText(
-                    onChanged: (value) {},
+                    onChanged: (value) {
+                      name.value = value;
+                      onChanged({
+                        'name': name.value,
+                        'typeId': typeId.value,
+                        'duration': duration.value,
+                        'macAddress': macAddress.value,
+                      });
+                    },
                     label: 'ชื่ออุปกรณ์',
                     placeHolder: 'ชื่ออุปกรณ์',
                   ),
@@ -56,7 +71,15 @@ class EquipmentFormWidget extends StatelessWidget {
                       {'displayText': 'ไม่มีหมวดหมู่', 'value': 1},
                     ],
                     initialValue: {'displayText': 'ไม่มีหมวดหมู่', 'value': 1},
-                    onChanged: (value) {},
+                    onChanged: (value) {
+                      typeId.value = value!['value'] as int;
+                      onChanged({
+                        'name': name.value,
+                        'typeId': typeId.value,
+                        'duration': duration.value,
+                        'macAddress': macAddress.value,
+                      });
+                    },
                     addChoiceText: 'เพิ่มหมวดหมู่',
                     onAddChoice: (context) {
                       AutoRouter.of(context).pop();
@@ -69,7 +92,15 @@ class EquipmentFormWidget extends StatelessWidget {
                   BottomSheetNumberPicker(
                     label: 'เลือกระยะเวลาการยืม',
                     placeHolder: 'เลือกระยะเวลาการยืม',
-                    onChanged: (value) {},
+                    onChanged: (value) {
+                      duration.value = value;
+                      onChanged({
+                        'name': name.value,
+                        'typeId': typeId.value,
+                        'duration': duration.value,
+                        'macAddress': macAddress.value,
+                      });
+                    },
                     min: 1,
                     max: 9,
                   )
@@ -80,7 +111,15 @@ class EquipmentFormWidget extends StatelessWidget {
                   BottomSheetSingleSelect(
                     label: 'เลือก Mac address',
                     placeHolder: 'เลือก Mac address',
-                    onChanged: (value) {},
+                    onChanged: (value) {
+                      macAddress.value = value!['value'] as String;
+                      onChanged({
+                        'name': name.value,
+                        'typeId': typeId.value,
+                        'duration': duration.value,
+                        'macAddress': macAddress.value,
+                      });
+                    },
                     listChoice: macAddresses
                         .map(
                           (e) => {

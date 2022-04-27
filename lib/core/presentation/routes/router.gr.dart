@@ -300,7 +300,8 @@ class AppRouter extends _i56.RootStackRouter {
           child: _i34.AddEquipmentPage(
               key: args.key,
               scanResult: args.scanResult,
-              lockerId: args.lockerId));
+              lockerId: args.lockerId,
+              isError: args.isError));
     },
     MacAddressHelpRoute.name: (routeData) {
       return _i56.MaterialPageX<dynamic>(
@@ -987,29 +988,35 @@ class AddingEquipmentRouteArgs {
 class AddEquipmentRoute extends _i56.PageRouteInfo<AddEquipmentRouteArgs> {
   AddEquipmentRoute(
       {_i69.Key? key,
-      required Map<String, dynamic> scanResult,
-      required int lockerId})
+      Map<String, dynamic>? scanResult,
+      required int lockerId,
+      bool? isError})
       : super(AddEquipmentRoute.name,
             path: '/add-equipment-page',
             args: AddEquipmentRouteArgs(
-                key: key, scanResult: scanResult, lockerId: lockerId));
+                key: key,
+                scanResult: scanResult,
+                lockerId: lockerId,
+                isError: isError));
 
   static const String name = 'AddEquipmentRoute';
 }
 
 class AddEquipmentRouteArgs {
   const AddEquipmentRouteArgs(
-      {this.key, required this.scanResult, required this.lockerId});
+      {this.key, this.scanResult, required this.lockerId, this.isError});
 
   final _i69.Key? key;
 
-  final Map<String, dynamic> scanResult;
+  final Map<String, dynamic>? scanResult;
 
   final int lockerId;
 
+  final bool? isError;
+
   @override
   String toString() {
-    return 'AddEquipmentRouteArgs{key: $key, scanResult: $scanResult, lockerId: $lockerId}';
+    return 'AddEquipmentRouteArgs{key: $key, scanResult: $scanResult, lockerId: $lockerId, isError: $isError}';
   }
 }
 

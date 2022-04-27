@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:dartz/dartz.dart';
 import 'package:frontend/core/domain/repositories/rest_failure.dart';
 import 'package:frontend/core/utils/environment.dart' as environment;
+import 'package:frontend/features/manage_locker_and_equipment/domain/dto/save_equipments_request.dart';
 import 'package:http/http.dart' as http;
 import 'package:injectable/injectable.dart';
 
@@ -68,9 +69,7 @@ class LockerRestApi {
         body: jsonEncode({
           'locker_name': name,
           'description': description,
-          'deptId': [
-            {'id': 1}
-          ],
+          'deptId': departmentIds.map((e) => {'id': e}).toList(),
           'roomId': roomId,
         }),
       );
@@ -180,6 +179,42 @@ class LockerRestApi {
       print(response.reasonPhrase);
       print(response.body);
       if (response.statusCode == 200) {
+        return Right(
+          jsonDecode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>,
+        );
+      } else {
+        return Left(RestFailure.fromHttpStatusCode(response.statusCode));
+      }
+    } catch (error) {
+      print('error:');
+      print(error);
+      return const Left(UnKnownError());
+    }
+  }
+
+  Future<Either<RestFailure, Map<String, dynamic>>> saveEquipments({
+    required String token,
+    required SaveEquipmentsRequest saveEquipmentsRequest,
+  }) async {
+    try {
+      final uri = Uri(
+        scheme: environment.baseSchema,
+        host: environment.baseApiUrl,
+        port: environment.baseApiPort,
+        path:
+            '${environment.equipment[environment.EquipmentPath.saveEquipments]}',
+      );
+      final response = await _httpClient.post(
+        uri,
+        headers: <String, String>{
+          'Authorization': 'Bearer $token',
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+        body: jsonEncode(saveEquipmentsRequest.toJson()),
+      );
+      print(response.reasonPhrase);
+      print(response.body);
+      if (response.statusCode == 201) {
         return Right(
           jsonDecode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>,
         );

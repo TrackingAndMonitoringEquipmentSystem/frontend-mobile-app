@@ -19,7 +19,12 @@ class AddingEquipmentPage extends HookWidget {
             id: lockerId,
           );
           result.fold(
-            (l) => null,
+            (l) => AutoRouter.of(context).replace(
+              AddEquipmentRoute(
+                lockerId: lockerId,
+                isError: true,
+              ),
+            ),
             (r) => AutoRouter.of(context).replace(
               AddEquipmentRoute(
                 scanResult: r,

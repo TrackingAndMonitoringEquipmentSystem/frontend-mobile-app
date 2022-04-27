@@ -1,6 +1,7 @@
 // ignore: file_names
 import 'package:dartz/dartz.dart';
 import 'package:frontend/core/domain/repositories/rest_failure.dart';
+import 'package:frontend/features/manage_locker_and_equipment/domain/dto/save_equipments_request.dart';
 import 'package:frontend/features/manage_locker_and_equipment/domain/entities/building.dart';
 import 'package:frontend/features/manage_locker_and_equipment/domain/entities/department.dart';
 import 'package:frontend/features/manage_locker_and_equipment/domain/entities/locker.dart';
@@ -28,4 +29,8 @@ abstract class LockerRepository {
   Locker? get currentLocker;
 
   Future<Either<RestFailure, List<Locker>>> getLockerByIds(List<int> ids);
+
+  Future<Either<RestFailure, dynamic>> saveEquipments(
+    SaveEquipmentsRequest saveEquipmentsRequest,
+  );
 }

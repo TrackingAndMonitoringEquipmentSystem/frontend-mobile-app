@@ -1,5 +1,5 @@
 const String baseSchema = 'http';
-const String baseApiUrl = '87ae-161-246-5-203.ngrok.io';
+const String baseApiUrl = 'f577-161-246-5-203.ngrok.io';
 const int baseApiPort = 80;
 enum PublicsPath { getDepartments }
 enum AuthenPath { register, signIn, signOut }
@@ -12,6 +12,8 @@ enum LockerPath {
 }
 enum LocationPath { getBuildings }
 enum DepartmentPath { getLockers }
+enum EquipmentPath { saveEquipments }
+
 const Map<PublicsPath, String> publics = {
   PublicsPath.getDepartments: '/publics/departments'
 };
@@ -36,4 +38,8 @@ const Map<LocationPath, String> location = {
 
 const Map<DepartmentPath, String> department = {
   DepartmentPath.getLockers: '/department/viewLockerByDepartment',
+};
+
+const Map<EquipmentPath, String> equipment = {
+  EquipmentPath.saveEquipments: '/equipment/saveEquipments',
 };

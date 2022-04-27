@@ -8,6 +8,7 @@ import 'package:frontend/core/domain/repositories/rest_failure.dart';
 import 'package:frontend/core/presentation/routes/router.gr.dart';
 import 'package:frontend/core/presentation/widgets/button.dart';
 import 'package:frontend/core/presentation/widgets/button_outline_widget.dart';
+import 'package:frontend/features/manage_locker_and_equipment/domain/dto/save_equipments_request.dart';
 import 'package:frontend/features/manage_locker_and_equipment/domain/locker-repository.dart';
 import 'package:frontend/features/manage_locker_and_equipment/presentation/widgets/equipment_form_widget.dart';
 import 'package:frontend/injection.dart';
@@ -16,12 +17,13 @@ import 'package:loading_overlay_pro/loading_overlay_pro.dart';
 
 class AddEquipmentPage extends HookWidget {
   final int lockerId;
-  final Map<String, dynamic> scanResult;
-
+  final Map<String, dynamic>? scanResult;
+  final bool? isError;
   const AddEquipmentPage({
     Key? key,
-    required this.scanResult,
+    this.scanResult,
     required this.lockerId,
+    this.isError,
   }) : super(key: key);
 
   @override
@@ -30,8 +32,17 @@ class AddEquipmentPage extends HookWidget {
     final isLoading = useState(false);
     final lockerRepository = getIt<LockerRepository>();
     final ValueNotifier<RestFailure?> failure = useState(null);
-    final List<Widget> objects = getObjectImage(scanResult['objects'] as List);
-    print('scanResult["uuid"]: ${scanResult["uuid"]}');
+    final base64images = useState(<String>[]);
+    final List<Widget> objects = scanResult != null
+        ? getObjectImage(scanResult!['objects'] as List, base64images)
+        : [];
+    final initialForm = scanResult != null
+        ? List<Map<String, dynamic>>.generate(
+            (scanResult!['objects'] as List).length,
+            (index) => <String, dynamic>{},
+          )
+        : <Map<String, dynamic>>[];
+    final listFormData = useState(initialForm);
     useEffect(
       () {
         return null;
@@ -50,20 +61,26 @@ class AddEquipmentPage extends HookWidget {
           iconTheme: const IconThemeData(color: Colors.black),
           elevation: 0,
         ),
-        body: ListView.builder(
-          itemCount: objects.length,
-          itemBuilder: (context, index) {
-            return Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: EquipmentFormWidget(
-                id: index,
-                image: objects[index],
-                macAddresses:
-                    List<String>.from(scanResult['macAddresses'] as List),
+        body: isError != null
+            ? const Center(child: Text('เกิดข้อผิดพลาด'))
+            : ListView.builder(
+                itemCount: objects.length,
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: EquipmentFormWidget(
+                      id: index,
+                      image: objects[index],
+                      macAddresses: List<String>.from(
+                        scanResult!['macAddresses'] as List,
+                      ),
+                      onChanged: (data) {
+                        listFormData.value[index] = data;
+                      },
+                    ),
+                  );
+                },
               ),
-            );
-          },
-        ),
         bottomNavigationBar: SizedBox(
           height: screenSize.height * 0.2,
           child: Padding(
@@ -75,7 +92,7 @@ class AddEquipmentPage extends HookWidget {
                   children: [
                     const Text('ตรวจพบทั้งหมด'),
                     Text(
-                      '${(scanResult['macAddresses'] as List).length} อุปกรณ์',
+                      '${(scanResult != null ? scanResult!['macAddresses'] as List : []).length} อุปกรณ์',
                       style: TextStyle(
                           color: Theme.of(context).colorScheme.primary),
                     ),
@@ -94,9 +111,18 @@ class AddEquipmentPage extends HookWidget {
                     const SizedBox(
                       width: 10,
                     ),
-                    if ((scanResult['macAddresses'] as List).isNotEmpty)
-                      const Button(
+                    if (isError == null)
+                      Button(
                         'บันทึก',
+                        onPressed: () async {
+                          final List<EquipmentRequest> equipments = [];
+                          for(final formData in listFormData.value) {
+                            equipments.add(EquipmentRequest(name, typeId, duration, macAddress, base64Image));
+                          }
+
+                          final saveEquipmentsRequest = SaveEquipmentsRequest(scanResult!['uuid'] as String, lockerId, equipments)
+
+                        },
                       )
                   ],
                 ),
@@ -108,7 +134,10 @@ class AddEquipmentPage extends HookWidget {
     );
   }
 
-  List<Widget> getObjectImage(List objects) {
+  List<Widget> getObjectImage(
+    List objects,
+    ValueNotifier<List<String>> base64images,
+  ) {
     final List<Widget> widgets = [];
 
     objects.forEach((object) {
@@ -118,8 +147,6 @@ class AddEquipmentPage extends HookWidget {
 
       final objectClips =
           List<Map<String, dynamic>>.from(objectMap['detectedObjects'] as List);
-
-      print('objectMap["imageSize"]: ${objectMap['imageSize']}');
 
       objectClips.forEach((element) {
         final cropImage = image_helper.copyCrop(
@@ -131,7 +158,13 @@ class AddEquipmentPage extends HookWidget {
         );
         final byteImage = image_helper.encodeJpg(cropImage);
         final imageWidget = Image.memory(Uint8List.fromList(byteImage));
-        widgets.add(imageWidget);
+        base64images.value.add(base64Encode(byteImage));
+        widgets.add(
+          ClipRRect(
+            borderRadius: BorderRadius.circular(8),
+            child: imageWidget,
+          ),
+        );
       });
     });
     return widgets;
