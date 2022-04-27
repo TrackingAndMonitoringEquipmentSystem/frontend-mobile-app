@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:typed_data';
 
+import 'package:another_flushbar/flushbar_helper.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -31,25 +32,19 @@ class AddEquipmentPage extends HookWidget {
     final screenSize = MediaQuery.of(context).size;
     final isLoading = useState(false);
     final lockerRepository = getIt<LockerRepository>();
-    final ValueNotifier<RestFailure?> failure = useState(null);
-    final base64images = useState(<String>[]);
+    final base64Images = useState(<String>[]);
     final List<Widget> objects = scanResult != null
-        ? getObjectImage(scanResult!['objects'] as List, base64images)
+        ? getObjectImage(scanResult!['objects'] as List, base64Images)
         : [];
     final initialForm = scanResult != null
         ? List<Map<String, dynamic>>.generate(
-            (scanResult!['objects'] as List).length,
+            (scanResult!['macAddresses'] as List).length,
             (index) => <String, dynamic>{},
           )
         : <Map<String, dynamic>>[];
     final listFormData = useState(initialForm);
-    useEffect(
-      () {
-        return null;
-      },
-      [],
-    );
     return LoadingOverlayPro(
+      progressIndicator: const CircularProgressIndicator(),
       isLoading: isLoading.value,
       child: Scaffold(
         appBar: AppBar(
@@ -94,7 +89,8 @@ class AddEquipmentPage extends HookWidget {
                     Text(
                       '${(scanResult != null ? scanResult!['macAddresses'] as List : []).length} อุปกรณ์',
                       style: TextStyle(
-                          color: Theme.of(context).colorScheme.primary),
+                        color: Theme.of(context).colorScheme.primary,
+                      ),
                     ),
                   ],
                 ),
@@ -105,7 +101,7 @@ class AddEquipmentPage extends HookWidget {
                       'ลองอีกครั้ง',
                       onPressed: () async {
                         AutoRouter.of(context)
-                            .navigate(AddingEquipmentRoute(lockerId: lockerId));
+                            .replace(AddingEquipmentRoute(lockerId: lockerId));
                       },
                     ),
                     const SizedBox(
@@ -116,12 +112,27 @@ class AddEquipmentPage extends HookWidget {
                         'บันทึก',
                         onPressed: () async {
                           final List<EquipmentRequest> equipments = [];
-                          for(final formData in listFormData.value) {
-                            equipments.add(EquipmentRequest(name, typeId, duration, macAddress, base64Image));
-                          }
+                          listFormData.value.asMap().forEach((index, value) {
+                            value['base64Image'] = base64Images.value[index];
+                            equipments.add(EquipmentRequest.fromJson(value));
+                          });
 
-                          final saveEquipmentsRequest = SaveEquipmentsRequest(scanResult!['uuid'] as String, lockerId, equipments)
-
+                          final saveEquipmentsRequest = SaveEquipmentsRequest(
+                            scanResult!['uuid'] as String,
+                            lockerId,
+                            equipments,
+                          );
+                          isLoading.value = true;
+                          final result = await lockerRepository
+                              .saveEquipments(saveEquipmentsRequest);
+                          isLoading.value = false;
+                          result.fold(
+                            (l) => handleErrorCase(context, l),
+                            (r) {
+                              AutoRouter.of(context)
+                                  .pop(const AllLockerRoute());
+                            },
+                          );
                         },
                       )
                   ],
@@ -136,7 +147,7 @@ class AddEquipmentPage extends HookWidget {
 
   List<Widget> getObjectImage(
     List objects,
-    ValueNotifier<List<String>> base64images,
+    ValueNotifier<List<String>> base64Images,
   ) {
     final List<Widget> widgets = [];
 
@@ -158,7 +169,7 @@ class AddEquipmentPage extends HookWidget {
         );
         final byteImage = image_helper.encodeJpg(cropImage);
         final imageWidget = Image.memory(Uint8List.fromList(byteImage));
-        base64images.value.add(base64Encode(byteImage));
+        base64Images.value.add(base64Encode(byteImage));
         widgets.add(
           ClipRRect(
             borderRadius: BorderRadius.circular(8),
@@ -168,5 +179,17 @@ class AddEquipmentPage extends HookWidget {
       });
     });
     return widgets;
+  }
+
+  void handleErrorCase(BuildContext context, RestFailure failure) {
+    FlushbarHelper.createError(
+      message: failure.map<String>(
+        serverError: (e) => 'serverError',
+        badRequest: (e) => e.message,
+        unAuthorized: (e) => 'unAuthorized',
+        notFound: (e) => 'notFound',
+        unknownError: (e) => 'unknownError',
+      ),
+    ).show(context);
   }
 }

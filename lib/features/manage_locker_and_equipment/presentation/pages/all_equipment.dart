@@ -12,10 +12,10 @@ import 'package:frontend/injection.dart';
 import 'package:loading_overlay_pro/loading_overlay_pro.dart';
 
 class AllEquipmentPage extends HookWidget {
-  final Locker locker;
+  final int lockerId;
   const AllEquipmentPage({
     Key? key,
-    required this.locker,
+    required this.lockerId,
   }) : super(key: key);
 
   @override
@@ -24,16 +24,20 @@ class AllEquipmentPage extends HookWidget {
     final isLoading = useState(false);
     final equipments = useState(<Equipment>[]);
     final ValueNotifier<RestFailure?> failure = useState(null);
+    final locker = useState<Locker?>(null);
     useEffect(
       () {
         Future<void>.microtask(() async {
           isLoading.value = true;
           final results =
-              await getIt<LockerRepository>().getLockerByIds([locker.id]);
+              await getIt<LockerRepository>().getLockerByIds([lockerId]);
           isLoading.value = false;
           results.fold(
             (l) => failure.value = l,
-            (r) => equipments.value = r[0].equipments!,
+            (r) {
+              locker.value = r[0];
+              equipments.value = r[0].equipments!;
+            },
           );
         });
         return null;
@@ -46,7 +50,7 @@ class AllEquipmentPage extends HookWidget {
       child: Scaffold(
         appBar: AppBar(
           title: Text(
-            locker.name,
+            locker.value?.name ?? 'loading...',
             style: const TextStyle(color: Colors.black),
           ),
           backgroundColor: Colors.white,
@@ -130,7 +134,7 @@ class AllEquipmentPage extends HookWidget {
             'เพิ่มอุปกรณ์',
             onPressed: () {
               AutoRouter.of(context)
-                  .push(AddingEquipmentRoute(lockerId: locker.id));
+                  .push(AddingEquipmentRoute(lockerId: lockerId));
             },
           ),
         ),

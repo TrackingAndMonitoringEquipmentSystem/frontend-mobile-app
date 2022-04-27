@@ -120,7 +120,10 @@ class LockerRepositoryImpl implements LockerRepository {
   ) async {
     final token = await _authenticationRepository.getFirebaseUser!.getIdToken();
     final result = await _lockerRestApi.saveEquipments(
-        token: token, saveEquipmentsRequest: saveEquipmentsRequest);
+      token: token,
+      saveEquipmentsRequest: saveEquipmentsRequest,
+    );
+    print('result: $result');
     return result.fold((l) => Left(l), (r) {
       return Right(r['data']);
     });

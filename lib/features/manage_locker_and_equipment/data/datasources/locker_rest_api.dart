@@ -37,7 +37,16 @@ class LockerRestApi {
           jsonDecode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>,
         );
       } else {
-        return Left(RestFailure.fromHttpStatusCode(response.statusCode));
+        final body =
+            jsonDecode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>;
+        String message;
+        if (body.containsKey('message') && body['message'] != null) {
+          message = body['message'] as String;
+        } else {
+          message = response.reasonPhrase!;
+        }
+        return Left(
+            RestFailure.fromHttpStatusCode(response.statusCode, message));
       }
     } catch (error) {
       return const Left(UnKnownError());
@@ -80,7 +89,16 @@ class LockerRestApi {
           jsonDecode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>,
         );
       } else {
-        return Left(RestFailure.fromHttpStatusCode(response.statusCode));
+        final body =
+            jsonDecode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>;
+        String message;
+        if (body.containsKey('message') && body['message'] != null) {
+          message = body['message'] as String;
+        } else {
+          message = response.reasonPhrase!;
+        }
+        return Left(
+            RestFailure.fromHttpStatusCode(response.statusCode, message));
       }
     } catch (error) {
       print('error:');
@@ -115,7 +133,16 @@ class LockerRestApi {
           jsonDecode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>,
         );
       } else {
-        return Left(RestFailure.fromHttpStatusCode(response.statusCode));
+        final body =
+            jsonDecode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>;
+        String message;
+        if (body.containsKey('message') && body['message'] != null) {
+          message = body['message'] as String;
+        } else {
+          message = response.reasonPhrase!;
+        }
+        return Left(
+            RestFailure.fromHttpStatusCode(response.statusCode, message));
       }
     } catch (error) {
       print('error:');
@@ -148,7 +175,16 @@ class LockerRestApi {
           jsonDecode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>,
         );
       } else {
-        return Left(RestFailure.fromHttpStatusCode(response.statusCode));
+        final body =
+            jsonDecode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>;
+        String message;
+        if (body.containsKey('message') && body['message'] != null) {
+          message = body['message'] as String;
+        } else {
+          message = response.reasonPhrase!;
+        }
+        return Left(
+            RestFailure.fromHttpStatusCode(response.statusCode, message));
       }
     } catch (error) {
       print('error:');
@@ -183,7 +219,16 @@ class LockerRestApi {
           jsonDecode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>,
         );
       } else {
-        return Left(RestFailure.fromHttpStatusCode(response.statusCode));
+        final body =
+            jsonDecode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>;
+        String message;
+        if (body.containsKey('message') && body['message'] != null) {
+          message = body['message'] as String;
+        } else {
+          message = response.reasonPhrase!;
+        }
+        return Left(
+            RestFailure.fromHttpStatusCode(response.statusCode, message));
       }
     } catch (error) {
       print('error:');
@@ -204,6 +249,7 @@ class LockerRestApi {
         path:
             '${environment.equipment[environment.EquipmentPath.saveEquipments]}',
       );
+
       final response = await _httpClient.post(
         uri,
         headers: <String, String>{
@@ -219,7 +265,17 @@ class LockerRestApi {
           jsonDecode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>,
         );
       } else {
-        return Left(RestFailure.fromHttpStatusCode(response.statusCode));
+        final body =
+            jsonDecode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>;
+        String message;
+        if (body.containsKey('message') && body['message'] != null) {
+          message = body['message'] as String;
+        } else {
+          message = response.reasonPhrase!;
+        }
+        return Left(
+          RestFailure.fromHttpStatusCode(response.statusCode, message),
+        );
       }
     } catch (error) {
       print('error:');

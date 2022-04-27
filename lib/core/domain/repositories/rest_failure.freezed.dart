@@ -22,8 +22,10 @@ class _$RestFailureTearOff {
     return const ServerError();
   }
 
-  BadRequest badRequest() {
-    return const BadRequest();
+  BadRequest badRequest(String message) {
+    return BadRequest(
+      message,
+    );
   }
 
   UnAuthorized unAuthorized() {
@@ -47,7 +49,7 @@ mixin _$RestFailure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() serverError,
-    required TResult Function() badRequest,
+    required TResult Function(String message) badRequest,
     required TResult Function() unAuthorized,
     required TResult Function() notFound,
     required TResult Function() unknownError,
@@ -56,7 +58,7 @@ mixin _$RestFailure {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? serverError,
-    TResult Function()? badRequest,
+    TResult Function(String message)? badRequest,
     TResult Function()? unAuthorized,
     TResult Function()? notFound,
     TResult Function()? unknownError,
@@ -65,7 +67,7 @@ mixin _$RestFailure {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? serverError,
-    TResult Function()? badRequest,
+    TResult Function(String message)? badRequest,
     TResult Function()? unAuthorized,
     TResult Function()? notFound,
     TResult Function()? unknownError,
@@ -159,7 +161,7 @@ class _$ServerError implements ServerError {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() serverError,
-    required TResult Function() badRequest,
+    required TResult Function(String message) badRequest,
     required TResult Function() unAuthorized,
     required TResult Function() notFound,
     required TResult Function() unknownError,
@@ -171,7 +173,7 @@ class _$ServerError implements ServerError {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? serverError,
-    TResult Function()? badRequest,
+    TResult Function(String message)? badRequest,
     TResult Function()? unAuthorized,
     TResult Function()? notFound,
     TResult Function()? unknownError,
@@ -183,7 +185,7 @@ class _$ServerError implements ServerError {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? serverError,
-    TResult Function()? badRequest,
+    TResult Function(String message)? badRequest,
     TResult Function()? unAuthorized,
     TResult Function()? notFound,
     TResult Function()? unknownError,
@@ -245,6 +247,7 @@ abstract class $BadRequestCopyWith<$Res> {
   factory $BadRequestCopyWith(
           BadRequest value, $Res Function(BadRequest) then) =
       _$BadRequestCopyWithImpl<$Res>;
+  $Res call({String message});
 }
 
 /// @nodoc
@@ -255,63 +258,86 @@ class _$BadRequestCopyWithImpl<$Res> extends _$RestFailureCopyWithImpl<$Res>
 
   @override
   BadRequest get _value => super._value as BadRequest;
+
+  @override
+  $Res call({
+    Object? message = freezed,
+  }) {
+    return _then(BadRequest(
+      message == freezed
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$BadRequest implements BadRequest {
-  const _$BadRequest();
+  const _$BadRequest(this.message);
+
+  @override
+  final String message;
 
   @override
   String toString() {
-    return 'RestFailure.badRequest()';
+    return 'RestFailure.badRequest(message: $message)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is BadRequest);
+        (other.runtimeType == runtimeType &&
+            other is BadRequest &&
+            const DeepCollectionEquality().equals(other.message, message));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(message));
+
+  @JsonKey(ignore: true)
+  @override
+  $BadRequestCopyWith<BadRequest> get copyWith =>
+      _$BadRequestCopyWithImpl<BadRequest>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() serverError,
-    required TResult Function() badRequest,
+    required TResult Function(String message) badRequest,
     required TResult Function() unAuthorized,
     required TResult Function() notFound,
     required TResult Function() unknownError,
   }) {
-    return badRequest();
+    return badRequest(message);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? serverError,
-    TResult Function()? badRequest,
+    TResult Function(String message)? badRequest,
     TResult Function()? unAuthorized,
     TResult Function()? notFound,
     TResult Function()? unknownError,
   }) {
-    return badRequest?.call();
+    return badRequest?.call(message);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? serverError,
-    TResult Function()? badRequest,
+    TResult Function(String message)? badRequest,
     TResult Function()? unAuthorized,
     TResult Function()? notFound,
     TResult Function()? unknownError,
     required TResult orElse(),
   }) {
     if (badRequest != null) {
-      return badRequest();
+      return badRequest(message);
     }
     return orElse();
   }
@@ -358,7 +384,12 @@ class _$BadRequest implements BadRequest {
 }
 
 abstract class BadRequest implements RestFailure {
-  const factory BadRequest() = _$BadRequest;
+  const factory BadRequest(String message) = _$BadRequest;
+
+  String get message;
+  @JsonKey(ignore: true)
+  $BadRequestCopyWith<BadRequest> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -402,7 +433,7 @@ class _$UnAuthorized implements UnAuthorized {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() serverError,
-    required TResult Function() badRequest,
+    required TResult Function(String message) badRequest,
     required TResult Function() unAuthorized,
     required TResult Function() notFound,
     required TResult Function() unknownError,
@@ -414,7 +445,7 @@ class _$UnAuthorized implements UnAuthorized {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? serverError,
-    TResult Function()? badRequest,
+    TResult Function(String message)? badRequest,
     TResult Function()? unAuthorized,
     TResult Function()? notFound,
     TResult Function()? unknownError,
@@ -426,7 +457,7 @@ class _$UnAuthorized implements UnAuthorized {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? serverError,
-    TResult Function()? badRequest,
+    TResult Function(String message)? badRequest,
     TResult Function()? unAuthorized,
     TResult Function()? notFound,
     TResult Function()? unknownError,
@@ -522,7 +553,7 @@ class _$NotFound implements NotFound {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() serverError,
-    required TResult Function() badRequest,
+    required TResult Function(String message) badRequest,
     required TResult Function() unAuthorized,
     required TResult Function() notFound,
     required TResult Function() unknownError,
@@ -534,7 +565,7 @@ class _$NotFound implements NotFound {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? serverError,
-    TResult Function()? badRequest,
+    TResult Function(String message)? badRequest,
     TResult Function()? unAuthorized,
     TResult Function()? notFound,
     TResult Function()? unknownError,
@@ -546,7 +577,7 @@ class _$NotFound implements NotFound {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? serverError,
-    TResult Function()? badRequest,
+    TResult Function(String message)? badRequest,
     TResult Function()? unAuthorized,
     TResult Function()? notFound,
     TResult Function()? unknownError,
@@ -644,7 +675,7 @@ class _$UnKnownError implements UnKnownError {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() serverError,
-    required TResult Function() badRequest,
+    required TResult Function(String message) badRequest,
     required TResult Function() unAuthorized,
     required TResult Function() notFound,
     required TResult Function() unknownError,
@@ -656,7 +687,7 @@ class _$UnKnownError implements UnKnownError {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? serverError,
-    TResult Function()? badRequest,
+    TResult Function(String message)? badRequest,
     TResult Function()? unAuthorized,
     TResult Function()? notFound,
     TResult Function()? unknownError,
@@ -668,7 +699,7 @@ class _$UnKnownError implements UnKnownError {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? serverError,
-    TResult Function()? badRequest,
+    TResult Function(String message)? badRequest,
     TResult Function()? unAuthorized,
     TResult Function()? notFound,
     TResult Function()? unknownError,

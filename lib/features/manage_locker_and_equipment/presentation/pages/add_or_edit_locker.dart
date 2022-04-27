@@ -301,7 +301,7 @@ class AddOrEditLockerPage extends HookWidget {
                                   result.fold((l) => null, (r) => r);
                               AutoRouter.of(context).push(
                                 AllEquipmentRoute(
-                                  locker: lockerRepository.currentLocker!,
+                                  lockerId: lockerRepository.currentLocker!.id,
                                 ),
                               );
                             }

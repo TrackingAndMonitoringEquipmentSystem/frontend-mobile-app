@@ -46,8 +46,11 @@ class EquipmentRequest {
 
   factory EquipmentRequest.fromJson(Map<String, dynamic> json) {
     return EquipmentRequest(
-        name: json['name'] as String,
-        typeId: json.containsKey('typeId') ? json['typeId'] as int : null,
-        duration: json['duration']);
+      name: json['name'] as String,
+      typeId: json.containsKey('typeId') ? json['typeId'] as int? : null,
+      duration: json['duration'] as int,
+      macAddress: json['macAddress'] as String,
+      base64Image: json['base64Image'] as String,
+    );
   }
 }

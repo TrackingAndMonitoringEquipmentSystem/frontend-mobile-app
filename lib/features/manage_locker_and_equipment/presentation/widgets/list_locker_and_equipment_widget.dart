@@ -434,7 +434,8 @@ class ListLockerAndEquipmentWidget extends HookWidget {
                     icon: const Icon(Icons.more_vert),
                   ),
                   onTap: () {
-                    AutoRouter.of(context).push(AllEquipmentRoute(locker: e));
+                    AutoRouter.of(context)
+                        .push(AllEquipmentRoute(lockerId: e.id));
                   },
                 ),
               )
@@ -456,16 +457,7 @@ class ListLockerAndEquipmentWidget extends HookWidget {
           onTap: () {
             AutoRouter.of(context).push(
               AllEquipmentRoute(
-                locker: Locker(
-                  createdAt: DateTime.now(),
-                  description: '',
-                  id: 1,
-                  name: '',
-                  status: '',
-                  totalCams: 5,
-                  updatedAt: DateTime.now(),
-                  equipments: [],
-                ),
+                lockerId: 1,
               ),
             );
           },
