@@ -19,7 +19,25 @@ extension RoleExtension on Role {
   }
 }
 
-enum EquipmentStatus { late }
+enum EquipmentStatus { late, available, borrowing, fixing }
+
+extension EquipmentStatusExtension on EquipmentStatus {
+  String toNameString() {
+    switch (this) {
+      case EquipmentStatus.available:
+        return 'พร้อมใช้งาน';
+      case EquipmentStatus.borrowing:
+        return 'ยืมอยู่';
+      case EquipmentStatus.fixing:
+        return 'ส่งซ่อม';
+      case EquipmentStatus.late:
+        return 'ล่าช้า';
+      default:
+        return 'unknown equipment status';
+    }
+  }
+}
+
 enum ManagementLockerAndEquipmentView { department, location, equipment }
 enum ManagementLocationView { building, floor, room }
 enum StreamAndRecordView { department, location }

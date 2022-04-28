@@ -53,10 +53,7 @@ class ReportProblemDetailPage extends StatelessWidget {
               children: [
                 Expanded(
                   child: Card(
-                    child: EquipmentDisplayWidget(
-                      id: 1,
-                      image: Container(),
-                    ),
+                    child: Container(),
                   ),
                 ),
               ],

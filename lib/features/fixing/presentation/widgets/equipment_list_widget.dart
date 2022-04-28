@@ -22,11 +22,8 @@ class EquipmentListWidget extends StatelessWidget {
                 children: [
                   Expanded(
                     child: Padding(
-                      padding: EdgeInsets.all(10),
-                      child: EquipmentDisplayWidget(
-                        id: 1,
-                        image: Container(),
-                      ),
+                      padding: const EdgeInsets.all(10),
+                      child: Container(),
                     ),
                   )
                 ],

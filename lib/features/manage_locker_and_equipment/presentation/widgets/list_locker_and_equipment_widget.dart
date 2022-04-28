@@ -5,7 +5,7 @@ import 'package:frontend/core/domain/repositories/rest_failure.dart';
 import 'package:frontend/core/presentation/routes/router.gr.dart';
 import 'package:frontend/core/utils/enum.dart';
 import 'package:frontend/features/manage_locker_and_equipment/domain/entities/department.dart';
-import 'package:frontend/features/manage_locker_and_equipment/domain/entities/locker.dart';
+import 'package:frontend/features/manage_locker_and_equipment/domain/entities/equipment.dart';
 import 'package:frontend/features/manage_locker_and_equipment/domain/entities/room.dart';
 import 'package:frontend/features/manage_locker_and_equipment/domain/locker-repository.dart';
 import 'package:frontend/features/manage_locker_and_equipment/presentation/widgets/department_filter_widget.dart';
@@ -28,7 +28,7 @@ class ListLockerAndEquipmentWidget extends HookWidget {
   Widget build(BuildContext context) {
     final departments = useState(this.departments ?? <Department>[]);
     final rooms = useState(<Room>[]);
-    final equipments = useState([]);
+    final equipments = useState(<Equipment>[]);
     final ValueNotifier<RestFailure?> restFailure = useState(null);
     final isLoading = useState(false);
     useEffect(
@@ -329,7 +329,7 @@ class ListLockerAndEquipmentWidget extends HookWidget {
     BuildContext context, {
     required Department? department,
     required Room? room,
-    required dynamic equipment,
+    required Equipment? equipment,
   }) {
     if (viewBy == ManagementLockerAndEquipmentView.equipment) {
       return Column(
@@ -341,8 +341,7 @@ class ListLockerAndEquipmentWidget extends HookWidget {
                 child: Padding(
                   padding: const EdgeInsets.all(10),
                   child: EquipmentDisplayWidget(
-                    id: 1,
-                    image: Container(),
+                    equipment: equipment!,
                   ),
                 ),
               )

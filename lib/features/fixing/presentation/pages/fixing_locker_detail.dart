@@ -108,10 +108,7 @@ class FixingLockerDetailPage extends StatelessWidget {
                                 Expanded(
                                   child: Padding(
                                     padding: EdgeInsets.all(10),
-                                    child: EquipmentDisplayWidget(
-                                      id: 1,
-                                      image: Container(),
-                                    ),
+                                    child: Container(),
                                   ),
                                 )
                               ],

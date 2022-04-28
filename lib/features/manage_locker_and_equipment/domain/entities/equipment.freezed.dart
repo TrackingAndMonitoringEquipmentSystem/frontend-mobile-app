@@ -22,7 +22,7 @@ class _$EquipmentTearOff {
       {required int id,
       required String tagId,
       required String name,
-      required String status,
+      required EquipmentStatus status,
       required String picUrl,
       required int? duration,
       required DateTime createdAt,
@@ -30,7 +30,7 @@ class _$EquipmentTearOff {
       required Locker? locker,
       required UserType? createdBy,
       required UserType? updatedBy,
-      required Map<String, dynamic>? type,
+      required EquipmentType? type,
       required List<dynamic>? borrowReturns,
       required List<dynamic>? repairs,
       required List<dynamic>? reports}) {
@@ -62,7 +62,7 @@ mixin _$Equipment {
   int get id => throw _privateConstructorUsedError;
   String get tagId => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
-  String get status => throw _privateConstructorUsedError;
+  EquipmentStatus get status => throw _privateConstructorUsedError;
   String get picUrl => throw _privateConstructorUsedError;
   int? get duration => throw _privateConstructorUsedError;
   DateTime get createdAt => throw _privateConstructorUsedError;
@@ -70,7 +70,7 @@ mixin _$Equipment {
   Locker? get locker => throw _privateConstructorUsedError;
   UserType? get createdBy => throw _privateConstructorUsedError;
   UserType? get updatedBy => throw _privateConstructorUsedError;
-  Map<String, dynamic>? get type => throw _privateConstructorUsedError;
+  EquipmentType? get type => throw _privateConstructorUsedError;
   List<dynamic>? get borrowReturns => throw _privateConstructorUsedError;
   List<dynamic>? get repairs => throw _privateConstructorUsedError;
   List<dynamic>? get reports => throw _privateConstructorUsedError;
@@ -88,7 +88,7 @@ abstract class $EquipmentCopyWith<$Res> {
       {int id,
       String tagId,
       String name,
-      String status,
+      EquipmentStatus status,
       String picUrl,
       int? duration,
       DateTime createdAt,
@@ -96,7 +96,7 @@ abstract class $EquipmentCopyWith<$Res> {
       Locker? locker,
       UserType? createdBy,
       UserType? updatedBy,
-      Map<String, dynamic>? type,
+      EquipmentType? type,
       List<dynamic>? borrowReturns,
       List<dynamic>? repairs,
       List<dynamic>? reports});
@@ -104,6 +104,7 @@ abstract class $EquipmentCopyWith<$Res> {
   $LockerCopyWith<$Res>? get locker;
   $UserTypeCopyWith<$Res>? get createdBy;
   $UserTypeCopyWith<$Res>? get updatedBy;
+  $EquipmentTypeCopyWith<$Res>? get type;
 }
 
 /// @nodoc
@@ -148,7 +149,7 @@ class _$EquipmentCopyWithImpl<$Res> implements $EquipmentCopyWith<$Res> {
       status: status == freezed
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as String,
+              as EquipmentStatus,
       picUrl: picUrl == freezed
           ? _value.picUrl
           : picUrl // ignore: cast_nullable_to_non_nullable
@@ -180,7 +181,7 @@ class _$EquipmentCopyWithImpl<$Res> implements $EquipmentCopyWith<$Res> {
       type: type == freezed
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as Map<String, dynamic>?,
+              as EquipmentType?,
       borrowReturns: borrowReturns == freezed
           ? _value.borrowReturns
           : borrowReturns // ignore: cast_nullable_to_non_nullable
@@ -228,6 +229,17 @@ class _$EquipmentCopyWithImpl<$Res> implements $EquipmentCopyWith<$Res> {
       return _then(_value.copyWith(updatedBy: value));
     });
   }
+
+  @override
+  $EquipmentTypeCopyWith<$Res>? get type {
+    if (_value.type == null) {
+      return null;
+    }
+
+    return $EquipmentTypeCopyWith<$Res>(_value.type!, (value) {
+      return _then(_value.copyWith(type: value));
+    });
+  }
 }
 
 /// @nodoc
@@ -240,7 +252,7 @@ abstract class _$EquipmentCopyWith<$Res> implements $EquipmentCopyWith<$Res> {
       {int id,
       String tagId,
       String name,
-      String status,
+      EquipmentStatus status,
       String picUrl,
       int? duration,
       DateTime createdAt,
@@ -248,7 +260,7 @@ abstract class _$EquipmentCopyWith<$Res> implements $EquipmentCopyWith<$Res> {
       Locker? locker,
       UserType? createdBy,
       UserType? updatedBy,
-      Map<String, dynamic>? type,
+      EquipmentType? type,
       List<dynamic>? borrowReturns,
       List<dynamic>? repairs,
       List<dynamic>? reports});
@@ -259,6 +271,8 @@ abstract class _$EquipmentCopyWith<$Res> implements $EquipmentCopyWith<$Res> {
   $UserTypeCopyWith<$Res>? get createdBy;
   @override
   $UserTypeCopyWith<$Res>? get updatedBy;
+  @override
+  $EquipmentTypeCopyWith<$Res>? get type;
 }
 
 /// @nodoc
@@ -304,7 +318,7 @@ class __$EquipmentCopyWithImpl<$Res> extends _$EquipmentCopyWithImpl<$Res>
       status: status == freezed
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
-              as String,
+              as EquipmentStatus,
       picUrl: picUrl == freezed
           ? _value.picUrl
           : picUrl // ignore: cast_nullable_to_non_nullable
@@ -336,7 +350,7 @@ class __$EquipmentCopyWithImpl<$Res> extends _$EquipmentCopyWithImpl<$Res>
       type: type == freezed
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as Map<String, dynamic>?,
+              as EquipmentType?,
       borrowReturns: borrowReturns == freezed
           ? _value.borrowReturns
           : borrowReturns // ignore: cast_nullable_to_non_nullable
@@ -380,7 +394,7 @@ class _$_Equipment implements _Equipment {
   @override
   final String name;
   @override
-  final String status;
+  final EquipmentStatus status;
   @override
   final String picUrl;
   @override
@@ -396,7 +410,7 @@ class _$_Equipment implements _Equipment {
   @override
   final UserType? updatedBy;
   @override
-  final Map<String, dynamic>? type;
+  final EquipmentType? type;
   @override
   final List<dynamic>? borrowReturns;
   @override
@@ -462,7 +476,7 @@ abstract class _Equipment implements Equipment {
       {required int id,
       required String tagId,
       required String name,
-      required String status,
+      required EquipmentStatus status,
       required String picUrl,
       required int? duration,
       required DateTime createdAt,
@@ -470,7 +484,7 @@ abstract class _Equipment implements Equipment {
       required Locker? locker,
       required UserType? createdBy,
       required UserType? updatedBy,
-      required Map<String, dynamic>? type,
+      required EquipmentType? type,
       required List<dynamic>? borrowReturns,
       required List<dynamic>? repairs,
       required List<dynamic>? reports}) = _$_Equipment;
@@ -482,7 +496,7 @@ abstract class _Equipment implements Equipment {
   @override
   String get name;
   @override
-  String get status;
+  EquipmentStatus get status;
   @override
   String get picUrl;
   @override
@@ -498,7 +512,7 @@ abstract class _Equipment implements Equipment {
   @override
   UserType? get updatedBy;
   @override
-  Map<String, dynamic>? get type;
+  EquipmentType? get type;
   @override
   List<dynamic>? get borrowReturns;
   @override

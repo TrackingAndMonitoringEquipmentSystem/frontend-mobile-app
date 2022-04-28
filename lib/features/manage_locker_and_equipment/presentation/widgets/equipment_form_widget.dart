@@ -7,6 +7,7 @@ import 'package:frontend/core/presentation/widgets/bottom_sheet_single_select.da
 import 'package:frontend/core/presentation/widgets/bottom_sheet_single_select_with_add_choice.dart';
 import 'package:frontend/core/presentation/widgets/equipment_display_widget.dart';
 import 'package:frontend/core/presentation/widgets/input_text.dart';
+import 'package:frontend/core/utils/environment.dart';
 
 class EquipmentFormWidget extends HookWidget {
   final int id;

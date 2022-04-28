@@ -1,5 +1,8 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:frontend/core/utils/enum.dart';
+import 'package:frontend/core/utils/helper.dart';
 import 'package:frontend/features/authentication/domain/entities/user.dart';
+import 'package:frontend/features/manage_locker_and_equipment/domain/entities/equipment_type.dart';
 import 'package:frontend/features/manage_locker_and_equipment/domain/entities/locker.dart';
 part 'equipment.freezed.dart';
 
@@ -9,7 +12,7 @@ class Equipment with _$Equipment {
     required int id,
     required String tagId,
     required String name,
-    required String status,
+    required EquipmentStatus status,
     required String picUrl,
     required int? duration,
     required DateTime createdAt,
@@ -17,7 +20,7 @@ class Equipment with _$Equipment {
     required Locker? locker,
     required UserType? createdBy,
     required UserType? updatedBy,
-    required Map<String, dynamic>? type,
+    required EquipmentType? type,
     required List? borrowReturns,
     required List? repairs,
     required List? reports,
@@ -46,10 +49,11 @@ class Equipment with _$Equipment {
       picUrl: json['equip_pic'] as String,
       repairs: json.containsKey('repairs') ? json['repairs'] as List : null,
       reports: json.containsKey('reports') ? json['reports'] as List : null,
-      status: json['status'] as String,
+      status: equipmentStatusFromString(json['status'] as String),
       tagId: json['tag_id'] as String,
-      type:
-          json.containsKey('type') ? json['type'] as Map<String, dynamic> : {},
+      type: json['type'] != null
+          ? EquipmentType.fromJson(json['type'] as Map<String, dynamic>)
+          : null,
     );
   }
 }

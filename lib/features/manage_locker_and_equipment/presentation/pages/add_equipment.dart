@@ -130,7 +130,9 @@ class AddEquipmentPage extends HookWidget {
                             (l) => handleErrorCase(context, l),
                             (r) {
                               AutoRouter.of(context)
-                                  .pop(const AllLockerRoute());
+                                  .popUntilRouteWithName(AllLockerRoute.name);
+                              AutoRouter.of(context)
+                                  .push(AllEquipmentRoute(lockerId: lockerId));
                             },
                           );
                         },

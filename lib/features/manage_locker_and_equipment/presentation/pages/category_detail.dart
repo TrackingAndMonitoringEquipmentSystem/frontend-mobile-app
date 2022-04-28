@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:frontend/features/manage_locker_and_equipment/domain/entities/equipment.dart';
 import 'package:frontend/features/manage_locker_and_equipment/presentation/widgets/equipment_display_widget.dart';
 
 class CategoryDetailPage extends HookWidget {
@@ -9,6 +10,7 @@ class CategoryDetailPage extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
+    final equipments = useState(<Equipment>[]);
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -55,8 +57,7 @@ class CategoryDetailPage extends HookWidget {
         itemBuilder: (context, index) {
           return Card(
             child: EquipmentDisplayWidget(
-              id: index,
-              image: Container(),
+              equipment: equipments.value[index],
             ),
           );
         },

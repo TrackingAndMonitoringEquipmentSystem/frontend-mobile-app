@@ -125,17 +125,21 @@ class AllEquipmentPage extends HookWidget {
             0,
           ),
           child: equipments.value.isNotEmpty
-              ? _buildFoundCase(context)
+              ? _buildFoundCase(context, equipments.value)
               : _buildNotFoundCase(context),
         ),
         bottomNavigationBar: Container(
           padding: const EdgeInsets.all(10),
-          child: Button(
-            'เพิ่มอุปกรณ์',
-            onPressed: () {
-              AutoRouter.of(context)
-                  .push(AddingEquipmentRoute(lockerId: lockerId));
-            },
+          child: Row(
+            children: [
+              Button(
+                'เพิ่มอุปกรณ์',
+                onPressed: () {
+                  AutoRouter.of(context)
+                      .push(AddingEquipmentRoute(lockerId: lockerId));
+                },
+              ),
+            ],
           ),
         ),
       ),
@@ -151,7 +155,9 @@ class AllEquipmentPage extends HookWidget {
     );
   }
 
-  Widget _buildFoundCase(BuildContext context) {
-    return const ListEquipmentWidget();
+  Widget _buildFoundCase(BuildContext context, List<Equipment> equipments) {
+    return ListEquipmentWidget(
+      equipments: equipments,
+    );
   }
 }
