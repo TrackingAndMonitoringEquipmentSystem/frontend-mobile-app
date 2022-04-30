@@ -5,7 +5,7 @@ import 'package:frontend/features/authentication/presentation/bloc/authen/authen
 import 'package:frontend/injection.dart';
 
 class AppWidget extends StatelessWidget {
-  final _appRouter = AppRouter();
+  final _appRouter = getIt<AppRouter>();
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = ThemeData(
@@ -66,9 +66,10 @@ class AppWidget extends StatelessWidget {
         routeInformationParser: _appRouter.defaultRouteParser(),
         routerDelegate: _appRouter.delegate(
           placeholder: (context) => const SafeArea(
-              child: Center(
-            child: CircularProgressIndicator(),
-          )),
+            child: Center(
+              child: CircularProgressIndicator(),
+            ),
+          ),
         ),
       ),
     );

@@ -1,4 +1,5 @@
 import 'package:frontend/core/utils/enum.dart';
+import 'package:frontend/features/borrowing/domain/entities/borrowing.dart';
 
 Gender genderFromString(String value) {
   switch (value) {
@@ -23,5 +24,14 @@ EquipmentStatus equipmentStatusFromString(String value) {
       return EquipmentStatus.fixing;
     default:
       return EquipmentStatus.available;
+  }
+}
+
+BorrowingStatus borrowingStatusFromString(String value) {
+  switch (value) {
+    case 'คืนแล้ว':
+      return BorrowingStatus.returned;
+    default:
+      return BorrowingStatus.borrowing;
   }
 }

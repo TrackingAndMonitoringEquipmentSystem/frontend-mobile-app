@@ -1,5 +1,5 @@
 const String baseSchema = 'https';
-const String baseApiUrl = 'toollo-api-dev.godprogrammer.dev';
+const String baseApiUrl = 'e54c-161-246-5-161.ap.ngrok.io';
 const int baseApiPort = 443;
 enum PublicsPath { getDepartments }
 enum AuthenPath { register, signIn, signOut }
@@ -13,6 +13,7 @@ enum LockerPath {
 enum LocationPath { getBuildings }
 enum DepartmentPath { getLockers }
 enum EquipmentPath { saveEquipments }
+enum BorrowingPath { getBorrowGroup }
 
 const Map<PublicsPath, String> publics = {
   PublicsPath.getDepartments: '/publics/departments'
@@ -42,4 +43,8 @@ const Map<DepartmentPath, String> department = {
 
 const Map<EquipmentPath, String> equipment = {
   EquipmentPath.saveEquipments: '/equipment/saveEquipments',
+};
+
+const Map<BorrowingPath, String> borrow = {
+  BorrowingPath.getBorrowGroup: '/borrow/viewByGroup',
 };

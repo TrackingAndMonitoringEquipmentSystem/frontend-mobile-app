@@ -49,6 +49,7 @@ import 'package:frontend/features/manage_locker_and_equipment/presentation/pages
 import 'package:frontend/features/manage_locker_and_equipment/presentation/pages/manage_permission.dart';
 import 'package:frontend/features/manage_locker_and_equipment/presentation/pages/qr_scanning.dart';
 import 'package:frontend/features/manage_locker_and_equipment/presentation/pages/request_fixing_detail.dart';
+import 'package:frontend/features/notification/presentation/pages/borrow_return.dart';
 import 'package:frontend/features/notification/presentation/pages/notification.dart';
 import 'package:frontend/features/report_problem/presentation/pages/report_problem.dart';
 import 'package:frontend/features/report_problem/presentation/pages/report_problem_detail.dart';
@@ -200,6 +201,7 @@ import 'package:frontend/features/streaming_and_record/presentation/pages/stream
     AutoRoute(page: ReportProblemLockerDetailPage),
     AutoRoute(page: ReportProblemDetailPage),
     AutoRoute(page: SolveProblemPage),
+    AutoRoute(page: BorrowReturnPage),
   ],
 )
 class $AppRouter {}
