@@ -9,6 +9,7 @@ import 'package:frontend/features/borrowing/domain/borrowing_repository.dart';
 import 'package:frontend/features/borrowing/domain/entities/borrowing.dart';
 import 'package:frontend/features/manage_locker_and_equipment/presentation/widgets/equipment_display_widget.dart';
 import 'package:frontend/injection.dart';
+import 'package:intl/intl.dart';
 import 'package:loading_overlay_pro/loading_overlay_pro.dart';
 
 class BorrowReturnPage extends HookWidget {
@@ -65,18 +66,23 @@ class BorrowReturnPage extends HookWidget {
               Row(
                 children: const [Text('รายละเอียด')],
               ),
-              Row(
-                children: const [
-                  Expanded(
-                    flex: 2,
-                    child: Text('วันที่ยืม :'),
-                  ),
-                  Expanded(
-                    flex: 3,
-                    child: Text('12/10/2012 08:06 น.'),
-                  ),
-                ],
-              ),
+              if (borrowings.value.isEmpty &&
+                  borrowings.value[0].status == BorrowingStatus.borrowing)
+                Row(
+                  children: [
+                    const Expanded(
+                      flex: 2,
+                      child: Text('วันที่ยืม :'),
+                    ),
+                    Expanded(
+                      flex: 3,
+                      child: Text(
+                        DateFormat('dd-MM-yyy HH:mm น.')
+                            .format(borrowings.value[0].borrowedAt),
+                      ),
+                    ),
+                  ],
+                ),
               Row(
                 children: const [
                   Expanded(
@@ -115,7 +121,16 @@ class BorrowReturnPage extends HookWidget {
               ),
               const Divider(),
               Row(
-                children: const [Text('รายการยืม')],
+                children: [
+                  Text(
+                    borrowings.value.isNotEmpty
+                        ? borrowings.value[0].status ==
+                                BorrowingStatus.borrowing
+                            ? 'รายการยืม'
+                            : 'รายการคืน'
+                        : 'รายการยืม/คืน',
+                  )
+                ],
               ),
               Expanded(
                 child: ListView.builder(

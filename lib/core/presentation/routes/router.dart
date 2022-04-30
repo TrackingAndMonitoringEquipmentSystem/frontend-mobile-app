@@ -146,9 +146,8 @@ import 'package:frontend/features/streaming_and_record/presentation/pages/stream
           children: [
             AutoRoute(
               path: '',
-              page: UnlockLockerPage,
+              page: ListLockerPage,
             ),
-            AutoRoute(path: 'list_locker', page: ListLockerPage),
             AutoRoute(path: ':lockerId', page: ToggleLockerPage),
           ],
         ),

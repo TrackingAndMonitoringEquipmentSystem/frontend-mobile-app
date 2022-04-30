@@ -11,9 +11,9 @@
 // ignore_for_file: type=lint
 
 import 'package:auto_route/auto_route.dart' as _i57;
-import 'package:flutter/material.dart' as _i70;
+import 'package:flutter/material.dart' as _i69;
 
-import '../../../features/account/presentation/pages/account.dart' as _i69;
+import '../../../features/account/presentation/pages/account.dart' as _i68;
 import '../../../features/account/presentation/pages/edit_account.dart' as _i27;
 import '../../../features/authentication/presentation/pages/register/register_add_face_id.dart'
     as _i17;
@@ -52,11 +52,9 @@ import '../../../features/authentication/presentation/pages/sign_in/sing_in_page
 import '../../../features/borrowing/presentation/pages/dash_board/dash_board.dart'
     as _i58;
 import '../../../features/borrowing/presentation/pages/unlock_locker/list_locker.dart'
-    as _i67;
-import '../../../features/borrowing/presentation/pages/unlock_locker/toggle_locker.dart'
-    as _i68;
-import '../../../features/borrowing/presentation/pages/unlock_locker/unlock_locker.dart'
     as _i66;
+import '../../../features/borrowing/presentation/pages/unlock_locker/toggle_locker.dart'
+    as _i67;
 import '../../../features/fixing/presentation/pages/fixing.dart' as _i62;
 import '../../../features/fixing/presentation/pages/fixing_detail.dart' as _i52;
 import '../../../features/fixing/presentation/pages/fixing_locker_detail.dart'
@@ -138,13 +136,13 @@ import '../../../features/streaming_and_record/presentation/pages/record_video.d
     as _i50;
 import '../../../features/streaming_and_record/presentation/pages/streaming_and_record.dart'
     as _i61;
-import '../../utils/enum.dart' as _i71;
+import '../../utils/enum.dart' as _i70;
 import '../page/add_account.dart' as _i24;
 import '../page/home.dart' as _i19;
 import '../page/splash.dart' as _i1;
 
 class AppRouter extends _i57.RootStackRouter {
-  AppRouter([_i70.GlobalKey<_i70.NavigatorState>? navigatorKey])
+  AppRouter([_i69.GlobalKey<_i69.NavigatorState>? navigatorKey])
       : super(navigatorKey);
 
   @override
@@ -475,13 +473,9 @@ class AppRouter extends _i57.RootStackRouter {
       return _i57.MaterialPageX<dynamic>(
           routeData: routeData, child: _i65.NotificationPage());
     },
-    UnlockLockerRoute.name: (routeData) {
-      return _i57.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i66.UnlockLockerPage());
-    },
     ListLockerRoute.name: (routeData) {
       return _i57.MaterialPageX<dynamic>(
-          routeData: routeData, child: _i67.ListLockerPage());
+          routeData: routeData, child: _i66.ListLockerPage());
     },
     ToggleLockerRoute.name: (routeData) {
       final pathParams = routeData.inheritedPathParams;
@@ -490,11 +484,11 @@ class AppRouter extends _i57.RootStackRouter {
               ToggleLockerRouteArgs(lockerId: pathParams.getInt('lockerId')));
       return _i57.MaterialPageX<dynamic>(
           routeData: routeData,
-          child: _i68.ToggleLockerPage(key: args.key, lockerId: args.lockerId));
+          child: _i67.ToggleLockerPage(key: args.key, lockerId: args.lockerId));
     },
     AccountRoute.name: (routeData) {
       return _i57.MaterialPageX<dynamic>(
-          routeData: routeData, child: _i69.AccountPage());
+          routeData: routeData, child: _i68.AccountPage());
     }
   };
 
@@ -571,10 +565,8 @@ class AppRouter extends _i57.RootStackRouter {
               path: 'unlock_locker',
               parent: HomeRoute.name,
               children: [
-                _i57.RouteConfig(UnlockLockerRoute.name,
-                    path: '', parent: UnlockLockerRouter.name),
                 _i57.RouteConfig(ListLockerRoute.name,
-                    path: 'list_locker', parent: UnlockLockerRouter.name),
+                    path: '', parent: UnlockLockerRouter.name),
                 _i57.RouteConfig(ToggleLockerRoute.name,
                     path: ':lockerId', parent: UnlockLockerRouter.name)
               ]),
@@ -921,7 +913,7 @@ class QrScanningRoute extends _i57.PageRouteInfo<void> {
 /// [_i31.AddOrEditLockerPage]
 class AddOrEditLockerRoute
     extends _i57.PageRouteInfo<AddOrEditLockerRouteArgs> {
-  AddOrEditLockerRoute({required int lockerId, _i70.Key? key})
+  AddOrEditLockerRoute({required int lockerId, _i69.Key? key})
       : super(AddOrEditLockerRoute.name,
             path: '/add-or-edit-locker-page',
             args: AddOrEditLockerRouteArgs(lockerId: lockerId, key: key));
@@ -934,7 +926,7 @@ class AddOrEditLockerRouteArgs {
 
   final int lockerId;
 
-  final _i70.Key? key;
+  final _i69.Key? key;
 
   @override
   String toString() {
@@ -945,7 +937,7 @@ class AddOrEditLockerRouteArgs {
 /// generated route for
 /// [_i32.AllEquipmentPage]
 class AllEquipmentRoute extends _i57.PageRouteInfo<AllEquipmentRouteArgs> {
-  AllEquipmentRoute({_i70.Key? key, required int lockerId})
+  AllEquipmentRoute({_i69.Key? key, required int lockerId})
       : super(AllEquipmentRoute.name,
             path: '/all-equipment-page',
             args: AllEquipmentRouteArgs(key: key, lockerId: lockerId));
@@ -956,7 +948,7 @@ class AllEquipmentRoute extends _i57.PageRouteInfo<AllEquipmentRouteArgs> {
 class AllEquipmentRouteArgs {
   const AllEquipmentRouteArgs({this.key, required this.lockerId});
 
-  final _i70.Key? key;
+  final _i69.Key? key;
 
   final int lockerId;
 
@@ -970,7 +962,7 @@ class AllEquipmentRouteArgs {
 /// [_i33.AddingEquipmentPage]
 class AddingEquipmentRoute
     extends _i57.PageRouteInfo<AddingEquipmentRouteArgs> {
-  AddingEquipmentRoute({required int lockerId, _i70.Key? key})
+  AddingEquipmentRoute({required int lockerId, _i69.Key? key})
       : super(AddingEquipmentRoute.name,
             path: '/adding-equipment-page',
             args: AddingEquipmentRouteArgs(lockerId: lockerId, key: key));
@@ -983,7 +975,7 @@ class AddingEquipmentRouteArgs {
 
   final int lockerId;
 
-  final _i70.Key? key;
+  final _i69.Key? key;
 
   @override
   String toString() {
@@ -995,7 +987,7 @@ class AddingEquipmentRouteArgs {
 /// [_i34.AddEquipmentPage]
 class AddEquipmentRoute extends _i57.PageRouteInfo<AddEquipmentRouteArgs> {
   AddEquipmentRoute(
-      {_i70.Key? key,
+      {_i69.Key? key,
       Map<String, dynamic>? scanResult,
       required int lockerId,
       bool? isError})
@@ -1014,7 +1006,7 @@ class AddEquipmentRouteArgs {
   const AddEquipmentRouteArgs(
       {this.key, this.scanResult, required this.lockerId, this.isError});
 
-  final _i70.Key? key;
+  final _i69.Key? key;
 
   final Map<String, dynamic>? scanResult;
 
@@ -1041,8 +1033,8 @@ class MacAddressHelpRoute extends _i57.PageRouteInfo<void> {
 /// [_i36.AllLocationPage]
 class AllLocationRoute extends _i57.PageRouteInfo<AllLocationRouteArgs> {
   AllLocationRoute(
-      {_i70.Key? key,
-      required _i71.ManagementLocationView viewBy,
+      {_i69.Key? key,
+      required _i70.ManagementLocationView viewBy,
       required String title,
       bool isHasLocation = true})
       : super(AllLocationRoute.name,
@@ -1063,9 +1055,9 @@ class AllLocationRouteArgs {
       required this.title,
       this.isHasLocation = true});
 
-  final _i70.Key? key;
+  final _i69.Key? key;
 
-  final _i71.ManagementLocationView viewBy;
+  final _i70.ManagementLocationView viewBy;
 
   final String title;
 
@@ -1089,7 +1081,7 @@ class AddLocationRoute extends _i57.PageRouteInfo<void> {
 /// generated route for
 /// [_i38.AllCategoryPage]
 class AllCategoryRoute extends _i57.PageRouteInfo<AllCategoryRouteArgs> {
-  AllCategoryRoute({_i70.Key? key, bool isHaCategory = true})
+  AllCategoryRoute({_i69.Key? key, bool isHaCategory = true})
       : super(AllCategoryRoute.name,
             path: '/all-category-page',
             args: AllCategoryRouteArgs(key: key, isHaCategory: isHaCategory));
@@ -1100,7 +1092,7 @@ class AllCategoryRoute extends _i57.PageRouteInfo<AllCategoryRouteArgs> {
 class AllCategoryRouteArgs {
   const AllCategoryRouteArgs({this.key, this.isHaCategory = true});
 
-  final _i70.Key? key;
+  final _i69.Key? key;
 
   final bool isHaCategory;
 
@@ -1122,7 +1114,7 @@ class AddCategoryRoute extends _i57.PageRouteInfo<void> {
 /// generated route for
 /// [_i40.CategoryDetailPage]
 class CategoryDetailRoute extends _i57.PageRouteInfo<CategoryDetailRouteArgs> {
-  CategoryDetailRoute({_i70.Key? key, required String title})
+  CategoryDetailRoute({_i69.Key? key, required String title})
       : super(CategoryDetailRoute.name,
             path: '/category-detail-page',
             args: CategoryDetailRouteArgs(key: key, title: title));
@@ -1133,7 +1125,7 @@ class CategoryDetailRoute extends _i57.PageRouteInfo<CategoryDetailRouteArgs> {
 class CategoryDetailRouteArgs {
   const CategoryDetailRouteArgs({this.key, required this.title});
 
-  final _i70.Key? key;
+  final _i69.Key? key;
 
   final String title;
 
@@ -1204,7 +1196,7 @@ class AddTemporaryPermissionRoute extends _i57.PageRouteInfo<void> {
 /// [_i47.ChangePermissionTypePage]
 class ChangePermissionTypeRoute
     extends _i57.PageRouteInfo<ChangePermissionTypeRouteArgs> {
-  ChangePermissionTypeRoute({_i70.Key? key, bool isPermanentType = false})
+  ChangePermissionTypeRoute({_i69.Key? key, bool isPermanentType = false})
       : super(ChangePermissionTypeRoute.name,
             path: '/change-permission-type-page',
             args: ChangePermissionTypeRouteArgs(
@@ -1216,7 +1208,7 @@ class ChangePermissionTypeRoute
 class ChangePermissionTypeRouteArgs {
   const ChangePermissionTypeRouteArgs({this.key, this.isPermanentType = false});
 
-  final _i70.Key? key;
+  final _i69.Key? key;
 
   final bool isPermanentType;
 
@@ -1229,7 +1221,7 @@ class ChangePermissionTypeRouteArgs {
 /// generated route for
 /// [_i48.AllCameraPage]
 class AllCameraRoute extends _i57.PageRouteInfo<AllCameraRouteArgs> {
-  AllCameraRoute({_i70.Key? key, String title = 'ตู้ล็อกเกอร์'})
+  AllCameraRoute({_i69.Key? key, String title = 'ตู้ล็อกเกอร์'})
       : super(AllCameraRoute.name,
             path: '/all-camera-page',
             args: AllCameraRouteArgs(key: key, title: title));
@@ -1240,7 +1232,7 @@ class AllCameraRoute extends _i57.PageRouteInfo<AllCameraRouteArgs> {
 class AllCameraRouteArgs {
   const AllCameraRouteArgs({this.key, this.title = 'ตู้ล็อกเกอร์'});
 
-  final _i70.Key? key;
+  final _i69.Key? key;
 
   final String title;
 
@@ -1253,7 +1245,7 @@ class AllCameraRouteArgs {
 /// generated route for
 /// [_i49.LiveCameraPage]
 class LiveCameraRoute extends _i57.PageRouteInfo<LiveCameraRouteArgs> {
-  LiveCameraRoute({_i70.Key? key, String title = 'กล้อง 1'})
+  LiveCameraRoute({_i69.Key? key, String title = 'กล้อง 1'})
       : super(LiveCameraRoute.name,
             path: '/live-camera-page',
             args: LiveCameraRouteArgs(key: key, title: title));
@@ -1264,7 +1256,7 @@ class LiveCameraRoute extends _i57.PageRouteInfo<LiveCameraRouteArgs> {
 class LiveCameraRouteArgs {
   const LiveCameraRouteArgs({this.key, this.title = 'กล้อง 1'});
 
-  final _i70.Key? key;
+  final _i69.Key? key;
 
   final String title;
 
@@ -1287,7 +1279,7 @@ class RecordVideoRoute extends _i57.PageRouteInfo<void> {
 /// [_i51.FixingLockerDetailPage]
 class FixingLockerDetailRoute
     extends _i57.PageRouteInfo<FixingLockerDetailRouteArgs> {
-  FixingLockerDetailRoute({_i70.Key? key, String title = 'เครื่องมือช่าง'})
+  FixingLockerDetailRoute({_i69.Key? key, String title = 'เครื่องมือช่าง'})
       : super(FixingLockerDetailRoute.name,
             path: '/fixing-locker-detail-page',
             args: FixingLockerDetailRouteArgs(key: key, title: title));
@@ -1298,7 +1290,7 @@ class FixingLockerDetailRoute
 class FixingLockerDetailRouteArgs {
   const FixingLockerDetailRouteArgs({this.key, this.title = 'เครื่องมือช่าง'});
 
-  final _i70.Key? key;
+  final _i69.Key? key;
 
   final String title;
 
@@ -1322,7 +1314,7 @@ class FixingDetailRoute extends _i57.PageRouteInfo<void> {
 class ReportProblemLockerDetailRoute
     extends _i57.PageRouteInfo<ReportProblemLockerDetailRouteArgs> {
   ReportProblemLockerDetailRoute(
-      {_i70.Key? key, String title = 'เครื่องมือช่าง'})
+      {_i69.Key? key, String title = 'เครื่องมือช่าง'})
       : super(ReportProblemLockerDetailRoute.name,
             path: '/report-problem-locker-detail-page',
             args: ReportProblemLockerDetailRouteArgs(key: key, title: title));
@@ -1334,7 +1326,7 @@ class ReportProblemLockerDetailRouteArgs {
   const ReportProblemLockerDetailRouteArgs(
       {this.key, this.title = 'เครื่องมือช่าง'});
 
-  final _i70.Key? key;
+  final _i69.Key? key;
 
   final String title;
 
@@ -1366,7 +1358,7 @@ class SolveProblemRoute extends _i57.PageRouteInfo<void> {
 /// generated route for
 /// [_i56.BorrowReturnPage]
 class BorrowReturnRoute extends _i57.PageRouteInfo<BorrowReturnRouteArgs> {
-  BorrowReturnRoute({required int borrowReturnGroupId, _i70.Key? key})
+  BorrowReturnRoute({required int borrowReturnGroupId, _i69.Key? key})
       : super(BorrowReturnRoute.name,
             path: '/borrow-return-page',
             args: BorrowReturnRouteArgs(
@@ -1380,7 +1372,7 @@ class BorrowReturnRouteArgs {
 
   final int borrowReturnGroupId;
 
-  final _i70.Key? key;
+  final _i69.Key? key;
 
   @override
   String toString() {
@@ -1506,25 +1498,17 @@ class NotificationRoute extends _i57.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i66.UnlockLockerPage]
-class UnlockLockerRoute extends _i57.PageRouteInfo<void> {
-  const UnlockLockerRoute() : super(UnlockLockerRoute.name, path: '');
-
-  static const String name = 'UnlockLockerRoute';
-}
-
-/// generated route for
-/// [_i67.ListLockerPage]
+/// [_i66.ListLockerPage]
 class ListLockerRoute extends _i57.PageRouteInfo<void> {
-  const ListLockerRoute() : super(ListLockerRoute.name, path: 'list_locker');
+  const ListLockerRoute() : super(ListLockerRoute.name, path: '');
 
   static const String name = 'ListLockerRoute';
 }
 
 /// generated route for
-/// [_i68.ToggleLockerPage]
+/// [_i67.ToggleLockerPage]
 class ToggleLockerRoute extends _i57.PageRouteInfo<ToggleLockerRouteArgs> {
-  ToggleLockerRoute({_i70.Key? key, required int lockerId})
+  ToggleLockerRoute({_i69.Key? key, required int lockerId})
       : super(ToggleLockerRoute.name,
             path: ':lockerId',
             args: ToggleLockerRouteArgs(key: key, lockerId: lockerId),
@@ -1536,7 +1520,7 @@ class ToggleLockerRoute extends _i57.PageRouteInfo<ToggleLockerRouteArgs> {
 class ToggleLockerRouteArgs {
   const ToggleLockerRouteArgs({this.key, required this.lockerId});
 
-  final _i70.Key? key;
+  final _i69.Key? key;
 
   final int lockerId;
 
@@ -1547,7 +1531,7 @@ class ToggleLockerRouteArgs {
 }
 
 /// generated route for
-/// [_i69.AccountPage]
+/// [_i68.AccountPage]
 class AccountRoute extends _i57.PageRouteInfo<void> {
   const AccountRoute() : super(AccountRoute.name, path: '');
 
