@@ -15,7 +15,7 @@ import 'package:twitter_login/twitter_login.dart' as _i15;
 import 'core/data/data_sources/rest_api.dart' as _i14;
 import 'core/data/repositories/public_repository_impl.dart' as _i22;
 import 'core/domain/repositories/public_repository.dart' as _i21;
-import 'core/injection/injectable_module.dart' as _i32;
+import 'core/injection/injectable_module.dart' as _i33;
 import 'features/authentication/data/datasources/auth_rest_api.dart' as _i3;
 import 'features/authentication/data/datasources/facebook_sign_in_auth.dart'
     as _i5;
@@ -29,6 +29,8 @@ import 'features/authentication/data/repositories/authentication_repository_impl
 import 'features/authentication/domain/entities/pre_register_user.dart' as _i13;
 import 'features/authentication/domain/repositories/authentication_repository.dart'
     as _i17;
+import 'features/authentication/presentation/bloc/authen/authen_bloc.dart'
+    as _i31;
 import 'features/authentication/presentation/bloc/register_enter_email/register_enter_email_bloc.dart'
     as _i23;
 import 'features/authentication/presentation/bloc/register_enter_name/register_enter_name_bloc.dart'
@@ -54,7 +56,7 @@ import 'features/manage_locker_and_equipment/data/repositories/locker-repository
 import 'features/manage_locker_and_equipment/domain/locker-repository.dart'
     as _i19;
 import 'features/manage_locker_and_equipment/presentation/bloc/locker/locker_bloc.dart'
-    as _i31; // ignore_for_file: unnecessary_lambdas
+    as _i32; // ignore_for_file: unnecessary_lambdas
 
 // ignore_for_file: lines_longer_than_80_chars
 /// initializes the registration of provided dependencies inside of [GetIt]
@@ -117,9 +119,11 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
       () => _i29.RegisterVerifyEmailBloc(get<_i17.AuthenticationRepository>()));
   gh.factory<_i30.SignInFormBloc>(
       () => _i30.SignInFormBloc(get<_i17.AuthenticationRepository>()));
-  gh.factory<_i31.LockerBloc>(
-      () => _i31.LockerBloc(get<_i19.LockerRepository>()));
+  gh.factory<_i31.AuthenBloc>(
+      () => _i31.AuthenBloc(get<_i17.AuthenticationRepository>()));
+  gh.factory<_i32.LockerBloc>(
+      () => _i32.LockerBloc(get<_i19.LockerRepository>()));
   return get;
 }
 
-class _$FirebaseInjectableModule extends _i32.FirebaseInjectableModule {}
+class _$FirebaseInjectableModule extends _i33.FirebaseInjectableModule {}
