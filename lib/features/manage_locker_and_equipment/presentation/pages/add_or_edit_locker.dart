@@ -170,7 +170,7 @@ class AddOrEditLockerPage extends HookWidget {
                         },
                         listChoice: buildingSelected.value != null
                             ? [
-                                ...buildingSelected.value!.floors.map(
+                                ...buildingSelected.value!.floors!.map(
                                   (e) => {
                                     'displayText': e.name,
                                     'value': e,
@@ -192,7 +192,7 @@ class AddOrEditLockerPage extends HookWidget {
                         },
                         listChoice: floorSelected.value != null
                             ? [
-                                ...floorSelected.value!.rooms.map(
+                                ...floorSelected.value!.rooms!.map(
                                   (e) => {
                                     'displayText': e.name,
                                     'value': e,

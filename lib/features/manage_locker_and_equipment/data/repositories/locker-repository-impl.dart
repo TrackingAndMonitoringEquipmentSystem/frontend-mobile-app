@@ -128,4 +128,17 @@ class LockerRepositoryImpl implements LockerRepository {
       return Right(r['data']);
     });
   }
+
+  @override
+  Future<Either<RestFailure, String>> getOpenToken(int lockerId) async {
+    final token = await _authenticationRepository.getFirebaseUser!.getIdToken();
+    final result = await _lockerRestApi.getOpenToken(
+      token: token,
+      lockerId: lockerId,
+    );
+    print('result: $result');
+    return result.fold((l) => Left(l), (r) {
+      return Right('token');
+    });
+  }
 }

@@ -23,7 +23,7 @@ class _$BuildingTearOff {
       required String name,
       required DateTime createdAt,
       required DateTime updatedAt,
-      required List<Floor> floors}) {
+      required List<Floor>? floors}) {
     return _Building(
       id: id,
       name: name,
@@ -43,7 +43,7 @@ mixin _$Building {
   String get name => throw _privateConstructorUsedError;
   DateTime get createdAt => throw _privateConstructorUsedError;
   DateTime get updatedAt => throw _privateConstructorUsedError;
-  List<Floor> get floors => throw _privateConstructorUsedError;
+  List<Floor>? get floors => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $BuildingCopyWith<Building> get copyWith =>
@@ -59,7 +59,7 @@ abstract class $BuildingCopyWith<$Res> {
       String name,
       DateTime createdAt,
       DateTime updatedAt,
-      List<Floor> floors});
+      List<Floor>? floors});
 }
 
 /// @nodoc
@@ -98,7 +98,7 @@ class _$BuildingCopyWithImpl<$Res> implements $BuildingCopyWith<$Res> {
       floors: floors == freezed
           ? _value.floors
           : floors // ignore: cast_nullable_to_non_nullable
-              as List<Floor>,
+              as List<Floor>?,
     ));
   }
 }
@@ -113,7 +113,7 @@ abstract class _$BuildingCopyWith<$Res> implements $BuildingCopyWith<$Res> {
       String name,
       DateTime createdAt,
       DateTime updatedAt,
-      List<Floor> floors});
+      List<Floor>? floors});
 }
 
 /// @nodoc
@@ -153,7 +153,7 @@ class __$BuildingCopyWithImpl<$Res> extends _$BuildingCopyWithImpl<$Res>
       floors: floors == freezed
           ? _value.floors
           : floors // ignore: cast_nullable_to_non_nullable
-              as List<Floor>,
+              as List<Floor>?,
     ));
   }
 }
@@ -177,7 +177,7 @@ class _$_Building implements _Building {
   @override
   final DateTime updatedAt;
   @override
-  final List<Floor> floors;
+  final List<Floor>? floors;
 
   @override
   String toString() {
@@ -217,7 +217,7 @@ abstract class _Building implements Building {
       required String name,
       required DateTime createdAt,
       required DateTime updatedAt,
-      required List<Floor> floors}) = _$_Building;
+      required List<Floor>? floors}) = _$_Building;
 
   @override
   int get id;
@@ -228,7 +228,7 @@ abstract class _Building implements Building {
   @override
   DateTime get updatedAt;
   @override
-  List<Floor> get floors;
+  List<Floor>? get floors;
   @override
   @JsonKey(ignore: true)
   _$BuildingCopyWith<_Building> get copyWith =>

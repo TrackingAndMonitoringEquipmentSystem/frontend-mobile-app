@@ -10,7 +10,7 @@ class Building with _$Building {
     required String name,
     required DateTime createdAt,
     required DateTime updatedAt,
-    required List<Floor> floors,
+    required List<Floor>? floors,
   }) = _Building;
 
   @override
@@ -20,9 +20,11 @@ class Building with _$Building {
       name: json['name'] as String,
       createdAt: DateTime.parse(json['createdAt'] as String),
       updatedAt: DateTime.parse(json['updatedAt'] as String),
-      floors: (json['floors'] as List)
-          .map((e) => Floor.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      floors: json['floors'] != null
+          ? (json['floors'] as List)
+              .map((e) => Floor.fromJson(e as Map<String, dynamic>))
+              .toList()
+          : null,
     );
   }
 }

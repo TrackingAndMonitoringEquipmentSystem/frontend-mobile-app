@@ -1,3 +1,6 @@
+import 'package:another_flushbar/flushbar_helper.dart';
+import 'package:flutter/material.dart';
+import 'package:frontend/core/domain/repositories/rest_failure.dart';
 import 'package:frontend/core/utils/enum.dart';
 import 'package:frontend/features/borrowing/domain/entities/borrowing.dart';
 
@@ -34,4 +37,16 @@ BorrowingStatus borrowingStatusFromString(String value) {
     default:
       return BorrowingStatus.borrowing;
   }
+}
+
+void handleErrorCase(BuildContext context, RestFailure failure) {
+  FlushbarHelper.createError(
+    message: failure.map<String>(
+      serverError: (e) => 'serverError',
+      badRequest: (e) => e.message,
+      unAuthorized: (e) => 'unAuthorized',
+      notFound: (e) => 'notFound',
+      unknownError: (e) => 'unknownError',
+    ),
+  ).show(context);
 }

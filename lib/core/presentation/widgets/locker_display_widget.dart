@@ -25,16 +25,16 @@ class LockerDisplayWidget extends StatelessWidget {
         children: [
           Image.asset(
             'assets/icons/manage_locker_and_equipment/locker_icon_medium.png',
-            width: 64,
-            height: 64,
-            fit: BoxFit.fill,
+            width: 60,
+            height: 60,
+            fit: BoxFit.fitWidth,
           ),
           Row(
             children: [
               Expanded(
                 child: Text(
                   name,
-                  style: Theme.of(context).primaryTextTheme.headline3,
+                  style: Theme.of(context).primaryTextTheme.bodyText1,
                 ),
               ),
             ],

@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:frontend/features/manage_locker_and_equipment/domain/entities/locker.dart';
 
 enum ButtonState {
   locked,
@@ -10,10 +11,10 @@ enum ButtonState {
 }
 
 class ToggleLockerPage extends HookWidget {
-  final int lockerId;
+  final Locker locker;
   const ToggleLockerPage({
     Key? key,
-    @PathParam() required this.lockerId,
+    required this.locker,
   }) : super(key: key);
 
   @override
@@ -22,9 +23,9 @@ class ToggleLockerPage extends HookWidget {
     final ValueNotifier<ButtonState> buttonState = useState(ButtonState.locked);
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'เครื่องมือช่าง',
-          style: TextStyle(color: Colors.black),
+        title: Text(
+          locker.name,
+          style: const TextStyle(color: Colors.black),
         ),
         backgroundColor: Colors.white,
         iconTheme: const IconThemeData(color: Colors.black),
@@ -42,8 +43,8 @@ class ToggleLockerPage extends HookWidget {
                 decoration: BoxDecoration(
                   image: DecorationImage(
                     image: Image.asset(
-                            'assets/images/borrowing/logo_water_mark.png')
-                        .image,
+                      'assets/images/borrowing/logo_water_mark.png',
+                    ).image,
                     fit: BoxFit.fill,
                   ),
                 ),
@@ -58,60 +59,64 @@ class ToggleLockerPage extends HookWidget {
               ),
             ),
           ),
-          Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-            GestureDetector(
-              onTap: () {
-                if (buttonState.value == ButtonState.locked ||
-                    buttonState.value == ButtonState.lockedPushed) {
-                  buttonState.value = ButtonState.unlocked;
-                } else {
-                  buttonState.value = ButtonState.locked;
-                }
-              },
-              onTapDown: (tabDownDetail) {
-                if (buttonState.value == ButtonState.locked ||
-                    buttonState.value == ButtonState.lockedPushed) {
-                  buttonState.value = ButtonState.lockedPushed;
-                } else {
-                  buttonState.value = ButtonState.unlockedPushed;
-                }
-              },
-              child: Image.asset(
-                computedAssetName(buttonState.value),
-                width: 200,
-                height: 200,
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              GestureDetector(
+                onTap: () {
+                  if (buttonState.value == ButtonState.locked ||
+                      buttonState.value == ButtonState.lockedPushed) {
+                    buttonState.value = ButtonState.unlocked;
+                  } else {
+                    buttonState.value = ButtonState.locked;
+                  }
+                },
+                onTapDown: (tabDownDetail) {
+                  if (buttonState.value == ButtonState.locked ||
+                      buttonState.value == ButtonState.lockedPushed) {
+                    buttonState.value = ButtonState.lockedPushed;
+                  } else {
+                    buttonState.value = ButtonState.unlockedPushed;
+                  }
+                },
+                child: Image.asset(
+                  computedAssetName(buttonState.value),
+                  width: 200,
+                  height: 200,
+                ),
               ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'กดเพื่อ',
-                  style: Theme.of(context).primaryTextTheme.bodyText1,
-                ),
-                const SizedBox(
-                  width: 10,
-                ),
-                Text(
-                  buttonState.value == ButtonState.locked ||
-                          buttonState.value == ButtonState.lockedPushed
-                      ? 'ปลดล็อค'
-                      : 'ล็อค',
-                  style: Theme.of(context)
-                      .primaryTextTheme
-                      .bodyText1!
-                      .copyWith(color: Theme.of(context).colorScheme.secondary),
-                ),
-                const SizedBox(
-                  width: 10,
-                ),
-                Text(
-                  'ตู้ล็อกเกอร์',
-                  style: Theme.of(context).primaryTextTheme.bodyText1,
-                ),
-              ],
-            )
-          ]),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'กดเพื่อ',
+                    style: Theme.of(context).primaryTextTheme.bodyText1,
+                  ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  Text(
+                    buttonState.value == ButtonState.locked ||
+                            buttonState.value == ButtonState.lockedPushed
+                        ? 'ปลดล็อค'
+                        : 'ล็อค',
+                    style: Theme.of(context)
+                        .primaryTextTheme
+                        .bodyText1!
+                        .copyWith(
+                            color: Theme.of(context).colorScheme.secondary),
+                  ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  Text(
+                    'ตู้ล็อกเกอร์',
+                    style: Theme.of(context).primaryTextTheme.bodyText1,
+                  ),
+                ],
+              )
+            ],
+          ),
         ],
       ),
     );

@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:frontend/features/manage_locker_and_equipment/domain/entities/equipment.dart';
+import 'package:frontend/features/manage_locker_and_equipment/domain/entities/room.dart';
 
 part 'locker.freezed.dart';
 
@@ -14,6 +15,7 @@ class Locker with _$Locker {
     required DateTime updatedAt,
     required int totalCams,
     required List<Equipment>? equipments,
+    required Room room,
   }) = _Locker;
 
   @override
@@ -31,6 +33,7 @@ class Locker with _$Locker {
               .map((e) => Equipment.fromJson(e as Map<String, dynamic>))
               .toList()
           : null,
+      room: Room.fromJson(json['room'] as Map<String, dynamic>),
     );
   }
 }

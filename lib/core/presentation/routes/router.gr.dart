@@ -60,6 +60,8 @@ import '../../../features/fixing/presentation/pages/fixing_detail.dart' as _i52;
 import '../../../features/fixing/presentation/pages/fixing_locker_detail.dart'
     as _i51;
 import '../../../features/history/presentation/pages/history.dart' as _i64;
+import '../../../features/manage_locker_and_equipment/domain/entities/locker.dart'
+    as _i71;
 import '../../../features/manage_locker_and_equipment/presentation/pages/add_category.dart'
     as _i39;
 import '../../../features/manage_locker_and_equipment/presentation/pages/add_equipment.dart'
@@ -478,13 +480,10 @@ class AppRouter extends _i57.RootStackRouter {
           routeData: routeData, child: _i66.ListLockerPage());
     },
     ToggleLockerRoute.name: (routeData) {
-      final pathParams = routeData.inheritedPathParams;
-      final args = routeData.argsAs<ToggleLockerRouteArgs>(
-          orElse: () =>
-              ToggleLockerRouteArgs(lockerId: pathParams.getInt('lockerId')));
+      final args = routeData.argsAs<ToggleLockerRouteArgs>();
       return _i57.MaterialPageX<dynamic>(
           routeData: routeData,
-          child: _i67.ToggleLockerPage(key: args.key, lockerId: args.lockerId));
+          child: _i67.ToggleLockerPage(key: args.key, locker: args.locker));
     },
     AccountRoute.name: (routeData) {
       return _i57.MaterialPageX<dynamic>(
@@ -1508,25 +1507,24 @@ class ListLockerRoute extends _i57.PageRouteInfo<void> {
 /// generated route for
 /// [_i67.ToggleLockerPage]
 class ToggleLockerRoute extends _i57.PageRouteInfo<ToggleLockerRouteArgs> {
-  ToggleLockerRoute({_i69.Key? key, required int lockerId})
+  ToggleLockerRoute({_i69.Key? key, required _i71.Locker locker})
       : super(ToggleLockerRoute.name,
             path: ':lockerId',
-            args: ToggleLockerRouteArgs(key: key, lockerId: lockerId),
-            rawPathParams: {'lockerId': lockerId});
+            args: ToggleLockerRouteArgs(key: key, locker: locker));
 
   static const String name = 'ToggleLockerRoute';
 }
 
 class ToggleLockerRouteArgs {
-  const ToggleLockerRouteArgs({this.key, required this.lockerId});
+  const ToggleLockerRouteArgs({this.key, required this.locker});
 
   final _i69.Key? key;
 
-  final int lockerId;
+  final _i71.Locker locker;
 
   @override
   String toString() {
-    return 'ToggleLockerRouteArgs{key: $key, lockerId: $lockerId}';
+    return 'ToggleLockerRouteArgs{key: $key, locker: $locker}';
   }
 }
 

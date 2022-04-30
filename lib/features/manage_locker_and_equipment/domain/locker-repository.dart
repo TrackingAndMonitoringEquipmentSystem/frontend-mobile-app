@@ -33,4 +33,6 @@ abstract class LockerRepository {
   Future<Either<RestFailure, dynamic>> saveEquipments(
     SaveEquipmentsRequest saveEquipmentsRequest,
   );
+
+  Future<Either<RestFailure, String>> getOpenToken(int lockerId);
 }

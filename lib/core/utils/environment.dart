@@ -1,5 +1,5 @@
 const String baseSchema = 'https';
-const String baseApiUrl = 'e54c-161-246-5-161.ap.ngrok.io';
+const String baseApiUrl = 'toollo-api-dev.godprogrammer.dev';
 const int baseApiPort = 443;
 enum PublicsPath { getDepartments }
 enum AuthenPath { register, signIn, signOut }
@@ -9,6 +9,7 @@ enum LockerPath {
   registerLocker,
   addEquipment,
   viewLocker,
+  getOpenToken,
 }
 enum LocationPath { getBuildings }
 enum DepartmentPath { getLockers }
@@ -30,7 +31,8 @@ const Map<LockerPath, String> lockers = {
   LockerPath.getLockers: '/lockers',
   LockerPath.registerLocker: '/lockers/registerLocker',
   LockerPath.addEquipment: '/lockers/addEquipment',
-  LockerPath.viewLocker: '/lockers/viewLocker'
+  LockerPath.viewLocker: '/lockers/viewLocker',
+  LockerPath.getOpenToken: '/lockers/getOpenToken',
 };
 
 const Map<LocationPath, String> location = {
