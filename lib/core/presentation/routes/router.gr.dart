@@ -12,7 +12,7 @@
 
 import 'package:auto_route/auto_route.dart' as _i57;
 import 'package:flutter/material.dart' as _i69;
-import 'package:flutter_blue_plus/flutter_blue_plus.dart' as _i72;
+import 'package:flutter_blue_plus/flutter_blue_plus.dart' as _i73;
 
 import '../../../features/account/presentation/pages/account.dart' as _i68;
 import '../../../features/account/presentation/pages/edit_account.dart' as _i27;
@@ -131,6 +131,8 @@ import '../../../features/role_management/presentation/pages/department_manageme
     as _i22;
 import '../../../features/role_management/presentation/pages/role_management.dart'
     as _i59;
+import '../../../features/streaming_and_record/domain/entities/camera.dart'
+    as _i72;
 import '../../../features/streaming_and_record/presentation/pages/all_camera.dart'
     as _i48;
 import '../../../features/streaming_and_record/presentation/pages/live_camera.dart'
@@ -373,18 +375,20 @@ class AppRouter extends _i57.RootStackRouter {
               key: args.key, isPermanentType: args.isPermanentType));
     },
     AllCameraRoute.name: (routeData) {
-      final args = routeData.argsAs<AllCameraRouteArgs>(
-          orElse: () => const AllCameraRouteArgs());
+      final args = routeData.argsAs<AllCameraRouteArgs>();
       return _i57.MaterialPageX<dynamic>(
           routeData: routeData,
-          child: _i48.AllCameraPage(key: args.key, title: args.title));
+          child: _i48.AllCameraPage(key: args.key, locker: args.locker));
     },
     LiveCameraRoute.name: (routeData) {
-      final args = routeData.argsAs<LiveCameraRouteArgs>(
-          orElse: () => const LiveCameraRouteArgs());
+      final args = routeData.argsAs<LiveCameraRouteArgs>();
       return _i57.MaterialPageX<dynamic>(
           routeData: routeData,
-          child: _i49.LiveCameraPage(key: args.key, title: args.title));
+          child: _i49.LiveCameraPage(
+              key: args.key,
+              camera: args.camera,
+              index: args.index,
+              lockerId: args.lockerId));
     },
     RecordVideoRoute.name: (routeData) {
       return _i57.MaterialPageX<dynamic>(
@@ -1222,48 +1226,61 @@ class ChangePermissionTypeRouteArgs {
 /// generated route for
 /// [_i48.AllCameraPage]
 class AllCameraRoute extends _i57.PageRouteInfo<AllCameraRouteArgs> {
-  AllCameraRoute({_i69.Key? key, String title = 'ตู้ล็อกเกอร์'})
+  AllCameraRoute({_i69.Key? key, required _i71.Locker locker})
       : super(AllCameraRoute.name,
             path: '/all-camera-page',
-            args: AllCameraRouteArgs(key: key, title: title));
+            args: AllCameraRouteArgs(key: key, locker: locker));
 
   static const String name = 'AllCameraRoute';
 }
 
 class AllCameraRouteArgs {
-  const AllCameraRouteArgs({this.key, this.title = 'ตู้ล็อกเกอร์'});
+  const AllCameraRouteArgs({this.key, required this.locker});
 
   final _i69.Key? key;
 
-  final String title;
+  final _i71.Locker locker;
 
   @override
   String toString() {
-    return 'AllCameraRouteArgs{key: $key, title: $title}';
+    return 'AllCameraRouteArgs{key: $key, locker: $locker}';
   }
 }
 
 /// generated route for
 /// [_i49.LiveCameraPage]
 class LiveCameraRoute extends _i57.PageRouteInfo<LiveCameraRouteArgs> {
-  LiveCameraRoute({_i69.Key? key, String title = 'กล้อง 1'})
+  LiveCameraRoute(
+      {_i69.Key? key,
+      required _i72.Camera camera,
+      required int index,
+      required int lockerId})
       : super(LiveCameraRoute.name,
             path: '/live-camera-page',
-            args: LiveCameraRouteArgs(key: key, title: title));
+            args: LiveCameraRouteArgs(
+                key: key, camera: camera, index: index, lockerId: lockerId));
 
   static const String name = 'LiveCameraRoute';
 }
 
 class LiveCameraRouteArgs {
-  const LiveCameraRouteArgs({this.key, this.title = 'กล้อง 1'});
+  const LiveCameraRouteArgs(
+      {this.key,
+      required this.camera,
+      required this.index,
+      required this.lockerId});
 
   final _i69.Key? key;
 
-  final String title;
+  final _i72.Camera camera;
+
+  final int index;
+
+  final int lockerId;
 
   @override
   String toString() {
-    return 'LiveCameraRouteArgs{key: $key, title: $title}';
+    return 'LiveCameraRouteArgs{key: $key, camera: $camera, index: $index, lockerId: $lockerId}';
   }
 }
 
@@ -1512,7 +1529,7 @@ class ToggleLockerRoute extends _i57.PageRouteInfo<ToggleLockerRouteArgs> {
   ToggleLockerRoute(
       {_i69.Key? key,
       required _i71.Locker locker,
-      required _i72.BluetoothDevice device})
+      required _i73.BluetoothDevice device})
       : super(ToggleLockerRoute.name,
             path: ':lockerId',
             args: ToggleLockerRouteArgs(
@@ -1529,7 +1546,7 @@ class ToggleLockerRouteArgs {
 
   final _i71.Locker locker;
 
-  final _i72.BluetoothDevice device;
+  final _i73.BluetoothDevice device;
 
   @override
   String toString() {

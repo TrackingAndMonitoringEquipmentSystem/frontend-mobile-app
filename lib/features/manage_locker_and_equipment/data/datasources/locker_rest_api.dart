@@ -331,4 +331,48 @@ class LockerRestApi {
       return const Left(UnKnownError());
     }
   }
+
+  Future<Either<RestFailure, Map<String, dynamic>>> listCameraByLockerId({
+    required int lockerId,
+  }) async {
+    try {
+      final uri = Uri(
+        scheme: environment.baseSchema,
+        host: environment.baseApiUrl,
+        port: environment.baseApiPort,
+        path:
+            '${environment.camera[environment.CameraPath.listByLockerId]}/$lockerId',
+      );
+
+      final response = await _httpClient.get(
+        uri,
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+      );
+      print(response.reasonPhrase);
+      print(response.body);
+      if (response.statusCode == 200) {
+        return Right(
+          jsonDecode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>,
+        );
+      } else {
+        final body =
+            jsonDecode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>;
+        String message;
+        if (body.containsKey('message') && body['message'] != null) {
+          message = body['message'] as String;
+        } else {
+          message = response.reasonPhrase!;
+        }
+        return Left(
+          RestFailure.fromHttpStatusCode(response.statusCode, message),
+        );
+      }
+    } catch (error) {
+      print('error:');
+      print(error);
+      return const Left(UnKnownError());
+    }
+  }
 }

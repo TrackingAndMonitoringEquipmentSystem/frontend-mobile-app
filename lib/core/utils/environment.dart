@@ -15,6 +15,7 @@ enum LocationPath { getBuildings }
 enum DepartmentPath { getLockers }
 enum EquipmentPath { saveEquipments }
 enum BorrowingPath { getBorrowGroup }
+enum CameraPath { listByLockerId }
 
 const Map<PublicsPath, String> publics = {
   PublicsPath.getDepartments: '/publics/departments'
@@ -49,4 +50,8 @@ const Map<EquipmentPath, String> equipment = {
 
 const Map<BorrowingPath, String> borrow = {
   BorrowingPath.getBorrowGroup: '/borrow/viewByGroup',
+};
+
+const Map<CameraPath, String> camera = {
+  CameraPath.listByLockerId: '/lockers/camera',
 };

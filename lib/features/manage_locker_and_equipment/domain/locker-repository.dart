@@ -6,6 +6,7 @@ import 'package:frontend/features/manage_locker_and_equipment/domain/entities/bu
 import 'package:frontend/features/manage_locker_and_equipment/domain/entities/department.dart';
 import 'package:frontend/features/manage_locker_and_equipment/domain/entities/locker.dart';
 import 'package:frontend/features/manage_locker_and_equipment/domain/entities/room.dart';
+import 'package:frontend/features/streaming_and_record/domain/entities/camera.dart';
 
 abstract class LockerRepository {
   Future<Either<RestFailure, List<Locker>>> getAll();
@@ -37,5 +38,9 @@ abstract class LockerRepository {
   Future<Either<RestFailure, String>> getOpenToken({
     required int lockerId,
     required bool state,
+  });
+
+  Future<Either<RestFailure, List<Camera>>> listCameraByLockerId({
+    required int lockerId,
   });
 }

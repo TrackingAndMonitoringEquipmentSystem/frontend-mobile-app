@@ -1,25 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/core/presentation/widgets/tabs_widget.dart';
+import 'package:frontend/features/manage_locker_and_equipment/domain/entities/locker.dart';
 import 'package:frontend/features/streaming_and_record/presentation/widgets/list_camera_widget.dart';
 import 'package:frontend/features/streaming_and_record/presentation/widgets/list_record_widget.dart';
 
 class AllCameraPage extends StatelessWidget {
-  final String title;
+  final Locker locker;
 
-  const AllCameraPage({Key? key, this.title = 'ตู้ล็อกเกอร์'})
-      : super(key: key);
+  const AllCameraPage({Key? key, required this.locker}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
-    const tabs = <Widget>[
-      ListCameraWidget(),
-      ListRecordWidget(),
+    final tabs = <Widget>[
+      ListCameraWidget(
+        lockerId: locker.id,
+      ),
+      const ListRecordWidget(),
     ];
     const tabsBar = ['Live', 'ดูย้อนหลัง'];
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          title,
+          locker.name,
           style: Theme.of(context).primaryTextTheme.headline1,
         ),
         elevation: 0,

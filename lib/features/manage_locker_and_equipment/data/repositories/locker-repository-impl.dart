@@ -9,6 +9,7 @@ import 'package:frontend/features/manage_locker_and_equipment/domain/entities/de
 import 'package:frontend/features/manage_locker_and_equipment/domain/entities/locker.dart';
 import 'package:frontend/features/manage_locker_and_equipment/domain/entities/room.dart';
 import 'package:frontend/features/manage_locker_and_equipment/domain/locker-repository.dart';
+import 'package:frontend/features/streaming_and_record/domain/entities/camera.dart';
 import 'package:injectable/injectable.dart';
 
 @LazySingleton(as: LockerRepository)
@@ -143,6 +144,23 @@ class LockerRepositoryImpl implements LockerRepository {
     print('result: $result');
     return result.fold((l) => Left(l), (r) {
       return Right(r['data'] as String);
+    });
+  }
+
+  @override
+  Future<Either<RestFailure, List<Camera>>> listCameraByLockerId({
+    required int lockerId,
+  }) async {
+    final result = await _lockerRestApi.listCameraByLockerId(
+      lockerId: lockerId,
+    );
+    print('result: $result');
+    return result.fold((l) => Left(l), (r) {
+      return Right(
+        (r['data'] as List)
+            .map((e) => Camera.fromJson(e as Map<String, dynamic>))
+            .toList(),
+      );
     });
   }
 }
