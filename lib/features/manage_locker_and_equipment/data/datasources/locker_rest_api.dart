@@ -288,6 +288,7 @@ class LockerRestApi {
   Future<Either<RestFailure, Map<String, dynamic>>> getOpenToken({
     required String token,
     required int lockerId,
+    required bool state,
   }) async {
     try {
       final uri = Uri(
@@ -295,7 +296,7 @@ class LockerRestApi {
         host: environment.baseApiUrl,
         port: environment.baseApiPort,
         path:
-            '${environment.lockers[environment.LockerPath.getOpenToken]}/$lockerId',
+            '${environment.lockers[environment.LockerPath.getOpenToken]}/$lockerId/$state',
       );
 
       final response = await _httpClient.get(

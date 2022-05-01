@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_blue/flutter_blue.dart';
+import 'package:flutter_blue_plus/flutter_blue_plus.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:frontend/features/borrowing/presentation/widgets/render_lockers.dart';
 import 'package:loading_overlay_pro/loading_overlay_pro.dart';
@@ -14,7 +14,7 @@ class FindDevicesScreen extends HookWidget {
       () {
         Future<void>.microtask(() async {
           isLoading.value = true;
-          await FlutterBlue.instance
+          await FlutterBluePlus.instance
               .startScan(timeout: const Duration(seconds: 4));
           isLoading.value = false;
         });
@@ -37,10 +37,10 @@ class FindDevicesScreen extends HookWidget {
           backgroundColor: Colors.transparent,
         ),
         body: RefreshIndicator(
-          onRefresh: () => FlutterBlue.instance
+          onRefresh: () => FlutterBluePlus.instance
               .startScan(timeout: const Duration(seconds: 4)),
           child: StreamBuilder<List<ScanResult>>(
-              stream: FlutterBlue.instance.scanResults,
+              stream: FlutterBluePlus.instance.scanResults,
               initialData: [],
               builder: (c, snapshot) {
                 if (snapshot.data!.isNotEmpty) {
@@ -58,15 +58,13 @@ class FindDevicesScreen extends HookWidget {
                       )
                       .toList();
 
-                  if (lockerIds.isNotEmpty) {
+                  if (!isLoading.value) {
                     return RenderLockers(
                       lockerIds: lockerIds,
                       devices: devices,
                     );
                   } else {
-                    return const Center(
-                      child: Text('ไม่พบอุปกรณ์กรุณาลองใหม่อีกครั้ง'),
-                    );
+                    return Container();
                   }
                 } else {
                   return const Center(
@@ -76,12 +74,12 @@ class FindDevicesScreen extends HookWidget {
               }),
         ),
         floatingActionButton: StreamBuilder<bool>(
-          stream: FlutterBlue.instance.isScanning,
+          stream: FlutterBluePlus.instance.isScanning,
           initialData: false,
           builder: (c, snapshot) {
             if (snapshot.data!) {
               return FloatingActionButton(
-                onPressed: () => FlutterBlue.instance.stopScan(),
+                onPressed: () => FlutterBluePlus.instance.stopScan(),
                 backgroundColor: Colors.red,
                 child: const Icon(Icons.stop),
               );
@@ -90,7 +88,7 @@ class FindDevicesScreen extends HookWidget {
                 child: const Icon(Icons.search),
                 onPressed: () async {
                   isLoading.value = true;
-                  await FlutterBlue.instance
+                  await FlutterBluePlus.instance
                       .startScan(timeout: const Duration(seconds: 4));
                   isLoading.value = false;
                 },

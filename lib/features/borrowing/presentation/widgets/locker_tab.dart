@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_blue/flutter_blue.dart';
-import 'package:frontend/features/borrowing/presentation/widgets/bluetooth_off_screen.dart';
-import 'package:frontend/features/borrowing/presentation/widgets/find_device_screen.dart';
 
 class LockerTab extends StatelessWidget {
   const LockerTab({Key? key}) : super(key: key);

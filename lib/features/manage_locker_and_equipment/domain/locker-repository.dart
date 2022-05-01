@@ -34,5 +34,8 @@ abstract class LockerRepository {
     SaveEquipmentsRequest saveEquipmentsRequest,
   );
 
-  Future<Either<RestFailure, String>> getOpenToken(int lockerId);
+  Future<Either<RestFailure, String>> getOpenToken({
+    required int lockerId,
+    required bool state,
+  });
 }

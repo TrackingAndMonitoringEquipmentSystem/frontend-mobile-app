@@ -12,6 +12,7 @@
 
 import 'package:auto_route/auto_route.dart' as _i57;
 import 'package:flutter/material.dart' as _i69;
+import 'package:flutter_blue_plus/flutter_blue_plus.dart' as _i72;
 
 import '../../../features/account/presentation/pages/account.dart' as _i68;
 import '../../../features/account/presentation/pages/edit_account.dart' as _i27;
@@ -483,7 +484,8 @@ class AppRouter extends _i57.RootStackRouter {
       final args = routeData.argsAs<ToggleLockerRouteArgs>();
       return _i57.MaterialPageX<dynamic>(
           routeData: routeData,
-          child: _i67.ToggleLockerPage(key: args.key, locker: args.locker));
+          child: _i67.ToggleLockerPage(
+              key: args.key, locker: args.locker, device: args.device));
     },
     AccountRoute.name: (routeData) {
       return _i57.MaterialPageX<dynamic>(
@@ -1507,24 +1509,31 @@ class ListLockerRoute extends _i57.PageRouteInfo<void> {
 /// generated route for
 /// [_i67.ToggleLockerPage]
 class ToggleLockerRoute extends _i57.PageRouteInfo<ToggleLockerRouteArgs> {
-  ToggleLockerRoute({_i69.Key? key, required _i71.Locker locker})
+  ToggleLockerRoute(
+      {_i69.Key? key,
+      required _i71.Locker locker,
+      required _i72.BluetoothDevice device})
       : super(ToggleLockerRoute.name,
             path: ':lockerId',
-            args: ToggleLockerRouteArgs(key: key, locker: locker));
+            args: ToggleLockerRouteArgs(
+                key: key, locker: locker, device: device));
 
   static const String name = 'ToggleLockerRoute';
 }
 
 class ToggleLockerRouteArgs {
-  const ToggleLockerRouteArgs({this.key, required this.locker});
+  const ToggleLockerRouteArgs(
+      {this.key, required this.locker, required this.device});
 
   final _i69.Key? key;
 
   final _i71.Locker locker;
 
+  final _i72.BluetoothDevice device;
+
   @override
   String toString() {
-    return 'ToggleLockerRouteArgs{key: $key, locker: $locker}';
+    return 'ToggleLockerRouteArgs{key: $key, locker: $locker, device: $device}';
   }
 }
 
