@@ -79,7 +79,7 @@ class EquipmentDisplayWidget extends StatelessWidget {
                     height: 16,
                   ),
                   Text(
-                    equipment.tagId,
+                    equipment.tagId!,
                   ),
                 ],
               )

@@ -4,12 +4,11 @@ import 'package:frontend/core/utils/helper.dart';
 import 'package:frontend/features/authentication/domain/entities/user.dart';
 import 'package:frontend/features/manage_locker_and_equipment/domain/entities/equipment_type.dart';
 import 'package:frontend/features/manage_locker_and_equipment/domain/entities/locker.dart';
-
-part 'equipment.freezed.dart';
+part 'equipment_partial.freezed.dart';
 
 @freezed
-class Equipment with _$Equipment {
-  const factory Equipment({
+class EquipmentPartial with _$EquipmentPartial {
+  const factory EquipmentPartial({
     required int id,
     required String? tagId,
     required String name,
@@ -25,11 +24,11 @@ class Equipment with _$Equipment {
     required List? borrowReturns,
     required List? repairs,
     required List? reports,
-  }) = _Equipment;
+  }) = _EquipmentPartial;
 
   @override
-  factory Equipment.fromJson(Map<String, dynamic> json) {
-    return Equipment(
+  factory EquipmentPartial.fromJson(Map<String, dynamic> json) {
+    return EquipmentPartial(
       id: json['equipment_id'] as int,
       name: json['name'] as String,
       createdAt: DateTime.parse(json['created_at'] as String),

@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'equipment.dart';
+part of 'equipment_partial.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,10 +15,10 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-class _$EquipmentTearOff {
-  const _$EquipmentTearOff();
+class _$EquipmentPartialTearOff {
+  const _$EquipmentPartialTearOff();
 
-  _Equipment call(
+  _EquipmentPartial call(
       {required int id,
       required String? tagId,
       required String name,
@@ -34,7 +34,7 @@ class _$EquipmentTearOff {
       required List<dynamic>? borrowReturns,
       required List<dynamic>? repairs,
       required List<dynamic>? reports}) {
-    return _Equipment(
+    return _EquipmentPartial(
       id: id,
       tagId: tagId,
       name: name,
@@ -55,10 +55,10 @@ class _$EquipmentTearOff {
 }
 
 /// @nodoc
-const $Equipment = _$EquipmentTearOff();
+const $EquipmentPartial = _$EquipmentPartialTearOff();
 
 /// @nodoc
-mixin _$Equipment {
+mixin _$EquipmentPartial {
   int get id => throw _privateConstructorUsedError;
   String? get tagId => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
@@ -76,14 +76,15 @@ mixin _$Equipment {
   List<dynamic>? get reports => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $EquipmentCopyWith<Equipment> get copyWith =>
+  $EquipmentPartialCopyWith<EquipmentPartial> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $EquipmentCopyWith<$Res> {
-  factory $EquipmentCopyWith(Equipment value, $Res Function(Equipment) then) =
-      _$EquipmentCopyWithImpl<$Res>;
+abstract class $EquipmentPartialCopyWith<$Res> {
+  factory $EquipmentPartialCopyWith(
+          EquipmentPartial value, $Res Function(EquipmentPartial) then) =
+      _$EquipmentPartialCopyWithImpl<$Res>;
   $Res call(
       {int id,
       String? tagId,
@@ -108,12 +109,13 @@ abstract class $EquipmentCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$EquipmentCopyWithImpl<$Res> implements $EquipmentCopyWith<$Res> {
-  _$EquipmentCopyWithImpl(this._value, this._then);
+class _$EquipmentPartialCopyWithImpl<$Res>
+    implements $EquipmentPartialCopyWith<$Res> {
+  _$EquipmentPartialCopyWithImpl(this._value, this._then);
 
-  final Equipment _value;
+  final EquipmentPartial _value;
   // ignore: unused_field
-  final $Res Function(Equipment) _then;
+  final $Res Function(EquipmentPartial) _then;
 
   @override
   $Res call({
@@ -243,10 +245,11 @@ class _$EquipmentCopyWithImpl<$Res> implements $EquipmentCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$EquipmentCopyWith<$Res> implements $EquipmentCopyWith<$Res> {
-  factory _$EquipmentCopyWith(
-          _Equipment value, $Res Function(_Equipment) then) =
-      __$EquipmentCopyWithImpl<$Res>;
+abstract class _$EquipmentPartialCopyWith<$Res>
+    implements $EquipmentPartialCopyWith<$Res> {
+  factory _$EquipmentPartialCopyWith(
+          _EquipmentPartial value, $Res Function(_EquipmentPartial) then) =
+      __$EquipmentPartialCopyWithImpl<$Res>;
   @override
   $Res call(
       {int id,
@@ -276,13 +279,15 @@ abstract class _$EquipmentCopyWith<$Res> implements $EquipmentCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$EquipmentCopyWithImpl<$Res> extends _$EquipmentCopyWithImpl<$Res>
-    implements _$EquipmentCopyWith<$Res> {
-  __$EquipmentCopyWithImpl(_Equipment _value, $Res Function(_Equipment) _then)
-      : super(_value, (v) => _then(v as _Equipment));
+class __$EquipmentPartialCopyWithImpl<$Res>
+    extends _$EquipmentPartialCopyWithImpl<$Res>
+    implements _$EquipmentPartialCopyWith<$Res> {
+  __$EquipmentPartialCopyWithImpl(
+      _EquipmentPartial _value, $Res Function(_EquipmentPartial) _then)
+      : super(_value, (v) => _then(v as _EquipmentPartial));
 
   @override
-  _Equipment get _value => super._value as _Equipment;
+  _EquipmentPartial get _value => super._value as _EquipmentPartial;
 
   @override
   $Res call({
@@ -302,7 +307,7 @@ class __$EquipmentCopyWithImpl<$Res> extends _$EquipmentCopyWithImpl<$Res>
     Object? repairs = freezed,
     Object? reports = freezed,
   }) {
-    return _then(_Equipment(
+    return _then(_EquipmentPartial(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -369,8 +374,8 @@ class __$EquipmentCopyWithImpl<$Res> extends _$EquipmentCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Equipment implements _Equipment {
-  const _$_Equipment(
+class _$_EquipmentPartial implements _EquipmentPartial {
+  const _$_EquipmentPartial(
       {required this.id,
       required this.tagId,
       required this.name,
@@ -420,14 +425,14 @@ class _$_Equipment implements _Equipment {
 
   @override
   String toString() {
-    return 'Equipment(id: $id, tagId: $tagId, name: $name, status: $status, picUrl: $picUrl, duration: $duration, createdAt: $createdAt, updatedAt: $updatedAt, locker: $locker, createdBy: $createdBy, updatedBy: $updatedBy, type: $type, borrowReturns: $borrowReturns, repairs: $repairs, reports: $reports)';
+    return 'EquipmentPartial(id: $id, tagId: $tagId, name: $name, status: $status, picUrl: $picUrl, duration: $duration, createdAt: $createdAt, updatedAt: $updatedAt, locker: $locker, createdBy: $createdBy, updatedBy: $updatedBy, type: $type, borrowReturns: $borrowReturns, repairs: $repairs, reports: $reports)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Equipment &&
+            other is _EquipmentPartial &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.tagId, tagId) &&
             const DeepCollectionEquality().equals(other.name, name) &&
@@ -467,12 +472,12 @@ class _$_Equipment implements _Equipment {
 
   @JsonKey(ignore: true)
   @override
-  _$EquipmentCopyWith<_Equipment> get copyWith =>
-      __$EquipmentCopyWithImpl<_Equipment>(this, _$identity);
+  _$EquipmentPartialCopyWith<_EquipmentPartial> get copyWith =>
+      __$EquipmentPartialCopyWithImpl<_EquipmentPartial>(this, _$identity);
 }
 
-abstract class _Equipment implements Equipment {
-  const factory _Equipment(
+abstract class _EquipmentPartial implements EquipmentPartial {
+  const factory _EquipmentPartial(
       {required int id,
       required String? tagId,
       required String name,
@@ -487,7 +492,7 @@ abstract class _Equipment implements Equipment {
       required EquipmentType? type,
       required List<dynamic>? borrowReturns,
       required List<dynamic>? repairs,
-      required List<dynamic>? reports}) = _$_Equipment;
+      required List<dynamic>? reports}) = _$_EquipmentPartial;
 
   @override
   int get id;
@@ -521,6 +526,6 @@ abstract class _Equipment implements Equipment {
   List<dynamic>? get reports;
   @override
   @JsonKey(ignore: true)
-  _$EquipmentCopyWith<_Equipment> get copyWith =>
+  _$EquipmentPartialCopyWith<_EquipmentPartial> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -8,6 +8,7 @@ import 'package:frontend/features/manage_locker_and_equipment/domain/entities/bu
 import 'package:frontend/features/manage_locker_and_equipment/domain/entities/department.dart';
 import 'package:frontend/features/manage_locker_and_equipment/domain/entities/locker.dart';
 import 'package:frontend/features/manage_locker_and_equipment/domain/entities/room.dart';
+import 'package:frontend/features/manage_locker_and_equipment/domain/entities/type_equipment.dart';
 import 'package:frontend/features/manage_locker_and_equipment/domain/locker-repository.dart';
 import 'package:frontend/features/streaming_and_record/domain/entities/camera.dart';
 import 'package:injectable/injectable.dart';
@@ -159,6 +160,38 @@ class LockerRepositoryImpl implements LockerRepository {
       return Right(
         (r['data'] as List)
             .map((e) => Camera.fromJson(e as Map<String, dynamic>))
+            .toList(),
+      );
+    });
+  }
+
+  @override
+  Future<Either<RestFailure, List<Locker>>> userViewLockers() async {
+    final token = await _authenticationRepository.getFirebaseUser!.getIdToken();
+    final result = await _lockerRestApi.userViewLockers(
+      token: token,
+    );
+    print('result: $result');
+    return result.fold((l) => Left(l), (r) {
+      return Right(
+        (r['data'] as List)
+            .map((e) => Locker.fromJson(e as Map<String, dynamic>))
+            .toList(),
+      );
+    });
+  }
+
+  @override
+  Future<Either<RestFailure, List<TypeEquipment>>> userViewEquipments() async {
+    final token = await _authenticationRepository.getFirebaseUser!.getIdToken();
+    final result = await _lockerRestApi.userViewEquipments(
+      token: token,
+    );
+    print('result: $result');
+    return result.fold((l) => Left(l), (r) {
+      return Right(
+        (r['data'] as List)
+            .map((e) => TypeEquipment.fromJson(e as Map<String, dynamic>))
             .toList(),
       );
     });

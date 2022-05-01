@@ -54,14 +54,6 @@ class DashBoardPage extends HookWidget {
                           .headline1!
                           .copyWith(color: Colors.white),
                     ),
-                    const Spacer(),
-                    IconButton(
-                      onPressed: () {},
-                      icon: const Icon(
-                        Icons.search,
-                        color: Colors.white,
-                      ),
-                    )
                   ],
                 ),
               ),

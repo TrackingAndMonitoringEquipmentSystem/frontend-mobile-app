@@ -1,5 +1,5 @@
 const String baseSchema = 'https';
-const String baseApiUrl = 'toollo-api-dev.godprogrammer.dev';
+const String baseApiUrl = '471a-161-246-5-161.ap.ngrok.io';
 const int baseApiPort = 443;
 enum PublicsPath { getDepartments }
 enum AuthenPath { register, signIn, signOut }
@@ -10,6 +10,7 @@ enum LockerPath {
   addEquipment,
   viewLocker,
   getOpenToken,
+  userViewLockers,
 }
 enum LocationPath { getBuildings }
 enum DepartmentPath { getLockers }
@@ -17,6 +18,9 @@ enum EquipmentPath { saveEquipments }
 enum BorrowingPath { getBorrowGroup }
 enum CameraPath { listByLockerId }
 
+enum TypeEquipmentPath {
+  userViewEquipments,
+}
 const Map<PublicsPath, String> publics = {
   PublicsPath.getDepartments: '/publics/departments'
 };
@@ -34,6 +38,7 @@ const Map<LockerPath, String> lockers = {
   LockerPath.addEquipment: '/lockers/addEquipment',
   LockerPath.viewLocker: '/lockers/viewLocker',
   LockerPath.getOpenToken: '/lockers/getOpenToken',
+  LockerPath.userViewLockers: '/lockers/userViewLocker',
 };
 
 const Map<LocationPath, String> location = {
@@ -54,4 +59,8 @@ const Map<BorrowingPath, String> borrow = {
 
 const Map<CameraPath, String> camera = {
   CameraPath.listByLockerId: '/lockers/camera',
+};
+
+const Map<TypeEquipmentPath, String> typeEquipment = {
+  TypeEquipmentPath.userViewEquipments: '/type-equipment/userViewEquipment',
 };
