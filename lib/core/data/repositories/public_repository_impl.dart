@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:frontend/core/data/data_sources/rest_api.dart';
-import 'package:frontend/core/domain/repositories/rest_failure.dart';
 import 'package:frontend/core/domain/repositories/public_repository.dart';
+import 'package:frontend/core/domain/repositories/rest_failure.dart';
 import 'package:frontend/features/manage_locker_and_equipment/domain/entities/department.dart';
 import 'package:injectable/injectable.dart';
 

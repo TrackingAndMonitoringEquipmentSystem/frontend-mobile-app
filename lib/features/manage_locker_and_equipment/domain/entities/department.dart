@@ -18,6 +18,8 @@ class Department with _$Department {
 
   @override
   factory Department.fromJson(Map<String, dynamic> json) {
+    print('json: $json');
+
     return Department(
       id: json['id'] as int,
       name: json['dept_name'] as String,

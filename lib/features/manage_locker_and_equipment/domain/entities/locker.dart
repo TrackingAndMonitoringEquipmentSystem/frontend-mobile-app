@@ -20,6 +20,7 @@ class Locker with _$Locker {
 
   @override
   factory Locker.fromJson(Map<String, dynamic> json) {
+    print('locket json: $json');
     return Locker(
       id: json['locker_id'] as int,
       name: json['locker_name'] as String,

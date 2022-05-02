@@ -56,149 +56,149 @@ class ListLockerAndEquipmentWidget extends HookWidget {
       progressIndicator: const CircularProgressIndicator(),
       child: Column(
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              PopupMenuButton(
-                onSelected: (value) {},
-                child: Row(
-                  children: [
-                    Text(
-                      'เรียงตาม ก-ฮ ',
-                      style: Theme.of(context).primaryTextTheme.caption,
-                    ),
-                    const Icon(Icons.expand_more)
-                  ],
-                ),
-                itemBuilder: (context) => [
-                  PopupMenuItem(
-                    value: 1,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(
-                        "เรียงตาม ก-ฮ",
-                        style: Theme.of(context).primaryTextTheme.bodyText1,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              IconButton(
-                onPressed: () {
-                  if (viewBy == ManagementLockerAndEquipmentView.department) {
-                    showModalBottomSheet<dynamic>(
-                      context: context,
-                      isScrollControlled: true,
-                      builder: (context) {
-                        return DepartmentFilterWidget(
-                          listChoices: departments.value
-                              .map(
-                                (e) => {'displayText': e.name},
-                              )
-                              .toList(),
-                        );
-                      },
-                    );
-                  } else if (viewBy ==
-                      ManagementLockerAndEquipmentView.location) {
-                    showModalBottomSheet<dynamic>(
-                      context: context,
-                      isScrollControlled: true,
-                      builder: (context) {
-                        return const LocationFilterWidget(
-                          listChoices: [
-                            {
-                              'displayText': 'อาคาร 1',
-                              'floors': {
-                                'displayText': 'ชั้น 1',
-                                'rooms': [
-                                  {'displayText': 'ห้อง 1'},
-                                  {'displayText': 'ห้อง 2'},
-                                  {'displayText': 'ห้อง 3'},
-                                ]
-                              },
-                            },
-                            {
-                              'displayText': 'อาคาร 2',
-                              'floors': {
-                                'displayText': 'ชั้น 1',
-                                'rooms': [
-                                  {'displayText': 'ห้อง 1'},
-                                  {'displayText': 'ห้อง 2'},
-                                  {'displayText': 'ห้อง 3'},
-                                ]
-                              },
-                            },
-                            {
-                              'displayText': 'อาคาร 3',
-                              'floors': {
-                                'displayText': 'ชั้น 1',
-                                'rooms': [
-                                  {'displayText': 'ห้อง 1'},
-                                  {'displayText': 'ห้อง 2'},
-                                  {'displayText': 'ห้อง 3'},
-                                ]
-                              },
-                            },
-                            {
-                              'displayText': 'อาคาร 4',
-                              'floors': {
-                                'displayText': 'ชั้น 1',
-                                'rooms': [
-                                  {'displayText': 'ห้อง 1'},
-                                  {'displayText': 'ห้อง 2'},
-                                  {'displayText': 'ห้อง 3'},
-                                ]
-                              },
-                            },
-                          ],
-                        );
-                      },
-                    );
-                  } else if (viewBy ==
-                      ManagementLockerAndEquipmentView.equipment) {
-                    showModalBottomSheet<dynamic>(
-                      context: context,
-                      isScrollControlled: true,
-                      builder: (context) {
-                        return const EquipmentFilterWidget(
-                          listChoices: {
-                            'equipmentType': [
-                              {'displayText': 'สว่านไฟฟ้า'},
-                              {'displayText': 'ค้อน'},
-                              {'displayText': 'Macbook'},
-                              {'displayText': 'อุปกรณ์สำนักงาน'},
-                              {'displayText': 'ไม่มีชนิด'},
-                            ],
-                            'equipmentStatus': [
-                              {'displayText': 'พร้อมใช้งาน'},
-                              {'displayText': 'ถูกยืม'},
-                              {'displayText': 'ส่งซ่อม'},
-                            ],
-                            'department': [
-                              {'displayText': 'แผนกบริหาร'},
-                              {'displayText': 'แผนกบุคคล'},
-                              {'displayText': 'แผนกจัดซื้อ'},
-                              {'displayText': 'แผนกการตลาด'},
-                              {'displayText': 'แผนกบัญชี'},
-                            ],
-                            'lockers': [
-                              {'displayText': 'locker 1'},
-                              {'displayText': 'locker 2'},
-                              {'displayText': 'locker 3'},
-                              {'displayText': 'locker 4'},
-                              {'displayText': 'locker 5'},
-                            ]
-                          },
-                        );
-                      },
-                    );
-                  }
-                },
-                icon: const Icon(Icons.tune),
-              )
-            ],
-          ),
+          // Row(
+          //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          //   children: [
+          //     PopupMenuButton(
+          //       onSelected: (value) {},
+          //       child: Row(
+          //         children: [
+          //           Text(
+          //             'เรียงตาม ก-ฮ ',
+          //             style: Theme.of(context).primaryTextTheme.caption,
+          //           ),
+          //           const Icon(Icons.expand_more)
+          //         ],
+          //       ),
+          //       itemBuilder: (context) => [
+          //         PopupMenuItem(
+          //           value: 1,
+          //           child: Padding(
+          //             padding: const EdgeInsets.all(8.0),
+          //             child: Text(
+          //               "เรียงตาม ก-ฮ",
+          //               style: Theme.of(context).primaryTextTheme.bodyText1,
+          //             ),
+          //           ),
+          //         ),
+          //       ],
+          //     ),
+          //     IconButton(
+          //       onPressed: () {
+          //         if (viewBy == ManagementLockerAndEquipmentView.department) {
+          //           showModalBottomSheet<dynamic>(
+          //             context: context,
+          //             isScrollControlled: true,
+          //             builder: (context) {
+          //               return DepartmentFilterWidget(
+          //                 listChoices: departments.value
+          //                     .map(
+          //                       (e) => {'displayText': e.name},
+          //                     )
+          //                     .toList(),
+          //               );
+          //             },
+          //           );
+          //         } else if (viewBy ==
+          //             ManagementLockerAndEquipmentView.location) {
+          //           showModalBottomSheet<dynamic>(
+          //             context: context,
+          //             isScrollControlled: true,
+          //             builder: (context) {
+          //               return const LocationFilterWidget(
+          //                 listChoices: [
+          //                   {
+          //                     'displayText': 'อาคาร 1',
+          //                     'floors': {
+          //                       'displayText': 'ชั้น 1',
+          //                       'rooms': [
+          //                         {'displayText': 'ห้อง 1'},
+          //                         {'displayText': 'ห้อง 2'},
+          //                         {'displayText': 'ห้อง 3'},
+          //                       ]
+          //                     },
+          //                   },
+          //                   {
+          //                     'displayText': 'อาคาร 2',
+          //                     'floors': {
+          //                       'displayText': 'ชั้น 1',
+          //                       'rooms': [
+          //                         {'displayText': 'ห้อง 1'},
+          //                         {'displayText': 'ห้อง 2'},
+          //                         {'displayText': 'ห้อง 3'},
+          //                       ]
+          //                     },
+          //                   },
+          //                   {
+          //                     'displayText': 'อาคาร 3',
+          //                     'floors': {
+          //                       'displayText': 'ชั้น 1',
+          //                       'rooms': [
+          //                         {'displayText': 'ห้อง 1'},
+          //                         {'displayText': 'ห้อง 2'},
+          //                         {'displayText': 'ห้อง 3'},
+          //                       ]
+          //                     },
+          //                   },
+          //                   {
+          //                     'displayText': 'อาคาร 4',
+          //                     'floors': {
+          //                       'displayText': 'ชั้น 1',
+          //                       'rooms': [
+          //                         {'displayText': 'ห้อง 1'},
+          //                         {'displayText': 'ห้อง 2'},
+          //                         {'displayText': 'ห้อง 3'},
+          //                       ]
+          //                     },
+          //                   },
+          //                 ],
+          //               );
+          //             },
+          //           );
+          //         } else if (viewBy ==
+          //             ManagementLockerAndEquipmentView.equipment) {
+          //           showModalBottomSheet<dynamic>(
+          //             context: context,
+          //             isScrollControlled: true,
+          //             builder: (context) {
+          //               return const EquipmentFilterWidget(
+          //                 listChoices: {
+          //                   'equipmentType': [
+          //                     {'displayText': 'สว่านไฟฟ้า'},
+          //                     {'displayText': 'ค้อน'},
+          //                     {'displayText': 'Macbook'},
+          //                     {'displayText': 'อุปกรณ์สำนักงาน'},
+          //                     {'displayText': 'ไม่มีชนิด'},
+          //                   ],
+          //                   'equipmentStatus': [
+          //                     {'displayText': 'พร้อมใช้งาน'},
+          //                     {'displayText': 'ถูกยืม'},
+          //                     {'displayText': 'ส่งซ่อม'},
+          //                   ],
+          //                   'department': [
+          //                     {'displayText': 'แผนกบริหาร'},
+          //                     {'displayText': 'แผนกบุคคล'},
+          //                     {'displayText': 'แผนกจัดซื้อ'},
+          //                     {'displayText': 'แผนกการตลาด'},
+          //                     {'displayText': 'แผนกบัญชี'},
+          //                   ],
+          //                   'lockers': [
+          //                     {'displayText': 'locker 1'},
+          //                     {'displayText': 'locker 2'},
+          //                     {'displayText': 'locker 3'},
+          //                     {'displayText': 'locker 4'},
+          //                     {'displayText': 'locker 5'},
+          //                   ]
+          //                 },
+          //               );
+          //             },
+          //           );
+          //         }
+          //       },
+          //       icon: const Icon(Icons.tune),
+          //     )
+          //   ],
+          // ),
           Expanded(
             child: SingleChildScrollView(
               child: ExpansionPanelList.radio(

@@ -32,7 +32,7 @@ class AllLockerPage extends StatelessWidget {
               iconTheme: const IconThemeData(color: Colors.black),
               elevation: 0,
               actions: [
-                IconButton(onPressed: () {}, icon: const Icon(Icons.search)),
+                // IconButton(onPressed: () {}, icon: const Icon(Icons.search)),
                 IconButton(
                   onPressed: () {
                     AutoRouter.of(context).push(const QrScanningRoute());
@@ -97,14 +97,18 @@ class AllLockerPage extends StatelessWidget {
         viewBy: ManagementLockerAndEquipmentView.department,
         departments: departments,
       ),
-      const ListLockerAndEquipmentWidget(
-        viewBy: ManagementLockerAndEquipmentView.location,
-      ),
-      const ListLockerAndEquipmentWidget(
-        viewBy: ManagementLockerAndEquipmentView.equipment,
-      )
+      // const ListLockerAndEquipmentWidget(
+      //   viewBy: ManagementLockerAndEquipmentView.location,
+      // ),
+      // const ListLockerAndEquipmentWidget(
+      //   viewBy: ManagementLockerAndEquipmentView.equipment,
+      // )
     ];
-    const tabsBar = ['แผนก', 'ที่ตั้ง', 'อุปกรณ์'];
+    const tabsBar = [
+      'แผนก',
+      //  'ที่ตั้ง',
+      //  'อุปกรณ์'
+    ];
     return TabsWidget(
       tabsBar: tabsBar,
       tabs: tabs,

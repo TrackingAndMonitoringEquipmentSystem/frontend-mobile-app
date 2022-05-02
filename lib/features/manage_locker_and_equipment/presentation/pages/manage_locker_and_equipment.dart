@@ -51,45 +51,45 @@ class ManageLockerAndEquipmentPage extends StatelessWidget {
                 },
               ),
             ),
-            const SizedBox(
-              height: 15,
-            ),
-            Card(
-              child: ListTile(
-                leading: Image.asset(
-                  'assets/icons/manage_locker_and_equipment/location_icon_medium.png',
-                  width: 50,
-                  height: 50,
-                ),
-                title: const Text('จัดการสถานที่'),
-                trailing: const Icon(Icons.arrow_forward_ios),
-                onTap: () {
-                  AutoRouter.of(context).push(
-                    AllLocationRoute(
-                      title: 'จัดการสถานที่',
-                      viewBy: ManagementLocationView.building,
-                    ),
-                  );
-                },
-              ),
-            ),
-            const SizedBox(
-              height: 15,
-            ),
-            Card(
-              child: ListTile(
-                leading: Image.asset(
-                  'assets/icons/manage_locker_and_equipment/category_icon_medium.png',
-                  width: 50,
-                  height: 50,
-                ),
-                title: const Text('จัดการหมวดหมู่'),
-                trailing: const Icon(Icons.arrow_forward_ios),
-                onTap: () {
-                  AutoRouter.of(context).push(AllCategoryRoute());
-                },
-              ),
-            ),
+            // const SizedBox(
+            //   height: 15,
+            // ),
+            // Card(
+            //   child: ListTile(
+            //     leading: Image.asset(
+            //       'assets/icons/manage_locker_and_equipment/location_icon_medium.png',
+            //       width: 50,
+            //       height: 50,
+            //     ),
+            //     title: const Text('จัดการสถานที่'),
+            //     trailing: const Icon(Icons.arrow_forward_ios),
+            //     onTap: () {
+            //       AutoRouter.of(context).push(
+            //         AllLocationRoute(
+            //           title: 'จัดการสถานที่',
+            //           viewBy: ManagementLocationView.building,
+            //         ),
+            //       );
+            //     },
+            //   ),
+            // ),
+            // const SizedBox(
+            //   height: 15,
+            // ),
+            // Card(
+            //   child: ListTile(
+            //     leading: Image.asset(
+            //       'assets/icons/manage_locker_and_equipment/category_icon_medium.png',
+            //       width: 50,
+            //       height: 50,
+            //     ),
+            //     title: const Text('จัดการหมวดหมู่'),
+            //     trailing: const Icon(Icons.arrow_forward_ios),
+            //     onTap: () {
+            //       AutoRouter.of(context).push(AllCategoryRoute());
+            //     },
+            //   ),
+            // ),
           ],
         ),
       ),

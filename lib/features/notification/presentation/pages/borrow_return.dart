@@ -66,7 +66,7 @@ class BorrowReturnPage extends HookWidget {
               Row(
                 children: const [Text('รายละเอียด')],
               ),
-              if (borrowings.value.isEmpty &&
+              if (borrowings.value.isNotEmpty &&
                   borrowings.value[0].status == BorrowingStatus.borrowing)
                 Row(
                   children: [

@@ -15,6 +15,7 @@ class TypeEquipment with _$TypeEquipment {
     required int? duration,
     required EquipmentStatus? status,
     required String? picUrl,
+    required int countEquipment,
   }) = _TypeEquipment;
 
   @override
@@ -30,6 +31,7 @@ class TypeEquipment with _$TypeEquipment {
       picUrl: json['equipment_equip_pic'] != null
           ? json['equipment_equip_pic'] as String
           : null,
+      countEquipment: int.parse(json['count_equipment'] as String),
     );
   }
 }

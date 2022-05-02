@@ -15,9 +15,11 @@ class AllCameraPage extends StatelessWidget {
       ListCameraWidget(
         lockerId: locker.id,
       ),
-      const ListRecordWidget(),
+      // const ListRecordWidget(),
     ];
-    const tabsBar = ['Live', 'ดูย้อนหลัง'];
+    const tabsBar = [
+      'Live',
+    ];
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -27,15 +29,15 @@ class AllCameraPage extends StatelessWidget {
         elevation: 0,
         iconTheme: const IconThemeData(color: Colors.black),
         backgroundColor: Colors.transparent,
-        actions: [
-          IconButton(
-            icon: const Icon(
-              Icons.help_outline_sharp,
-              color: Colors.black,
-            ),
-            onPressed: () {},
-          ),
-        ],
+        // actions: [
+        //   IconButton(
+        //     icon: const Icon(
+        //       Icons.help_outline_sharp,
+        //       color: Colors.black,
+        //     ),
+        //     onPressed: () {},
+        //   ),
+        // ],
       ),
       body: Padding(
         padding: EdgeInsets.fromLTRB(

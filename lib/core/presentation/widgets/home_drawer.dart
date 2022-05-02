@@ -49,63 +49,65 @@ class HomeDrawer extends HookWidget {
               child: Padding(
                 padding: const EdgeInsets.all(15),
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  // mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    InkWell(
-                      onTap: () {},
-                      child: Container(
-                        decoration: topRoute.name == 'RoleManagementRoute'
-                            ? BoxDecoration(
-                                gradient: const LinearGradient(
-                                  begin: Alignment.topLeft,
-                                  end: Alignment.bottomRight,
-                                  colors: [
-                                    Color.fromRGBO(255, 241, 248, 1),
-                                    Color.fromRGBO(250, 245, 255, 1),
-                                    Color.fromRGBO(243, 232, 255, 1),
-                                  ],
-                                ),
-                                borderRadius: BorderRadius.circular(8.0),
-                              )
-                            : null,
-                        child: ListTile(
-                          leading: Image.asset(
-                            topRoute.name == 'RoleManagementRoute'
-                                ? 'assets/icons/core/account_group_icon_active.png'
-                                : 'assets/icons/core/account_group_icon_inactive.png',
-                            width: 50,
-                            height: 40,
-                            fit: BoxFit.fill,
-                          ),
-                          title: Text(
-                            'การจัดการสิทธิ',
-                            style: Theme.of(context)
-                                .primaryTextTheme
-                                .headline1!
-                                .copyWith(
-                                  color: topRoute.name == 'RoleManagementRoute'
-                                      ? Theme.of(context).colorScheme.secondary
-                                      : Colors.black,
-                                ),
-                          ),
-                          onTap: () {
-                            if (topRoute.name == 'DashBoardRoute') {
-                              AutoRouter.of(context)
-                                  .popAndPush(const RoleManagementRoute());
-                            } else if (topRoute.name == 'RoleManagementRoute') {
-                              AutoRouter.of(context).pop();
-                              AutoRouter.of(context)
-                                  .popAndPush(const RoleManagementRoute());
-                            } else {
-                              AutoRouter.of(context).pop();
-                              AutoRouter.of(context).pop();
-                              AutoRouter.of(context)
-                                  .popAndPush(const RoleManagementRoute());
-                            }
-                          },
-                        ),
-                      ),
-                    ),
+                    // InkWell(
+                    //   onTap: () {},
+                    //   child:
+
+                    //   Container(
+                    //     decoration: topRoute.name == 'RoleManagementRoute'
+                    //         ? BoxDecoration(
+                    //             gradient: const LinearGradient(
+                    //               begin: Alignment.topLeft,
+                    //               end: Alignment.bottomRight,
+                    //               colors: [
+                    //                 Color.fromRGBO(255, 241, 248, 1),
+                    //                 Color.fromRGBO(250, 245, 255, 1),
+                    //                 Color.fromRGBO(243, 232, 255, 1),
+                    //               ],
+                    //             ),
+                    //             borderRadius: BorderRadius.circular(8.0),
+                    //           )
+                    //         : null,
+                    //     child: ListTile(
+                    //       leading: Image.asset(
+                    //         topRoute.name == 'RoleManagementRoute'
+                    //             ? 'assets/icons/core/account_group_icon_active.png'
+                    //             : 'assets/icons/core/account_group_icon_inactive.png',
+                    //         width: 50,
+                    //         height: 40,
+                    //         fit: BoxFit.fill,
+                    //       ),
+                    //       title: Text(
+                    //         'การจัดการสิทธิ',
+                    //         style: Theme.of(context)
+                    //             .primaryTextTheme
+                    //             .headline1!
+                    //             .copyWith(
+                    //               color: topRoute.name == 'RoleManagementRoute'
+                    //                   ? Theme.of(context).colorScheme.secondary
+                    //                   : Colors.black,
+                    //             ),
+                    //       ),
+                    //       onTap: () {
+                    //         if (topRoute.name == 'DashBoardRoute') {
+                    //           AutoRouter.of(context)
+                    //               .popAndPush(const RoleManagementRoute());
+                    //         } else if (topRoute.name == 'RoleManagementRoute') {
+                    //           AutoRouter.of(context).pop();
+                    //           AutoRouter.of(context)
+                    //               .popAndPush(const RoleManagementRoute());
+                    //         } else {
+                    //           AutoRouter.of(context).pop();
+                    //           AutoRouter.of(context).pop();
+                    //           AutoRouter.of(context)
+                    //               .popAndPush(const RoleManagementRoute());
+                    //         }
+                    //       },
+                    //     ),
+                    //   ),
+                    // ),
                     Container(
                       decoration:
                           topRoute.name == 'ManageLockerAndEquipmentRoute'
@@ -217,111 +219,111 @@ class HomeDrawer extends HookWidget {
                         },
                       ),
                     ),
-                    Container(
-                      decoration: topRoute.name == 'FixingRoute'
-                          ? BoxDecoration(
-                              gradient: const LinearGradient(
-                                begin: Alignment.topLeft,
-                                end: Alignment.bottomRight,
-                                colors: [
-                                  Color.fromRGBO(255, 241, 248, 1),
-                                  Color.fromRGBO(250, 245, 255, 1),
-                                  Color.fromRGBO(243, 232, 255, 1),
-                                ],
-                              ),
-                              borderRadius: BorderRadius.circular(8.0),
-                            )
-                          : null,
-                      child: ListTile(
-                        leading: Image.asset(
-                          topRoute.name == 'FixingRoute'
-                              ? 'assets/icons/core/tool_icon_active.png'
-                              : 'assets/icons/core/tool_icon_inactive.png',
-                          width: 50,
-                          height: 50,
-                          fit: BoxFit.fill,
-                        ),
-                        title: Text(
-                          'การแจ้งซ่อม',
-                          style: Theme.of(context)
-                              .primaryTextTheme
-                              .headline1!
-                              .copyWith(
-                                color: topRoute.name == 'FixingRoute'
-                                    ? Theme.of(context).colorScheme.secondary
-                                    : Colors.black,
-                              ),
-                        ),
-                        onTap: () {
-                          if (topRoute.name == 'DashBoardRoute') {
-                            AutoRouter.of(context).popAndPush(
-                              const FixingRoute(),
-                            );
-                          } else if (topRoute.name == 'FixingRoute') {
-                            AutoRouter.of(context).pop();
-                            AutoRouter.of(context)
-                                .popAndPush(const FixingRoute());
-                          } else {
-                            AutoRouter.of(context).pop();
-                            AutoRouter.of(context).pop();
-                            AutoRouter.of(context)
-                                .popAndPush(const FixingRoute());
-                          }
-                        },
-                      ),
-                    ),
-                    Container(
-                      decoration: topRoute.name == 'ReportProblemRoute'
-                          ? BoxDecoration(
-                              gradient: const LinearGradient(
-                                begin: Alignment.topLeft,
-                                end: Alignment.bottomRight,
-                                colors: [
-                                  Color.fromRGBO(255, 241, 248, 1),
-                                  Color.fromRGBO(250, 245, 255, 1),
-                                  Color.fromRGBO(243, 232, 255, 1),
-                                ],
-                              ),
-                              borderRadius: BorderRadius.circular(8.0),
-                            )
-                          : null,
-                      child: ListTile(
-                        leading: Image.asset(
-                          topRoute.name == 'ReportProblemRoute'
-                              ? 'assets/icons/account/alert_icon.png'
-                              : 'assets/icons/core/alert_icon_inactive.png',
-                          width: 50,
-                          height: 50,
-                        ),
-                        title: Text(
-                          'การแจ้งปัญหา',
-                          style: Theme.of(context)
-                              .primaryTextTheme
-                              .headline1!
-                              .copyWith(
-                                color: topRoute.name == 'ReportProblemRoute'
-                                    ? Theme.of(context).colorScheme.secondary
-                                    : Colors.black,
-                              ),
-                        ),
-                        onTap: () {
-                          if (topRoute.name == 'DashBoardRoute') {
-                            AutoRouter.of(context).popAndPush(
-                              const ReportProblemRoute(),
-                            );
-                          } else if (topRoute.name == 'ReportProblemRoute') {
-                            AutoRouter.of(context).pop();
-                            AutoRouter.of(context)
-                                .popAndPush(const ReportProblemRoute());
-                          } else {
-                            AutoRouter.of(context).pop();
-                            AutoRouter.of(context).pop();
-                            AutoRouter.of(context)
-                                .popAndPush(const ReportProblemRoute());
-                          }
-                        },
-                      ),
-                    ),
+                    // Container(
+                    //   decoration: topRoute.name == 'FixingRoute'
+                    //       ? BoxDecoration(
+                    //           gradient: const LinearGradient(
+                    //             begin: Alignment.topLeft,
+                    //             end: Alignment.bottomRight,
+                    //             colors: [
+                    //               Color.fromRGBO(255, 241, 248, 1),
+                    //               Color.fromRGBO(250, 245, 255, 1),
+                    //               Color.fromRGBO(243, 232, 255, 1),
+                    //             ],
+                    //           ),
+                    //           borderRadius: BorderRadius.circular(8.0),
+                    //         )
+                    //       : null,
+                    //   child: ListTile(
+                    //     leading: Image.asset(
+                    //       topRoute.name == 'FixingRoute'
+                    //           ? 'assets/icons/core/tool_icon_active.png'
+                    //           : 'assets/icons/core/tool_icon_inactive.png',
+                    //       width: 50,
+                    //       height: 50,
+                    //       fit: BoxFit.fill,
+                    //     ),
+                    //     title: Text(
+                    //       'การแจ้งซ่อม',
+                    //       style: Theme.of(context)
+                    //           .primaryTextTheme
+                    //           .headline1!
+                    //           .copyWith(
+                    //             color: topRoute.name == 'FixingRoute'
+                    //                 ? Theme.of(context).colorScheme.secondary
+                    //                 : Colors.black,
+                    //           ),
+                    //     ),
+                    //     onTap: () {
+                    //       if (topRoute.name == 'DashBoardRoute') {
+                    //         AutoRouter.of(context).popAndPush(
+                    //           const FixingRoute(),
+                    //         );
+                    //       } else if (topRoute.name == 'FixingRoute') {
+                    //         AutoRouter.of(context).pop();
+                    //         AutoRouter.of(context)
+                    //             .popAndPush(const FixingRoute());
+                    //       } else {
+                    //         AutoRouter.of(context).pop();
+                    //         AutoRouter.of(context).pop();
+                    //         AutoRouter.of(context)
+                    //             .popAndPush(const FixingRoute());
+                    //       }
+                    //     },
+                    //   ),
+                    // ),
+                    // Container(
+                    //   decoration: topRoute.name == 'ReportProblemRoute'
+                    //       ? BoxDecoration(
+                    //           gradient: const LinearGradient(
+                    //             begin: Alignment.topLeft,
+                    //             end: Alignment.bottomRight,
+                    //             colors: [
+                    //               Color.fromRGBO(255, 241, 248, 1),
+                    //               Color.fromRGBO(250, 245, 255, 1),
+                    //               Color.fromRGBO(243, 232, 255, 1),
+                    //             ],
+                    //           ),
+                    //           borderRadius: BorderRadius.circular(8.0),
+                    //         )
+                    //       : null,
+                    //   child: ListTile(
+                    //     leading: Image.asset(
+                    //       topRoute.name == 'ReportProblemRoute'
+                    //           ? 'assets/icons/account/alert_icon.png'
+                    //           : 'assets/icons/core/alert_icon_inactive.png',
+                    //       width: 50,
+                    //       height: 50,
+                    //     ),
+                    //     title: Text(
+                    //       'การแจ้งปัญหา',
+                    //       style: Theme.of(context)
+                    //           .primaryTextTheme
+                    //           .headline1!
+                    //           .copyWith(
+                    //             color: topRoute.name == 'ReportProblemRoute'
+                    //                 ? Theme.of(context).colorScheme.secondary
+                    //                 : Colors.black,
+                    //           ),
+                    //     ),
+                    //     onTap: () {
+                    //       if (topRoute.name == 'DashBoardRoute') {
+                    //         AutoRouter.of(context).popAndPush(
+                    //           const ReportProblemRoute(),
+                    //         );
+                    //       } else if (topRoute.name == 'ReportProblemRoute') {
+                    //         AutoRouter.of(context).pop();
+                    //         AutoRouter.of(context)
+                    //             .popAndPush(const ReportProblemRoute());
+                    //       } else {
+                    //         AutoRouter.of(context).pop();
+                    //         AutoRouter.of(context).pop();
+                    //         AutoRouter.of(context)
+                    //             .popAndPush(const ReportProblemRoute());
+                    //       }
+                    //     },
+                    //   ),
+                    // ),
                   ],
                 ),
               ),

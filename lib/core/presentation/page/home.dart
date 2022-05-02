@@ -10,9 +10,9 @@ class HomePage extends StatelessWidget {
     return AutoTabsScaffold(
       routes: const [
         DashBoardRouter(),
-        HistoryRouter(),
+        // HistoryRouter(),
         UnlockLockerRouter(),
-        NotificationRouter(),
+        // NotificationRouter(),
         AccountRouter(),
       ],
       bottomNavigationBuilder: (_, tabsRouter) {
@@ -41,43 +41,43 @@ class HomePage extends StatelessWidget {
                   height: 28,
                 ),
               ),
+              // InkWell(
+              //   onTap: () => tabsRouter.setActiveIndex(1),
+              //   child: Image.asset(
+              //     tabsRouter.activeIndex == 1
+              //         ? 'assets/icons/core/icon_nav_history_active.png'
+              //         : 'assets/icons/core/icon_nav_history.png',
+              //     width: 28,
+              //     height: 28,
+              //   ),
+              // ),
               InkWell(
                 onTap: () => tabsRouter.setActiveIndex(1),
                 child: Image.asset(
                   tabsRouter.activeIndex == 1
-                      ? 'assets/icons/core/icon_nav_history_active.png'
-                      : 'assets/icons/core/icon_nav_history.png',
-                  width: 28,
-                  height: 28,
-                ),
-              ),
-              InkWell(
-                onTap: () => tabsRouter.setActiveIndex(2),
-                child: Image.asset(
-                  tabsRouter.activeIndex == 2
                       ? 'assets/icons/core/icon_nav_unlock_locker_active.png'
                       : 'assets/icons/core/icon_nav_unlock_locker.png',
                   width: 28,
                   height: 28,
                 ),
               ),
-              InkWell(
-                onTap: () => tabsRouter.setActiveIndex(3),
-                child: Image.asset(
-                  tabsRouter.activeIndex == 3
-                      ? 'assets/icons/core/icon_nav_noti_active.png'
-                      : 'assets/icons/core/icon_nav_noti.png',
-                  width: 28,
-                  height: 28,
-                ),
-              ),
+              // InkWell(
+              //   onTap: () => tabsRouter.setActiveIndex(3),
+              //   child: Image.asset(
+              //     tabsRouter.activeIndex == 3
+              //         ? 'assets/icons/core/icon_nav_noti_active.png'
+              //         : 'assets/icons/core/icon_nav_noti.png',
+              //     width: 28,
+              //     height: 28,
+              //   ),
+              // ),
               IconButton(
                 onPressed: () {
-                  tabsRouter.setActiveIndex(4);
+                  tabsRouter.setActiveIndex(2);
                 },
                 icon: Icon(
                   Icons.account_circle,
-                  color: tabsRouter.activeIndex == 4
+                  color: tabsRouter.activeIndex == 2
                       ? Theme.of(context).colorScheme.primary
                       : Colors.grey,
                 ),

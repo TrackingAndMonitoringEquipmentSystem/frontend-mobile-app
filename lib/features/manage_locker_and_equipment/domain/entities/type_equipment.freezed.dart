@@ -23,13 +23,15 @@ class _$TypeEquipmentTearOff {
       required String name,
       required int? duration,
       required EquipmentStatus? status,
-      required String? picUrl}) {
+      required String? picUrl,
+      required int countEquipment}) {
     return _TypeEquipment(
       id: id,
       name: name,
       duration: duration,
       status: status,
       picUrl: picUrl,
+      countEquipment: countEquipment,
     );
   }
 }
@@ -44,6 +46,7 @@ mixin _$TypeEquipment {
   int? get duration => throw _privateConstructorUsedError;
   EquipmentStatus? get status => throw _privateConstructorUsedError;
   String? get picUrl => throw _privateConstructorUsedError;
+  int get countEquipment => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $TypeEquipmentCopyWith<TypeEquipment> get copyWith =>
@@ -60,7 +63,8 @@ abstract class $TypeEquipmentCopyWith<$Res> {
       String name,
       int? duration,
       EquipmentStatus? status,
-      String? picUrl});
+      String? picUrl,
+      int countEquipment});
 }
 
 /// @nodoc
@@ -79,6 +83,7 @@ class _$TypeEquipmentCopyWithImpl<$Res>
     Object? duration = freezed,
     Object? status = freezed,
     Object? picUrl = freezed,
+    Object? countEquipment = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -101,6 +106,10 @@ class _$TypeEquipmentCopyWithImpl<$Res>
           ? _value.picUrl
           : picUrl // ignore: cast_nullable_to_non_nullable
               as String?,
+      countEquipment: countEquipment == freezed
+          ? _value.countEquipment
+          : countEquipment // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -117,7 +126,8 @@ abstract class _$TypeEquipmentCopyWith<$Res>
       String name,
       int? duration,
       EquipmentStatus? status,
-      String? picUrl});
+      String? picUrl,
+      int countEquipment});
 }
 
 /// @nodoc
@@ -138,6 +148,7 @@ class __$TypeEquipmentCopyWithImpl<$Res>
     Object? duration = freezed,
     Object? status = freezed,
     Object? picUrl = freezed,
+    Object? countEquipment = freezed,
   }) {
     return _then(_TypeEquipment(
       id: id == freezed
@@ -160,6 +171,10 @@ class __$TypeEquipmentCopyWithImpl<$Res>
           ? _value.picUrl
           : picUrl // ignore: cast_nullable_to_non_nullable
               as String?,
+      countEquipment: countEquipment == freezed
+          ? _value.countEquipment
+          : countEquipment // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -172,7 +187,8 @@ class _$_TypeEquipment implements _TypeEquipment {
       required this.name,
       required this.duration,
       required this.status,
-      required this.picUrl});
+      required this.picUrl,
+      required this.countEquipment});
 
   @override
   final int? id;
@@ -184,10 +200,12 @@ class _$_TypeEquipment implements _TypeEquipment {
   final EquipmentStatus? status;
   @override
   final String? picUrl;
+  @override
+  final int countEquipment;
 
   @override
   String toString() {
-    return 'TypeEquipment(id: $id, name: $name, duration: $duration, status: $status, picUrl: $picUrl)';
+    return 'TypeEquipment(id: $id, name: $name, duration: $duration, status: $status, picUrl: $picUrl, countEquipment: $countEquipment)';
   }
 
   @override
@@ -199,7 +217,9 @@ class _$_TypeEquipment implements _TypeEquipment {
             const DeepCollectionEquality().equals(other.name, name) &&
             const DeepCollectionEquality().equals(other.duration, duration) &&
             const DeepCollectionEquality().equals(other.status, status) &&
-            const DeepCollectionEquality().equals(other.picUrl, picUrl));
+            const DeepCollectionEquality().equals(other.picUrl, picUrl) &&
+            const DeepCollectionEquality()
+                .equals(other.countEquipment, countEquipment));
   }
 
   @override
@@ -209,7 +229,8 @@ class _$_TypeEquipment implements _TypeEquipment {
       const DeepCollectionEquality().hash(name),
       const DeepCollectionEquality().hash(duration),
       const DeepCollectionEquality().hash(status),
-      const DeepCollectionEquality().hash(picUrl));
+      const DeepCollectionEquality().hash(picUrl),
+      const DeepCollectionEquality().hash(countEquipment));
 
   @JsonKey(ignore: true)
   @override
@@ -223,7 +244,8 @@ abstract class _TypeEquipment implements TypeEquipment {
       required String name,
       required int? duration,
       required EquipmentStatus? status,
-      required String? picUrl}) = _$_TypeEquipment;
+      required String? picUrl,
+      required int countEquipment}) = _$_TypeEquipment;
 
   @override
   int? get id;
@@ -235,6 +257,8 @@ abstract class _TypeEquipment implements TypeEquipment {
   EquipmentStatus? get status;
   @override
   String? get picUrl;
+  @override
+  int get countEquipment;
   @override
   @JsonKey(ignore: true)
   _$TypeEquipmentCopyWith<_TypeEquipment> get copyWith =>

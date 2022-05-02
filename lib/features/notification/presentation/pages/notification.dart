@@ -4,8 +4,14 @@ import 'package:frontend/features/notification/presentation/widgets/admin_tab.da
 import 'package:frontend/features/notification/presentation/widgets/user_tab.dart';
 
 class NotificationPage extends StatelessWidget {
-  final List<String> tabsBar = const ['ฝั่งผู้ใช้งาน', 'ฝั่งผู้ดูแล'];
-  final List<Widget> tabs = const <Widget>[UserTab(), AdminTab()];
+  final List<String> tabsBar = const [
+    'ฝั่งผู้ใช้งาน',
+    //  'ฝั่งผู้ดูแล'
+  ];
+  final List<Widget> tabs = const <Widget>[
+    UserTab(),
+    // AdminTab()
+  ];
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;

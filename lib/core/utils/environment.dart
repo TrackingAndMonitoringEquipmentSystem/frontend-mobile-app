@@ -1,5 +1,5 @@
 const String baseSchema = 'https';
-const String baseApiUrl = '471a-161-246-5-161.ap.ngrok.io';
+const String baseApiUrl = 'toollo-api.godprogrammer.dev';
 const int baseApiPort = 443;
 enum PublicsPath { getDepartments }
 enum AuthenPath { register, signIn, signOut }
@@ -15,7 +15,7 @@ enum LockerPath {
 enum LocationPath { getBuildings }
 enum DepartmentPath { getLockers }
 enum EquipmentPath { saveEquipments }
-enum BorrowingPath { getBorrowGroup }
+enum BorrowingPath { getBorrowGroup, listBorrowGroup }
 enum CameraPath { listByLockerId }
 
 enum TypeEquipmentPath {
@@ -55,6 +55,7 @@ const Map<EquipmentPath, String> equipment = {
 
 const Map<BorrowingPath, String> borrow = {
   BorrowingPath.getBorrowGroup: '/borrow/viewByGroup',
+  BorrowingPath.listBorrowGroup: '/group-borrow',
 };
 
 const Map<CameraPath, String> camera = {

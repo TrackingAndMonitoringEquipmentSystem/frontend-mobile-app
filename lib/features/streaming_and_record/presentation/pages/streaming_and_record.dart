@@ -13,11 +13,13 @@ class StreamingAndRecordPage extends StatelessWidget {
       ListAllLockerWidget(
         viewBy: StreamAndRecordView.department,
       ),
-      ListAllLockerWidget(
-        viewBy: StreamAndRecordView.location,
-      )
+      // ListAllLockerWidget(
+      //   viewBy: StreamAndRecordView.location,
+      // )
     ];
-    const tabsBar = ['แผนก', 'ที่ตั้ง'];
+    const tabsBar = [
+      'แผนก',
+    ];
     return Scaffold(
       drawer: const HomeDrawer(),
       key: _key,

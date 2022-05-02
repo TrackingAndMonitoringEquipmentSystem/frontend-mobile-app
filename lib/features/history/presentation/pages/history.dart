@@ -4,10 +4,13 @@ import 'package:frontend/features/history/presentation/widgets/borrowing_list_ta
 import 'package:frontend/features/history/presentation/widgets/fixing_request_list_tab.dart';
 
 class HistoryPage extends StatelessWidget {
-  final List<String> tabsBar = const ['รายการยืม/คืน', 'คำร้องขอแจ้งซ่อม'];
+  final List<String> tabsBar = const [
+    'รายการยืม/คืน',
+    //  'คำร้องขอแจ้งซ่อม'
+  ];
   final List<Widget> tabs = const <Widget>[
     BorrowingListTab(),
-    FixingRequestListTab()
+    // FixingRequestListTab()
   ];
   @override
   Widget build(BuildContext context) {

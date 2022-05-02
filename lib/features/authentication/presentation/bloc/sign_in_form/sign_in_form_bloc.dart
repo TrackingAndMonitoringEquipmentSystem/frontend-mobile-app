@@ -61,7 +61,21 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
                   authenticationFailureOrSuccess: restResult,
                 ),
               );
+            } else {
+              emit(
+                state.copyWith(
+                  isSubmitting: false,
+                  authenticationFailureOrSuccess: result,
+                ),
+              );
             }
+          } else {
+            emit(
+              state.copyWith(
+                isSubmitting: false,
+                authenticationFailureOrSuccess: null,
+              ),
+            );
           }
         },
         signInWithGooglePressed: (e) async {
