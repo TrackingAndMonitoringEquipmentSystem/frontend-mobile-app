@@ -18,7 +18,6 @@ class DashBoardPage extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
-    final List<int> list = [1, 2, 3, 4, 5];
     final ValueNotifier<int> currentCarouselIndex = useState(0);
     final isLoading = useState(false);
     final userName = useState('');

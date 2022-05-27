@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:frontend/core/domain/repositories/rest_failure.dart';
 import 'package:frontend/features/authentication/domain/entities/pre_register_user.dart';
 import 'package:frontend/features/authentication/domain/entities/user.dart';
 import 'package:frontend/features/authentication/domain/repositories/authentication_failure.dart';
@@ -35,4 +36,8 @@ abstract class AuthenticationRepository {
   UserType? get userType;
 
   User? get getFirebaseUser;
+
+  Future<Either<RestFailure, String>> addFaceId(String base64Image);
+
+  Future<void> reloadFirebaseUser();
 }

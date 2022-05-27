@@ -8,9 +8,9 @@ part 'department.freezed.dart';
 class Department with _$Department {
   const factory Department({
     required int id,
-    required String name,
-    required DateTime createdAt,
-    required DateTime updatedAt,
+    required String? name,
+    required DateTime? createdAt,
+    required DateTime? updatedAt,
     required UserType? createdBy,
     required UserType? updatedBy,
     required List<Locker>? lockers,
@@ -22,9 +22,13 @@ class Department with _$Department {
 
     return Department(
       id: json['id'] as int,
-      name: json['dept_name'] as String,
-      createdAt: DateTime.parse(json['created_at'] as String),
-      updatedAt: DateTime.parse(json['updated_at'] as String),
+      name: json['dept_name'] != null ? json['dept_name'] as String : null,
+      createdAt: json['created_at'] != null
+          ? DateTime.parse(json['created_at'] as String)
+          : null,
+      updatedAt: json['updated_at'] != null
+          ? DateTime.parse(json['updated_at'] as String)
+          : null,
       createdBy: json.containsKey('created_by')
           ? UserType.fromJson(json['created_by'] as Map<String, dynamic>)
           : null,

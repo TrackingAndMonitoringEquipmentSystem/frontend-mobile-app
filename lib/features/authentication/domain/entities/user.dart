@@ -31,13 +31,16 @@ class UserType with _$UserType {
       email: json['email'] as String,
       tel: json['tel'] as String,
       providerId:
-          json.containsKey('providerId') ? json['providerId'] as String : null,
-      gender: genderFromString(json['gender'] as String),
-      faceIdUrl: json['face_id'] as String,
-      profilePicUrl: json['profile_pic'] as String,
+          json['providerId'] != null ? json['providerId'] as String : null,
+      gender: json['gender'] != null
+          ? genderFromString(json['gender'] as String)
+          : null,
+      faceIdUrl: json['face_id'] != null ? json['face_id'] as String : null,
+      profilePicUrl:
+          json['profile_pic'] != null ? json['profile_pic'] as String : null,
       createdAt: DateTime.parse(json['created_at'] as String),
       updatedAt: DateTime.parse(json['updated_at'] as String),
-      department: json.containsKey('dept')
+      department: json['dept'] != null
           ? Department.fromJson(json['dept'] as Map<String, dynamic>)
           : null,
     );

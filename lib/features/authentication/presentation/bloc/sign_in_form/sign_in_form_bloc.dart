@@ -41,26 +41,43 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
         signInWithEmailAndPasswordPressed: (e) async {
           emit(
             state.copyWith(
-              isSubmitting: true,
               authenticationFailureOrSuccess: null,
+              isShowErrorMessage: true,
             ),
           );
           final isEmailValid = state.emailAddress.isValid();
           final isPasswordValid = state.password.isValid();
           if (isEmailValid && isPasswordValid) {
+            emit(
+              state.copyWith(
+                isSubmitting: true,
+              ),
+            );
             final result =
                 await _authenticationRepository.signInWithEmailAndPassword(
               emailAddress: state.emailAddress,
               password: state.password,
             );
             if (result.isRight()) {
-              final restResult = await _authenticationRepository.signIn();
-              emit(
-                state.copyWith(
-                  isSubmitting: false,
-                  authenticationFailureOrSuccess: restResult,
-                ),
-              );
+              final firebaseUser = _authenticationRepository.getFirebaseUser;
+              if (firebaseUser!.emailVerified) {
+                final restResult = await _authenticationRepository.signIn();
+                await firebaseUser.reload();
+                emit(
+                  state.copyWith(
+                    isSubmitting: false,
+                    authenticationFailureOrSuccess: restResult,
+                  ),
+                );
+              } else {
+                emit(
+                  state.copyWith(
+                    isSubmitting: false,
+                    authenticationFailureOrSuccess:
+                        const Left(AuthenticationFailure.emailNotVerified()),
+                  ),
+                );
+              }
             } else {
               emit(
                 state.copyWith(
@@ -69,13 +86,6 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
                 ),
               );
             }
-          } else {
-            emit(
-              state.copyWith(
-                isSubmitting: false,
-                authenticationFailureOrSuccess: null,
-              ),
-            );
           }
         },
         signInWithGooglePressed: (e) async {

@@ -153,10 +153,26 @@ class RegisterEnterOTPPage extends StatelessWidget {
                             Button(
                               'ลองอีกครั้ง',
                               onPressed: () {
-                                // controller.sendOTP();
+                                controller.sendOTP();
                                 AutoRouter.of(context)
                                     .push(const RegisterEnterEmailRoute());
                               },
+                            )
+                          ],
+                        )
+                      else
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            TextButton(
+                              onPressed: () {
+                                controller.sendOTP();
+                              },
+                              child: Text(
+                                'ส่งรหัสใหม่',
+                                style:
+                                    Theme.of(context).primaryTextTheme.caption,
+                              ),
                             )
                           ],
                         ),

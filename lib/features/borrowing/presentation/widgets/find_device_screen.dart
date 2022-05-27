@@ -58,13 +58,15 @@ class FindDevicesScreen extends HookWidget {
                       )
                       .toList();
 
-                  if (!isLoading.value) {
+                  if (!isLoading.value && devices.isNotEmpty) {
                     return RenderLockers(
                       lockerIds: lockerIds,
                       devices: devices,
                     );
                   } else {
-                    return Container();
+                    return const Center(
+                      child: Text('ไม่พบอุปกรณ์'),
+                    );
                   }
                 } else {
                   return const Center(

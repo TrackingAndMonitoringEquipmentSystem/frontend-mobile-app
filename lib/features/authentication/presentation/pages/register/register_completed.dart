@@ -51,6 +51,7 @@ class RegisterCompletedPage extends StatelessWidget {
                 height: 20,
               ),
               Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
                     'บัญชีของคุณยัง',
@@ -64,6 +65,11 @@ class RegisterCompletedPage extends StatelessWidget {
                         ?.copyWith(
                             color: const Color.fromRGBO(244, 186, 36, 1)),
                   ),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
                   Text(
                     'จากผู้ดูแลระบบ',
                     style: Theme.of(context).primaryTextTheme.bodyText1,
@@ -89,8 +95,7 @@ class RegisterCompletedPage extends StatelessWidget {
                     'กลับไปยังหน้าหลัก',
                     onPressed: () {
                       AutoRouter.of(context).popUntilRoot();
-                      AutoRouter.of(context)
-                          .push(const RegisterProfileDataRoute());
+                      AutoRouter.of(context).push(const HomeRoute());
                     },
                   )
                 ],

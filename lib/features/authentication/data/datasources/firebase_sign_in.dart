@@ -85,4 +85,8 @@ class FirebaseSignInAuth {
   Future<void> sendVerifyEmail() async {
     return _firebaseAuth.currentUser!.sendEmailVerification();
   }
+
+  Future<void> reloadUser() async {
+    return _firebaseAuth.currentUser?.reload();
+  }
 }

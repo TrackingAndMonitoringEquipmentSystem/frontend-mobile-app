@@ -22,7 +22,7 @@ class RegisterEnterRolePage extends StatelessWidget {
       child: BlocConsumer<RegisterEnterRoleBloc, RegisterEnterRoleState>(
         listener: (context, state) {
           if (state.isNavigateNextPage) {
-            AutoRouter.of(context).push(const RegisterEnterPinSettingRoute());
+            AutoRouter.of(context).push(const RegisterVerifyEmailRoute());
             context
                 .read<RegisterEnterRoleBloc>()
                 .add(SetState(state.copyWith(isNavigateNextPage: false)));
@@ -106,14 +106,14 @@ class RegisterEnterRolePage extends StatelessWidget {
                         },
                         listChoice: const [
                           {'displayText': 'Admin', 'value': Role.admin},
-                          {
-                            'displayText': 'Master maintainer',
-                            'value': Role.masterMaintainer
-                          },
-                          {
-                            'displayText': 'Maintainer',
-                            'value': Role.maintainer
-                          },
+                          // {
+                          //   'displayText': 'Master maintainer',
+                          //   'value': Role.masterMaintainer
+                          // },
+                          // {
+                          //   'displayText': 'Maintainer',
+                          //   'value': Role.maintainer
+                          // },
                           {
                             'displayText': 'User',
                             'value': Role.user,

@@ -1,8 +1,8 @@
 const String baseSchema = 'https';
-const String baseApiUrl = 'toollo-api.godprogrammer.dev';
+const String baseApiUrl = 'toollo-api-dev.godprogrammer.dev';
 const int baseApiPort = 443;
 enum PublicsPath { getDepartments }
-enum AuthenPath { register, signIn, signOut }
+enum AuthenPath { register, signIn, signOut, addFaceId }
 enum LockerPath {
   getLockersByDepartment,
   getLockers,
@@ -28,7 +28,8 @@ const Map<PublicsPath, String> publics = {
 const Map<AuthenPath, String> authen = {
   AuthenPath.register: '/authen/register',
   AuthenPath.signIn: '/authen/signin',
-  AuthenPath.signOut: '/authen/signout'
+  AuthenPath.signOut: '/authen/signout',
+  AuthenPath.addFaceId: '/users/addFaceId',
 };
 
 const Map<LockerPath, String> lockers = {

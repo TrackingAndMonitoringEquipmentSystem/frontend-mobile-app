@@ -50,87 +50,17 @@ class RegisterAddFaceIdCompletedPage extends StatelessWidget {
               const SizedBox(
                 height: 30,
               ),
-              Container(
-                padding: const EdgeInsets.all(15),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
-                  color: Colors.white,
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.3),
-                      spreadRadius: 2,
-                      blurRadius: 8,
-                      offset: const Offset(0, 8), // changes position of shadow
-                    ),
-                  ],
-                ),
-                child: Column(
-                  children: [
-                    Row(
-                      children: [
-                        Text(
-                          'เพิ่มข้อมูลส่วนตัวของคุณ',
-                          style: Theme.of(context).primaryTextTheme.bodyText1,
-                        ),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        const Icon(
-                          Icons.check_circle_outline,
-                          color: Color.fromRGBO(60, 60, 67, 0.6),
-                        ),
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        Text(
-                          'รูปภาพโปรไฟล์ เพศ และวันเกิด',
-                          style: Theme.of(context)
-                              .primaryTextTheme
-                              .bodyText1!
-                              .copyWith(
-                                color: Theme.of(context).colorScheme.secondary,
-                              ),
-                        ),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        const Icon(
-                          Icons.check_circle_outline,
-                          color: Color.fromRGBO(60, 60, 67, 0.6),
-                        ),
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        Text(
-                          'ถ่ายรูปหน้าตรงสำหรับ Face ID',
-                          style: Theme.of(context)
-                              .primaryTextTheme
-                              .bodyText1
-                              ?.copyWith(
-                                color: Theme.of(context).colorScheme.secondary,
-                              ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 30,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Button(
-                          'เริ่มต้นใช้งาน',
-                          onPressed: () {
-                            AutoRouter.of(context).push(const HomeRoute());
-                          },
-                        )
-                      ],
-                    )
-                  ],
-                ),
-              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Button(
+                    'เริ่มต้นใช้งาน',
+                    onPressed: () {
+                      AutoRouter.of(context).push(const HomeRoute());
+                    },
+                  )
+                ],
+              )
             ],
           ),
         ),

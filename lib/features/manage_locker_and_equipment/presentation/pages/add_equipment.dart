@@ -9,6 +9,7 @@ import 'package:frontend/core/domain/repositories/rest_failure.dart';
 import 'package:frontend/core/presentation/routes/router.gr.dart';
 import 'package:frontend/core/presentation/widgets/button.dart';
 import 'package:frontend/core/presentation/widgets/button_outline_widget.dart';
+import 'package:frontend/core/utils/helper.dart';
 import 'package:frontend/features/manage_locker_and_equipment/domain/dto/save_equipments_request.dart';
 import 'package:frontend/features/manage_locker_and_equipment/domain/locker-repository.dart';
 import 'package:frontend/features/manage_locker_and_equipment/presentation/widgets/equipment_form_widget.dart';
@@ -181,17 +182,5 @@ class AddEquipmentPage extends HookWidget {
       });
     });
     return widgets;
-  }
-
-  void handleErrorCase(BuildContext context, RestFailure failure) {
-    FlushbarHelper.createError(
-      message: failure.map<String>(
-        serverError: (e) => 'serverError',
-        badRequest: (e) => e.message,
-        unAuthorized: (e) => 'unAuthorized',
-        notFound: (e) => 'notFound',
-        unknownError: (e) => 'unknownError',
-      ),
-    ).show(context);
   }
 }

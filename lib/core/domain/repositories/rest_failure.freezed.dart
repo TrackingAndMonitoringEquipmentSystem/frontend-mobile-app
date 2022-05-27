@@ -39,6 +39,12 @@ class _$RestFailureTearOff {
   UnKnownError unknownError() {
     return const UnKnownError();
   }
+
+  ForBidden forBidden(String message) {
+    return ForBidden(
+      message,
+    );
+  }
 }
 
 /// @nodoc
@@ -53,6 +59,7 @@ mixin _$RestFailure {
     required TResult Function() unAuthorized,
     required TResult Function() notFound,
     required TResult Function() unknownError,
+    required TResult Function(String message) forBidden,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -62,6 +69,7 @@ mixin _$RestFailure {
     TResult Function()? unAuthorized,
     TResult Function()? notFound,
     TResult Function()? unknownError,
+    TResult Function(String message)? forBidden,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -71,6 +79,7 @@ mixin _$RestFailure {
     TResult Function()? unAuthorized,
     TResult Function()? notFound,
     TResult Function()? unknownError,
+    TResult Function(String message)? forBidden,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -81,6 +90,7 @@ mixin _$RestFailure {
     required TResult Function(UnAuthorized value) unAuthorized,
     required TResult Function(NotFound value) notFound,
     required TResult Function(UnKnownError value) unknownError,
+    required TResult Function(ForBidden value) forBidden,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -90,6 +100,7 @@ mixin _$RestFailure {
     TResult Function(UnAuthorized value)? unAuthorized,
     TResult Function(NotFound value)? notFound,
     TResult Function(UnKnownError value)? unknownError,
+    TResult Function(ForBidden value)? forBidden,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -99,6 +110,7 @@ mixin _$RestFailure {
     TResult Function(UnAuthorized value)? unAuthorized,
     TResult Function(NotFound value)? notFound,
     TResult Function(UnKnownError value)? unknownError,
+    TResult Function(ForBidden value)? forBidden,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -165,6 +177,7 @@ class _$ServerError implements ServerError {
     required TResult Function() unAuthorized,
     required TResult Function() notFound,
     required TResult Function() unknownError,
+    required TResult Function(String message) forBidden,
   }) {
     return serverError();
   }
@@ -177,6 +190,7 @@ class _$ServerError implements ServerError {
     TResult Function()? unAuthorized,
     TResult Function()? notFound,
     TResult Function()? unknownError,
+    TResult Function(String message)? forBidden,
   }) {
     return serverError?.call();
   }
@@ -189,6 +203,7 @@ class _$ServerError implements ServerError {
     TResult Function()? unAuthorized,
     TResult Function()? notFound,
     TResult Function()? unknownError,
+    TResult Function(String message)? forBidden,
     required TResult orElse(),
   }) {
     if (serverError != null) {
@@ -205,6 +220,7 @@ class _$ServerError implements ServerError {
     required TResult Function(UnAuthorized value) unAuthorized,
     required TResult Function(NotFound value) notFound,
     required TResult Function(UnKnownError value) unknownError,
+    required TResult Function(ForBidden value) forBidden,
   }) {
     return serverError(this);
   }
@@ -217,6 +233,7 @@ class _$ServerError implements ServerError {
     TResult Function(UnAuthorized value)? unAuthorized,
     TResult Function(NotFound value)? notFound,
     TResult Function(UnKnownError value)? unknownError,
+    TResult Function(ForBidden value)? forBidden,
   }) {
     return serverError?.call(this);
   }
@@ -229,6 +246,7 @@ class _$ServerError implements ServerError {
     TResult Function(UnAuthorized value)? unAuthorized,
     TResult Function(NotFound value)? notFound,
     TResult Function(UnKnownError value)? unknownError,
+    TResult Function(ForBidden value)? forBidden,
     required TResult orElse(),
   }) {
     if (serverError != null) {
@@ -310,6 +328,7 @@ class _$BadRequest implements BadRequest {
     required TResult Function() unAuthorized,
     required TResult Function() notFound,
     required TResult Function() unknownError,
+    required TResult Function(String message) forBidden,
   }) {
     return badRequest(message);
   }
@@ -322,6 +341,7 @@ class _$BadRequest implements BadRequest {
     TResult Function()? unAuthorized,
     TResult Function()? notFound,
     TResult Function()? unknownError,
+    TResult Function(String message)? forBidden,
   }) {
     return badRequest?.call(message);
   }
@@ -334,6 +354,7 @@ class _$BadRequest implements BadRequest {
     TResult Function()? unAuthorized,
     TResult Function()? notFound,
     TResult Function()? unknownError,
+    TResult Function(String message)? forBidden,
     required TResult orElse(),
   }) {
     if (badRequest != null) {
@@ -350,6 +371,7 @@ class _$BadRequest implements BadRequest {
     required TResult Function(UnAuthorized value) unAuthorized,
     required TResult Function(NotFound value) notFound,
     required TResult Function(UnKnownError value) unknownError,
+    required TResult Function(ForBidden value) forBidden,
   }) {
     return badRequest(this);
   }
@@ -362,6 +384,7 @@ class _$BadRequest implements BadRequest {
     TResult Function(UnAuthorized value)? unAuthorized,
     TResult Function(NotFound value)? notFound,
     TResult Function(UnKnownError value)? unknownError,
+    TResult Function(ForBidden value)? forBidden,
   }) {
     return badRequest?.call(this);
   }
@@ -374,6 +397,7 @@ class _$BadRequest implements BadRequest {
     TResult Function(UnAuthorized value)? unAuthorized,
     TResult Function(NotFound value)? notFound,
     TResult Function(UnKnownError value)? unknownError,
+    TResult Function(ForBidden value)? forBidden,
     required TResult orElse(),
   }) {
     if (badRequest != null) {
@@ -437,6 +461,7 @@ class _$UnAuthorized implements UnAuthorized {
     required TResult Function() unAuthorized,
     required TResult Function() notFound,
     required TResult Function() unknownError,
+    required TResult Function(String message) forBidden,
   }) {
     return unAuthorized();
   }
@@ -449,6 +474,7 @@ class _$UnAuthorized implements UnAuthorized {
     TResult Function()? unAuthorized,
     TResult Function()? notFound,
     TResult Function()? unknownError,
+    TResult Function(String message)? forBidden,
   }) {
     return unAuthorized?.call();
   }
@@ -461,6 +487,7 @@ class _$UnAuthorized implements UnAuthorized {
     TResult Function()? unAuthorized,
     TResult Function()? notFound,
     TResult Function()? unknownError,
+    TResult Function(String message)? forBidden,
     required TResult orElse(),
   }) {
     if (unAuthorized != null) {
@@ -477,6 +504,7 @@ class _$UnAuthorized implements UnAuthorized {
     required TResult Function(UnAuthorized value) unAuthorized,
     required TResult Function(NotFound value) notFound,
     required TResult Function(UnKnownError value) unknownError,
+    required TResult Function(ForBidden value) forBidden,
   }) {
     return unAuthorized(this);
   }
@@ -489,6 +517,7 @@ class _$UnAuthorized implements UnAuthorized {
     TResult Function(UnAuthorized value)? unAuthorized,
     TResult Function(NotFound value)? notFound,
     TResult Function(UnKnownError value)? unknownError,
+    TResult Function(ForBidden value)? forBidden,
   }) {
     return unAuthorized?.call(this);
   }
@@ -501,6 +530,7 @@ class _$UnAuthorized implements UnAuthorized {
     TResult Function(UnAuthorized value)? unAuthorized,
     TResult Function(NotFound value)? notFound,
     TResult Function(UnKnownError value)? unknownError,
+    TResult Function(ForBidden value)? forBidden,
     required TResult orElse(),
   }) {
     if (unAuthorized != null) {
@@ -557,6 +587,7 @@ class _$NotFound implements NotFound {
     required TResult Function() unAuthorized,
     required TResult Function() notFound,
     required TResult Function() unknownError,
+    required TResult Function(String message) forBidden,
   }) {
     return notFound();
   }
@@ -569,6 +600,7 @@ class _$NotFound implements NotFound {
     TResult Function()? unAuthorized,
     TResult Function()? notFound,
     TResult Function()? unknownError,
+    TResult Function(String message)? forBidden,
   }) {
     return notFound?.call();
   }
@@ -581,6 +613,7 @@ class _$NotFound implements NotFound {
     TResult Function()? unAuthorized,
     TResult Function()? notFound,
     TResult Function()? unknownError,
+    TResult Function(String message)? forBidden,
     required TResult orElse(),
   }) {
     if (notFound != null) {
@@ -597,6 +630,7 @@ class _$NotFound implements NotFound {
     required TResult Function(UnAuthorized value) unAuthorized,
     required TResult Function(NotFound value) notFound,
     required TResult Function(UnKnownError value) unknownError,
+    required TResult Function(ForBidden value) forBidden,
   }) {
     return notFound(this);
   }
@@ -609,6 +643,7 @@ class _$NotFound implements NotFound {
     TResult Function(UnAuthorized value)? unAuthorized,
     TResult Function(NotFound value)? notFound,
     TResult Function(UnKnownError value)? unknownError,
+    TResult Function(ForBidden value)? forBidden,
   }) {
     return notFound?.call(this);
   }
@@ -621,6 +656,7 @@ class _$NotFound implements NotFound {
     TResult Function(UnAuthorized value)? unAuthorized,
     TResult Function(NotFound value)? notFound,
     TResult Function(UnKnownError value)? unknownError,
+    TResult Function(ForBidden value)? forBidden,
     required TResult orElse(),
   }) {
     if (notFound != null) {
@@ -679,6 +715,7 @@ class _$UnKnownError implements UnKnownError {
     required TResult Function() unAuthorized,
     required TResult Function() notFound,
     required TResult Function() unknownError,
+    required TResult Function(String message) forBidden,
   }) {
     return unknownError();
   }
@@ -691,6 +728,7 @@ class _$UnKnownError implements UnKnownError {
     TResult Function()? unAuthorized,
     TResult Function()? notFound,
     TResult Function()? unknownError,
+    TResult Function(String message)? forBidden,
   }) {
     return unknownError?.call();
   }
@@ -703,6 +741,7 @@ class _$UnKnownError implements UnKnownError {
     TResult Function()? unAuthorized,
     TResult Function()? notFound,
     TResult Function()? unknownError,
+    TResult Function(String message)? forBidden,
     required TResult orElse(),
   }) {
     if (unknownError != null) {
@@ -719,6 +758,7 @@ class _$UnKnownError implements UnKnownError {
     required TResult Function(UnAuthorized value) unAuthorized,
     required TResult Function(NotFound value) notFound,
     required TResult Function(UnKnownError value) unknownError,
+    required TResult Function(ForBidden value) forBidden,
   }) {
     return unknownError(this);
   }
@@ -731,6 +771,7 @@ class _$UnKnownError implements UnKnownError {
     TResult Function(UnAuthorized value)? unAuthorized,
     TResult Function(NotFound value)? notFound,
     TResult Function(UnKnownError value)? unknownError,
+    TResult Function(ForBidden value)? forBidden,
   }) {
     return unknownError?.call(this);
   }
@@ -743,6 +784,7 @@ class _$UnKnownError implements UnKnownError {
     TResult Function(UnAuthorized value)? unAuthorized,
     TResult Function(NotFound value)? notFound,
     TResult Function(UnKnownError value)? unknownError,
+    TResult Function(ForBidden value)? forBidden,
     required TResult orElse(),
   }) {
     if (unknownError != null) {
@@ -754,4 +796,159 @@ class _$UnKnownError implements UnKnownError {
 
 abstract class UnKnownError implements RestFailure {
   const factory UnKnownError() = _$UnKnownError;
+}
+
+/// @nodoc
+abstract class $ForBiddenCopyWith<$Res> {
+  factory $ForBiddenCopyWith(ForBidden value, $Res Function(ForBidden) then) =
+      _$ForBiddenCopyWithImpl<$Res>;
+  $Res call({String message});
+}
+
+/// @nodoc
+class _$ForBiddenCopyWithImpl<$Res> extends _$RestFailureCopyWithImpl<$Res>
+    implements $ForBiddenCopyWith<$Res> {
+  _$ForBiddenCopyWithImpl(ForBidden _value, $Res Function(ForBidden) _then)
+      : super(_value, (v) => _then(v as ForBidden));
+
+  @override
+  ForBidden get _value => super._value as ForBidden;
+
+  @override
+  $Res call({
+    Object? message = freezed,
+  }) {
+    return _then(ForBidden(
+      message == freezed
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ForBidden implements ForBidden {
+  const _$ForBidden(this.message);
+
+  @override
+  final String message;
+
+  @override
+  String toString() {
+    return 'RestFailure.forBidden(message: $message)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is ForBidden &&
+            const DeepCollectionEquality().equals(other.message, message));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(message));
+
+  @JsonKey(ignore: true)
+  @override
+  $ForBiddenCopyWith<ForBidden> get copyWith =>
+      _$ForBiddenCopyWithImpl<ForBidden>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() serverError,
+    required TResult Function(String message) badRequest,
+    required TResult Function() unAuthorized,
+    required TResult Function() notFound,
+    required TResult Function() unknownError,
+    required TResult Function(String message) forBidden,
+  }) {
+    return forBidden(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? serverError,
+    TResult Function(String message)? badRequest,
+    TResult Function()? unAuthorized,
+    TResult Function()? notFound,
+    TResult Function()? unknownError,
+    TResult Function(String message)? forBidden,
+  }) {
+    return forBidden?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? serverError,
+    TResult Function(String message)? badRequest,
+    TResult Function()? unAuthorized,
+    TResult Function()? notFound,
+    TResult Function()? unknownError,
+    TResult Function(String message)? forBidden,
+    required TResult orElse(),
+  }) {
+    if (forBidden != null) {
+      return forBidden(message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ServerError value) serverError,
+    required TResult Function(BadRequest value) badRequest,
+    required TResult Function(UnAuthorized value) unAuthorized,
+    required TResult Function(NotFound value) notFound,
+    required TResult Function(UnKnownError value) unknownError,
+    required TResult Function(ForBidden value) forBidden,
+  }) {
+    return forBidden(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(ServerError value)? serverError,
+    TResult Function(BadRequest value)? badRequest,
+    TResult Function(UnAuthorized value)? unAuthorized,
+    TResult Function(NotFound value)? notFound,
+    TResult Function(UnKnownError value)? unknownError,
+    TResult Function(ForBidden value)? forBidden,
+  }) {
+    return forBidden?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ServerError value)? serverError,
+    TResult Function(BadRequest value)? badRequest,
+    TResult Function(UnAuthorized value)? unAuthorized,
+    TResult Function(NotFound value)? notFound,
+    TResult Function(UnKnownError value)? unknownError,
+    TResult Function(ForBidden value)? forBidden,
+    required TResult orElse(),
+  }) {
+    if (forBidden != null) {
+      return forBidden(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ForBidden implements RestFailure {
+  const factory ForBidden(String message) = _$ForBidden;
+
+  String get message;
+  @JsonKey(ignore: true)
+  $ForBiddenCopyWith<ForBidden> get copyWith =>
+      throw _privateConstructorUsedError;
 }

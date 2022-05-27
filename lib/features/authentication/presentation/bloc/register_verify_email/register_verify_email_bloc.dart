@@ -31,14 +31,16 @@ class RegisterVerifyEmailBloc
           emit(state.copyWith(isLoading: true));
           final result =
               await _authenticationRepository.registerWithEmailAndPassword();
-          result.fold(
-            (l) => emit(
+          result.fold((l) {
+            emit(
               state.copyWith(isError: true, isLoading: false, authError: l),
-            ),
-            (r) => emit(
+            );
+            print('Error: $l');
+          }, (r) {
+            emit(
               state.copyWith(isLoading: false),
-            ),
-          );
+            );
+          });
         },
       );
     });

@@ -47,6 +47,7 @@ void handleErrorCase(BuildContext context, RestFailure failure) {
       unAuthorized: (e) => 'unAuthorized',
       notFound: (e) => 'notFound',
       unknownError: (e) => 'unknownError',
+      forBidden: (e) => e.message,
     ),
   ).show(context);
 }

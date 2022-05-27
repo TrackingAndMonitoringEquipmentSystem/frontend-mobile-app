@@ -43,6 +43,7 @@ class RegisterEnterRoleBloc
         initState: (e) async {
           emit(state.copyWith(isLoading: true, isError: false));
           final departments = await _publicRepository.getDepartments();
+          print('departments: $departments');
           emit(state.copyWith(isLoading: false));
           departments.fold((l) {
             emit(state.copyWith(isError: true));

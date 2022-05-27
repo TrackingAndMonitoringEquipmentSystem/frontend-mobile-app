@@ -2,13 +2,15 @@ import 'package:another_flushbar/flushbar_helper.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:frontend/core/presentation/routes/router.gr.dart';
 import 'package:frontend/core/presentation/widgets/button.dart';
+import 'package:frontend/features/authentication/domain/repositories/authentication_repository.dart';
 import 'package:frontend/features/authentication/presentation/bloc/register_verify_email/register_verify_email_bloc.dart';
 import 'package:frontend/injection.dart';
 import 'package:loading_overlay_pro/loading_overlay_pro.dart';
 
-class RegisterVerifyEmailPage extends StatelessWidget {
+class RegisterVerifyEmailPage extends HookWidget {
   const RegisterVerifyEmailPage({Key? key}) : super(key: key);
 
   @override
@@ -37,8 +39,14 @@ class RegisterVerifyEmailPage extends StatelessWidget {
                   FlushbarHelper.createError(message: 'อีเมลหรือรหัสไม่ถูกต้อง')
                       .show(context),
               cantSendVerifyEmail: () => FlushbarHelper.createError(
-                      message: 'เกิดข้อผิดพลาดในการส่งอีเมลกรุณาลองอีกครั้ง')
-                  .show(context),
+                message: 'เกิดข้อผิดพลาดในการส่งอีเมลกรุณาลองอีกครั้ง',
+              ).show(context),
+              waitingForApprove: () => FlushbarHelper.createError(
+                message: 'กรุณารอผู้ดูแลระบบอนุมัติบัญชีก่อน',
+              ).show(context),
+              emailNotVerified: () =>
+                  FlushbarHelper.createError(message: 'ยังไม่ได้ยืนยันอีเมล')
+                      .show(context),
             );
             context.read<RegisterVerifyEmailBloc>().add(
                   SetState(state.copyWith(isError: false)),
@@ -47,6 +55,7 @@ class RegisterVerifyEmailPage extends StatelessWidget {
         },
         builder: (context, state) => LoadingOverlayPro(
           isLoading: state.isLoading,
+          progressIndicator: const CircularProgressIndicator(),
           child: Scaffold(
             body: SafeArea(
               child: Padding(
@@ -116,9 +125,27 @@ class RegisterVerifyEmailPage extends StatelessWidget {
                       children: [
                         Button(
                           'ถัดไป',
-                          onPressed: () {
-                            AutoRouter.of(context)
-                                .push(const RegisterCompletedRoute());
+                          onPressed: () async {
+                            final _authenticationRepository =
+                                getIt<AuthenticationRepository>();
+                            context
+                                .read<RegisterVerifyEmailBloc>()
+                                .add(SetState(state.copyWith(isLoading: true)));
+                            await _authenticationRepository
+                                .reloadFirebaseUser();
+                            context.read<RegisterVerifyEmailBloc>().add(
+                                  SetState(state.copyWith(isLoading: false)),
+                                );
+                            final firebaseUser =
+                                _authenticationRepository.getFirebaseUser;
+                            if (firebaseUser?.emailVerified == true) {
+                              AutoRouter.of(context)
+                                  .push(const RegisterAddFaceIdRoute());
+                            } else {
+                              FlushbarHelper.createError(
+                                      message: 'ยังไม่ได้ยืนยันอีเมล')
+                                  .show(context);
+                            }
                           },
                         )
                       ],
@@ -139,14 +166,19 @@ class RegisterVerifyEmailPage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            context
+                                .read<RegisterVerifyEmailBloc>()
+                                .add(const InitState());
+                          },
                           child: Text(
                             'ส่งลิงค์ยืนยันอีกครั้ง',
                             style: Theme.of(context)
                                 .primaryTextTheme
                                 .caption
                                 ?.copyWith(
-                                    color: Theme.of(context).primaryColor),
+                                  color: Theme.of(context).primaryColor,
+                                ),
                           ),
                         ),
                         Text(
@@ -154,7 +186,11 @@ class RegisterVerifyEmailPage extends StatelessWidget {
                           style: Theme.of(context).primaryTextTheme.caption,
                         ),
                         TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            AutoRouter.of(context).popUntilRouteWithName(
+                              RegisterEnterEmailRoute.name,
+                            );
+                          },
                           child: Text(
                             'เปลี่ยน Email',
                             style: Theme.of(context)
@@ -173,7 +209,15 @@ class RegisterVerifyEmailPage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         TextButton(
-                          onPressed: () {},
+                          onPressed: () async {
+                            context
+                                .read<RegisterVerifyEmailBloc>()
+                                .add(SetState(state.copyWith(isLoading: true)));
+                            await getIt<AuthenticationRepository>().signOut();
+                            context.read<RegisterVerifyEmailBloc>().add(
+                                SetState(state.copyWith(isLoading: false)));
+                            AutoRouter.of(context).replace(const SignInRoute());
+                          },
                           child: Text(
                             'กลับไปหน้าหลัก',
                             style: Theme.of(context).primaryTextTheme.caption,

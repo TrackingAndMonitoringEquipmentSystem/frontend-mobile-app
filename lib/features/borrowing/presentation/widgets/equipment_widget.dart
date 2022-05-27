@@ -83,8 +83,8 @@ class EquipmentWidget extends HookWidget {
                     Expanded(
                       child: Text(
                         typeEquipment.duration != null
-                            ? typeEquipment.duration.toString()
-                            : '-',
+                            ? '${typeEquipment.duration.toString()} วัน'
+                            : '- วัน',
                       ),
                     ),
                   ],

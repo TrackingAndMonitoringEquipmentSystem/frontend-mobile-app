@@ -11,4 +11,6 @@ class AuthenticationFailure with _$AuthenticationFailure {
       InvalidEmailAndPasswordCombination;
   const factory AuthenticationFailure.cantSendVerifyEmail() =
       CantSendVerifyEmail;
+  const factory AuthenticationFailure.waitingForApprove() = WaitingForApprove;
+  const factory AuthenticationFailure.emailNotVerified() = EmailNotVerified;
 }

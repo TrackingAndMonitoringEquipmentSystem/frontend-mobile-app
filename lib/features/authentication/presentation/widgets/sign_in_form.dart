@@ -24,6 +24,8 @@ class SignInForm extends StatelessWidget {
                 invalidEmailAndPasswordCombination: (_) =>
                     'Invalide email and password combination',
                 cantSendVerifyEmail: (_) => 'Cant send verify email',
+                waitingForApprove: (_) => 'กรุณารอผู้ดูแลระบบอนุมัติบัญชีก่อน',
+                emailNotVerified: (_) => 'ยังไม่ได้ยืนยันอีเมล',
               ),
             ).show(context),
             (_) => AutoRouter.of(context).replace(const HomeRoute()),
@@ -175,58 +177,58 @@ class SignInForm extends StatelessWidget {
                   const SizedBox(
                     height: 30,
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      InkWell(
-                        onTap: () {
-                          context.read<SignInFormBloc>().add(
-                                const SignInFormEvent
-                                    .signInWithFacebookPressed(),
-                              );
-                        },
-                        child: SizedBox(
-                          width: 80,
-                          height: 80,
-                          child: Image.asset(
-                            'assets/icons/authentication_feature/fb.png',
-                          ),
-                        ),
-                      ),
-                      InkWell(
-                        onTap: () {
-                          context.read<SignInFormBloc>().add(
-                                const SignInFormEvent.signInWithGooglePressed(),
-                              );
-                        },
-                        child: SizedBox(
-                          width: 80,
-                          height: 80,
-                          child: Image.asset(
-                            'assets/icons/authentication_feature/google.png',
-                          ),
-                        ),
-                      ),
-                      InkWell(
-                        onTap: () {
-                          context.read<SignInFormBloc>().add(
-                                const SignInFormEvent
-                                    .signInWithTwitterPressed(),
-                              );
-                        },
-                        child: SizedBox(
-                          width: 80,
-                          height: 80,
-                          child: Image.asset(
-                            'assets/icons/authentication_feature/twitter.png',
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
+                  // Row(
+                  //   mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  //   children: [
+                  //     InkWell(
+                  //       onTap: () {
+                  //         context.read<SignInFormBloc>().add(
+                  //               const SignInFormEvent
+                  //                   .signInWithFacebookPressed(),
+                  //             );
+                  //       },
+                  //       child: SizedBox(
+                  //         width: 80,
+                  //         height: 80,
+                  //         child: Image.asset(
+                  //           'assets/icons/authentication_feature/fb.png',
+                  //         ),
+                  //       ),
+                  //     ),
+                  //     InkWell(
+                  //       onTap: () {
+                  //         context.read<SignInFormBloc>().add(
+                  //               const SignInFormEvent.signInWithGooglePressed(),
+                  //             );
+                  //       },
+                  //       child: SizedBox(
+                  //         width: 80,
+                  //         height: 80,
+                  //         child: Image.asset(
+                  //           'assets/icons/authentication_feature/google.png',
+                  //         ),
+                  //       ),
+                  //     ),
+                  //     InkWell(
+                  //       onTap: () {
+                  //         context.read<SignInFormBloc>().add(
+                  //               const SignInFormEvent
+                  //                   .signInWithTwitterPressed(),
+                  //             );
+                  //       },
+                  //       child: SizedBox(
+                  //         width: 80,
+                  //         height: 80,
+                  //         child: Image.asset(
+                  //           'assets/icons/authentication_feature/twitter.png',
+                  //         ),
+                  //       ),
+                  //     ),
+                  //   ],
+                  // ),
+                  // const SizedBox(
+                  //   height: 10,
+                  // ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [

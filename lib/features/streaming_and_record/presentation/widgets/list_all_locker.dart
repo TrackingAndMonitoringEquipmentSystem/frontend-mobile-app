@@ -108,7 +108,7 @@ class ListAllLockerWidget extends HookWidget {
             width: 10,
           ),
           Text(
-            department!.name,
+            department!.name!,
             style: Theme.of(context).primaryTextTheme.bodyText1,
           ),
           Text(

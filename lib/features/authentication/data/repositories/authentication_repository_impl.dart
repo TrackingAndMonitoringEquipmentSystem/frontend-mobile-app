@@ -4,6 +4,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
+import 'package:frontend/core/domain/repositories/rest_failure.dart';
 import 'package:frontend/features/authentication/data/datasources/auth_rest_api.dart';
 import 'package:frontend/features/authentication/data/datasources/facebook_sign_in_auth.dart';
 import 'package:frontend/features/authentication/data/datasources/firebase_sign_in.dart';
@@ -45,6 +46,7 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
       preRegisterUser.email!.getOrCrash(),
       preRegisterUser.password!.getOrCrash(),
     );
+    print('firebaseAuthResult: $firebaseAuthResult');
     if (firebaseAuthResult.isLeft()) {
       return Left(
         firebaseAuthResult.fold((l) => l, (r) => throw UnimplementedError()),
@@ -64,10 +66,15 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
       roleId: preRegisterUser.role!.index + 1,
       departmentId: preRegisterUser.department!.id,
     );
-
+    print('result: $result');
     if (result.isLeft()) {
       return const Left(AuthenticationFailure.serverError());
     }
+    result.fold((l) => null, (r) {
+      final user = UserType.fromJson(r['data'] as Map<String, dynamic>);
+      _userType = user;
+      print('_userType: $_userType');
+    });
     try {
       await _firebaseSigInAuth.sendVerifyEmail();
     } catch (error) {
@@ -215,7 +222,23 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
     final fcmToken = (await _firebaseMessaging.getToken())!;
     final result = await _authRestApi.signIn(token: token, fcmToken: fcmToken);
     if (result.isLeft()) {
-      return const Left(AuthenticationFailure.serverError());
+      final restFailure = result.fold((l) => l, (r) => null);
+      return Left(
+        restFailure!.map<AuthenticationFailure>(
+          serverError: (_) => const AuthenticationFailure.serverError(),
+          badRequest: (_) => const AuthenticationFailure.serverError(),
+          unAuthorized: (_) => const AuthenticationFailure.serverError(),
+          notFound: (_) => const AuthenticationFailure.serverError(),
+          unknownError: (_) => const AuthenticationFailure.serverError(),
+          forBidden: (value) {
+            if (value.message == 'cannot signin') {
+              return const AuthenticationFailure.waitingForApprove();
+            } else {
+              return const AuthenticationFailure.serverError();
+            }
+          },
+        ),
+      );
     }
 
     _userType = result.fold(
@@ -236,4 +259,21 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
 
   @override
   User? get getFirebaseUser => _firebaseSigInAuth.getCurrentUser();
+
+  @override
+  Future<Either<RestFailure, String>> addFaceId(String base64Image) async {
+    final token = await _firebaseSigInAuth.getCurrentUser()!.getIdToken();
+    final user = await getSignedInUser();
+    final result = await _authRestApi.addFaceId(
+      token: token,
+      userId: user!.id,
+      base64Image: base64Image,
+    );
+    return result.fold((l) => Left(l), (r) => const Right('success'));
+  }
+
+  @override
+  Future<void> reloadFirebaseUser() {
+    return _firebaseSigInAuth.reloadUser();
+  }
 }

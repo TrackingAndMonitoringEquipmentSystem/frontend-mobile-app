@@ -20,9 +20,9 @@ class _$DepartmentTearOff {
 
   _Department call(
       {required int id,
-      required String name,
-      required DateTime createdAt,
-      required DateTime updatedAt,
+      required String? name,
+      required DateTime? createdAt,
+      required DateTime? updatedAt,
       required UserType? createdBy,
       required UserType? updatedBy,
       required List<Locker>? lockers}) {
@@ -44,9 +44,9 @@ const $Department = _$DepartmentTearOff();
 /// @nodoc
 mixin _$Department {
   int get id => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
-  DateTime get createdAt => throw _privateConstructorUsedError;
-  DateTime get updatedAt => throw _privateConstructorUsedError;
+  String? get name => throw _privateConstructorUsedError;
+  DateTime? get createdAt => throw _privateConstructorUsedError;
+  DateTime? get updatedAt => throw _privateConstructorUsedError;
   UserType? get createdBy => throw _privateConstructorUsedError;
   UserType? get updatedBy => throw _privateConstructorUsedError;
   List<Locker>? get lockers => throw _privateConstructorUsedError;
@@ -63,9 +63,9 @@ abstract class $DepartmentCopyWith<$Res> {
       _$DepartmentCopyWithImpl<$Res>;
   $Res call(
       {int id,
-      String name,
-      DateTime createdAt,
-      DateTime updatedAt,
+      String? name,
+      DateTime? createdAt,
+      DateTime? updatedAt,
       UserType? createdBy,
       UserType? updatedBy,
       List<Locker>? lockers});
@@ -100,15 +100,15 @@ class _$DepartmentCopyWithImpl<$Res> implements $DepartmentCopyWith<$Res> {
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       createdAt: createdAt == freezed
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as DateTime?,
       updatedAt: updatedAt == freezed
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as DateTime?,
       createdBy: createdBy == freezed
           ? _value.createdBy
           : createdBy // ignore: cast_nullable_to_non_nullable
@@ -155,9 +155,9 @@ abstract class _$DepartmentCopyWith<$Res> implements $DepartmentCopyWith<$Res> {
   @override
   $Res call(
       {int id,
-      String name,
-      DateTime createdAt,
-      DateTime updatedAt,
+      String? name,
+      DateTime? createdAt,
+      DateTime? updatedAt,
       UserType? createdBy,
       UserType? updatedBy,
       List<Locker>? lockers});
@@ -196,15 +196,15 @@ class __$DepartmentCopyWithImpl<$Res> extends _$DepartmentCopyWithImpl<$Res>
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       createdAt: createdAt == freezed
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as DateTime?,
       updatedAt: updatedAt == freezed
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as DateTime?,
       createdBy: createdBy == freezed
           ? _value.createdBy
           : createdBy // ignore: cast_nullable_to_non_nullable
@@ -236,11 +236,11 @@ class _$_Department implements _Department {
   @override
   final int id;
   @override
-  final String name;
+  final String? name;
   @override
-  final DateTime createdAt;
+  final DateTime? createdAt;
   @override
-  final DateTime updatedAt;
+  final DateTime? updatedAt;
   @override
   final UserType? createdBy;
   @override
@@ -287,9 +287,9 @@ class _$_Department implements _Department {
 abstract class _Department implements Department {
   const factory _Department(
       {required int id,
-      required String name,
-      required DateTime createdAt,
-      required DateTime updatedAt,
+      required String? name,
+      required DateTime? createdAt,
+      required DateTime? updatedAt,
       required UserType? createdBy,
       required UserType? updatedBy,
       required List<Locker>? lockers}) = _$_Department;
@@ -297,11 +297,11 @@ abstract class _Department implements Department {
   @override
   int get id;
   @override
-  String get name;
+  String? get name;
   @override
-  DateTime get createdAt;
+  DateTime? get createdAt;
   @override
-  DateTime get updatedAt;
+  DateTime? get updatedAt;
   @override
   UserType? get createdBy;
   @override

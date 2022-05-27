@@ -5,6 +5,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:frontend/core/domain/repositories/rest_failure.dart';
 import 'package:frontend/core/presentation/widgets/button.dart';
 import 'package:frontend/core/utils/enum.dart';
+import 'package:frontend/core/utils/helper.dart';
 import 'package:frontend/features/borrowing/domain/borrowing_repository.dart';
 import 'package:frontend/features/borrowing/domain/entities/borrowing.dart';
 import 'package:frontend/features/manage_locker_and_equipment/presentation/widgets/equipment_display_widget.dart';
@@ -173,17 +174,5 @@ class BorrowReturnPage extends HookWidget {
         ),
       ),
     );
-  }
-
-  void handleErrorCase(BuildContext context, RestFailure failure) {
-    FlushbarHelper.createError(
-      message: failure.map<String>(
-        serverError: (e) => 'serverError',
-        badRequest: (e) => e.message,
-        unAuthorized: (e) => 'unAuthorized',
-        notFound: (e) => 'notFound',
-        unknownError: (e) => 'unknownError',
-      ),
-    ).show(context);
   }
 }
