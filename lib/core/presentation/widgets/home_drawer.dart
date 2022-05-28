@@ -34,8 +34,6 @@ class HomeDrawer extends HookWidget {
                   child: Row(
                     children: const [
                       AccountCardWidget(
-                        imagePath:
-                            'assets/images/account/profile_image_example.png',
                         name: 'Darlene Robertson',
                         role: Role.superAdmin,
                         department: 'แผนกบริหาร',

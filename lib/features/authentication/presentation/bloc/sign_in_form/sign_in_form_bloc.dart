@@ -62,7 +62,9 @@ class SignInFormBloc extends Bloc<SignInFormEvent, SignInFormState> {
               final firebaseUser = _authenticationRepository.getFirebaseUser;
               if (firebaseUser!.emailVerified) {
                 final restResult = await _authenticationRepository.signIn();
-                await firebaseUser.reload();
+                await _authenticationRepository.reloadFirebaseUser();
+                final tokenResult = await firebaseUser.getIdTokenResult(true);
+                print(tokenResult);
                 emit(
                   state.copyWith(
                     isSubmitting: false,

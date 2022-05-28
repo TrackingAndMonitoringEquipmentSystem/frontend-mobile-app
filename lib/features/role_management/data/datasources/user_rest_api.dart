@@ -53,4 +53,50 @@ class UserRestApi {
       return const Left(UnKnownError());
     }
   }
+
+  Future<Either<RestFailure, Map<String, dynamic>>> approvedOrReject({
+    required String token,
+    required int userId,
+    required bool isApproved,
+  }) async {
+    try {
+      final uri = Uri(
+        scheme: environment.baseSchema,
+        host: environment.baseApiUrl,
+        port: environment.baseApiPort,
+        path:
+            '${environment.users[environment.UserPath.approveOrReject]}/$userId/$isApproved',
+      );
+
+      final response = await _httpClient.put(
+        uri,
+        headers: <String, String>{
+          'Authorization': 'Bearer $token',
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+      );
+      print('response.statusCode: ${response.statusCode}');
+      print('reason: ${response.reasonPhrase}');
+      print('body: ${response.body}');
+      if (response.statusCode == 200) {
+        return Right(
+          jsonDecode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>,
+        );
+      } else {
+        final body =
+            jsonDecode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>;
+        String message;
+        if (body.containsKey('message') && body['message'] != null) {
+          message = body['message'] as String;
+        } else {
+          message = response.reasonPhrase!;
+        }
+        return Left(
+          RestFailure.fromHttpStatusCode(response.statusCode, message),
+        );
+      }
+    } catch (error) {
+      return const Left(UnKnownError());
+    }
+  }
 }

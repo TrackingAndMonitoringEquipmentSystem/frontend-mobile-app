@@ -3,16 +3,17 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:frontend/core/presentation/widgets/button.dart';
 import 'package:frontend/core/utils/enum.dart';
 import 'package:frontend/core/utils/helper.dart' as helper;
+import 'package:frontend/core/utils/environment.dart' as environment;
 
 class AccountCardWidget extends HookWidget {
-  final String imagePath;
+  final String? profileUrl;
   final String name;
   final String? email;
   final Role role;
   final String department;
   final Widget? bottomWidget;
   const AccountCardWidget({
-    required this.imagePath,
+    this.profileUrl,
     required this.name,
     required this.role,
     this.email = '',
@@ -21,16 +22,27 @@ class AccountCardWidget extends HookWidget {
   });
   @override
   Widget build(BuildContext context) {
+    final imageUrl = Uri(
+      scheme: environment.baseSchema,
+      host: environment.baseApiUrl,
+      port: environment.baseApiPort,
+      path: profileUrl,
+    );
     return Expanded(
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           CircleAvatar(
             radius: 27,
-            backgroundImage: Image.asset(
-              imagePath,
-              fit: BoxFit.fill,
-            ).image,
+            backgroundImage: profileUrl != null
+                ? Image.network(
+                    imageUrl.toString(),
+                    fit: BoxFit.fill,
+                  ).image
+                : Image.asset(
+                    'assets/images/authentication_feature/register_account.png',
+                    fit: BoxFit.fill,
+                  ).image,
           ),
           const SizedBox(
             width: 20,

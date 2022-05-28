@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:frontend/core/presentation/widgets/home_drawer.dart';
 import 'package:frontend/core/presentation/widgets/tabs_widget.dart';
+import 'package:frontend/features/authentication/domain/entities/user.dart';
 import 'package:frontend/features/authentication/domain/repositories/authentication_repository.dart';
 import 'package:frontend/features/borrowing/presentation/widgets/equipment_tab.dart';
 import 'package:frontend/features/borrowing/presentation/widgets/locker_tab.dart';
@@ -20,15 +21,14 @@ class DashBoardPage extends HookWidget {
     final screenSize = MediaQuery.of(context).size;
     final ValueNotifier<int> currentCarouselIndex = useState(0);
     final isLoading = useState(false);
-    final userName = useState('');
+    final user = useState<UserType?>(null);
     useEffect(
       () {
         Future<void>.microtask(() async {
           isLoading.value = true;
-          final user =
+          user.value =
               await getIt<AuthenticationRepository>().getSignedInUser();
           isLoading.value = false;
-          userName.value = user!.firstName;
         });
 
         return null;
@@ -62,15 +62,18 @@ class DashBoardPage extends HookWidget {
                   ),
                   child: Row(
                     children: [
-                      IconButton(
-                        onPressed: () => _key.currentState!.openDrawer(),
-                        icon: const Icon(
-                          Icons.menu,
-                          color: Colors.white,
+                      if (user.value != null &&
+                          (user.value!.role!.id == 1 ||
+                              user.value!.role!.id == 2))
+                        IconButton(
+                          onPressed: () => _key.currentState!.openDrawer(),
+                          icon: const Icon(
+                            Icons.menu,
+                            color: Colors.white,
+                          ),
                         ),
-                      ),
                       Text(
-                        'Welcome, ${userName.value}',
+                        'Welcome, ${user.value != null ? user.value!.firstName : ''}',
                         style: Theme.of(context)
                             .primaryTextTheme
                             .headline1!

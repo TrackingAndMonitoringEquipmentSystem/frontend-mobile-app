@@ -12,11 +12,10 @@
 
 import 'package:auto_route/auto_route.dart' as _i57;
 import 'package:flutter/material.dart' as _i69;
-import 'package:flutter_blue_plus/flutter_blue_plus.dart' as _i74;
+import 'package:flutter_blue_plus/flutter_blue_plus.dart' as _i73;
 
 import '../../../features/account/presentation/pages/account.dart' as _i68;
 import '../../../features/account/presentation/pages/edit_account.dart' as _i27;
-import '../../../features/authentication/domain/entities/user.dart' as _i70;
 import '../../../features/authentication/presentation/pages/register/register_add_face_id.dart'
     as _i17;
 import '../../../features/authentication/presentation/pages/register/register_add_face_id_completed.dart'
@@ -63,7 +62,7 @@ import '../../../features/fixing/presentation/pages/fixing_locker_detail.dart'
     as _i51;
 import '../../../features/history/presentation/pages/history.dart' as _i64;
 import '../../../features/manage_locker_and_equipment/domain/entities/locker.dart'
-    as _i72;
+    as _i71;
 import '../../../features/manage_locker_and_equipment/presentation/pages/add_category.dart'
     as _i39;
 import '../../../features/manage_locker_and_equipment/presentation/pages/add_equipment.dart'
@@ -133,7 +132,7 @@ import '../../../features/role_management/presentation/pages/department_manageme
 import '../../../features/role_management/presentation/pages/role_management.dart'
     as _i59;
 import '../../../features/streaming_and_record/domain/entities/camera.dart'
-    as _i73;
+    as _i72;
 import '../../../features/streaming_and_record/presentation/pages/all_camera.dart'
     as _i48;
 import '../../../features/streaming_and_record/presentation/pages/live_camera.dart'
@@ -142,7 +141,7 @@ import '../../../features/streaming_and_record/presentation/pages/record_video.d
     as _i50;
 import '../../../features/streaming_and_record/presentation/pages/streaming_and_record.dart'
     as _i61;
-import '../../utils/enum.dart' as _i71;
+import '../../utils/enum.dart' as _i70;
 import '../page/add_account.dart' as _i24;
 import '../page/home.dart' as _i19;
 import '../page/splash.dart' as _i1;
@@ -240,10 +239,8 @@ class AppRouter extends _i57.RootStackRouter {
           routeData: routeData, child: const _i20.AddUserPage());
     },
     ApproveUserRoute.name: (routeData) {
-      final args = routeData.argsAs<ApproveUserRouteArgs>();
       return _i57.MaterialPageX<dynamic>(
-          routeData: routeData,
-          child: _i21.ApproveUserPage(key: args.key, users: args.users));
+          routeData: routeData, child: const _i21.ApproveUserPage());
     },
     DepartmentManagementRoute.name: (routeData) {
       return _i57.MaterialPageX<dynamic>(
@@ -829,26 +826,11 @@ class AddUserRoute extends _i57.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i21.ApproveUserPage]
-class ApproveUserRoute extends _i57.PageRouteInfo<ApproveUserRouteArgs> {
-  ApproveUserRoute({_i69.Key? key, required List<_i70.UserType> users})
-      : super(ApproveUserRoute.name,
-            path: '/approve-user-page',
-            args: ApproveUserRouteArgs(key: key, users: users));
+class ApproveUserRoute extends _i57.PageRouteInfo<void> {
+  const ApproveUserRoute()
+      : super(ApproveUserRoute.name, path: '/approve-user-page');
 
   static const String name = 'ApproveUserRoute';
-}
-
-class ApproveUserRouteArgs {
-  const ApproveUserRouteArgs({this.key, required this.users});
-
-  final _i69.Key? key;
-
-  final List<_i70.UserType> users;
-
-  @override
-  String toString() {
-    return 'ApproveUserRouteArgs{key: $key, users: $users}';
-  }
 }
 
 /// generated route for
@@ -1057,7 +1039,7 @@ class MacAddressHelpRoute extends _i57.PageRouteInfo<void> {
 class AllLocationRoute extends _i57.PageRouteInfo<AllLocationRouteArgs> {
   AllLocationRoute(
       {_i69.Key? key,
-      required _i71.ManagementLocationView viewBy,
+      required _i70.ManagementLocationView viewBy,
       required String title,
       bool isHasLocation = true})
       : super(AllLocationRoute.name,
@@ -1080,7 +1062,7 @@ class AllLocationRouteArgs {
 
   final _i69.Key? key;
 
-  final _i71.ManagementLocationView viewBy;
+  final _i70.ManagementLocationView viewBy;
 
   final String title;
 
@@ -1244,7 +1226,7 @@ class ChangePermissionTypeRouteArgs {
 /// generated route for
 /// [_i48.AllCameraPage]
 class AllCameraRoute extends _i57.PageRouteInfo<AllCameraRouteArgs> {
-  AllCameraRoute({_i69.Key? key, required _i72.Locker locker})
+  AllCameraRoute({_i69.Key? key, required _i71.Locker locker})
       : super(AllCameraRoute.name,
             path: '/all-camera-page',
             args: AllCameraRouteArgs(key: key, locker: locker));
@@ -1257,7 +1239,7 @@ class AllCameraRouteArgs {
 
   final _i69.Key? key;
 
-  final _i72.Locker locker;
+  final _i71.Locker locker;
 
   @override
   String toString() {
@@ -1270,7 +1252,7 @@ class AllCameraRouteArgs {
 class LiveCameraRoute extends _i57.PageRouteInfo<LiveCameraRouteArgs> {
   LiveCameraRoute(
       {_i69.Key? key,
-      required _i73.Camera camera,
+      required _i72.Camera camera,
       required int index,
       required int lockerId})
       : super(LiveCameraRoute.name,
@@ -1290,7 +1272,7 @@ class LiveCameraRouteArgs {
 
   final _i69.Key? key;
 
-  final _i73.Camera camera;
+  final _i72.Camera camera;
 
   final int index;
 
@@ -1546,8 +1528,8 @@ class ListLockerRoute extends _i57.PageRouteInfo<void> {
 class ToggleLockerRoute extends _i57.PageRouteInfo<ToggleLockerRouteArgs> {
   ToggleLockerRoute(
       {_i69.Key? key,
-      required _i72.Locker locker,
-      required _i74.BluetoothDevice device})
+      required _i71.Locker locker,
+      required _i73.BluetoothDevice device})
       : super(ToggleLockerRoute.name,
             path: ':lockerId',
             args: ToggleLockerRouteArgs(
@@ -1562,9 +1544,9 @@ class ToggleLockerRouteArgs {
 
   final _i69.Key? key;
 
-  final _i72.Locker locker;
+  final _i71.Locker locker;
 
-  final _i74.BluetoothDevice device;
+  final _i73.BluetoothDevice device;
 
   @override
   String toString() {

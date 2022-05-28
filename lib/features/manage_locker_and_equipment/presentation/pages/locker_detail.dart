@@ -170,7 +170,6 @@ class LockerDetailPage extends HookWidget {
             Row(
               children: [
                 AccountCardWidget(
-                  imagePath: 'assets/images/account/profile_image_example.png',
                   name: 'Bessie Cooper',
                   role: Role.superAdmin,
                   department: 'แผนกบริหาร',
@@ -192,7 +191,6 @@ class LockerDetailPage extends HookWidget {
             Row(
               children: [
                 AccountCardWidget(
-                  imagePath: 'assets/images/account/profile_image_example.png',
                   name: 'Darlene Robertson',
                   role: Role.superAdmin,
                   department: 'แผนกบริหาร',

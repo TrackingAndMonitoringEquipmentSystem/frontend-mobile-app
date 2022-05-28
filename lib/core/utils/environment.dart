@@ -20,7 +20,7 @@ enum CameraPath { listByLockerId }
 enum TypeEquipmentPath {
   userViewEquipments,
 }
-enum UserPath { getWaitingUser }
+enum UserPath { getWaitingUser, approveOrReject }
 
 const Map<PublicsPath, String> publics = {
   PublicsPath.getDepartments: '/publics/departments'
@@ -70,4 +70,5 @@ const Map<TypeEquipmentPath, String> typeEquipment = {
 
 const Map<UserPath, String> users = {
   UserPath.getWaitingUser: '/users/getWaitingUser',
+  UserPath.approveOrReject: '/users/approveOrReject'
 };

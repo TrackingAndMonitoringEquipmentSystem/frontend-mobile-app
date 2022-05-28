@@ -2,6 +2,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:frontend/core/utils/enum.dart';
 import 'package:frontend/core/utils/helper.dart';
 import 'package:frontend/features/manage_locker_and_equipment/domain/entities/department.dart';
+import 'package:frontend/features/role_management/domain/entities/role_data.dart';
 
 part 'user.freezed.dart';
 
@@ -20,6 +21,7 @@ class UserType with _$UserType {
     required DateTime createdAt,
     required DateTime updatedAt,
     required Department? department,
+    required RoleData? role,
   }) = _User;
 
   @override
@@ -36,12 +38,16 @@ class UserType with _$UserType {
           ? genderFromString(json['gender'] as String)
           : null,
       faceIdUrl: json['face_id'] != null ? json['face_id'] as String : null,
-      profilePicUrl:
-          json['profile_pic'] != null ? json['profile_pic'] as String : null,
+      profilePicUrl: json['profile_pic'] != null && json['profile_pic'] != ''
+          ? json['profile_pic'] as String
+          : null,
       createdAt: DateTime.parse(json['created_at'] as String),
       updatedAt: DateTime.parse(json['updated_at'] as String),
       department: json['dept'] != null
           ? Department.fromJson(json['dept'] as Map<String, dynamic>)
+          : null,
+      role: json['role'] != null
+          ? RoleData.fromJson(json['role'] as Map<String, dynamic>)
           : null,
     );
   }

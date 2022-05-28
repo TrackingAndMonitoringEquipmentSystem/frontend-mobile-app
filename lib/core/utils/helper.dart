@@ -51,3 +51,18 @@ void handleErrorCase(BuildContext context, RestFailure failure) {
     ),
   ).show(context);
 }
+
+Role roleFromString(String value) {
+  switch (value) {
+    case 'super_admin':
+      return Role.superAdmin;
+    case 'admin':
+      return Role.admin;
+    case 'master_maintainer':
+      return Role.masterMaintainer;
+    case 'maintainer':
+      return Role.maintainer;
+    default:
+      return Role.user;
+  }
+}

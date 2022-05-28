@@ -166,10 +166,14 @@ class RegisterVerifyEmailPage extends HookWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         TextButton(
-                          onPressed: () {
+                          onPressed: () async {
                             context
                                 .read<RegisterVerifyEmailBloc>()
-                                .add(const InitState());
+                                .add(SetState(state.copyWith(isLoading: true)));
+                            await getIt<AuthenticationRepository>()
+                                .sendVerifyEmail();
+                            context.read<RegisterVerifyEmailBloc>().add(
+                                SetState(state.copyWith(isLoading: false)));
                           },
                           child: Text(
                             'ส่งลิงค์ยืนยันอีกครั้ง',

@@ -24,4 +24,20 @@ class UserRepositoryImpl implements UserRepository {
       );
     });
   }
+
+  @override
+  Future<Either<RestFailure, String>> approveOrReject(
+      {required int userId, required bool isApproved}) async {
+    final token = await _firebaseSigInAuth.getCurrentUser()!.getIdToken();
+    final result = await _userRestApi.approvedOrReject(
+      token: token,
+      userId: userId,
+      isApproved: isApproved,
+    );
+    return result.fold((l) => Left(l), (r) {
+      return const Right(
+        'succeed',
+      );
+    });
+  }
 }

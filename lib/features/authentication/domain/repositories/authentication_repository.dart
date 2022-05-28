@@ -40,4 +40,6 @@ abstract class AuthenticationRepository {
   Future<Either<RestFailure, String>> addFaceId(String base64Image);
 
   Future<void> reloadFirebaseUser();
+
+  Future<void> sendVerifyEmail();
 }

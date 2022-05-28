@@ -126,8 +126,6 @@ class DepartmentDetailPage extends StatelessWidget {
                     child: SizedBox(
                       width: 300,
                       child: AccountCardWidget(
-                        imagePath:
-                            'assets/images/account/profile_image_example.png',
                         name: 'Darlene Robertson',
                         role: Role.superAdmin,
                         department: 'แผนกบริหาร',

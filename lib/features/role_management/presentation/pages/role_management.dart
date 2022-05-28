@@ -105,8 +105,7 @@ class RoleManagementPage extends HookWidget {
                   ),
                   trailing: const Icon(Icons.arrow_forward_ios),
                   onTap: () {
-                    AutoRouter.of(context)
-                        .push(ApproveUserRoute(users: waitingUsers.value));
+                    AutoRouter.of(context).push(const ApproveUserRoute());
                   },
                 ),
               ),

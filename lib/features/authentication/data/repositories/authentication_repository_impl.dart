@@ -276,4 +276,9 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
   Future<void> reloadFirebaseUser() {
     return _firebaseSigInAuth.reloadUser();
   }
+
+  @override
+  Future<void> sendVerifyEmail() {
+    return _firebaseSigInAuth.sendVerifyEmail();
+  }
 }

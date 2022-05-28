@@ -2,16 +2,33 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:frontend/core/presentation/routes/router.gr.dart';
+import 'package:frontend/core/utils/enum.dart';
+import 'package:frontend/core/utils/helper.dart';
+import 'package:frontend/features/authentication/domain/entities/user.dart';
 import 'package:frontend/features/authentication/domain/repositories/authentication_repository.dart';
 import 'package:frontend/injection.dart';
 import 'package:loading_overlay_pro/loading_overlay_pro.dart';
+import 'package:frontend/core/utils/environment.dart' as environment;
 
 class AccountPage extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
     final isLoading = useState(false);
-
+    final user = useState<UserType?>(null);
+    useEffect(
+      () {
+        Future.microtask(() async {
+          isLoading.value = true;
+          user.value =
+              await getIt<AuthenticationRepository>().getSignedInUser();
+          print('profilePicUrl: ${user.value?.profilePicUrl == null}');
+          isLoading.value = false;
+        });
+        return null;
+      },
+      [],
+    );
     return LoadingOverlayPro(
       isLoading: isLoading.value,
       progressIndicator: const CircularProgressIndicator(),
@@ -39,7 +56,9 @@ class AccountPage extends HookWidget {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
-                                  'Darlene Robertson',
+                                  user.value != null
+                                      ? '${user.value!.firstName} ${user.value!.lastName}'
+                                      : '',
                                   style: Theme.of(context)
                                       .primaryTextTheme
                                       .headline1,
@@ -47,20 +66,21 @@ class AccountPage extends HookWidget {
                                 const SizedBox(
                                   width: 20,
                                 ),
-                                Image.asset(
-                                  'assets/icons/role_management/super_admin_icon.png',
-                                  width: 40,
-                                  height: 40,
-                                ),
+                                if (user.value != null)
+                                  renderRoleIcon(
+                                    roleFromString(user.value!.role!.name!),
+                                  ),
                               ],
                             ),
                             Text(
-                              'Super admin | แผนกบริหาร',
+                              user.value != null
+                                  ? '${roleFromString(user.value!.role!.name!).toNameString()} | ${user.value!.department!.name}'
+                                  : '',
                               style:
                                   Theme.of(context).primaryTextTheme.bodyText1,
                             ),
                             Text(
-                              'kenzi.lawson@example.com',
+                              user.value != null ? user.value!.email : '',
                               style:
                                   Theme.of(context).primaryTextTheme.bodyText1,
                             ),
@@ -72,10 +92,20 @@ class AccountPage extends HookWidget {
                       alignment: Alignment.topCenter,
                       child: CircleAvatar(
                         radius: 40,
-                        backgroundImage: Image.asset(
-                          'assets/images/account/profile_image_example.png',
-                          fit: BoxFit.fill,
-                        ).image,
+                        backgroundImage: user.value?.profilePicUrl != null
+                            ? Image.network(
+                                Uri(
+                                  scheme: environment.baseSchema,
+                                  host: environment.baseApiUrl,
+                                  port: environment.baseApiPort,
+                                  path: user.value?.profilePicUrl,
+                                ).toString(),
+                                fit: BoxFit.fill,
+                              ).image
+                            : Image.asset(
+                                'assets/images/authentication_feature/register_account.png',
+                                fit: BoxFit.fill,
+                              ).image,
                       ),
                     )
                   ],
@@ -164,6 +194,28 @@ class AccountPage extends HookWidget {
           ),
         ),
       ),
+    );
+  }
+
+  Widget renderRoleIcon(Role role) {
+    if (role == Role.user) {
+      return Container();
+    }
+
+    String assetPath;
+    if (role == Role.superAdmin) {
+      assetPath = 'assets/icons/role_management/super_admin_icon.png';
+    } else if (role == Role.admin) {
+      assetPath = 'assets/icons/role_management/admin_icon.png';
+    } else if (role == Role.masterMaintainer) {
+      assetPath = 'assets/icons/role_management/master_maintainer_icon.png';
+    } else {
+      assetPath = 'assets/icons/role_management/maintainer_icon.png';
+    }
+    return Image.asset(
+      assetPath,
+      width: 30,
+      height: 30,
     );
   }
 }
