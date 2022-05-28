@@ -51,63 +51,58 @@ class HomeDrawer extends HookWidget {
                 child: Column(
                   // mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    // InkWell(
-                    //   onTap: () {},
-                    //   child:
-
-                    //   Container(
-                    //     decoration: topRoute.name == 'RoleManagementRoute'
-                    //         ? BoxDecoration(
-                    //             gradient: const LinearGradient(
-                    //               begin: Alignment.topLeft,
-                    //               end: Alignment.bottomRight,
-                    //               colors: [
-                    //                 Color.fromRGBO(255, 241, 248, 1),
-                    //                 Color.fromRGBO(250, 245, 255, 1),
-                    //                 Color.fromRGBO(243, 232, 255, 1),
-                    //               ],
-                    //             ),
-                    //             borderRadius: BorderRadius.circular(8.0),
-                    //           )
-                    //         : null,
-                    //     child: ListTile(
-                    //       leading: Image.asset(
-                    //         topRoute.name == 'RoleManagementRoute'
-                    //             ? 'assets/icons/core/account_group_icon_active.png'
-                    //             : 'assets/icons/core/account_group_icon_inactive.png',
-                    //         width: 50,
-                    //         height: 40,
-                    //         fit: BoxFit.fill,
-                    //       ),
-                    //       title: Text(
-                    //         'การจัดการสิทธิ',
-                    //         style: Theme.of(context)
-                    //             .primaryTextTheme
-                    //             .headline1!
-                    //             .copyWith(
-                    //               color: topRoute.name == 'RoleManagementRoute'
-                    //                   ? Theme.of(context).colorScheme.secondary
-                    //                   : Colors.black,
-                    //             ),
-                    //       ),
-                    //       onTap: () {
-                    //         if (topRoute.name == 'DashBoardRoute') {
-                    //           AutoRouter.of(context)
-                    //               .popAndPush(const RoleManagementRoute());
-                    //         } else if (topRoute.name == 'RoleManagementRoute') {
-                    //           AutoRouter.of(context).pop();
-                    //           AutoRouter.of(context)
-                    //               .popAndPush(const RoleManagementRoute());
-                    //         } else {
-                    //           AutoRouter.of(context).pop();
-                    //           AutoRouter.of(context).pop();
-                    //           AutoRouter.of(context)
-                    //               .popAndPush(const RoleManagementRoute());
-                    //         }
-                    //       },
-                    //     ),
-                    //   ),
-                    // ),
+                    Container(
+                      decoration: topRoute.name == 'RoleManagementRoute'
+                          ? BoxDecoration(
+                              gradient: const LinearGradient(
+                                begin: Alignment.topLeft,
+                                end: Alignment.bottomRight,
+                                colors: [
+                                  Color.fromRGBO(255, 241, 248, 1),
+                                  Color.fromRGBO(250, 245, 255, 1),
+                                  Color.fromRGBO(243, 232, 255, 1),
+                                ],
+                              ),
+                              borderRadius: BorderRadius.circular(8.0),
+                            )
+                          : null,
+                      child: ListTile(
+                        leading: Image.asset(
+                          topRoute.name == 'RoleManagementRoute'
+                              ? 'assets/icons/core/account_group_icon_active.png'
+                              : 'assets/icons/core/account_group_icon_inactive.png',
+                          width: 50,
+                          height: 40,
+                          fit: BoxFit.fill,
+                        ),
+                        title: Text(
+                          'การจัดการสิทธิ',
+                          style: Theme.of(context)
+                              .primaryTextTheme
+                              .headline1!
+                              .copyWith(
+                                color: topRoute.name == 'RoleManagementRoute'
+                                    ? Theme.of(context).colorScheme.secondary
+                                    : Colors.black,
+                              ),
+                        ),
+                        onTap: () {
+                          if (topRoute.name == 'DashBoardRoute') {
+                            AutoRouter.of(context)
+                                .popAndPush(const RoleManagementRoute());
+                          } else if (topRoute.name == 'RoleManagementRoute') {
+                            AutoRouter.of(context).pop();
+                            AutoRouter.of(context)
+                                .popAndPush(const RoleManagementRoute());
+                          } else {
+                            AutoRouter.of(context).pop();
+                            AutoRouter.of(context).pop();
+                            AutoRouter.of(context)
+                                .popAndPush(const RoleManagementRoute());
+                          }
+                        },
+                      ),
+                    ),
                     Container(
                       decoration:
                           topRoute.name == 'ManageLockerAndEquipmentRoute'

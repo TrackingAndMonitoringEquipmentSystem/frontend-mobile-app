@@ -17,10 +17,11 @@ enum DepartmentPath { getLockers }
 enum EquipmentPath { saveEquipments }
 enum BorrowingPath { getBorrowGroup, listBorrowGroup }
 enum CameraPath { listByLockerId }
-
 enum TypeEquipmentPath {
   userViewEquipments,
 }
+enum UserPath { getWaitingUser }
+
 const Map<PublicsPath, String> publics = {
   PublicsPath.getDepartments: '/publics/departments'
 };
@@ -65,4 +66,8 @@ const Map<CameraPath, String> camera = {
 
 const Map<TypeEquipmentPath, String> typeEquipment = {
   TypeEquipmentPath.userViewEquipments: '/type-equipment/userViewEquipment',
+};
+
+const Map<UserPath, String> users = {
+  UserPath.getWaitingUser: '/users/getWaitingUser',
 };

@@ -3,9 +3,11 @@ import 'package:frontend/core/presentation/widgets/account_card_widget.dart';
 import 'package:frontend/core/presentation/widgets/button.dart';
 import 'package:frontend/core/presentation/widgets/search_box_widget.dart';
 import 'package:frontend/core/utils/enum.dart';
+import 'package:frontend/features/authentication/domain/entities/user.dart';
 
 class ApproveUserPage extends StatelessWidget {
-  const ApproveUserPage({Key? key}) : super(key: key);
+  final List<UserType> users;
+  const ApproveUserPage({Key? key, required this.users}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -31,12 +33,14 @@ class ApproveUserPage extends StatelessWidget {
               SizedBox(
                 width: screenSize.width * 0.8,
                 height: 50,
-                child: SearchBoxWidget(
-                  placeHolder: 'ค้าหาชื่อ,แผนก, Email',
-                  onChanged: (value) {
-                    print(value);
-                  },
-                ),
+                child: Row(children: [
+                  SearchBoxWidget(
+                    placeHolder: 'ค้าหาชื่อ,แผนก, Email',
+                    onChanged: (value) {
+                      print(value);
+                    },
+                  ),
+                ]),
               )
             ],
           ),
@@ -47,14 +51,14 @@ class ApproveUserPage extends StatelessWidget {
             height: 5,
           ),
           const SizedBox(
-            height: 30,
+            height: 10,
           ),
           Row(
             children: [
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Text(
-                  '16 Account',
+                  '${users.length} Account',
                   style: Theme.of(context).primaryTextTheme.headline2,
                 ),
               )
@@ -64,7 +68,7 @@ class ApproveUserPage extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: ListView.builder(
-                itemCount: 30,
+                itemCount: users.length,
                 itemBuilder: (context, index) {
                   return Padding(
                     padding: const EdgeInsets.symmetric(vertical: 20),
@@ -75,15 +79,20 @@ class ApproveUserPage extends StatelessWidget {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const SizedBox(
+                            SizedBox(
                               width: 300,
-                              child: AccountCardWidget(
-                                imagePath:
-                                    'assets/images/account/profile_image_example.png',
-                                name: 'Darlene Robertson',
-                                role: Role.superAdmin,
-                                department: 'แผนกบริหาร',
-                                email: 'dolores.chambers@example.com',
+                              child: Row(
+                                children: [
+                                  AccountCardWidget(
+                                    imagePath:
+                                        'assets/images/account/profile_image_example.png',
+                                    name:
+                                        '${users[index].firstName} ${users[index].lastName}',
+                                    role: Role.superAdmin,
+                                    department: users[index].department!.name!,
+                                    email: users[index].email,
+                                  ),
+                                ],
                               ),
                             ),
                             const SizedBox(
@@ -97,9 +106,13 @@ class ApproveUserPage extends StatelessWidget {
                                 SizedBox(
                                   width: 100,
                                   height: 40,
-                                  child: Button(
-                                    'อนุมัติ',
-                                    onPressed: () {},
+                                  child: Row(
+                                    children: [
+                                      Button(
+                                        'อนุมัติ',
+                                        onPressed: () {},
+                                      ),
+                                    ],
                                   ),
                                 ),
                                 const SizedBox(
@@ -108,23 +121,19 @@ class ApproveUserPage extends StatelessWidget {
                                 SizedBox(
                                   width: 100,
                                   height: 40,
-                                  child: Button(
-                                    'ลบ',
-                                    onPressed: () {},
-                                    color: Theme.of(context)
-                                        .colorScheme
-                                        .background,
-                                    textColor: Colors.black,
-                                  ),
+                                  child: Row(children: [
+                                    Button(
+                                      'ลบ',
+                                      onPressed: () {},
+                                      color: Colors.grey[200],
+                                      textColor: Colors.black,
+                                    ),
+                                  ]),
                                 ),
                               ],
                             )
                           ],
                         ),
-                        Text(
-                          '2d',
-                          style: Theme.of(context).primaryTextTheme.caption,
-                        )
                       ],
                     ),
                   );
