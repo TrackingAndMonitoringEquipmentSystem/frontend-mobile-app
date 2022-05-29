@@ -1,5 +1,5 @@
 const String baseSchema = 'https';
-const String baseApiUrl = 'toollo-api-dev.godprogrammer.dev';
+const String baseApiUrl = 'toollo-api.godprogrammer.dev';
 const int baseApiPort = 443;
 enum PublicsPath { getDepartments }
 enum AuthenPath { register, signIn, signOut, addFaceId }

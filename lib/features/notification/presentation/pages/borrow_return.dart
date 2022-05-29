@@ -29,13 +29,17 @@ class BorrowReturnPage extends HookWidget {
       () {
         Future<void>.microtask(() async {
           isLoading.value = true;
-          final result = await getIt<BorrowingRepository>()
-              .getBorrowGroup(borrowReturnGroupId);
-          isLoading.value = false;
-          result.fold(
-            (l) => handleErrorCase(context, l),
-            (r) => borrowings.value = r,
-          );
+          try {
+            final result = await getIt<BorrowingRepository>()
+                .getBorrowGroup(borrowReturnGroupId);
+            isLoading.value = false;
+            result.fold(
+              (l) => handleErrorCase(context, l),
+              (r) => borrowings.value = r,
+            );
+          } catch (error) {
+            print('Error: $error');
+          }
         });
 
         return null;
@@ -79,44 +83,56 @@ class BorrowReturnPage extends HookWidget {
                       flex: 3,
                       child: Text(
                         DateFormat('dd-MM-yyy HH:mm น.')
-                            .format(borrowings.value[0].borrowedAt),
+                            .format(borrowings.value[0].borrowedAt.toLocal()),
                       ),
                     ),
                   ],
                 ),
               Row(
-                children: const [
-                  Expanded(
+                children: [
+                  const Expanded(
                     flex: 2,
                     child: Text('ชื่อ :'),
                   ),
                   Expanded(
                     flex: 3,
-                    child: Text('เครื่องมือช่าง'),
+                    child: Text(
+                      borrowings.value.isNotEmpty
+                          ? borrowings.value[0].equipment.locker!.name
+                          : 'loading...',
+                    ),
                   ),
                 ],
               ),
               Row(
-                children: const [
-                  Expanded(
+                children: [
+                  const Expanded(
                     flex: 2,
                     child: Text('Locker ID :'),
                   ),
                   Expanded(
                     flex: 3,
-                    child: Text('11111111'),
+                    child: Text(
+                      borrowings.value.isNotEmpty
+                          ? borrowings.value[0].equipment.locker!.id.toString()
+                          : 'loading...',
+                    ),
                   ),
                 ],
               ),
               Row(
-                children: const [
-                  Expanded(
+                children: [
+                  const Expanded(
                     flex: 2,
                     child: Text('สถานที่ตั้ง'),
                   ),
                   Expanded(
                     flex: 3,
-                    child: Text('ห้อง 504 ชั้น 5 Headquarters'),
+                    child: Text(
+                      borrowings.value.isNotEmpty
+                          ? 'ห้อง ${borrowings.value[0].equipment.locker!.room.name} ชั้น ${borrowings.value[0].equipment.locker!.room.floor!.name} อาคาร ${borrowings.value[0].equipment.locker!.room.floor!.building!.name}'
+                          : 'loading...',
+                    ),
                   ),
                 ],
               ),
@@ -137,6 +153,7 @@ class BorrowReturnPage extends HookWidget {
                 child: ListView.builder(
                   itemCount: borrowings.value.length,
                   itemBuilder: (context, index) {
+                    print(borrowings.value[index].equipment);
                     return Card(
                       child: SizedBox(
                         width: 200,

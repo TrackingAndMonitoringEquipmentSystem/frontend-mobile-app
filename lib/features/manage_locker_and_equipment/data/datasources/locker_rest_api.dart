@@ -79,7 +79,7 @@ class LockerRestApi {
         body: jsonEncode({
           'locker_name': name,
           'description': description,
-          'deptId': departmentIds.map((e) => {'id': e}).toList(),
+          'deptId': departmentIds,
           'roomId': roomId,
         }),
       );
@@ -260,6 +260,8 @@ class LockerRestApi {
         },
         body: jsonEncode(saveEquipmentsRequest.toJson()),
       );
+      print(
+          'saveEquipmentsRequest.toJson(): ${saveEquipmentsRequest.toJson()}');
       print(response.reasonPhrase);
       print(response.body);
       if (response.statusCode == 201) {

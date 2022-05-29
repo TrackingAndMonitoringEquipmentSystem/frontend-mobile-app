@@ -10,16 +10,20 @@ import 'package:frontend/core/presentation/widgets/input_text.dart';
 import 'package:frontend/core/utils/environment.dart';
 
 class EquipmentFormWidget extends HookWidget {
-  final int id;
+  final int? id;
   final Widget image;
   final List<String> macAddresses;
   final void Function(Map<String, dynamic> dataUpdated) onChanged;
+  final bool isShowError;
+  final bool isMacAddressDuplicated;
   const EquipmentFormWidget({
     Key? key,
-    required this.id,
+    this.id,
     required this.image,
     required this.macAddresses,
     required this.onChanged,
+    this.isShowError = false,
+    this.isMacAddressDuplicated = false,
   }) : super(key: key);
 
   @override
@@ -36,6 +40,7 @@ class EquipmentFormWidget extends HookWidget {
           child: Column(
             children: [
               EquipmentImageDisplayWidget(
+                key: key,
                 image: image,
                 size: const Size(104, 104),
               )
@@ -60,20 +65,48 @@ class EquipmentFormWidget extends HookWidget {
                     },
                     label: 'ชื่ออุปกรณ์',
                     placeHolder: 'ชื่ออุปกรณ์',
+                    isError: isShowError && name.value.isEmpty,
+                    errorMessage: 'กรุณากรอกค่า',
                   ),
                 ],
               ),
+              // Row(
+              //   children: [
+              //     BottomSheetSingleSelectWithAddChoice(
+              //       label: 'เลือกหมวดหมู่',
+              //       placeHolder: 'เลือกหมวดหมู่',
+              //       listChoice: const [
+              //         {'displayText': 'ไม่มีหมวดหมู่', 'value': 1},
+              //       ],
+              //       initialValue: {'displayText': 'ไม่มีหมวดหมู่', 'value': 1},
+              //       onChanged: (value) {
+              //         typeId.value = value!['value'] as int;
+              //         onChanged({
+              //           'name': name.value,
+              //           'typeId': typeId.value,
+              //           'duration': duration.value,
+              //           'macAddress': macAddress.value,
+              //         });
+              //       },
+              //       addChoiceText: 'เพิ่มหมวดหมู่',
+              //       onAddChoice: (context) {
+              //         AutoRouter.of(context).pop();
+              //       },
+              //     )
+              //   ],
+              // ),
               Row(
                 children: [
-                  BottomSheetSingleSelectWithAddChoice(
-                    label: 'เลือกหมวดหมู่',
-                    placeHolder: 'เลือกหมวดหมู่',
-                    listChoice: const [
-                      {'displayText': 'ไม่มีหมวดหมู่', 'value': 1},
-                    ],
-                    initialValue: {'displayText': 'ไม่มีหมวดหมู่', 'value': 1},
+                  InputText(
                     onChanged: (value) {
-                      typeId.value = value!['value'] as int;
+                      final parse = int.tryParse(value);
+                      if (parse != null && parse > 0) {
+                        duration.value = parse;
+                      } else if (value.isEmpty) {
+                        duration.value = null;
+                      } else {
+                        duration.value = -1;
+                      }
                       onChanged({
                         'name': name.value,
                         'typeId': typeId.value,
@@ -81,30 +114,15 @@ class EquipmentFormWidget extends HookWidget {
                         'macAddress': macAddress.value,
                       });
                     },
-                    addChoiceText: 'เพิ่มหมวดหมู่',
-                    onAddChoice: (context) {
-                      AutoRouter.of(context).pop();
-                    },
-                  )
-                ],
-              ),
-              Row(
-                children: [
-                  BottomSheetNumberPicker(
-                    label: 'เลือกระยะเวลาการยืม',
-                    placeHolder: 'เลือกระยะเวลาการยืม',
-                    onChanged: (value) {
-                      duration.value = value;
-                      onChanged({
-                        'name': name.value,
-                        'typeId': typeId.value,
-                        'duration': duration.value,
-                        'macAddress': macAddress.value,
-                      });
-                    },
-                    min: 1,
-                    max: 9,
-                  )
+                    label: 'ระยะเวลาการยืม',
+                    placeHolder: 'ระยะเวลาการยืม',
+                    isError: isShowError &&
+                        (duration.value == null || duration.value! <= 0),
+                    errorMessage: duration.value == null
+                        ? 'กรุณากรอกค่า'
+                        : 'กรอกจำนวนเต็มบวกเท่านั้น',
+                    keyboardType: TextInputType.number,
+                  ),
                 ],
               ),
               Row(
@@ -142,9 +160,9 @@ class EquipmentFormWidget extends HookWidget {
                                 .primaryTextTheme
                                 .bodyText1!
                                 .copyWith(
-                                    color: Theme.of(context)
-                                        .colorScheme
-                                        .secondary),
+                                  color:
+                                      Theme.of(context).colorScheme.secondary,
+                                ),
                           ),
                           Text(
                             'ให้ตรงกับอุปกรณ์ของคุณ',
@@ -160,12 +178,20 @@ class EquipmentFormWidget extends HookWidget {
                         },
                       ),
                     ),
+                    isError: isShowError &&
+                        (macAddress.value.isEmpty || isMacAddressDuplicated),
+                    errorMessage: isMacAddressDuplicated
+                        ? 'Mac Address ซ้ำ'
+                        : 'กรุณาเลือกค่า',
                   ),
-                  IconButton(
-                    onPressed: () {
-                      AutoRouter.of(context).push(const QrScanningRoute());
-                    },
-                    icon: const Icon(Icons.qr_code_scanner),
+                  // IconButton(
+                  //   onPressed: () {
+                  //     AutoRouter.of(context).push(const QrScanningRoute());
+                  //   },
+                  //   icon: const Icon(Icons.qr_code_scanner),
+                  // )
+                  const SizedBox(
+                    width: 10,
                   )
                 ],
               )

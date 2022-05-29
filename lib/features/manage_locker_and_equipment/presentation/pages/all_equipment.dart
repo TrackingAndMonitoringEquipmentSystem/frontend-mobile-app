@@ -56,66 +56,66 @@ class AllEquipmentPage extends HookWidget {
           backgroundColor: Colors.white,
           iconTheme: const IconThemeData(color: Colors.black),
           elevation: 0,
-          actions: [
-            IconButton(onPressed: () {}, icon: const Icon(Icons.search)),
-            PopupMenuButton(
-              onSelected: (value) {
-                switch (value) {
-                  case 1:
-                    AutoRouter.of(context)
-                        .push(AddOrEditLockerRoute(lockerId: 1));
-                    break;
-                  case 2:
-                    AutoRouter.of(context).push(const LockerDetailRoute());
-                    break;
-                  case 3:
-                    AutoRouter.of(context).push(const ManagePermissionRoute());
-                    break;
-                }
-              },
-              icon: const Icon(Icons.more_vert),
-              itemBuilder: (context) => [
-                PopupMenuItem(
-                  value: 1,
-                  child: Text(
-                    "แก้ไขข้อมูล",
-                    style: Theme.of(context).primaryTextTheme.bodyText1,
-                  ),
-                ),
-                PopupMenuItem(
-                  value: 2,
-                  child: Text(
-                    "รายละเอียด",
-                    style: Theme.of(context).primaryTextTheme.bodyText1,
-                  ),
-                ),
-                PopupMenuItem(
-                  value: 3,
-                  child: Text(
-                    "จัดการสิทธิการใช้งาน",
-                    style: Theme.of(context).primaryTextTheme.bodyText1,
-                  ),
-                ),
-                PopupMenuItem(
-                  value: 4,
-                  child: Text(
-                    "รีเซ็ตเลข Mac address",
-                    style: Theme.of(context).primaryTextTheme.bodyText1,
-                  ),
-                ),
-                PopupMenuItem(
-                  value: 5,
-                  child: Text(
-                    "ลบตู้ล็อกเกอร์",
-                    style: Theme.of(context)
-                        .primaryTextTheme
-                        .bodyText1!
-                        .copyWith(color: Theme.of(context).colorScheme.error),
-                  ),
-                ),
-              ],
-            ),
-          ],
+          // actions: [
+          //   IconButton(onPressed: () {}, icon: const Icon(Icons.search)),
+          //   PopupMenuButton(
+          //     onSelected: (value) {
+          //       switch (value) {
+          //         case 1:
+          //           AutoRouter.of(context)
+          //               .push(AddOrEditLockerRoute(lockerId: 1));
+          //           break;
+          //         case 2:
+          //           AutoRouter.of(context).push(const LockerDetailRoute());
+          //           break;
+          //         case 3:
+          //           AutoRouter.of(context).push(const ManagePermissionRoute());
+          //           break;
+          //       }
+          //     },
+          //     icon: const Icon(Icons.more_vert),
+          //     itemBuilder: (context) => [
+          //       PopupMenuItem(
+          //         value: 1,
+          //         child: Text(
+          //           "แก้ไขข้อมูล",
+          //           style: Theme.of(context).primaryTextTheme.bodyText1,
+          //         ),
+          //       ),
+          //       PopupMenuItem(
+          //         value: 2,
+          //         child: Text(
+          //           "รายละเอียด",
+          //           style: Theme.of(context).primaryTextTheme.bodyText1,
+          //         ),
+          //       ),
+          //       PopupMenuItem(
+          //         value: 3,
+          //         child: Text(
+          //           "จัดการสิทธิการใช้งาน",
+          //           style: Theme.of(context).primaryTextTheme.bodyText1,
+          //         ),
+          //       ),
+          //       PopupMenuItem(
+          //         value: 4,
+          //         child: Text(
+          //           "รีเซ็ตเลข Mac address",
+          //           style: Theme.of(context).primaryTextTheme.bodyText1,
+          //         ),
+          //       ),
+          //       PopupMenuItem(
+          //         value: 5,
+          //         child: Text(
+          //           "ลบตู้ล็อกเกอร์",
+          //           style: Theme.of(context)
+          //               .primaryTextTheme
+          //               .bodyText1!
+          //               .copyWith(color: Theme.of(context).colorScheme.error),
+          //         ),
+          //       ),
+          //     ],
+          //   ),
+          // ],
         ),
         body: Padding(
           padding: EdgeInsets.fromLTRB(

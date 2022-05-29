@@ -19,6 +19,7 @@ class AddingEquipmentPage extends HookWidget {
           final result = await lockerRepository.addEquipment(
             id: lockerId,
           );
+          print(result);
           result.fold(
             (l) => AutoRouter.of(context).replace(
               AddEquipmentRoute(

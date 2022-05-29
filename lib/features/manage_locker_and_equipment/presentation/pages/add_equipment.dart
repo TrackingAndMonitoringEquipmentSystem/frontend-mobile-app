@@ -44,6 +44,11 @@ class AddEquipmentPage extends HookWidget {
           )
         : <Map<String, dynamic>>[];
     final listFormData = useState(initialForm);
+    final isShowError = useState(false);
+    final formValidations =
+        useState(listFormData.value.map<bool>((e) => false).toList());
+    final isMacAddressDuplicatedList =
+        useState(formValidations.value.map<bool>((e) => false).toList());
     return LoadingOverlayPro(
       progressIndicator: const CircularProgressIndicator(),
       isLoading: isLoading.value,
@@ -59,23 +64,43 @@ class AddEquipmentPage extends HookWidget {
         ),
         body: isError != null
             ? const Center(child: Text('เกิดข้อผิดพลาด'))
-            : ListView.builder(
-                itemCount: objects.length,
-                itemBuilder: (context, index) {
-                  return Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: EquipmentFormWidget(
-                      id: index,
+            : SingleChildScrollView(
+                child: Column(
+                  children: List<Widget>.generate(
+                    objects.length,
+                    (index) => EquipmentFormWidget(
+                      key: ValueKey(index),
                       image: objects[index],
                       macAddresses: List<String>.from(
                         scanResult!['macAddresses'] as List,
                       ),
                       onChanged: (data) {
                         listFormData.value[index] = data;
+                        if (listFormData.value
+                                .where(
+                                  (element) =>
+                                      element['macAddress'] ==
+                                      data['macAddress'],
+                                )
+                                .length >
+                            1) {
+                          isMacAddressDuplicatedList.value[index] = true;
+                        } else {
+                          isMacAddressDuplicatedList.value[index] = false;
+                        }
+                        formValidations.value[index] = isInputValid(
+                              name: data['name'] as String,
+                              duration: data['duration'] as int?,
+                              macAddress: data['macAddress'] as String,
+                            ) &&
+                            !isMacAddressDuplicatedList.value[index];
                       },
+                      isShowError: isShowError.value,
+                      isMacAddressDuplicated:
+                          isMacAddressDuplicatedList.value[index],
                     ),
-                  );
-                },
+                  ),
+                ),
               ),
         bottomNavigationBar: SizedBox(
           height: screenSize.height * 0.2,
@@ -112,30 +137,35 @@ class AddEquipmentPage extends HookWidget {
                       Button(
                         'บันทึก',
                         onPressed: () async {
-                          final List<EquipmentRequest> equipments = [];
-                          listFormData.value.asMap().forEach((index, value) {
-                            value['base64Image'] = base64Images.value[index];
-                            equipments.add(EquipmentRequest.fromJson(value));
-                          });
+                          isShowError.value = true;
+                          if (formValidations.value
+                              .every((element) => element == true)) {
+                            final List<EquipmentRequest> equipments = [];
+                            listFormData.value.asMap().forEach((index, value) {
+                              value['base64Image'] = base64Images.value[index];
+                              equipments.add(EquipmentRequest.fromJson(value));
+                            });
 
-                          final saveEquipmentsRequest = SaveEquipmentsRequest(
-                            scanResult!['uuid'] as String,
-                            lockerId,
-                            equipments,
-                          );
-                          isLoading.value = true;
-                          final result = await lockerRepository
-                              .saveEquipments(saveEquipmentsRequest);
-                          isLoading.value = false;
-                          result.fold(
-                            (l) => handleErrorCase(context, l),
-                            (r) {
-                              AutoRouter.of(context)
-                                  .popUntilRouteWithName(AllLockerRoute.name);
-                              AutoRouter.of(context)
-                                  .push(AllEquipmentRoute(lockerId: lockerId));
-                            },
-                          );
+                            final saveEquipmentsRequest = SaveEquipmentsRequest(
+                              scanResult!['uuid'] as String,
+                              lockerId,
+                              equipments,
+                            );
+                            print(saveEquipmentsRequest.equipments);
+                            isLoading.value = true;
+                            final result = await lockerRepository
+                                .saveEquipments(saveEquipmentsRequest);
+                            isLoading.value = false;
+                            result.fold(
+                              (l) => handleErrorCase(context, l),
+                              (r) {
+                                AutoRouter.of(context)
+                                    .popUntilRouteWithName(AllLockerRoute.name);
+                                AutoRouter.of(context).push(
+                                    AllEquipmentRoute(lockerId: lockerId));
+                              },
+                            );
+                          }
                         },
                       )
                   ],
@@ -182,5 +212,16 @@ class AddEquipmentPage extends HookWidget {
       });
     });
     return widgets;
+  }
+
+  bool isInputValid({
+    required String name,
+    required int? duration,
+    required String macAddress,
+  }) {
+    return name.isNotEmpty &&
+        duration != null &&
+        duration > 0 &&
+        macAddress.isNotEmpty;
   }
 }

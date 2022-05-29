@@ -9,6 +9,7 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   // make sure you call `initializeApp` before using other Firebase services.
   await Firebase.initializeApp();
   print('Handling a background message ${message.messageId}');
+  print('message.data: ${message.data}');
 }
 
 Future<void> main() async {

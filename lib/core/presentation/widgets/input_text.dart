@@ -14,6 +14,7 @@ class InputText extends HookWidget {
   final bool isRequired;
   final TextEditingController? controller;
   const InputText({
+    Key? key,
     required this.onChanged,
     this.isError = false,
     this.errorMessage = 'กรุณากรอกข้อมูลให้ถูกต้อง',
@@ -30,6 +31,7 @@ class InputText extends HookWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: TextFormField(
+        key: key,
         controller: controller,
         initialValue: initialValue,
         decoration: InputDecoration(
