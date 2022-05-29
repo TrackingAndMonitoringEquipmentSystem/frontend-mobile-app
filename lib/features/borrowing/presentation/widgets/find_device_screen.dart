@@ -41,7 +41,7 @@ class FindDevicesScreen extends HookWidget {
               .startScan(timeout: const Duration(seconds: 4)),
           child: StreamBuilder<List<ScanResult>>(
               stream: FlutterBluePlus.instance.scanResults,
-              initialData: [],
+              initialData: const [],
               builder: (c, snapshot) {
                 if (snapshot.data!.isNotEmpty) {
                   final devices = snapshot.data!

@@ -18,6 +18,7 @@ class Department with _$Department {
 
   @override
   factory Department.fromJson(Map<String, dynamic> json) {
+    print('dapartment json: $json');
     return Department(
       id: json['id'] as int,
       name: json['dept_name'] != null ? json['dept_name'] as String : null,
@@ -27,13 +28,13 @@ class Department with _$Department {
       updatedAt: json['updated_at'] != null
           ? DateTime.parse(json['updated_at'] as String)
           : null,
-      createdBy: json.containsKey('created_by')
+      createdBy: json['created_by'] != null
           ? UserType.fromJson(json['created_by'] as Map<String, dynamic>)
           : null,
-      updatedBy: json.containsKey('updated_by')
+      updatedBy: json['updated_by'] != null
           ? UserType.fromJson(json['updated_by'] as Map<String, dynamic>)
           : null,
-      lockers: json.containsKey('locker')
+      lockers: json['locker'] != null
           ? (json['locker'] as List)
               .map((e) => Locker.fromJson(e as Map<String, dynamic>))
               .toList()

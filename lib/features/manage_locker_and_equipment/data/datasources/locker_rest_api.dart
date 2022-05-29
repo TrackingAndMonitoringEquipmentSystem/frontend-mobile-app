@@ -69,6 +69,7 @@ class LockerRestApi {
         path:
             '${environment.lockers[environment.LockerPath.registerLocker]}/$id',
       );
+      print('departmentIds: $departmentIds');
       final response = await _httpClient.post(
         uri,
         headers: <String, String>{

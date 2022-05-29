@@ -48,6 +48,15 @@ class BottomSheetMultipleSelect<T> extends HookWidget {
               ),
             ),
             errorText: isError ? errorMessage : null,
+            errorStyle: TextStyle(
+              color: Theme.of(context).colorScheme.error,
+            ),
+            errorBorder: OutlineInputBorder(
+              borderSide: BorderSide(
+                color: Theme.of(context).colorScheme.error,
+                width: 0.5,
+              ),
+            ),
           ),
           enabled: false,
           style: const TextStyle(overflow: TextOverflow.ellipsis),
@@ -128,6 +137,15 @@ class BottomSheetMultipleSelect<T> extends HookWidget {
                       currentValue.value =
                           listChoice.map((e) => e['value'] as T).toList();
                     }
+                    final displayText = listChoice
+                        .where(
+                          (e) => currentValue.value.contains(e['value'] as T),
+                        )
+                        .map(
+                          (e) => e['displayText'],
+                        )
+                        .join(',');
+                    controller.text = displayText;
                     onChanged(currentValue.value);
                     setState(() {});
                   },
@@ -152,6 +170,15 @@ class BottomSheetMultipleSelect<T> extends HookWidget {
                       } else {
                         currentValue.value.add(choice['value'] as T);
                       }
+                      final displayText = listChoice
+                          .where(
+                            (e) => currentValue.value.contains(e['value'] as T),
+                          )
+                          .map(
+                            (e) => e['displayText'],
+                          )
+                          .join(',');
+                      controller.text = displayText;
                       onChanged(currentValue.value);
                       setState(() {});
                     },

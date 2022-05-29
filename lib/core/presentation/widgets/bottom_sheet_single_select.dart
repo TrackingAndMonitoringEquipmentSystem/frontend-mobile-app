@@ -77,7 +77,9 @@ class BottomSheetSingleSelect extends HookWidget {
             ),
             errorBorder: OutlineInputBorder(
               borderSide: BorderSide(
-                  color: Theme.of(context).colorScheme.error, width: 0.5),
+                color: Theme.of(context).colorScheme.error,
+                width: 0.5,
+              ),
             ),
           ),
           enabled: false,
